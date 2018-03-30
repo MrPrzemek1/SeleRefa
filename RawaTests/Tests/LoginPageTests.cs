@@ -11,12 +11,12 @@ namespace RawaTests.Tests
     public class LoginPageTests
     {
         LoginPageServices loginServices;
-        HomePageServices homeSrv;
+        HomePageServices homeServices;
 
         public LoginPageTests()
         {
             loginServices = new LoginPageServices();
-            homeSrv = new HomePageServices();
+            homeServices = new HomePageServices();
         }
 
         [OneTimeSetUp]
@@ -34,7 +34,12 @@ namespace RawaTests.Tests
         [Test,Description("asdas"), Order(1)]
         public void CorrectLogin()
         {
-          
+            //var homePage = homeServices.GetHomePageModel();
+            homeServices.GetHomePageModel().LoginBtn.Click();
+            var loginPage = loginServices.GetLoginPageModel();
+            loginPage.SetLoginData();
+            loginPage.SubmitButton.Click();
+            Assert.IsTrue(homeServices.GetHomePageModel().Logout.Contains(ValidateTextsHelper.LoginText));
         }
 
         [Test, Order(2)]

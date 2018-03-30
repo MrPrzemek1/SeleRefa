@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using RawaTests.Helpers;
+using RawaTests.HtmlStrings.ConstStrings;
 using RawaTests.Services;
 using RawaTests.Tests.Base;
 using static TestyRawa.DriverHelper;
@@ -35,7 +36,8 @@ namespace RawaTests.Tests
         public void HomePage()
         {
             var homePage = homePageSrv.GetHomePageModel();
-            Assert.AreEqual(HtmlHomePageElements.HomePageUrl, homePage.HomePageImage.GetImageSource());
+            Assert.AreEqual(HomePageElementsLocators.HomePageUrl, homePage.HomePageImage.GetImageSource());
+            Assert.AreEqual(FooterAndHeader.HEADER, homePage.Header.Text);
         }
     }
 }

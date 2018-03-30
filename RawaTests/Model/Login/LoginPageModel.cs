@@ -2,26 +2,27 @@
 using RawaTests.Helpers;
 using RawaTests.Model.Base.Buttons;
 using RawaTests.Model.Login;
+using RawaTests.WebElements.Input;
+using RawaTests.WebElements.TextElements;
 
 namespace RawaTests.Model
 {
     class LoginPageModel : LoginModel
     {
-        public LoginPageModel(IWebElement company, IWebElement Login, IWebElement password, INxButton loginButton, IWebElement loginbuttonelement, IWebElement validateField = null)
+        public LoginPageModel(INxInput company, INxInput Login, INxInput password, INxButton loginButton, INxWebText validateField = null)
         {
-            CompanyNameElement = company;
-            LoginElement = Login;
-            PasswordElement = password;
-            LoginButton = loginButton;
-            this.LoginButtonElement = loginbuttonelement;
+            CompanyNameInput = company;
+            LoginInput = Login;
+            PasswordInput = password;
+            SubmitButton = loginButton;
             ValidateFieldElement = validateField;
         }
 
-        public void SetLoginData(LoginPageModel model)
+        public void SetLoginData()
         {
-            model.CompanyNameElement.SendKeys(LoginData.CompanyName);
-            model.LoginElement.SendKeys(LoginData.Login);
-            model.PasswordElement.SendKeys(LoginData.Password);
+            CompanyNameInput.SendText(LoginData.CompanyName);
+            LoginInput.SendText(LoginData.Login);
+            PasswordInput.SendText(LoginData.Password);
         }
 
         public bool ValidateFieldIsDisplayed
@@ -29,7 +30,7 @@ namespace RawaTests.Model
             get
             {
                 if (ValidateFieldElement != null)
-                    return ValidateFieldElement.Displayed;
+                    return ValidateFieldElement.Dispalyed();
                 else
                     return false;
             }
@@ -48,20 +49,20 @@ namespace RawaTests.Model
 
         public void ClearAllLoginForField()
         {
-            CompanyNameElement.Clear();
-            LoginElement.Clear();
-            PasswordElement.Clear();
+            CompanyNameInput.Clear();
+            LoginInput.Clear();
+            PasswordInput.Clear();
         }
 
         public void SetLoginData(string company, string login, string pass)
         {
-            CompanyNameElement.SendKeys(company);
-            LoginElement.SendKeys(login);
-            PasswordElement.SendKeys(pass);
+            CompanyNameInput.SendText(company);
+            LoginInput.SendText(login);
+            PasswordInput.SendText(pass);
         }
         public override bool IsValid()
         {
-            return LoginButtonElement != null && LoginElement != null;
+            return LoginInput != null;
         }
     }
 }

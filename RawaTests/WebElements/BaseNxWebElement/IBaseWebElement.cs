@@ -9,7 +9,7 @@ namespace RawaTests.IWebElements
 {
     public interface IBaseWebElement
     {
-        string Text();
+        string Text { get; }
         string GetAttribute(string attribute);
         bool Dispalyed();
     }

@@ -57,25 +57,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\AlertHelper.cs" />
-    <Compile Include="Helpers\HTMLConsts.cs" />
+    <Compile Include="HtmlStrings\ConstStrings\FooterAndHeader.cs" />
+    <Compile Include="HtmlStrings\ConstStrings\HTMLConsts.cs" />
     <Compile Include="Helpers\DriverHelper.cs" />
-    <Compile Include="HtmlLocatorStrings\HtmlHomePageElements.cs" />
-    <Compile Include="HtmlLocatorStrings\HtmlStepOneElements.cs" />
-    <Compile Include="Helpers\LoginData.cs" />
-    <Compile Include="HtmlLocatorStrings\HtmlLoginPageElements.cs" />
+    <Compile Include="HtmlStrings\ElementsLocators\HomePageElementsLocators.cs" />
+    <Compile Include="HtmlStrings\ConstStrings\LoginData.cs" />
+    <Compile Include="HtmlStrings\ElementsLocators\LoginPageElementsLocators.cs" />
+    <Compile Include="HtmlStrings\ElementsLocators\StepOne\DimensionElementsLocators.cs" />
+    <Compile Include="HtmlStrings\ElementsLocators\StepOne\ImageRoomElements.cs" />
+    <Compile Include="HtmlStrings\ElementsLocators\StepOne\ShapeRoomElements.cs" />
     <Compile Include="IDriverService.cs" />
-    <Compile Include="IWebElements\BaseNxWebElement\BaseWebElement.cs" />
-    <Compile Include="IWebElements\BaseNxWebElement\IBaseWebElement.cs" />
-    <Compile Include="IWebElements\Images\INxWebImage.cs" />
-    <Compile Include="IWebElements\Images\NxWebImage.cs" />
-    <Compile Include="IWebElements\TextElements\NxWebText.cs" />
+    <Compile Include="WebElements\BaseNxWebElement\BaseWebElement.cs" />
+    <Compile Include="WebElements\BaseNxWebElement\IBaseWebElement.cs" />
+    <Compile Include="WebElements\Images\INxWebImage.cs" />
+    <Compile Include="WebElements\Images\NxWebImage.cs" />
+    <Compile Include="WebElements\Input\INxInput.cs" />
+    <Compile Include="WebElements\Input\NxInput.cs" />
+    <Compile Include="WebElements\TextElements\INxWebText.cs" />
+    <Compile Include="WebElements\TextElements\NxWebText.cs" />
     <Compile Include="Model\Base\BaseModel.cs" />
-    <Compile Include="IWebElements\Buttons\INxButton.cs" />
-    <Compile Include="IWebElements\Buttons\NxButton.cs" />
+    <Compile Include="WebElements\Buttons\INxButton.cs" />
+    <Compile Include="WebElements\Buttons\NxButton.cs" />
     <Compile Include="Model\Home\HomePageModel.cs" />
     <Compile Include="Model\Login\LoginModel.cs" />
     <Compile Include="Model\Shape\ShapeRoomList.cs" />
-    <Compile Include="Model\Base\CustomWebElement.cs" />
     <Compile Include="Model\Home\HomeModel.cs" />
     <Compile Include="Model\Login\LoginPageModel.cs" />
     <Compile Include="Model\Shape\ShapeRoomModel.cs" />
@@ -94,7 +99,7 @@
     <Compile Include="Tests\HomePageTests.cs" />
     <Compile Include="Tests\LoginPageTests.cs" />
     <Compile Include="Tests\TestsStepOne.cs" />
-    <Compile Include="Helpers\ValidateTextsHelper.cs" />
+    <Compile Include="HtmlStrings\ConstStrings\ValidateTextsHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -110,7 +115,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.2.37\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.2.37\build\Selenium.Chrome.WebDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.37.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.2.37.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
     <Error Condition="!Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.10.1\build\NUnit.props'))" />
     <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.10.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.10.0\build\net35\NUnit3TestAdapter.props'))" />
   </Target>
+  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.2.37.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.37.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
 </Project>

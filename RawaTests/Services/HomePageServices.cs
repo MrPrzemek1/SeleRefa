@@ -14,12 +14,14 @@ namespace RawaTests.Services
     {
         public HomePageModel GetHomePageModel()
         {
-            var startButton = new NxButton(Driver.FindElement(By.XPath(HtmlHomePageElements.ButtonStart)));
-            var homePageImage = new NxWebImage(Driver.FindElement(By.XPath(HtmlHomePageElements.HomePageImage)));
-            var logoImage = new NxWebImage(Driver.FindElement(By.XPath(HtmlHomePageElements.HomePageLogo)));
-            var footer = new NxWebText(Driver.FindElement(By.XPath(HtmlHomePageElements.Footer)));
-            var loginBtn = new NxButton(Driver.FindElement(By.XPath(HtmlHomePageElements.LoginButton)));
-            HomePageModel homeModel = new HomePageModel(startButton, homePageImage, logoImage, footer, loginBtn);
+            var startButton = new NxButton(FindElement(By.XPath(HomePageElementsLocators.ButtonStart)));
+            var homePageImage = new NxWebImage(FindElement(By.XPath(HomePageElementsLocators.HomePageImage)));
+            var logoImage = new NxWebImage(FindElement(By.XPath(HomePageElementsLocators.HomePageLogo)));
+            var footer = new NxWebText(FindElement(By.XPath(HomePageElementsLocators.Footer)));
+            var loginBtn = new NxButton(FindElement(By.XPath(HomePageElementsLocators.LoginButton)));
+            var header = new NxWebText(FindElement(By.XPath(HomePageElementsLocators.Header)));
+            var logout = new NxWebText(FindElement(By.Id(HomePageElementsLocators.LogoutDiv)));
+            HomePageModel homeModel = new HomePageModel(startButton, homePageImage, logoImage, footer, loginBtn, header, logout);
 
             return homeModel;
         }

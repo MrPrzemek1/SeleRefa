@@ -1,6 +1,8 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.Model.Base;
 using RawaTests.Model.Base.Buttons;
+using RawaTests.WebElements.Input;
+using RawaTests.WebElements.TextElements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +13,11 @@ namespace RawaTests.Model.Login
 {
     abstract class LoginModel : BaseModel
     {
-        protected IWebElement CompanyNameElement { get; set; }
-        protected IWebElement LoginElement { get; set; }
-        protected IWebElement PasswordElement { get; set; }
-        public INxButton LoginButton { get; set; }
-        protected IWebElement LoginButtonElement { get; set; }
-        protected IWebElement ValidateFieldElement { get; set; }
+        public INxInput CompanyNameInput { get; set; }
+        public INxInput LoginInput { get; set; }
+        public INxInput PasswordInput { get; set; }
+        public INxButton SubmitButton { get; set; }
+        public INxWebText ValidateFieldElement { get; set; }
     }
 
 }

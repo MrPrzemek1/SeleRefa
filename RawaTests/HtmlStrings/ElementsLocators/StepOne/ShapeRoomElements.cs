@@ -1,6 +1,6 @@
 ﻿namespace RawaTests.Helpers
 {
-    public static class HtmlStepOneElements
+    public static class ShapeRoomElementsLocators
     {
         public static string Shapeid="//li[@shape-id]";
         public static string WallClass = "letter";

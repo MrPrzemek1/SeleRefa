@@ -3,6 +3,7 @@ using RawaTests.IWebElements;
 using RawaTests.IWebElements.TextElements;
 using RawaTests.Model.Base;
 using RawaTests.Model.Base.Buttons;
+using RawaTests.WebElements.TextElements;
 
 namespace RawaTests.Model
 {
@@ -11,7 +12,9 @@ namespace RawaTests.Model
         public INxButton StartButton { get; set; }
         public INxWebImage HomePageImage { get; set; }
         public INxWebImage LogoImage { get; set; }
-        public NxWebText Footer { get; set;}
+        public INxWebText Footer { get; set;}
         public INxButton LoginBtn { get; set; }
+        public INxWebText Header { get; set; }
+        public INxWebText Logout { get; set; }
     }
 }

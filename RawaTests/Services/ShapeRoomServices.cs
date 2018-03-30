@@ -11,7 +11,7 @@ namespace RawaTests.Services
     {
         public ShapeRoomList GetShapes()
         {
-            var shape_id = Driver.FindElements(By.XPath(HtmlStepOneElements.Shapeid));
+            var shape_id = Driver.FindElements(By.XPath(ShapeRoomElementsLocators.Shapeid));
 
             ShapeRoomList listOfShapes = new ShapeRoomList();
             int i = 0;

@@ -20,10 +20,9 @@ namespace RawaTests.IWebElements
         {
             return element.Displayed;
         }
-        public string Text()
-        {
-            return element.Text;
-        }
+
+        string IBaseWebElement.Text => element.Text;
+
         public string GetAttribute(string attribute)
         {
             return element.GetAttribute(attribute);

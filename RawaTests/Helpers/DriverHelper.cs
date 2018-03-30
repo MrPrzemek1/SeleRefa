@@ -56,7 +56,16 @@ namespace TestyRawa
 
             internal static IWebElement FindElement(By by)
             {
-                return Driver.FindElement(by);
+                IWebElement result;
+                try
+                {
+                    result = Driver.FindElement(by);
+                }
+                catch (Exception)
+                {
+                    result = null;
+                }
+                return result;
             }
 
             public static IWebElement ElementIsDisplayed(By element)

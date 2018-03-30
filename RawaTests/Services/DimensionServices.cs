@@ -8,10 +8,10 @@ namespace RawaTests.StepOne
     {
         public DimensionsList GetDimensions()
         {
-           var btnPlus =  Driver.FindElements(By.XPath(HtmlStepOneElements.PlusSignClass));
-           var btnMinus = Driver.FindElements(By.XPath(HtmlStepOneElements.MinusSignClass));
-           var descriptionField = Driver.FindElements(By.XPath(HtmlStepOneElements.DescriptionFieldClass));
-           var inputField = Driver.FindElements(By.XPath(HtmlStepOneElements.InputFieldClass));
+           var btnPlus =  Driver.FindElements(By.XPath(ShapeRoomElementsLocators.PlusSignClass));
+           var btnMinus = Driver.FindElements(By.XPath(ShapeRoomElementsLocators.MinusSignClass));
+           var descriptionField = Driver.FindElements(By.XPath(ShapeRoomElementsLocators.DescriptionFieldClass));
+           var inputField = Driver.FindElements(By.XPath(ShapeRoomElementsLocators.InputFieldClass));
 
             DimensionsList result = new DimensionsList();
 
