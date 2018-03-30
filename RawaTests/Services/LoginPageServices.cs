@@ -12,17 +12,17 @@ namespace RawaTests.Services
     class LoginPageServices : BaseService
     {
 
-        public LoginPageModel GetLoginPageModel()
-        {
-                var CompanyName = FindElementFor(By.XPath(HtmlLoginPageElements.CompanyInput));
-                var Login = FindElementFor(By.XPath(HtmlLoginPageElements.LoginInput));
-                var Password = FindElementFor(By.XPath(HtmlLoginPageElements.PasswordInput));
-                var LoginButtonElement = FindElementFor(By.XPath(HtmlLoginPageElements.ButtonLogin));
-                var LoginButton = new NxButton(LoginButtonElement);
-                var ValidateField = FindElementFor(By.XPath(HtmlLoginPageElements.ValidateField));
-                LoginPageModel model = new LoginPageModel(CompanyName, Login, Password, LoginButton, LoginButtonElement, ValidateField);
-                return model;
-        }         
+        //public LoginPageModel GetLoginPageModel()
+        //{
+        //    var CompanyName = FindElement(By.XPath(HtmlLoginPageElements.CompanyInput));
+        //    var Login = FindElementFor(By.XPath(HtmlLoginPageElements.LoginInput));
+        //    var Password = FindElementFor(By.XPath(HtmlLoginPageElements.PasswordInput));
+        //    var LoginButtonElement = FindElementFor(By.XPath(HtmlLoginPageElements.ButtonLogin));
+        //    var LoginButton = new NxButton(LoginButtonElement);
+        //    var ValidateField = FindElementFor(By.XPath(HtmlLoginPageElements.ValidateField));
+        //    LoginPageModel model = new LoginPageModel(CompanyName, Login, Password, LoginButton, LoginButtonElement, ValidateField);
+        //    return model;
+        //}         
     }
 }
 

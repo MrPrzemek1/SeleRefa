@@ -7,19 +7,18 @@ using System.Threading.Tasks;
 
 namespace RawaTests.IWebElements
 {
-    public class NxWebImage : INxWebImage
+    public class NxWebImage : BaseWebElement, INxWebImage
     {
         private IWebElement element;
 
-        public NxWebImage()
-        {
-        }
-
-        public NxWebImage(IWebElement element)
+        public NxWebImage(IWebElement element) : base (element)
         {
             this.element = element;
         }
 
-        public string Source => element.GetAttribute("src");
+        public string GetImageSource()
+        {
+            return element.GetAttribute("src");
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using RawaTests.Helpers;
 using RawaTests.Services;
 using RawaTests.Tests.Base;
 using static TestyRawa.DriverHelper;
@@ -6,7 +7,7 @@ using static TestyRawa.DriverHelper;
 namespace RawaTests.Tests
 {
     [TestFixture(Category ="HomePageTests")]
-    class HomePageTests : IDriverService
+    class HomePageTests
     {
         HomePageServices homePageSrv;
         public HomePageTests()
@@ -27,10 +28,14 @@ namespace RawaTests.Tests
         [Test]
         public void HomePageElementsIsDisplayed()
         {
-            var homeModel = homePageSrv.GetHomePageModel();
-            Assert.IsTrue(homeModel.StartButton.Displayed);
-            Assert.IsTrue(homeModel.LogoImage.Displayed);
-            Assert.IsTrue(homeModel.HomePageImage.Displayed);
+            var homePage = homePageSrv.GetHomePageModel();
+            Assert.IsTrue(homePage.IsValid());
+        }
+        [Test]
+        public void HomePage()
+        {
+            var homePage = homePageSrv.GetHomePageModel();
+            Assert.AreEqual(HtmlHomePageElements.HomePageUrl, homePage.HomePageImage.GetImageSource());
         }
     }
 }

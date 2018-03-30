@@ -8,6 +8,6 @@ namespace RawaTests.IWebElements
 {
     public interface INxWebImage
     {
-        string Source { get; }
+        string GetImageSource();
     }
 }

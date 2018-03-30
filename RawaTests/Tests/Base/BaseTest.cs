@@ -11,7 +11,7 @@ using static TestyRawa.DriverHelper;
 namespace RawaTests.Tests.Base
 {
     [SetUpFixture]
-    public abstract class BaseTest : IDriverService
+    public abstract class BaseTest
     {
         public BaseTest()
         {

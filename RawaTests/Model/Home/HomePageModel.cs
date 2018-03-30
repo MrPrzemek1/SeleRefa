@@ -6,7 +6,7 @@ namespace RawaTests.Model.Home
 {
     class HomePageModel : HomeModel
     {
-        public HomePageModel(INxButton startBtn, INxWebImage homeImg, INxWebImage logoImg, NxWebText footer, INxButton loginBtn)
+        public HomePageModel(INxButton startBtn, INxWebImage homeImg, INxWebImage logoImg, IBaseWebElement footer, INxButton loginBtn)
         {
             StartButton = startBtn;
             HomePageImage = homeImg;
@@ -16,8 +16,8 @@ namespace RawaTests.Model.Home
         }
         public override bool IsValid()
         {
-            return StartButton != null && HomePageImage != null;
+            return StartButton != null && HomePageImage.GetImageSource() != null;
         }
-
+        
     }
 }

@@ -30,7 +30,7 @@ namespace TestyRawa
                 {
                     case Drivers.Chrome:
                         var outPutDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                        var relativePath = @"..\..\..\TestyRawa\bin\debug";
+                        var relativePath = @"..\..\..\RawaTests\bin\debug";
                         var chromeDriverPath = Path.GetFullPath(Path.Combine(outPutDirectory, relativePath));
                         return new ChromeDriver(chromeDriverPath);
                     case Drivers.Firefox:
@@ -44,7 +44,7 @@ namespace TestyRawa
                 bool result = false;
                 for (int i = 0; i < timeoutInSeconds; i++)
                 {
-                    if (ElementIsDisplayed(element))
+                    if (ElementIsDisplayed(element).Displayed)
                     {
                         result = true ;
                         break;
@@ -83,7 +83,7 @@ namespace TestyRawa
             {
                 Driver = GetDriver(Drivers.Chrome);
                 Goto("konfigurator3d");
-                WaitUntilElementIsDisplayed(By.XPath("//button[@class='btn btn-primary btn-lg btn-start']"), 5);
+                //WaitUntilElementIsDisplayed(By.XPath("//button[@class='btn btn-primary btn-lg btn-start']"), 5);
                 MaximizeWindow();
             }
 
@@ -120,7 +120,7 @@ namespace TestyRawa
                 Driver.Navigate().Refresh();
             }
 
-            public boool
+            
 
         }
     }

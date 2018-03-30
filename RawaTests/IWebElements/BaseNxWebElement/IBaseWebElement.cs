@@ -12,7 +12,5 @@ namespace RawaTests.IWebElements
         string Text();
         string GetAttribute(string attribute);
         bool Dispalyed();
-        IWebElement Wait(By by, int second = 5);
-        IWebElement LoadingImage();
     }
 }

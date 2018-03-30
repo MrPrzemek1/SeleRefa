@@ -14,14 +14,15 @@ namespace RawaTests.Services
     {
         public HomePageModel GetHomePageModel()
         {
-            var startButton = new NxButton();
-            var homePageImage = new NxWebImage();
-            var logoImage = new NxWebImage();
-            var footer = new NxWebText();
-            var loginBtn = new NxButton();
+            var startButton = new NxButton(Driver.FindElement(By.XPath(HtmlHomePageElements.ButtonStart)));
+            var homePageImage = new NxWebImage(Driver.FindElement(By.XPath(HtmlHomePageElements.HomePageImage)));
+            var logoImage = new NxWebImage(Driver.FindElement(By.XPath(HtmlHomePageElements.HomePageLogo)));
+            var footer = new NxWebText(Driver.FindElement(By.XPath(HtmlHomePageElements.Footer)));
+            var loginBtn = new NxButton(Driver.FindElement(By.XPath(HtmlHomePageElements.LoginButton)));
             HomePageModel homeModel = new HomePageModel(startButton, homePageImage, logoImage, footer, loginBtn);
 
             return homeModel;
         }
+
     }
 }
