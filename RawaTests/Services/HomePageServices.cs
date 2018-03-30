@@ -3,20 +3,23 @@ using OpenQA.Selenium;
 using RawaTests.Model;
 using RawaTests.Helpers;
 using RawaTests.Model.Home;
+using RawaTests.Services.Base;
+using RawaTests.Model.Base.Buttons;
+using RawaTests.IWebElements.TextElements;
+using RawaTests.IWebElements;
 
 namespace RawaTests.Services
 {
-    class HomePageServices
+    class HomePageServices : BaseService
     {
         public HomePageModel GetHomePageModel()
         {
-            HomePageModel homeModel = new HomePageModel();
-
-            homeModel.StartButton = Driver.FindElement(By.XPath(HtmlHomePageElements.ButtonStart));
-            homeModel.HomePageImage = Driver.FindElement(By.ClassName(HtmlHomePageElements.HomePageImage));
-            homeModel.LogoImage = Driver.FindElement(By.ClassName(HtmlHomePageElements.HomePageLogo));
-            homeModel.Footer = Driver.FindElement(By.XPath(HtmlHomePageElements.Footer));
-            homeModel.LoginBtn = Driver.FindElement(By.XPath(HtmlHomePageElements.LoginButton));
+            var startButton = new NxButton();
+            var homePageImage = new NxWebImage();
+            var logoImage = new NxWebImage();
+            var footer = new NxWebText();
+            var loginBtn = new NxButton();
+            HomePageModel homeModel = new HomePageModel(startButton, homePageImage, logoImage, footer, loginBtn);
 
             return homeModel;
         }

@@ -41,15 +41,17 @@ namespace TestyRawa
             }
             public static bool WaitUntilElementIsDisplayed(By element, int timeoutInSeconds)
             {
+                bool result = false;
                 for (int i = 0; i < timeoutInSeconds; i++)
                 {
                     if (ElementIsDisplayed(element))
                     {
-                        return true;
+                        result = true ;
+                        break;
                     }
                     Thread.Sleep(1000);
                 }
-                return false;
+                return result;
             }
 
             internal static IWebElement FindElement(By by)
@@ -57,19 +59,21 @@ namespace TestyRawa
                 return Driver.FindElement(by);
             }
 
-            public static bool ElementIsDisplayed(By element)
+            public static IWebElement ElementIsDisplayed(By element)
             {
-                var present = false;
+                IWebElement result = null;
                 Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
                 try
                 {
-                    present = Driver.FindElement(element).Displayed;
+                    result = Driver.FindElement(element);
+
                 }
                 catch (NoSuchElementException)
                 {
+                    result = null;
                 }
                 Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-                return present;
+                return result;
             }
 
             public static IWebDriver Driver { get; private set; }
@@ -115,6 +119,8 @@ namespace TestyRawa
             {
                 Driver.Navigate().Refresh();
             }
+
+            public boool
 
         }
     }

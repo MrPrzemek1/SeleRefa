@@ -1,24 +1,35 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.Helpers;
+using RawaTests.Model.Base.Buttons;
 using RawaTests.Model.Login;
 
 namespace RawaTests.Model
 {
     class LoginPageModel : LoginModel
     {
+        public LoginPageModel(IWebElement company, IWebElement Login, IWebElement password, INxButton loginButton, IWebElement loginbuttonelement, IWebElement validateField = null)
+        {
+            CompanyNameElement = company;
+            LoginElement = Login;
+            PasswordElement = password;
+            LoginButton = loginButton;
+            this.LoginButtonElement = loginbuttonelement;
+            ValidateFieldElement = validateField;
+        }
+
         public void SetLoginData(LoginPageModel model)
         {
-            model.CompanyName.SendKeys(LoginData.CompanyName);
-            model.Login.SendKeys(LoginData.Login);
-            model.Password.SendKeys(LoginData.Password);
+            model.CompanyNameElement.SendKeys(LoginData.CompanyName);
+            model.LoginElement.SendKeys(LoginData.Login);
+            model.PasswordElement.SendKeys(LoginData.Password);
         }
 
         public bool ValidateFieldIsDisplayed
         {
             get
             {
-                if (ValidateField != null)
-                    return ValidateField.Displayed;
+                if (ValidateFieldElement != null)
+                    return ValidateFieldElement.Displayed;
                 else
                     return false;
             }
@@ -29,7 +40,7 @@ namespace RawaTests.Model
             get
             {
                 if (ValidateFieldIsDisplayed)
-                    return ValidateField.Text;
+                    return ValidateFieldElement.Text;
                 else
                     return null;
             }
@@ -37,16 +48,20 @@ namespace RawaTests.Model
 
         public void ClearAllLoginForField()
         {
-            CompanyName.Clear();
-            Login.Clear();
-            Password.Clear();
+            CompanyNameElement.Clear();
+            LoginElement.Clear();
+            PasswordElement.Clear();
         }
 
         public void SetLoginData(string company, string login, string pass)
         {
-            CompanyName.SendKeys(company);
-            Login.SendKeys(login);
-            Password.SendKeys(pass);
+            CompanyNameElement.SendKeys(company);
+            LoginElement.SendKeys(login);
+            PasswordElement.SendKeys(pass);
+        }
+        public override bool IsValid()
+        {
+            return LoginButtonElement != null && LoginElement != null;
         }
     }
 }

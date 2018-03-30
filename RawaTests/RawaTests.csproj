@@ -64,6 +64,14 @@
     <Compile Include="Helpers\LoginData.cs" />
     <Compile Include="HtmlLocatorStrings\HtmlLoginPageElements.cs" />
     <Compile Include="IDriverService.cs" />
+    <Compile Include="IWebElements\BaseNxWebElement\BaseWebElement.cs" />
+    <Compile Include="IWebElements\BaseNxWebElement\IBaseWebElement.cs" />
+    <Compile Include="IWebElements\Images\INxWebImage.cs" />
+    <Compile Include="IWebElements\Images\NxWebImage.cs" />
+    <Compile Include="IWebElements\TextElements\NxWebText.cs" />
+    <Compile Include="Model\Base\BaseModel.cs" />
+    <Compile Include="IWebElements\Buttons\INxButton.cs" />
+    <Compile Include="IWebElements\Buttons\NxButton.cs" />
     <Compile Include="Model\Home\HomePageModel.cs" />
     <Compile Include="Model\Login\LoginModel.cs" />
     <Compile Include="Model\Shape\ShapeRoomList.cs" />
@@ -75,6 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Room3D\Room3DViewModel.cs" />
     <Compile Include="Model\Dimension\DimensionModel.cs" />
+    <Compile Include="Services\Base\BaseService.cs" />
     <Compile Include="Services\DimensionServices.cs" />
     <Compile Include="Model\Dimension\DimensionsList.cs" />
     <Compile Include="Services\HomePageServices.cs" />

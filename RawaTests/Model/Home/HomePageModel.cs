@@ -1,19 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RawaTests.Model.Base.Buttons;
+using RawaTests.IWebElements;
+using RawaTests.IWebElements.TextElements;
 
 namespace RawaTests.Model.Home
 {
-    public class HomePageModel : HomeModel
+    class HomePageModel : HomeModel
     {
-        public bool StartButtonIsDisplay()
+        public HomePageModel(INxButton startBtn, INxWebImage homeImg, INxWebImage logoImg, NxWebText footer, INxButton loginBtn)
         {
-            if (!StartButton.Displayed || StartButton == null)
-                return false;
-            else
-                return true;
+            StartButton = startBtn;
+            HomePageImage = homeImg;
+            LogoImage = logoImg;
+            Footer = footer;
+            LoginBtn = loginBtn;
         }
+        public override bool IsValid()
+        {
+            return StartButton != null && HomePageImage != null;
+        }
+
     }
 }

@@ -24,9 +24,6 @@ namespace RawaTests.Tests.Base
         public void TestInizialize()
         {
             Browser.Initialize();
-            Browser.ClickOnElement(By.XPath(HtmlHomePageElements.ButtonStart));
-            Browser.WaitUntilElementIsDisplayed(By.XPath(HtmlStepOneElements.MinusSignClass), 5);
-
             Init();
         }
         [OneTimeTearDown]
