@@ -8,7 +8,7 @@ using RawaTests.Model.Login;
 using RawaTests.Services.Base;
 using RawaTests.WebElements.Input;
 using RawaTests.WebElements.TextElements;
-using static TestyRawa.DriverHelper.Browser;
+using static RawaTests.Helpers.DriverHelper.DriverHelp;
 
 namespace RawaTests.Services
 {

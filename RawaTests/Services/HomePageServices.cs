@@ -1,4 +1,4 @@
-﻿using static TestyRawa.DriverHelper.Browser;
+﻿using static RawaTests.Helpers.DriverHelper.DriverHelp;
 using OpenQA.Selenium;
 using RawaTests.Model;
 using RawaTests.Helpers;

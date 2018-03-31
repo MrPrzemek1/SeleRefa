@@ -8,6 +8,5 @@ namespace RawaTests.StepOne
         public IWebElement MinusSign { get; set; }
         public IWebElement PlusSign { get; set; }
         public IWebElement Input { get; set; }
-        public 
     }
 }

@@ -57,9 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\AlertHelper.cs" />
+    <Compile Include="Helpers\DriverHelper\DriverHelp.cs" />
     <Compile Include="HtmlStrings\ConstStrings\FooterAndHeader.cs" />
     <Compile Include="HtmlStrings\ConstStrings\HTMLConsts.cs" />
-    <Compile Include="Helpers\DriverHelper.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\HomePageElementsLocators.cs" />
     <Compile Include="HtmlStrings\ConstStrings\LoginData.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\LoginPageElementsLocators.cs" />

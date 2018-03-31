@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.Helpers;
 using System.Linq;
-using static TestyRawa.DriverHelper.Browser;
+using static RawaTests.Helpers.DriverHelper.DriverHelp;
 namespace RawaTests.StepOne
 {
     class DimensionServices

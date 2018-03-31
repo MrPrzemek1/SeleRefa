@@ -1,9 +1,6 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using RawaTests.Helpers;
 using RawaTests.Services;
-using static TestyRawa.DriverHelper;
-using static TestyRawa.DriverHelper.Browser;
+using static RawaTests.Helpers.DriverHelper.DriverHelp;
 using RawaTests.ValidateMessages;
 namespace RawaTests.Tests
 {
@@ -22,13 +19,13 @@ namespace RawaTests.Tests
         [OneTimeSetUp]
         public void TestInizialize()
         {
-            Browser.Initialize();        
+            Initialize();        
         }
 
         [OneTimeTearDown]
         public void EndTest()
         {
-            Browser.Quit();
+            Quit();
         }
 
         [Test,Description("asdas"), Order(1)]

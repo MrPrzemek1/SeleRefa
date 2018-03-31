@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System;
-using static TestyRawa.DriverHelper.Browser;
+using static RawaTests.Helpers.DriverHelper.DriverHelp;
 
 namespace RawaTests.Helpers
 {

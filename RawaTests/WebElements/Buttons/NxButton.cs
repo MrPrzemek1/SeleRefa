@@ -1,12 +1,5 @@
 ﻿using OpenQA.Selenium;
-using RawaTests.Helpers;
 using RawaTests.IWebElements;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static TestyRawa.DriverHelper.Browser;
 
 namespace RawaTests.Model.Base.Buttons
 {

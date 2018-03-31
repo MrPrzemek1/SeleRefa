@@ -3,7 +3,7 @@ using RawaTests.Helpers;
 using RawaTests.Lists;
 using RawaTests.Model;
 using System.Linq;
-using static TestyRawa.DriverHelper.Browser;
+using static RawaTests.Helpers.DriverHelper.DriverHelp;
 
 namespace RawaTests.Services
 {

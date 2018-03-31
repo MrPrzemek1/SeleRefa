@@ -1,12 +1,5 @@
 ﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using RawaTests.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static TestyRawa.DriverHelper;
+using static RawaTests.Helpers.DriverHelper.DriverHelp;
 
 namespace RawaTests.Tests.Base
 {
@@ -23,14 +16,14 @@ namespace RawaTests.Tests.Base
         [OneTimeSetUp]
         public void TestInizialize()
         {
-            Browser.Initialize();
+            Initialize();
             Init();
         }
         [OneTimeTearDown]
         public void EndTest()
         {
             End();
-            Browser.Quit();
+            Quit();
         }
         
     }
