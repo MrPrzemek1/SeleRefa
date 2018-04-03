@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RawaTests.WebElements.Input
 {
-    public interface INxInput : IBaseWebElement
+    public interface IWebNxButton : IBaseWebElement
     {
         void SendText(string text);
         void Clear();

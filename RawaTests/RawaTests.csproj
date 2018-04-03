@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\AlertHelper.cs" />
-    <Compile Include="Helpers\DriverHelper\DriverHelp.cs" />
+    <Compile Include="Helpers\DriverHelp.cs" />
     <Compile Include="HtmlStrings\ConstStrings\FooterAndHeader.cs" />
     <Compile Include="HtmlStrings\ConstStrings\HTMLConsts.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\HomePageElementsLocators.cs" />
@@ -67,6 +67,7 @@
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ImageRoomElements.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ShapeRoomElements.cs" />
     <Compile Include="IDriverService.cs" />
+    <Compile Include="Model\StepTwo\StepOneModel.cs" />
     <Compile Include="WebElements\BaseNxWebElement\BaseWebElement.cs" />
     <Compile Include="WebElements\BaseNxWebElement\IBaseWebElement.cs" />
     <Compile Include="WebElements\Images\INxWebImage.cs" />
@@ -90,7 +91,7 @@
     <Compile Include="Model\Dimension\DimensionModel.cs" />
     <Compile Include="Services\Base\BaseService.cs" />
     <Compile Include="Services\DimensionServices.cs" />
-    <Compile Include="Model\Dimension\DimensionsList.cs" />
+    <Compile Include="Model\Dimension\DimensionsPageModel.cs" />
     <Compile Include="Services\HomePageServices.cs" />
     <Compile Include="Services\LoginPageServices.cs" />
     <Compile Include="Services\Room3DServices.cs" />

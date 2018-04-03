@@ -30,11 +30,11 @@ namespace RawaTests.Services
         /// </summary>
         /// <param name="id">id pomieszczenia ktore chcemy wybrac</param>
         /// <returns></returns>
-        public ShapeRoomModel GetShapeByID(string id)
-        {
-            var usedShape = GetShapes();
-            return usedShape.Shapes.Where(e => e.Id == id).FirstOrDefault();
-        }
+        //public ShapeRoomModel GetShapeByID(string id)
+        //{
+        //    var usedShape = GetShapes();
+        //    return usedShape.Shapes.Where(e => e.Id == id).FirstOrDefault();
+        //}
         /// <summary>
         /// Metoda zwracająca wybrany atrybut HTML
         /// </summary>

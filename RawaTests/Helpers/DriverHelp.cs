@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
@@ -47,7 +48,20 @@ namespace RawaTests.Helpers.DriverHelper
                 }
                 return result;
             }
-        
+        public static IList<IWebElement> FindElements(By by)
+        {
+            IList<IWebElement> result = new List<IWebElement>();
+            try
+            {
+                 result = Driver.FindElements(by);
+            }
+            catch (Exception)
+            {
+                result = null;
+            }
+            return result;
+        }
+
         public static void Goto(string url, bool useBaseUrl = true)
             {
                 if (useBaseUrl)

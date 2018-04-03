@@ -1,4 +1,5 @@
-﻿using RawaTests.IWebElements;
+﻿using OpenQA.Selenium;
+using RawaTests.IWebElements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RawaTests.Model.Base.Buttons
 {
-    public interface INxButton : IBaseWebElement
+    public interface INxButton : IBaseWebElement, IWebElement
     {
         void Click();
     }

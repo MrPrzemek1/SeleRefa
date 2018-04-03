@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RawaTests.WebElements.Input
 {
-     class NxInput : BaseWebElement, INxInput
+     class NxInput : BaseWebElement, IWebNxButton
     {
         private IWebElement element;
         public NxInput(IWebElement e) : base(e)
