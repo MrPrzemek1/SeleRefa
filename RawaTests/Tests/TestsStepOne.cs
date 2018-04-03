@@ -12,12 +12,13 @@ namespace RawaTests.Tests
     class TestsStepOne : BaseTest
     {
         private DimensionServices dimensionSrv;
-
         private HomePageServices homePage;
+        private Room3DServices roomServices;
         public TestsStepOne()
         {
             dimensionSrv = new DimensionServices();
             homePage = new HomePageServices();
+            roomServices = new Room3DServices();
         }
         
         public override void End()
@@ -38,8 +39,13 @@ namespace RawaTests.Tests
             Thread.Sleep(2000);
             homePage.GetHomePageModel().StartButton.Click();
             Thread.Sleep(1000);
-            var a = dimensionSrv.GetDimensions();
-            a.GetFieldByDescription("A").PlusSign.Click();
+            
+            var room = roomServices.Get3DModel();
+            var dupa = room.GetRoomDimension();
+            dimensionSrv.GetDimensions().GetFieldByDescription("A").PlusSign.Click();
+            var room2= roomServices.Get3DModel();
+            var dup2 = room2.GetRoomDimension();
+            Assert.AreEqual(dupa, dup2);
         }
 
         [Test,Description("Test")]

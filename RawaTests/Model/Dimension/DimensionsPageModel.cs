@@ -15,13 +15,6 @@ namespace RawaTests.StepOne
         {
             Elements = new List<DimensionModel>();
         }
-        //public DimensionModel this[string name]
-        //{
-        //    get
-        //    {
-        //        return Elements.Where(e => e.Name == name).FirstOrDefault();
-        //    }
-        //}
         public DimensionModel GetFieldByDescription(string desc)
         {
             return Elements.Where(e => e.Description.Text.Equals(desc)).FirstOrDefault();

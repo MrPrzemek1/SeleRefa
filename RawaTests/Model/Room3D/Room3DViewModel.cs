@@ -1,17 +1,14 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.Helpers;
 using RawaTests.IWebElements;
+using RawaTests.WebElements.TextElements;
 
 namespace RawaTests
 {
-    class Room3DViewModel
+    public class Room3DViewModel
     {
         public INxWebImage Room3DImage { get; set; }
-        //public IWebElement DimensionSingleWall { get; set; }
-        public Room3DViewModel()
-        {
-            Room3DImage = null;
-        }
+        public INxLabels Room3DDimension { get; set; }
     }
 
 }

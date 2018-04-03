@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace RawaTests.HtmlStrings.ElementsLocators.StepOne
 {
-    class ImageRoomElementsLocators
+    public class ImageRoomElementsLocators
     {
+        public static string Room3DViewClass = "room3dView";
+        public static string Room3DDimenision = "letter";
     }
 }

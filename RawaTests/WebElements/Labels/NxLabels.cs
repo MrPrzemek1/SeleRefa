@@ -12,6 +12,8 @@ namespace RawaTests.IWebElements.TextElements
     {
         private IWebElement element;
         private IList<IWebElement> listOfLabels;
+        public int Count => listOfLabels.Count;
+
         public NxLabels(IWebElement e) : base(e)
         {
             element = e;

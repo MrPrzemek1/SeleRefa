@@ -8,7 +8,6 @@ namespace RawaTests.IWebElements
     public class BaseWebElement : IBaseWebElement
     {
         private IWebElement element;
-        IList<IWebElement> list;
         public BaseWebElement(IWebElement e) => element = e;
         public BaseWebElement(IList<IWebElement> list) => list = new List<IWebElement>();
 

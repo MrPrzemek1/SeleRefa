@@ -12,10 +12,11 @@ namespace RawaTests.StepOne
     {
         public DimensionsPageModel GetDimensions()
         {
-           var btnPlus = new NxButton(FindElements(By.XPath(ShapeRoomElementsLocators.PlusSignClass)));
-           var btnMinus = new NxButton(FindElements(By.XPath(ShapeRoomElementsLocators.MinusSignClass)));
-           var descriptionField =new NxLabels(FindElements(By.XPath(ShapeRoomElementsLocators.DescriptionFieldClass)));
-           //var inputField = new NxInput(FindElements(By.XPath(ShapeRoomElementsLocators.InputFieldClass)));
+            var header = new NxLabels(FindElement(By.XPath(ShapeRoomElementsLocators.Header)));
+            var btnPlus = new NxButton(FindElements(By.XPath(ShapeRoomElementsLocators.PlusSignClass)));
+            var btnMinus = new NxButton(FindElements(By.XPath(ShapeRoomElementsLocators.MinusSignClass)));
+            var descriptionField =new NxLabels(FindElements(By.XPath(ShapeRoomElementsLocators.DescriptionFieldClass)));
+            var inputField = new NxInput(FindElements(By.XPath(ShapeRoomElementsLocators.InputFieldClass)));
 
            DimensionsPageModel result = new DimensionsPageModel();
 
@@ -23,10 +24,11 @@ namespace RawaTests.StepOne
             {
                 result.Elements.Add(new DimensionModel
                 {
+                    Header = header != null ? header : header = null,
                     PlusSign = new NxButton(btnPlus[i]),
                     MinusSign = new NxButton(btnPlus[i]),
-                    Description = new NxLabels(descriptionField[i]!=null ? descriptionField[i] : null),
-                 //   Input = new NxInput(inputField[i]),
+                    Description = new NxLabels(descriptionField[i]),
+                    Input = new NxInput(inputField[i]),
                     
                 });
             }

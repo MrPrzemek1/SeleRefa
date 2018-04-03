@@ -67,6 +67,7 @@
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ImageRoomElements.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ShapeRoomElements.cs" />
     <Compile Include="IDriverService.cs" />
+    <Compile Include="Model\Room3D\Room3DViewPageModel.cs" />
     <Compile Include="Model\StepTwo\StepOneModel.cs" />
     <Compile Include="WebElements\BaseNxWebElement\BaseWebElement.cs" />
     <Compile Include="WebElements\BaseNxWebElement\IBaseWebElement.cs" />

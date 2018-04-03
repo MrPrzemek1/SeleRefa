@@ -33,6 +33,10 @@ namespace RawaTests.WebElements.Input
         {
             get
             {
+                if (index < 0 || index >= listOfInput.Count)
+                {
+                    return null;
+                }
                 return listOfInput[index];
             }
             set
