@@ -7,7 +7,7 @@ namespace RawaTests.Model.Home
 {
     class HomePageModel : HomeModel
     {
-        public HomePageModel(INxButton startBtn, INxWebImage homeImg, INxWebImage logoImg, INxWebText footer, INxButton loginBtn, INxWebText header, INxWebText logout)
+        public HomePageModel(INxButton startBtn, INxWebImage homeImg, INxWebImage logoImg, INxLabels footer, INxButton loginBtn, INxLabels header, INxLabels logout)
         {
             StartButton = startBtn;
             HomePageImage = homeImg;

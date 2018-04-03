@@ -9,7 +9,7 @@ namespace RawaTests.Model
 {
     class LoginPageModel : LoginModel
     {
-        public LoginPageModel(INxInput company, INxInput Login, INxInput password, INxButton loginButton, INxWebText validateField = null)
+        public LoginPageModel(INxInput company, INxInput Login, INxInput password, INxButton loginButton, INxLabels validateField = null)
         {
             CompanyNameInput = company;
             LoginInput = Login;

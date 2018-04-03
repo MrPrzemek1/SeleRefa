@@ -74,8 +74,8 @@
     <Compile Include="WebElements\Images\NxWebImage.cs" />
     <Compile Include="WebElements\Input\INxInput.cs" />
     <Compile Include="WebElements\Input\NxInput.cs" />
-    <Compile Include="WebElements\TextElements\INxWebText.cs" />
-    <Compile Include="WebElements\TextElements\NxWebText.cs" />
+    <Compile Include="WebElements\Labels\INxLabels.cs" />
+    <Compile Include="WebElements\Labels\NxLabels.cs" />
     <Compile Include="Model\Base\BaseModel.cs" />
     <Compile Include="WebElements\Buttons\INxButton.cs" />
     <Compile Include="WebElements\Buttons\NxButton.cs" />

@@ -8,15 +8,15 @@ using RawaTests.WebElements.TextElements;
 
 namespace RawaTests.IWebElements.TextElements
 {
-   public class NxWebText : BaseWebElement,INxWebText
+   public class NxLabels : BaseWebElement,INxLabels
     {
         private IWebElement element;
         private IList<IWebElement> listOfLabels;
-        public NxWebText(IWebElement e) : base(e)
+        public NxLabels(IWebElement e) : base(e)
         {
             element = e;
         }
-        public NxWebText(IList<IWebElement> e) : base(e)
+        public NxLabels(IList<IWebElement> e) : base(e)
         {
             listOfLabels = e;
         }
@@ -28,6 +28,10 @@ namespace RawaTests.IWebElements.TextElements
         {
             get
             {
+                if (index < 0 || index>=listOfLabels.Count)
+                {
+                    return null;
+                }
                 return listOfLabels[index];
             }
             set

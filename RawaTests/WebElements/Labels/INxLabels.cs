@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RawaTests.WebElements.TextElements
 {
-    public interface INxWebText : IBaseWebElement
+    public interface INxLabels : IBaseWebElement
     {
         bool Contains(string text);
     }

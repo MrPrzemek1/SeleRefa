@@ -1,4 +1,5 @@
-﻿using RawaTests.Model.Base;
+﻿using OpenQA.Selenium;
+using RawaTests.Model.Base;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,5 +22,9 @@ namespace RawaTests.StepOne
         //        return Elements.Where(e => e.Name == name).FirstOrDefault();
         //    }
         //}
+        public DimensionModel GetFieldByDescription(string desc)
+        {
+            return Elements.Where(e => e.Description.Text.Equals(desc)).FirstOrDefault();
+        }
     }
 }

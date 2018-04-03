@@ -6,7 +6,7 @@ namespace RawaTests.Model
 {
     public class ShapeRoomModel
     {
-        public INxWebText Header { get; set; }
+        public INxLabels Header { get; set; }
         public IWebElement ShapeOfRoom { get; set; }
     }
 }

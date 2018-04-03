@@ -17,7 +17,7 @@ namespace RawaTests.Model.Login
         public INxInput LoginInput { get; set; }
         public INxInput PasswordInput { get; set; }
         public INxButton SubmitButton { get; set; }
-        public INxWebText ValidateFieldElement { get; set; }
+        public INxLabels ValidateFieldElement { get; set; }
     }
 
 }

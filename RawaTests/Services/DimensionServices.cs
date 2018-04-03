@@ -14,8 +14,8 @@ namespace RawaTests.StepOne
         {
            var btnPlus = new NxButton(FindElements(By.XPath(ShapeRoomElementsLocators.PlusSignClass)));
            var btnMinus = new NxButton(FindElements(By.XPath(ShapeRoomElementsLocators.MinusSignClass)));
-           var descriptionField =new NxWebText(FindElements(By.XPath(ShapeRoomElementsLocators.DescriptionFieldClass)));
-           var inputField = new NxInput(FindElements(By.XPath(ShapeRoomElementsLocators.InputFieldClass)));
+           var descriptionField =new NxLabels(FindElements(By.XPath(ShapeRoomElementsLocators.DescriptionFieldClass)));
+           //var inputField = new NxInput(FindElements(By.XPath(ShapeRoomElementsLocators.InputFieldClass)));
 
            DimensionsPageModel result = new DimensionsPageModel();
 
@@ -25,8 +25,9 @@ namespace RawaTests.StepOne
                 {
                     PlusSign = new NxButton(btnPlus[i]),
                     MinusSign = new NxButton(btnPlus[i]),
-                    Input = new NxInput(inputField[i]),
-                    Name = new NxWebText(descriptionField[i])
+                    Description = new NxLabels(descriptionField[i]!=null ? descriptionField[i] : null),
+                 //   Input = new NxInput(inputField[i]),
+                    
                 });
             }
             return result;

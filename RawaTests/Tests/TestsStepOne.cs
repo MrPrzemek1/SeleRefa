@@ -4,6 +4,7 @@ using RawaTests.Tests.Base;
 using RawaTests.Services;
 using RawaTests.Helpers;
 using System.Threading;
+using System.Linq;
 
 namespace RawaTests.Tests
 {
@@ -36,8 +37,9 @@ namespace RawaTests.Tests
         {
             Thread.Sleep(2000);
             homePage.GetHomePageModel().StartButton.Click();
-            var a = dimensionSrv.GetDimensions();    
-            
+            Thread.Sleep(1000);
+            var a = dimensionSrv.GetDimensions();
+            a.GetFieldByDescription("A").PlusSign.Click();
         }
 
         [Test,Description("Test")]
