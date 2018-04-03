@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace RawaTests.Lists
 {
-    class ShapeRoomList
+    class ShapeRoomPageModel
     {
         public List<ShapeRoomModel> Shapes { get; set; }
 
-        public ShapeRoomList()
+        public ShapeRoomPageModel()
         {
             Shapes = new List<ShapeRoomModel>();
         }

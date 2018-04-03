@@ -1,6 +1,6 @@
 ﻿namespace RawaTests.Helpers
 {
-    public static class ShapeRoomElementsLocators
+    public static class DimensionElementsLocators
     {
         public static string Shapeid="//li[@shape-id]";
         public static string WallClass = "letter";

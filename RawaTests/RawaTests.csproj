@@ -63,9 +63,9 @@
     <Compile Include="HtmlStrings\ElementsLocators\HomePageElementsLocators.cs" />
     <Compile Include="HtmlStrings\ConstStrings\LoginData.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\LoginPageElementsLocators.cs" />
-    <Compile Include="HtmlStrings\ElementsLocators\StepOne\DimensionElementsLocators.cs" />
+    <Compile Include="HtmlStrings\ElementsLocators\StepOne\DimensionElementsLocators1.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ImageRoomElements.cs" />
-    <Compile Include="HtmlStrings\ElementsLocators\StepOne\ShapeRoomElements.cs" />
+    <Compile Include="HtmlStrings\ElementsLocators\StepOne\ShapeElementsLocators.cs" />
     <Compile Include="IDriverService.cs" />
     <Compile Include="Model\Room3D\Room3DViewPageModel.cs" />
     <Compile Include="Model\StepTwo\StepOneModel.cs" />
@@ -82,7 +82,7 @@
     <Compile Include="WebElements\Buttons\NxButton.cs" />
     <Compile Include="Model\Home\HomePageModel.cs" />
     <Compile Include="Model\Login\LoginModel.cs" />
-    <Compile Include="Model\Shape\ShapeRoomList.cs" />
+    <Compile Include="Model\Shape\ShapeRoomPageModel.cs" />
     <Compile Include="Model\Home\HomeModel.cs" />
     <Compile Include="Model\Login\LoginPageModel.cs" />
     <Compile Include="Model\Shape\ShapeRoomModel.cs" />

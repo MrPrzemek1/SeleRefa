@@ -1,5 +1,8 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.Helpers;
+using RawaTests.HtmlStrings.ElementsLocators.StepOne;
+using RawaTests.IWebElements;
+using RawaTests.IWebElements.TextElements;
 using RawaTests.Lists;
 using RawaTests.Model;
 using System.Linq;
@@ -9,22 +12,27 @@ namespace RawaTests.Services
 {
     class ShapeRoomServices
     {
-        public ShapeRoomList GetShapes()
+        public ShapeRoomPageModel GetShapes()
         {
-            var shape_id = Driver.FindElements(By.XPath(ShapeRoomElementsLocators.Shapeid));
+            var shape_id = new NxWebImage(FindElements(By.XPath(DimensionElementsLocators.Shapeid)));
+            var header = new NxLabels(FindElement(By.XPath(ShapeElementsLocators.ShapeHeader)));
+            ShapeRoomPageModel listOfShapes = new ShapeRoomPageModel();
 
-            ShapeRoomList listOfShapes = new ShapeRoomList();
-            int i = 0;
-            foreach (var item in shape_id)
+            for (int i = 0; i < shape_id.Count; i++)
             {
-                listOfShapes.Shapes.Add(new ShapeRoomModel
                 {
-                    ShapeOfRoom = shape_id[i],
-                });
-                i++;
+                    listOfShapes.Shapes.Add(new ShapeRoomModel
+                    {
+                        Header = header != null ? header : header = null,
+                        ShapeOfRoom = new NxWebImage(shape_id[i]),
+                    });
+                    i++;
+                }
             }
+            
             return listOfShapes;
         }
+
         /// <summary>
         /// Metoda wybierająca jeden z kształtów pomieszczeń
         /// </summary>
