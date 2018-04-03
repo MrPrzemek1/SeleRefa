@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RawaTests.Model.Base.Buttons
 {
-    public interface INxButton : IBaseWebElement, IWebElement
+    public interface INxButton : IBaseWebElement
     {
         void Click();
     }

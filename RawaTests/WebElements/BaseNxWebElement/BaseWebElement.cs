@@ -5,22 +5,15 @@ using System.Linq;
 
 namespace RawaTests.IWebElements
 {
-    public abstract class BaseWebElement : IBaseWebElement
+    public class BaseWebElement : IBaseWebElement
     {
         private IWebElement element;
-       
         IList<IWebElement> list;
         public BaseWebElement(IWebElement e) => element = e;
         public BaseWebElement(IList<IWebElement> list) => list = new List<IWebElement>();
 
         public string Text => element.Text;
-        //public IWebElement this [int index]
-        //{
-        //    get
-        //    {
-        //        return list[index];
-        //    }
-        //}
+
         public bool Dispalyed()
         {
             return element.Displayed;
@@ -29,11 +22,6 @@ namespace RawaTests.IWebElements
         public string GetAttribute(string attribute)
         {
             return element.GetAttribute(attribute);
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            return this.list.GetEnumerator();
         }
 
         //public IWebElement LoadingImage()

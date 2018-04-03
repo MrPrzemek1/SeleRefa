@@ -36,15 +36,16 @@ namespace RawaTests.Tests
         {
             Thread.Sleep(2000);
             homePage.GetHomePageModel().StartButton.Click();
-            var a = dimensionSrv.GetDimensions();           
+            var a = dimensionSrv.GetDimensions();    
+            
         }
 
-        [Test,Description("Test sprawdzający czy po kliknięciu w button do zwiększenia wymiarów pomieszczenia zmieniają się wymiary obrazka.")]
+        [Test,Description("Test")]
         public void VerifyingModelRoomSizeAfterChangingDimension()
         { 
            
         }
-        [Test,Description("Test sprawdzający czy po kliknięciu w kształt pomieszczenia zmienia się model obrazka.")]
+        [Test,Description("Test 2")]
         public void VerifingyModelChangeAfterClickingOnShape_Positive()
         {
             

@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace RawaTests.Model.Base.Buttons
 {
-    public class NxButton : BaseWebElement, INxButton ,IEnumerable<NxButton>
+    public class NxButton : BaseWebElement, INxButton
     {
         private IWebElement element;
         private IList<IWebElement> listOfButton;
@@ -30,19 +30,25 @@ namespace RawaTests.Model.Base.Buttons
         {
             get
             {
-               return listOfButton[index];
+                return listOfButton[index];
             }
             set
             {
                 listOfButton[index] = value;
             }
         }
+        //public NxButton this[int index]
+        //{
+        //    get
+        //    {
+        //        return NxButton[index];
+        //    }
+        //    set
+        //    {
+        //        NxButton[index] = value;
+        //    }
+        //}
 
-        IEnumerator<NxButton> IEnumerable<NxButton>.GetEnumerator()
-        {
-            return (IEnumerator<NxButton>)GetEnumerator();
-        }
-        public IWebElement ListOfButton => listOfButton.ElementAtOrDefault(i);
         //public IList<IWebElement> this[int index] => listOfButton.ElementAt(index);
     }
 }

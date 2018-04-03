@@ -8,14 +8,18 @@ using System.Threading.Tasks;
 
 namespace RawaTests.WebElements.Input
 {
-     class NxInput : BaseWebElement, IWebNxButton
+     class NxInput : BaseWebElement, INxInput
     {
         private IWebElement element;
+        private IList<IWebElement> listOfInput;
         public NxInput(IWebElement e) : base(e)
         {
             element = e;
         }
-
+        public NxInput (IList<IWebElement> e) : base(e)
+        {
+            listOfInput = e;
+        }
         public void Clear()
         {
             element.Clear();
@@ -25,6 +29,16 @@ namespace RawaTests.WebElements.Input
         {
             element.SendKeys(text);
         }
-        
+        public IWebElement this[int index]
+        {
+            get
+            {
+                return listOfInput[index];
+            }
+            set
+            {
+                listOfInput[index] = value;
+            }
+        }
     }
 }

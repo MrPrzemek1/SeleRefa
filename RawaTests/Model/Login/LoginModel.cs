@@ -13,9 +13,9 @@ namespace RawaTests.Model.Login
 {
     abstract class LoginModel : BaseModel
     {
-        public IWebNxButton CompanyNameInput { get; set; }
-        public IWebNxButton LoginInput { get; set; }
-        public IWebNxButton PasswordInput { get; set; }
+        public INxInput CompanyNameInput { get; set; }
+        public INxInput LoginInput { get; set; }
+        public INxInput PasswordInput { get; set; }
         public INxButton SubmitButton { get; set; }
         public INxWebText ValidateFieldElement { get; set; }
     }

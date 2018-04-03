@@ -1,6 +1,8 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.Helpers;
+using RawaTests.IWebElements.TextElements;
 using RawaTests.Model.Base.Buttons;
+using RawaTests.WebElements.Input;
 using System.Collections.Generic;
 using System.Linq;
 using static RawaTests.Helpers.DriverHelper.DriverHelp;
@@ -11,9 +13,9 @@ namespace RawaTests.StepOne
         public DimensionsPageModel GetDimensions()
         {
            var btnPlus = new NxButton(FindElements(By.XPath(ShapeRoomElementsLocators.PlusSignClass)));
-           var btnMinus = new NxButton(FindElement(By.XPath(ShapeRoomElementsLocators.MinusSignClass)));
-           //var descriptionField = FindElements(By.XPath(ShapeRoomElementsLocators.DescriptionFieldClass));
-           //var inputField = FindElements(By.XPath(ShapeRoomElementsLocators.InputFieldClass));
+           var btnMinus = new NxButton(FindElements(By.XPath(ShapeRoomElementsLocators.MinusSignClass)));
+           var descriptionField =new NxWebText(FindElements(By.XPath(ShapeRoomElementsLocators.DescriptionFieldClass)));
+           var inputField = new NxInput(FindElements(By.XPath(ShapeRoomElementsLocators.InputFieldClass)));
 
            DimensionsPageModel result = new DimensionsPageModel();
 
@@ -21,10 +23,10 @@ namespace RawaTests.StepOne
             {
                 result.Elements.Add(new DimensionModel
                 {
-                    PlusSign = btnPlus[i],
-                    MinusSign = btnMinus[i],
-                    //Input = inputField.Count > i ? inputField[i]  : null,
-                    //Name = descriptionField.Count > i ? descriptionField[i].Text : null
+                    PlusSign = new NxButton(btnPlus[i]),
+                    MinusSign = new NxButton(btnPlus[i]),
+                    Input = new NxInput(inputField[i]),
+                    Name = new NxWebText(descriptionField[i])
                 });
             }
             return result;

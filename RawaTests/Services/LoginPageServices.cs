@@ -22,6 +22,7 @@ namespace RawaTests.Services
             var Password = new NxInput(FindElement(By.XPath(LoginPageElementsLocators.PasswordInput)));
             var SubmitButton = new NxButton(FindElement(By.XPath(LoginPageElementsLocators.submitLogin)));
             var ValidateField = new NxWebText(FindElement(By.XPath(LoginPageElementsLocators.ValidateField)));
+
             LoginPageModel model = new LoginPageModel(CompanyName, Login, Password, SubmitButton, ValidateField);
             return model;
         }

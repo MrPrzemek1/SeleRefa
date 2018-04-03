@@ -12,6 +12,6 @@ namespace RawaTests.StepOne
         public INxWebText Name { get; set; }
         public INxButton MinusSign { get; set; }
         public INxButton PlusSign { get; set; }
-        public INxButton Input { get; set; }
+        public INxInput Input { get; set; }
     }
 }

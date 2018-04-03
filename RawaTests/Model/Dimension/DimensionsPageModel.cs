@@ -1,11 +1,12 @@
-﻿using System;
+﻿using RawaTests.Model.Base;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace RawaTests.StepOne
 {
-    class DimensionsPageModel 
+    class DimensionsPageModel : DimensionModel
     {
         public IList<DimensionModel> Elements { get; set; }
 
