@@ -35,7 +35,6 @@ namespace RawaTests.Model
                     return false;
             }
         }
-
         public string ValidateText
         {
             get
@@ -46,14 +45,12 @@ namespace RawaTests.Model
                     return null;
             }
         }
-
         public void ClearAllLoginForField()
         {
             CompanyNameInput.Clear();
             LoginInput.Clear();
             PasswordInput.Clear();
         }
-
         public void SetLoginData(string company, string login, string pass)
         {
             CompanyNameInput.SendText(company);

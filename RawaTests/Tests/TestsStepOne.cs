@@ -42,11 +42,13 @@ namespace RawaTests.Tests
         public void VerifyClickedElementChangeClass()
         {
             homePage.GetHomePageModel().StartButton.Click();
+            ButtonHelper.ClickButtonNext();
             stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("30");
             var a = dimensionSrv.GetDimensions();
             a.GetFieldByDescription("E").PlusSign.Click();
 
             Assert.AreEqual("wallSizeInput changed", a.GetFieldByDescription("A").Input.GetAttribute("class"));
+
             //var a = shapeServices.GetShapes();
             //a.GetShapeById("30");
             var b = stepOne.GetFullModel();

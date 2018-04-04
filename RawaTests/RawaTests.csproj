@@ -39,6 +39,9 @@
     <Reference Include="nunit.framework, Version=3.10.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -57,9 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\AlertHelper.cs" />
+    <Compile Include="Helpers\ButtonHelper.cs" />
     <Compile Include="Helpers\DriverHelp.cs" />
     <Compile Include="HtmlStrings\ConstStrings\FooterAndHeader.cs" />
     <Compile Include="HtmlStrings\ConstStrings\HTMLConsts.cs" />
+    <Compile Include="HtmlStrings\ConstStrings\StaticButtons.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\HomePageElementsLocators.cs" />
     <Compile Include="HtmlStrings\ConstStrings\LoginData.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\LoginPageElementsLocators.cs" />
@@ -67,9 +72,9 @@
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ImageRoomElements.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ShapeElementsLocators.cs" />
     <Compile Include="IDriverService.cs" />
-    <Compile Include="Model\Room3D\Room3DViewPageModel.cs" />
-    <Compile Include="Model\StepTwo\StepOneModel.cs" />
-    <Compile Include="Model\StepTwo\StepOneServices.cs" />
+    <Compile Include="Models\StepOne\Room3D\Room3DViewPageModel.cs" />
+    <Compile Include="Models\StepOne\FullStepOneModel\StepOneModel.cs" />
+    <Compile Include="Models\StepOne\FullStepOneModel\StepOneServices.cs" />
     <Compile Include="WebElements\BaseNxWebElement\BaseWebElement.cs" />
     <Compile Include="WebElements\BaseNxWebElement\IBaseWebElement.cs" />
     <Compile Include="WebElements\Images\INxImage.cs" />
@@ -78,26 +83,26 @@
     <Compile Include="WebElements\Input\NxInput.cs" />
     <Compile Include="WebElements\Labels\INxLabels.cs" />
     <Compile Include="WebElements\Labels\NxLabels.cs" />
-    <Compile Include="Model\Base\BaseModel.cs" />
+    <Compile Include="Models\Base\BaseModel.cs" />
     <Compile Include="WebElements\Buttons\INxButton.cs" />
     <Compile Include="WebElements\Buttons\NxButton.cs" />
-    <Compile Include="Model\Home\HomePageModel.cs" />
-    <Compile Include="Model\Login\LoginModel.cs" />
-    <Compile Include="Model\Shape\ShapeRoomPageModel.cs" />
-    <Compile Include="Model\Home\HomeModel.cs" />
-    <Compile Include="Model\Login\LoginPageModel.cs" />
-    <Compile Include="Model\Shape\ShapeRoomModel.cs" />
+    <Compile Include="Models\Home\HomePageModel.cs" />
+    <Compile Include="Models\Login\LoginModel.cs" />
+    <Compile Include="Models\StepOne\Shape\ShapeRoomPageModel.cs" />
+    <Compile Include="Models\Home\HomeModel.cs" />
+    <Compile Include="Models\Login\LoginPageModel.cs" />
+    <Compile Include="Models\StepOne\Shape\ShapeRoomModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Model\Room3D\Room3DViewModel.cs" />
-    <Compile Include="Model\Dimension\DimensionModel.cs" />
+    <Compile Include="Models\StepOne\Room3D\Room3DViewModel.cs" />
+    <Compile Include="Models\StepOne\Dimension\DimensionModel.cs" />
     <Compile Include="Services\Base\BaseService.cs" />
-    <Compile Include="Services\DimensionServices.cs" />
-    <Compile Include="Model\Dimension\DimensionsPageModel.cs" />
+    <Compile Include="Services\StepOneServices\DimensionServices.cs" />
+    <Compile Include="Models\StepOne\Dimension\DimensionsPageModel.cs" />
     <Compile Include="Services\HomePageServices.cs" />
     <Compile Include="Services\LoginPageServices.cs" />
-    <Compile Include="Services\Room3DServices.cs" />
-    <Compile Include="Services\ShapeRoomServices.cs" />
+    <Compile Include="Services\StepOneServices\Room3DServices.cs" />
+    <Compile Include="Services\StepOneServices\ShapeRoomServices.cs" />
     <Compile Include="Tests\Base\BaseTest.cs" />
     <Compile Include="Tests\HomePageTests.cs" />
     <Compile Include="Tests\LoginPageTests.cs" />
