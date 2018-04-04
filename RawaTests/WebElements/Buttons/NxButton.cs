@@ -51,5 +51,5 @@ namespace RawaTests.Model.Base.Buttons
         //}
 
         //public IList<IWebElement> this[int index] => listOfButton.ElementAt(index);
-    }
-}
+
+    } }

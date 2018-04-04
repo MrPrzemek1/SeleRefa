@@ -20,6 +20,7 @@ namespace RawaTests.Lists
         public void GetShapeById(string id)
         {
              Shapes.Where(e => e.ShapeOfRoom.GetElementAttribute("shape-id") == id).FirstOrDefault().ShapeOfRoom.Click();
+             
         }
     }
 }

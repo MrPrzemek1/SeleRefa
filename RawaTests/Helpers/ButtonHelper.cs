@@ -4,6 +4,7 @@ using RawaTests.HtmlStrings.ConstStrings;
 using RawaTests.Model.Base.Buttons;
 using System;
 using static RawaTests.Helpers.DriverHelper.DriverHelp;
+using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace RawaTests.Helpers
 {
@@ -19,8 +20,8 @@ namespace RawaTests.Helpers
         public static void ClickButtonPrev()
         {
             WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(5));
-            var ButtonNext = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(StaticButtons.ButtonPrev)));
-            ButtonNext.Click();
+            var ButtonPrev = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(StaticButtons.ButtonPrev)));
+            ButtonPrev.Click();
         }
     }
 }

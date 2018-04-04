@@ -14,8 +14,8 @@ namespace RawaTests.Services
     {
         public ShapeRoomPageModel GetShapes()
         {
-            var shape_id = new NxImage(FindElements(By.XPath(DimensionElementsLocators.Shapeid)));
-            var header = new NxLabels(FindElement(By.XPath(ShapeElementsLocators.ShapeHeader)));
+            var shape_id = new NxImage(FindElements(By.XPath(DimensionElementsLocators.Shapeid),5));
+            var header = new NxLabels(FindElement(By.XPath(ShapeElementsLocators.ShapeHeader),5));
 
             ShapeRoomPageModel listOfShapes = new ShapeRoomPageModel();
 

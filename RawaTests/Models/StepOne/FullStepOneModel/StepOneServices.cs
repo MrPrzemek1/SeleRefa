@@ -1,10 +1,12 @@
-﻿using RawaTests.Services;
+﻿using OpenQA.Selenium.Support.UI;
+using RawaTests.Services;
 using RawaTests.StepOne;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static RawaTests.Helpers.DriverHelper.DriverHelp;
 
 namespace RawaTests.Model.StepTwo
 {
@@ -16,11 +18,9 @@ namespace RawaTests.Model.StepTwo
             ShapeRoomServices b = new ShapeRoomServices();
             DimensionServices a = new DimensionServices();
 
-            StepOneModel model = new StepOneModel(a,b,c);
+            StepOneModel model = new StepOneModel(a, b, c);
 
             return model;
         }
-
-
     }
 }

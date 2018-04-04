@@ -33,7 +33,8 @@ namespace RawaTests.Tests
 
         public override void Init()
         {
-            
+            homePage.GetHomePageModel().StartButton.Click();
+            roomServices.Get3DModel().Wait(3);
         }
         /// <summary>
         /// Test sprawdzajacy czy po kilknieciu w kształt pomieszczenia jego klasa zmienia sie na active
@@ -41,26 +42,35 @@ namespace RawaTests.Tests
         [Test,Order(1)]
         public void VerifyClickedElementChangeClass()
         {
-            homePage.GetHomePageModel().StartButton.Click();
-            ButtonHelper.ClickButtonNext();
+            //homePage.GetHomePageModel().StartButton.Click();
             stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("30");
             var a = dimensionSrv.GetDimensions();
             a.GetFieldByDescription("E").PlusSign.Click();
-
-            Assert.AreEqual("wallSizeInput changed", a.GetFieldByDescription("A").Input.GetAttribute("class"));
-
-            //var a = shapeServices.GetShapes();
-            //a.GetShapeById("30");
-            var b = stepOne.GetFullModel();
-
-            var room = roomServices.Get3DModel();
-            
+            Assert.AreEqual("wallSizeInput changed", a.GetFieldByDescription("A").Input.GetAttribute("class"));            
         }
 
         [Test,Description("Test")]
         public void VerifyingModelRoomSizeAfterChangingDimension()
-        { 
-           
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("28");
+                ButtonHelper.ClickButtonNext();
+                ButtonHelper.ClickButtonPrev();
+                stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("25");
+                ButtonHelper.ClickButtonNext();
+                ButtonHelper.ClickButtonPrev();
+                stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("23");
+                ButtonHelper.ClickButtonNext();
+                ButtonHelper.ClickButtonPrev();
+                stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("27");
+                ButtonHelper.ClickButtonNext();
+                ButtonHelper.ClickButtonPrev();
+                stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("26");
+                ButtonHelper.ClickButtonNext();
+                ButtonHelper.ClickButtonPrev();
+                i++;
+            }
         }
         [Test,Description("Test 2")]
         public void VerifingyModelChangeAfterClickingOnShape_Positive()
