@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace RawaTests.IWebElements
 {
-    public class NxWebImage : BaseWebElement, INxWebImage
+    public class NxImage : BaseWebElement, INxImage
     {
         private IWebElement element;
         private IList<IWebElement> listOfImages;
         public int Count => listOfImages.Count;
-        public NxWebImage(IWebElement element) : base (element)
+        public NxImage(IWebElement element) : base (element)
         {
             this.element = element;
         }
-        public NxWebImage (IList<IWebElement> list) : base(list)
+        public NxImage (IList<IWebElement> list) : base(list)
         {
             listOfImages = list;
         }
@@ -24,12 +24,22 @@ namespace RawaTests.IWebElements
         {
             return element.GetAttribute("src");
         }
+
         public IWebElement this[int index]
         {
             get
             {
                 return listOfImages[index];
             }
+        }
+        public string GetElementAttribute(string attributeName)
+        {
+            return element.GetAttribute(attributeName);
+        }
+        public override void Click()
+        {
+            element.Click();
+            Wait(1);
         }
     }
 }

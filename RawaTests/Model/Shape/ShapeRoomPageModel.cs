@@ -9,13 +9,17 @@ using System.Threading.Tasks;
 
 namespace RawaTests.Lists
 {
-    class ShapeRoomPageModel
+    public class ShapeRoomPageModel : ShapeRoomModel
     {
         public List<ShapeRoomModel> Shapes { get; set; }
 
         public ShapeRoomPageModel()
         {
             Shapes = new List<ShapeRoomModel>();
+        }
+        public void GetShapeById(string id)
+        {
+             Shapes.Where(e => e.ShapeOfRoom.GetElementAttribute("shape-id") == id).FirstOrDefault().ShapeOfRoom.Click();
         }
     }
 }

@@ -35,7 +35,7 @@ namespace RawaTests.Tests
         public void HomePage()
         {
             var homePage = homePageSrv.GetHomePageModel();
-            Assert.AreEqual(HomePageElementsLocators.HomePageUrl, homePage.HomePageImage.GetImageSource());
+            Assert.AreEqual(HomePageElementsLocators.HomePageUrl, homePage.HomePageImage.GetElementAttribute("src"));
             Assert.AreEqual(FooterAndHeader.HEADER, homePage.Header.Text);
         }
     }

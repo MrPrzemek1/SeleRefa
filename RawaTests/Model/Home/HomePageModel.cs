@@ -7,7 +7,7 @@ namespace RawaTests.Model.Home
 {
     class HomePageModel : HomeModel
     {
-        public HomePageModel(INxButton startBtn, INxWebImage homeImg, INxWebImage logoImg, INxLabels footer, INxButton loginBtn, INxLabels header, INxLabels logout)
+        public HomePageModel(INxButton startBtn, INxImage homeImg, INxImage logoImg, INxLabels footer, INxButton loginBtn, INxLabels header, INxLabels logout)
         {
             StartButton = startBtn;
             HomePageImage = homeImg;
@@ -19,7 +19,7 @@ namespace RawaTests.Model.Home
         }
         public override bool IsValid()
         {
-            return StartButton != null && HomePageImage.GetImageSource() != null;
+            return StartButton != null && HomePageImage.GetElementAttribute("src") != null;
         }
         
     }

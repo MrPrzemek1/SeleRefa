@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace RawaTests.StepOne
 {
-    class DimensionsPageModel : DimensionModel
+    public class DimensionsPageModel : DimensionModel
     {
         public IList<DimensionModel> Elements { get; set; }
 

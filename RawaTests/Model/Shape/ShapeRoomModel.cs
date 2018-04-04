@@ -8,6 +8,6 @@ namespace RawaTests.Model
     public class ShapeRoomModel
     {
         public INxLabels Header { get; set; }
-        public INxWebImage ShapeOfRoom { get; set; }
+        public INxImage ShapeOfRoom { get; set; }
     }
 }

@@ -10,12 +10,13 @@ using static RawaTests.Helpers.DriverHelper.DriverHelp;
 
 namespace RawaTests.Services
 {
-    class ShapeRoomServices
+    public class ShapeRoomServices
     {
         public ShapeRoomPageModel GetShapes()
         {
-            var shape_id = new NxWebImage(FindElements(By.XPath(DimensionElementsLocators.Shapeid)));
+            var shape_id = new NxImage(FindElements(By.XPath(DimensionElementsLocators.Shapeid)));
             var header = new NxLabels(FindElement(By.XPath(ShapeElementsLocators.ShapeHeader)));
+
             ShapeRoomPageModel listOfShapes = new ShapeRoomPageModel();
 
             for (int i = 0; i < shape_id.Count; i++)
@@ -24,9 +25,8 @@ namespace RawaTests.Services
                     listOfShapes.Shapes.Add(new ShapeRoomModel
                     {
                         Header = header != null ? header : header = null,
-                        ShapeOfRoom = new NxWebImage(shape_id[i]),
+                        ShapeOfRoom = new NxImage(shape_id[i]),
                     });
-                    i++;
                 }
             }
             
@@ -49,9 +49,9 @@ namespace RawaTests.Services
         /// <param name="attributeName">nazwa atrybutu html ktory chcemy pobrac</param>
         /// <param name="room">Aktywny kształt pomieszczenia</param>
         /// <returns></returns>
-        public string GetUsedShapeAttribute(string attributeName,ShapeRoomModel room)
-        {
-            return room.ShapeOfRoom.GetAttribute(attributeName);
-        }
+        //public string GetUsedShapeAttribute(string attributeName,ShapeRoomModel room)
+        //{
+        //    return room.ShapeOfRoom.GetAttribute(attributeName);
+        //}
     }
 }

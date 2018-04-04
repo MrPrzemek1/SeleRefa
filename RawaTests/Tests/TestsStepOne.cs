@@ -5,6 +5,7 @@ using RawaTests.Services;
 using RawaTests.Helpers;
 using System.Threading;
 using System.Linq;
+using RawaTests.Model.StepTwo;
 
 namespace RawaTests.Tests
 {
@@ -14,11 +15,15 @@ namespace RawaTests.Tests
         private DimensionServices dimensionSrv;
         private HomePageServices homePage;
         private Room3DServices roomServices;
+        private ShapeRoomServices shapeServices;
+        private StepOneServices stepOne;
         public TestsStepOne()
         {
             dimensionSrv = new DimensionServices();
             homePage = new HomePageServices();
             roomServices = new Room3DServices();
+            shapeServices = new ShapeRoomServices();
+            stepOne = new StepOneServices();
         }
         
         public override void End()
@@ -36,16 +41,18 @@ namespace RawaTests.Tests
         [Test,Order(1)]
         public void VerifyClickedElementChangeClass()
         {
-            Thread.Sleep(2000);
             homePage.GetHomePageModel().StartButton.Click();
-            Thread.Sleep(1000);
-            
+            stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("30");
+            var a = dimensionSrv.GetDimensions();
+            a.GetFieldByDescription("E").PlusSign.Click();
+
+            Assert.AreEqual("wallSizeInput changed", a.GetFieldByDescription("A").Input.GetAttribute("class"));
+            //var a = shapeServices.GetShapes();
+            //a.GetShapeById("30");
+            var b = stepOne.GetFullModel();
+
             var room = roomServices.Get3DModel();
-            var dupa = room.GetRoomDimension();
-            dimensionSrv.GetDimensions().GetFieldByDescription("A").PlusSign.Click();
-            var room2= roomServices.Get3DModel();
-            var dup2 = room2.GetRoomDimension();
-            Assert.AreEqual(dupa, dup2);
+            
         }
 
         [Test,Description("Test")]

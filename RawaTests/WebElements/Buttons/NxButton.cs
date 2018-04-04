@@ -22,9 +22,10 @@ namespace RawaTests.Model.Base.Buttons
         {
             this.listOfButton = listOfButton;
         }
-        public void Click()
+        public override void Click()
         {
             element.Click();
+            Wait(1);
         }
         public IWebElement this[int index]
         {

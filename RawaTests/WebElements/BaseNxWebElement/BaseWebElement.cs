@@ -1,7 +1,10 @@
 ﻿using OpenQA.Selenium;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using static RawaTests.Helpers.DriverHelper.DriverHelp;
 
 namespace RawaTests.IWebElements
 {
@@ -22,35 +25,40 @@ namespace RawaTests.IWebElements
         {
             return element.GetAttribute(attribute);
         }
-
-        //public IWebElement LoadingImage()
-        //{
-        //    try
-        //    {
-        //        return Driver.FindElement(By.ClassName("loading-show"));
-        //    }
-        //    catch
-        //    {
-        //        return null ;
-        //    }
-        //}
-        //public IWebElement Wait(int seconds)
-        //{
-        //    try
-        //    {
-        //        var loading = LoadingImage();
-        //        DateTime date = DateTime.Now.AddSeconds(seconds);
-        //        while (loading != null && date > DateTime.Now)
-        //        {
-        //            Thread.Sleep(200);
-        //            loading = LoadingImage();
-        //        }
-        //        return element;
-        //    }
-        //    catch
-        //    {
-        //        return null;
-        //    }
+        public virtual void Click()
+        {
+            element.Click();
+            Wait(1);
+        }
+        public IWebElement LoadingImage()
+        {
+            try
+            {
+                return Driver.FindElement(By.ClassName("loading-show"));
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public IWebElement Wait(int seconds)
+        {
+            try
+            {
+                var loading = LoadingImage();
+                DateTime date = DateTime.Now.AddSeconds(seconds);
+                while (loading != null && date > DateTime.Now)
+                {
+                    Thread.Sleep(200);
+                    loading = LoadingImage();
+                }
+                return element;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
-    }
+}
 

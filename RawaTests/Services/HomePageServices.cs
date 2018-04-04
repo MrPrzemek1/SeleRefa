@@ -15,8 +15,8 @@ namespace RawaTests.Services
         public HomePageModel GetHomePageModel()
         {
             var startButton = new NxButton(FindElement(By.XPath(HomePageElementsLocators.ButtonStart)));
-            var homePageImage = new NxWebImage(FindElement(By.XPath(HomePageElementsLocators.HomePageImage)));
-            var logoImage = new NxWebImage(FindElement(By.XPath(HomePageElementsLocators.HomePageLogo)));
+            var homePageImage = new NxImage(FindElement(By.XPath(HomePageElementsLocators.HomePageImage)));
+            var logoImage = new NxImage(FindElement(By.XPath(HomePageElementsLocators.HomePageLogo)));
             var footer = new NxLabels(FindElement(By.XPath(HomePageElementsLocators.Footer)));
             var loginBtn = new NxButton(FindElement(By.XPath(HomePageElementsLocators.LoginButton)));
             var header = new NxLabels(FindElement(By.XPath(HomePageElementsLocators.Header)));

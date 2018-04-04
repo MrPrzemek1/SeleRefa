@@ -9,11 +9,11 @@ using static RawaTests.Helpers.DriverHelper.DriverHelp;
 
 namespace RawaTests.Services
 {
-    class Room3DServices
+   public class Room3DServices
     {
         public Room3DViewPageModel Get3DModel()
         {
-            var model = new NxWebImage(FindElement(By.ClassName(ImageRoomElementsLocators.Room3DViewClass)));
+            var model = new NxImage(FindElement(By.ClassName(ImageRoomElementsLocators.Room3DViewClass)));
             var dim = new NxLabels(FindElements(By.ClassName(ImageRoomElementsLocators.Room3DDimenision)));
 
             Room3DViewPageModel result = new Room3DViewPageModel();

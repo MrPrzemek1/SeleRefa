@@ -69,10 +69,11 @@
     <Compile Include="IDriverService.cs" />
     <Compile Include="Model\Room3D\Room3DViewPageModel.cs" />
     <Compile Include="Model\StepTwo\StepOneModel.cs" />
+    <Compile Include="Model\StepTwo\StepOneServices.cs" />
     <Compile Include="WebElements\BaseNxWebElement\BaseWebElement.cs" />
     <Compile Include="WebElements\BaseNxWebElement\IBaseWebElement.cs" />
-    <Compile Include="WebElements\Images\INxWebImage.cs" />
-    <Compile Include="WebElements\Images\NxWebImage.cs" />
+    <Compile Include="WebElements\Images\INxImage.cs" />
+    <Compile Include="WebElements\Images\NxImage.cs" />
     <Compile Include="WebElements\Input\INxInput.cs" />
     <Compile Include="WebElements\Input\NxInput.cs" />
     <Compile Include="WebElements\Labels\INxLabels.cs" />

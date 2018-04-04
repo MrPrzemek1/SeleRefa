@@ -8,8 +8,8 @@ namespace RawaTests.Model
     abstract public class HomeModel : BaseModel
     {
         public INxButton StartButton { get; set; }
-        public INxWebImage HomePageImage { get; set; }
-        public INxWebImage LogoImage { get; set; }
+        public INxImage HomePageImage { get; set; }
+        public INxImage LogoImage { get; set; }
         public INxLabels Footer { get; set;}
         public INxButton LoginBtn { get; set; }
         public INxLabels Header { get; set; }

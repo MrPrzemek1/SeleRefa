@@ -8,7 +8,7 @@ using System.Linq;
 using static RawaTests.Helpers.DriverHelper.DriverHelp;
 namespace RawaTests.StepOne
 {
-    class DimensionServices
+    public class DimensionServices
     {
         public DimensionsPageModel GetDimensions()
         {
