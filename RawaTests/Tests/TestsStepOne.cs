@@ -6,6 +6,10 @@ using RawaTests.Helpers;
 using System.Threading;
 using System.Linq;
 using RawaTests.Model.StepTwo;
+using static RawaTests.Helpers.DriverHelper.DriverHelp;
+using OpenQA.Selenium;
+using RawaTests.Services.StepTwoServices;
+using System.Drawing;
 
 namespace RawaTests.Tests
 {
@@ -17,6 +21,7 @@ namespace RawaTests.Tests
         private Room3DServices roomServices;
         private ShapeRoomServices shapeServices;
         private StepOneServices stepOne;
+        private GroupOptionServices optionServices;
         public TestsStepOne()
         {
             dimensionSrv = new DimensionServices();
@@ -24,6 +29,7 @@ namespace RawaTests.Tests
             roomServices = new Room3DServices();
             shapeServices = new ShapeRoomServices();
             stepOne = new StepOneServices();
+            optionServices = new GroupOptionServices();
         }
         
         public override void End()
@@ -34,7 +40,6 @@ namespace RawaTests.Tests
         public override void Init()
         {
             homePage.GetHomePageModel().StartButton.Click();
-            roomServices.Get3DModel().Wait(3);
         }
         /// <summary>
         /// Test sprawdzajacy czy po kilknieciu w kształt pomieszczenia jego klasa zmienia sie na active
@@ -42,7 +47,6 @@ namespace RawaTests.Tests
         [Test,Order(1)]
         public void VerifyClickedElementChangeClass()
         {
-            //homePage.GetHomePageModel().StartButton.Click();
             stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("30");
             var a = dimensionSrv.GetDimensions();
             a.GetFieldByDescription("E").PlusSign.Click();
@@ -52,25 +56,13 @@ namespace RawaTests.Tests
         [Test,Description("Test")]
         public void VerifyingModelRoomSizeAfterChangingDimension()
         {
-            for (int i = 0; i < 100; i++)
-            {
-                stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("28");
-                ButtonHelper.ClickButtonNext();
-                ButtonHelper.ClickButtonPrev();
-                stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("25");
-                ButtonHelper.ClickButtonNext();
-                ButtonHelper.ClickButtonPrev();
-                stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("23");
-                ButtonHelper.ClickButtonNext();
-                ButtonHelper.ClickButtonPrev();
-                stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("27");
-                ButtonHelper.ClickButtonNext();
-                ButtonHelper.ClickButtonPrev();
-                stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("26");
-                ButtonHelper.ClickButtonNext();
-                ButtonHelper.ClickButtonPrev();
-                i++;
-            }
+            
+            stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("28");
+            ButtonHelper.ClickButtonNext();
+            var b = optionServices.GetOptionModel();
+            b.GetOptionCabinetsEco();
+            Bitmap bitmap = new Bitmap();
+                
         }
         [Test,Description("Test 2")]
         public void VerifingyModelChangeAfterClickingOnShape_Positive()

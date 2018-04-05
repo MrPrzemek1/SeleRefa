@@ -4,6 +4,7 @@ using RawaTests.IWebElements;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using static RawaTests.Helpers.DriverHelper.DriverHelp;
 
 namespace RawaTests.Model.Base.Buttons
 {
@@ -24,8 +25,8 @@ namespace RawaTests.Model.Base.Buttons
         }
         public override void Click()
         {
-            element.Click();
             Wait(1);
+            element.Click();
         }
         public IWebElement this[int index]
         {

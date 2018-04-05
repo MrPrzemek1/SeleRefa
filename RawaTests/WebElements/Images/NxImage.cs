@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static RawaTests.Helpers.DriverHelper.DriverHelp;
 
 namespace RawaTests.IWebElements
 {
@@ -38,8 +39,8 @@ namespace RawaTests.IWebElements
         }
         public override void Click()
         {
-            element.Click();
             Wait(1);
+            element.Click();           
         }
     }
 }

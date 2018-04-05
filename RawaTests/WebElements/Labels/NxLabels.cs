@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using RawaTests.WebElements.TextElements;
+using static RawaTests.Helpers.DriverHelper.DriverHelp;
+using static RawaTests.Helpers.DriverHelper.DriverHelp.Drivers;
 
 namespace RawaTests.IWebElements.TextElements
 {
@@ -26,6 +28,10 @@ namespace RawaTests.IWebElements.TextElements
         {
             return element.Text.Contains(text);
         }
+        new public string GetAttribute(string attribute)
+        {
+            return element.GetAttribute(attribute);
+        }
         public IWebElement this[int index]
         {
             get
@@ -40,6 +46,11 @@ namespace RawaTests.IWebElements.TextElements
             {
                 listOfLabels[index] = value;
             }
+        }
+        public override void Click()
+        {
+            Wait(1);
+            element.Click();
         }
     }
 }

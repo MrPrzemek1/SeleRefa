@@ -21,6 +21,7 @@ namespace RawaTests.Services
             var loginBtn = new NxButton(FindElement(By.XPath(HomePageElementsLocators.LoginButton)));
             var header = new NxLabels(FindElement(By.XPath(HomePageElementsLocators.Header)));
             var logout = new NxLabels(FindElement(By.Id(HomePageElementsLocators.LogoutDiv)));
+
             HomePageModel homeModel = new HomePageModel(startButton, homePageImage, logoImage, footer, loginBtn, header, logout);
 
             return homeModel;

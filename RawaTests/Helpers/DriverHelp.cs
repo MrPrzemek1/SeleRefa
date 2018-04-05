@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 
@@ -17,6 +18,7 @@ namespace RawaTests.Helpers.DriverHelper
         public static IWebDriver Driver { get; private set; }
         public static string Title { get { return Driver.Title; } }
         private static WebDriverWait wait;
+        private static IWebElement element;
 
         public enum Drivers
         {
@@ -39,16 +41,15 @@ namespace RawaTests.Helpers.DriverHelper
                     throw new NotImplementedException("I do not know the driver that you supplied.");
             }
         }
-        public static IWebElement FindElement(By by, int second=5)
+        public static IWebElement FindElement(By by, int second=2)
             {
                 wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(second));
                 IWebElement result;
-                
+
                 try
-                {
-                    wait.Until(ExpectedConditions.ElementIsVisible(by));
-                    result = Driver.FindElement(by);
-                    
+                { 
+                    wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//*[@class='loading-show'")));
+                    result = Driver.FindElement(by);                   
                 }
                 catch (Exception)
                 {
@@ -62,7 +63,7 @@ namespace RawaTests.Helpers.DriverHelper
             wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(second));
             try
             {
-                wait.Until(ExpectedConditions.ElementIsVisible(by));
+                wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//*[@class='loading-show'")));
                 result = Driver.FindElements(by);
             }
             catch (Exception)
@@ -93,7 +94,35 @@ namespace RawaTests.Helpers.DriverHelper
         {
             Driver.Quit();
         }
-
+        public static IWebElement LoadingImage()
+        {
+            try
+            {
+                return Driver.FindElement(By.ClassName("loading-show"));
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public static IWebElement Wait(int seconds)
+        {
+            try
+            {
+                var loading = LoadingImage();
+                DateTime date = DateTime.Now.AddSeconds(seconds);
+                while (loading != null && date > DateTime.Now)
+                {
+                    Thread.Sleep(200);
+                    loading = LoadingImage();
+                }
+                return element;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }
 

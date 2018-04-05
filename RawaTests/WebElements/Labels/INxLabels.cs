@@ -10,5 +10,6 @@ namespace RawaTests.WebElements.TextElements
     public interface INxLabels : IBaseWebElement
     {
         bool Contains(string text);
+        void Click();
     }
 }

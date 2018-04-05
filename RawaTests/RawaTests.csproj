@@ -62,6 +62,7 @@
     <Compile Include="Helpers\AlertHelper.cs" />
     <Compile Include="Helpers\ButtonHelper.cs" />
     <Compile Include="Helpers\DriverHelp.cs" />
+    <Compile Include="Helpers\GroupNameHelper.cs" />
     <Compile Include="HtmlStrings\ConstStrings\FooterAndHeader.cs" />
     <Compile Include="HtmlStrings\ConstStrings\HTMLConsts.cs" />
     <Compile Include="HtmlStrings\ConstStrings\StaticButtons.cs" />
@@ -71,10 +72,14 @@
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\DimensionElementsLocators1.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ImageRoomElements.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ShapeElementsLocators.cs" />
+    <Compile Include="HtmlStrings\ElementsLocators\StepTwo\StepTwoLocators.cs" />
     <Compile Include="IDriverService.cs" />
     <Compile Include="Models\StepOne\Room3D\Room3DViewPageModel.cs" />
     <Compile Include="Models\StepOne\FullStepOneModel\StepOneModel.cs" />
     <Compile Include="Models\StepOne\FullStepOneModel\StepOneServices.cs" />
+    <Compile Include="Models\StepTwo\Groups\GroupOptionModel.cs" />
+    <Compile Include="Models\StepTwo\Groups\GroupOptionPageModel.cs" />
+    <Compile Include="Services\StepTwoServices\GroupOptionServices.cs" />
     <Compile Include="WebElements\BaseNxWebElement\BaseWebElement.cs" />
     <Compile Include="WebElements\BaseNxWebElement\IBaseWebElement.cs" />
     <Compile Include="WebElements\Images\INxImage.cs" />
@@ -116,6 +121,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.Chrome.WebDriver.2.37\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.2.37\build\Selenium.Chrome.WebDriver.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
