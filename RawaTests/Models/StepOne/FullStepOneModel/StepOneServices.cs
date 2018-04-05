@@ -10,15 +10,15 @@ using static RawaTests.Helpers.DriverHelper.DriverHelp;
 
 namespace RawaTests.Model.StepTwo
 {
-    public class StepOneServices
+    public static class FacadeBuilder
     {
-        public StepOneModel GetFullModel()
+        public static StepOneFacade GetStepOneFacade()
         {
             Room3DServices c = new Room3DServices();
             ShapeRoomServices b = new ShapeRoomServices();
             DimensionServices a = new DimensionServices();
 
-            StepOneModel model = new StepOneModel(a, b, c);
+            StepOneFacade model = new StepOneFacade(a, b, c);
 
             return model;
         }

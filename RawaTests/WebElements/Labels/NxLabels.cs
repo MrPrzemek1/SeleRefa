@@ -47,10 +47,10 @@ namespace RawaTests.IWebElements.TextElements
                 listOfLabels[index] = value;
             }
         }
-        public override void Click()
-        {
-            Wait(1);
-            element.Click();
-        }
+        //public override void Click()
+        //{
+        //    Wait(1);
+        //    element.Click();
+        //}
     }
 }

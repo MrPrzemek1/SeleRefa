@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RawaTests.Lists
 {
-    public class ShapeRoomPageModel : ShapeRoomModel
+    public class ShapeRoomPageModel
     {
         public List<ShapeRoomModel> Shapes { get; set; }
 
@@ -17,7 +17,7 @@ namespace RawaTests.Lists
         {
             Shapes = new List<ShapeRoomModel>();
         }
-        public void GetShapeById(string id)
+        public void ClickShapeById(string id)
         {
              Shapes.Where(e => e.ShapeOfRoom.GetElementAttribute("shape-id") == id).FirstOrDefault().ShapeOfRoom.Click();
              

@@ -9,7 +9,7 @@ namespace RawaTests.StepOne
 {
     public class DimensionModel : BaseModel
     {
-        public INxLabels Header {get;set;}
+        
         public INxLabels Description { get; set; }
         public INxButton MinusSign { get; set; }
         public INxButton PlusSign { get; set; }

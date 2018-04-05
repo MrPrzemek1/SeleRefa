@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RawaTests.Models.StepTwo.Groups
 {
-    public class GroupOptionPageModel : GroupOptionModel
+    public class GroupOptionPageModel
     {
         public IList<GroupOptionModel> GroupOption;
         public GroupOptionPageModel()
@@ -32,7 +32,30 @@ namespace RawaTests.Models.StepTwo.Groups
         }
         public void GetOptionCabinetsSimple()
         {
-            GroupOption.Where(e => String.Equals(e.NameOfGroup.Text, "Szafki kuchenne Simply", StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.Click();
+            //GroupOption.Where(e => String.Equals(e.NameOfGroup.Text, "Szafki kuchenne Simply", StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.Click();
+            MainClick(GroupType.SZAFKI_SIPMLY);
         }
+        private void MainClick(GroupType type)
+        {
+            GroupOption.Where(e => String.Equals(e.NameOfGroup.Text, groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.Click();
+        }
+
+        private enum GroupType
+        {
+            KOLOR = 1,
+            DZRWI,
+            OKNA,
+            SZAFKI_ECO,
+            SZAFKI_SIPMLY
+        }
+
+        private Dictionary<GroupType, string> groupName = new Dictionary<GroupType, string>()
+        {
+            {GroupType.DZRWI,"Drzwi"},
+            {GroupType.KOLOR,"Drzwi"},
+            {GroupType.OKNA,"Drzwi"},
+            {GroupType.SZAFKI_ECO,"Drzwi"},
+            {GroupType.SZAFKI_SIPMLY,"Szafki kuchenne simply"}
+        };
     }
 }

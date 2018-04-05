@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace RawaTests.IWebElements
 {
     public class NxImage : BaseWebElement, INxImage
     {
+        [FindsBy(How =How.Id,Using ="asd")]
         private IWebElement element;
         private IList<IWebElement> listOfImages;
         public int Count => listOfImages.Count;

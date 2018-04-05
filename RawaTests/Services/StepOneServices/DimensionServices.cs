@@ -19,12 +19,13 @@ namespace RawaTests.StepOne
             var inputField = new NxInput(FindElements(By.XPath(DimensionElementsLocators.InputFieldClass)));
 
            DimensionsPageModel result = new DimensionsPageModel();
+            result.Header = header != null ? header : header = null;
 
-           for(int i=0; i< btnPlus.Count; ++i)
+           for (int i=0; i< btnPlus.Count; ++i)
             {
                 result.Elements.Add(new DimensionModel
                 {
-                    Header = header != null ? header : header = null,
+                    
                     PlusSign = new NxButton(btnPlus[i]),
                     MinusSign = new NxButton(btnPlus[i]),
                     Description = new NxLabels(descriptionField[i]),

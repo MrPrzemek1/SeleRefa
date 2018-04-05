@@ -62,7 +62,6 @@
     <Compile Include="Helpers\AlertHelper.cs" />
     <Compile Include="Helpers\ButtonHelper.cs" />
     <Compile Include="Helpers\DriverHelp.cs" />
-    <Compile Include="Helpers\GroupNameHelper.cs" />
     <Compile Include="HtmlStrings\ConstStrings\FooterAndHeader.cs" />
     <Compile Include="HtmlStrings\ConstStrings\HTMLConsts.cs" />
     <Compile Include="HtmlStrings\ConstStrings\StaticButtons.cs" />
@@ -74,8 +73,8 @@
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ShapeElementsLocators.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepTwo\StepTwoLocators.cs" />
     <Compile Include="IDriverService.cs" />
+    <Compile Include="Models\StepOne\FullStepOneModel\StepOneFacade.cs" />
     <Compile Include="Models\StepOne\Room3D\Room3DViewPageModel.cs" />
-    <Compile Include="Models\StepOne\FullStepOneModel\StepOneModel.cs" />
     <Compile Include="Models\StepOne\FullStepOneModel\StepOneServices.cs" />
     <Compile Include="Models\StepTwo\Groups\GroupOptionModel.cs" />
     <Compile Include="Models\StepTwo\Groups\GroupOptionPageModel.cs" />

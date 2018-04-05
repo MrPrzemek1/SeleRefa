@@ -10,7 +10,6 @@ namespace RawaTests.Models.StepTwo
 {
     public class GroupOptionModel
     {
-        //public INxInput RadioButton { get; set; }
         public INxLabels NameOfGroup { get; set; }
     }
 }

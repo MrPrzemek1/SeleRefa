@@ -10,25 +10,21 @@ using static RawaTests.Helpers.DriverHelper.DriverHelp;
 using OpenQA.Selenium;
 using RawaTests.Services.StepTwoServices;
 using System.Drawing;
+using RawaTests.Lists;
 
 namespace RawaTests.Tests
 {
     [TestFixture(Category ="StepOne")]
     class TestsStepOne : BaseTest
     {
-        private DimensionServices dimensionSrv;
         private HomePageServices homePage;
-        private Room3DServices roomServices;
-        private ShapeRoomServices shapeServices;
-        private StepOneServices stepOne;
+        private StepOneFacade StepOneFcd;
         private GroupOptionServices optionServices;
         public TestsStepOne()
         {
-            dimensionSrv = new DimensionServices();
             homePage = new HomePageServices();
-            roomServices = new Room3DServices();
-            shapeServices = new ShapeRoomServices();
-            stepOne = new StepOneServices();
+            StepOneFcd = FacadeBuilder.GetStepOneFacade();
+
             optionServices = new GroupOptionServices();
         }
         
@@ -47,21 +43,24 @@ namespace RawaTests.Tests
         [Test,Order(1)]
         public void VerifyClickedElementChangeClass()
         {
-            stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("30");
-            var a = dimensionSrv.GetDimensions();
-            a.GetFieldByDescription("E").PlusSign.Click();
-            Assert.AreEqual("wallSizeInput changed", a.GetFieldByDescription("A").Input.GetAttribute("class"));            
+            ShapeRoomPageModel shapes = StepOneFcd.GetShapes();
+            DimensionsPageModel dim = StepOneFcd.GetDimensions();
+
+            dim.GetFieldByDescription("A").PlusSign.Click();
+           
+            //var a = dimensionSrv.GetDimensions();
+            //a.GetFieldByDescription("E").PlusSign.Click();
+            //Assert.AreEqual("wallSizeInput changed", a.GetFieldByDescription("A").Input.GetAttribute("class"));            
         }
 
         [Test,Description("Test")]
         public void VerifyingModelRoomSizeAfterChangingDimension()
         {
             
-            stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("28");
+            //stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("28");
             ButtonHelper.ClickButtonNext();
             var b = optionServices.GetOptionModel();
-            b.GetOptionCabinetsEco();
-            Bitmap bitmap = new Bitmap();
+            b.GetOptionCabinetsSimple();
                 
         }
         [Test,Description("Test 2")]
