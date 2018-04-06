@@ -5,6 +5,7 @@ using RawaTests.IWebElements;
 using RawaTests.IWebElements.TextElements;
 using RawaTests.Lists;
 using RawaTests.Model;
+using System.Collections.Generic;
 using System.Linq;
 using static RawaTests.Helpers.DriverHelper.DriverHelp;
 
@@ -14,17 +15,17 @@ namespace RawaTests.Services
     {
         public ShapeRoomPageModel GetShapes()
         {
-            var shape_id = new NxImage(FindElements(By.XPath(DimensionElementsLocators.Shapeid),5));
+            var shape_id = new List<IWebElement>(FindElements(By.XPath(DimensionElementsLocators.Shapeid),5));
             var header = new NxLabels(FindElement(By.XPath(ShapeElementsLocators.ShapeHeader),5));
 
             ShapeRoomPageModel listOfShapes = new ShapeRoomPageModel();
+            listOfShapes.Header = header != null ? header : header = null;
 
             for (int i = 0; i < shape_id.Count; i++)
             {
                 {
                     listOfShapes.Shapes.Add(new ShapeRoomModel
                     {
-                        Header = header != null ? header : header = null,
                         ShapeOfRoom = new NxImage(shape_id[i]),
                     });
                 }

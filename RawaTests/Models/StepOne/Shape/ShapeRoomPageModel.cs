@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using RawaTests.IWebElements.TextElements;
 using RawaTests.Model;
 using RawaTests.Services;
 using System;
@@ -11,6 +12,7 @@ namespace RawaTests.Lists
 {
     public class ShapeRoomPageModel
     {
+        public NxLabels Header { get; set; }
         public List<ShapeRoomModel> Shapes { get; set; }
 
         public ShapeRoomPageModel()

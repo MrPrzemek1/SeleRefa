@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using RawaTests.HtmlStrings.ElementsLocators.StepOne;
+using RawaTests.IWebElements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace RawaTests.Model.Room3D
 {
     public class Room3DViewPageModel
     {
+        public NxImage RoomImage { get; set; }
         public IList<Room3DViewModel> Room3D { get; set; }
         public Room3DViewPageModel()
         {

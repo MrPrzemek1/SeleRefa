@@ -11,38 +11,17 @@ namespace RawaTests.WebElements.Input
      class NxInput : BaseWebElement, INxInput
     {
         private IWebElement element;
-        private IList<IWebElement> listOfInput;
         public NxInput(IWebElement e) : base(e)
         {
             element = e;
-        }
-        public NxInput (IList<IWebElement> e) : base(e)
-        {
-            listOfInput = e;
         }
         public void Clear()
         {
             element.Clear();
         }
-
         public void SendText(string text)
         {
             element.SendKeys(text);
-        }
-        public IWebElement this[int index]
-        {
-            get
-            {
-                if (index < 0 || index >= listOfInput.Count)
-                {
-                    return null;
-                }
-                return listOfInput[index];
-            }
-            set
-            {
-                listOfInput[index] = value;
-            }
         }
     }
 }

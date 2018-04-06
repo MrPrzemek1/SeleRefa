@@ -11,29 +11,15 @@ namespace RawaTests.IWebElements
 {
     public class NxImage : BaseWebElement, INxImage
     {
-        [FindsBy(How =How.Id,Using ="asd")]
+
         private IWebElement element;
-        private IList<IWebElement> listOfImages;
-        public int Count => listOfImages.Count;
         public NxImage(IWebElement element) : base (element)
         {
             this.element = element;
         }
-        public NxImage (IList<IWebElement> list) : base(list)
-        {
-            listOfImages = list;
-        }
         public string GetImageSource()
         {
             return element.GetAttribute("src");
-        }
-
-        public IWebElement this[int index]
-        {
-            get
-            {
-                return listOfImages[index];
-            }
         }
         public string GetElementAttribute(string attributeName)
         {

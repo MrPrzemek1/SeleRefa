@@ -13,5 +13,6 @@ namespace RawaTests.IWebElements
         string Text { get; }
         string GetAttribute(string attribute);
         bool Dispalyed();
+        void Click();
     }
 }
