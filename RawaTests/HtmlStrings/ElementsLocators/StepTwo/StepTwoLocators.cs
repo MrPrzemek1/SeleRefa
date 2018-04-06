@@ -8,6 +8,6 @@ namespace RawaTests.HtmlStrings.ElementsLocators.StepTwo
 {
     public class StepTwoLocators
     {
-        public static string GroupOption = "//label[input]";
+        public static string GroupOption = "//input[@name='module']";
     }
 }

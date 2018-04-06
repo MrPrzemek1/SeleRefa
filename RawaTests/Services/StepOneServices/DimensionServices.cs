@@ -19,7 +19,7 @@ namespace RawaTests.StepOne
             var inputField = new List<IWebElement>(FindElements(By.XPath(DimensionElementsLocators.InputFieldClass)));
 
            DimensionsPageModel result = new DimensionsPageModel();
-           result.Header = header != null ? header : header = null;
+           result.Header = header ?? (header = null);
            for (int i=0; i< btnPlus.Count; ++i)
             {
                 result.Elements.Add(new DimensionModel
@@ -27,8 +27,7 @@ namespace RawaTests.StepOne
                     PlusSign = new NxButton(btnPlus[i]),
                     MinusSign = new NxButton(btnPlus[i]),
                     Description = new NxLabels(descriptionField[i]),
-                    Input = new NxInput(inputField[i]),
-                    
+                    Input = new NxInput(inputField[i]),                
                 });
             }
             return result;

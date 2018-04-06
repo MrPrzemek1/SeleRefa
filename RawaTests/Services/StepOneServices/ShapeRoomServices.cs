@@ -19,7 +19,7 @@ namespace RawaTests.Services
             var header = new NxLabels(FindElement(By.XPath(ShapeElementsLocators.ShapeHeader),5));
 
             ShapeRoomPageModel listOfShapes = new ShapeRoomPageModel();
-            listOfShapes.Header = header != null ? header : header = null;
+            listOfShapes.Header = header ?? (header = null);
 
             for (int i = 0; i < shape_id.Count; i++)
             {

@@ -18,8 +18,7 @@ namespace RawaTests.Services.StepTwoServices
     {
         public GroupOptionPageModel GetOptionModel()
         {
-            Wait(2);
-            var radio = new NxLabels(Driver.FindElements(By.XPath(StepTwoLocators.GroupOption)));
+            var radio = new List<IWebElement>(FindElements(By.XPath(StepTwoLocators.GroupOption)));
 
             GroupOptionPageModel model = new GroupOptionPageModel();
             for (int i = 0; i < radio.Count; i++)

@@ -11,6 +11,7 @@ using OpenQA.Selenium;
 using RawaTests.Services.StepTwoServices;
 using System.Drawing;
 using RawaTests.Lists;
+using static RawaTests.Models.StepTwo.Groups.GroupOptionPageModel;
 
 namespace RawaTests.Tests
 {
@@ -60,8 +61,7 @@ namespace RawaTests.Tests
             //stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("28");
             ButtonHelper.ClickButtonNext();
             var b = optionServices.GetOptionModel();
-            b.GetOptionCabinetsSimple();
-                
+            Assert.IsTrue(b.atr());           
         }
         [Test,Description("Test 2")]
         public void VerifingyModelChangeAfterClickingOnShape_Positive()

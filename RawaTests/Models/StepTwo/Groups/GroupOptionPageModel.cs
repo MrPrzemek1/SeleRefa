@@ -1,8 +1,11 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using static RawaTests.Helpers.DriverHelper.DriverHelp;
 
 namespace RawaTests.Models.StepTwo.Groups
 {
@@ -13,22 +16,21 @@ namespace RawaTests.Models.StepTwo.Groups
         {
             GroupOption = new List<GroupOptionModel>();
         }
-
         public void GetOptionColor()
-        {            
-            GroupOption.Where(e => String.Equals(e.NameOfGroup.Text, "Kolorystyka ścian i podłóg", StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.Click();           
+        {
+            MainClick(GroupType.KOLOR);
         }
         public void GetOptionDoor()
         {
-            GroupOption.Where(e => String.Equals(e.NameOfGroup.Text, "Drzwi", StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.Click();
+            MainClick(GroupType.DRZWI);
         }
         public void GetOptionWindow()
         {
-            GroupOption.Where(e => String.Equals(e.NameOfGroup.Text, "Okna", StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.Click();
+            MainClick(GroupType.OKNA);
         }
         public void GetOptionCabinetsEco()
         {
-            GroupOption.Where(e => String.Equals(e.NameOfGroup.Text, "Szafki kuchenne eco", StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.Click();
+            MainClick(GroupType.SZAFKI_ECO);
         }
         public void GetOptionCabinetsSimple()
         {
@@ -37,25 +39,44 @@ namespace RawaTests.Models.StepTwo.Groups
         }
         private void MainClick(GroupType type)
         {
-            GroupOption.Where(e => String.Equals(e.NameOfGroup.Text, groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.Click();
+            GroupOption.Where(e => String.Equals(e.NameOfGroup.GetAttribute("value"), groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.Click();
         }
 
-        private enum GroupType
+        public enum GroupType
         {
             KOLOR = 1,
-            DZRWI,
+            DRZWI,
             OKNA,
             SZAFKI_ECO,
             SZAFKI_SIPMLY
         }
-
         private Dictionary<GroupType, string> groupName = new Dictionary<GroupType, string>()
         {
-            {GroupType.DZRWI,"Drzwi"},
-            {GroupType.KOLOR,"Drzwi"},
-            {GroupType.OKNA,"Drzwi"},
-            {GroupType.SZAFKI_ECO,"Drzwi"},
+            {GroupType.KOLOR,"Kolorystyka ścian i podłóg"},
+            {GroupType.DRZWI,"Drzwi"},
+            {GroupType.OKNA,"window"},
+            {GroupType.SZAFKI_ECO,"Szafki kuchenne eco"},
             {GroupType.SZAFKI_SIPMLY,"Szafki kuchenne simply"}
         };
+        public bool IsChecked(GroupType type)
+        {
+            string a = GroupOption.Where(e => String.Equals(e.NameOfGroup.Text, groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.GetAttribute("checked");
+            bool result = false;
+            if (a.Equals("checked"))
+            {
+                result = true;
+            }
+            return result;
+        }
+        public bool atr()
+        {
+            var a = FindElement(By.XPath("//div[contains(@class,'left-table-step2-container')]"),100);
+            bool result = true;
+            if (a.Text.Equals("Aby zmienić kolorystykę wybranej ściany kliknij na wybrany element."))
+            {
+                return result;
+            }
+            return false;
+        }
     }
 }

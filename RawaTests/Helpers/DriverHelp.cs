@@ -41,15 +41,14 @@ namespace RawaTests.Helpers.DriverHelper
                     throw new NotImplementedException("I do not know the driver that you supplied.");
             }
         }
-        public static IWebElement FindElement(By by, int second=2)
+        public static IWebElement FindElement(By by, int second=3)
             {
                 wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(second));
                 IWebElement result;
 
                 try
                 { 
-                    wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//*[@class='loading-show'")));
-                    result = Driver.FindElement(by);                   
+                    result = wait.Until(ExpectedConditions.ElementIsVisible(by));
                 }
                 catch (Exception)
                 {
@@ -63,7 +62,7 @@ namespace RawaTests.Helpers.DriverHelper
             wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(second));
             try
             {
-                wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//*[@class='loading-show'")));
+                IWebElement loader =  wait.Until(ExpectedConditions.ElementExists(By.ClassName("loading")));
                 result = Driver.FindElements(by);
             }
             catch (Exception)

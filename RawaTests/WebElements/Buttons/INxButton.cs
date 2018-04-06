@@ -10,6 +10,5 @@ namespace RawaTests.Model.Base.Buttons
 {
     public interface INxButton : IBaseWebElement
     {
-        void Click();
     }
 }
