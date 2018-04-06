@@ -3,7 +3,7 @@
     public static class HomePageElementsLocators
     {
         public static string ButtonStart = "//button[@class='btn btn-primary btn-lg btn-start']";
-        public static string HomePageImage = "//img[@class=' img-responsive']";
+        public static string HomePageImage = "img-responsive";
         public static string HomePageLogo = "//img[@class='logo']";
         public static string Footer = "//div[@class=' col-xs-12 footer-wraper']";
         public static string LoginButton = "//a[@class='link-login']";

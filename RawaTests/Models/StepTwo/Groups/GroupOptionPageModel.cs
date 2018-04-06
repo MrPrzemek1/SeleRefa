@@ -70,7 +70,7 @@ namespace RawaTests.Models.StepTwo.Groups
         }
         public bool atr()
         {
-            var a = FindElement(By.XPath("//div[contains(@class,'left-table-step2-container')]"),100);
+            var a = FindElement(By.XPath("//div[contains(@class,'left-table-step2-container')]"));
             bool result = true;
             if (a.Text.Equals("Aby zmienić kolorystykę wybranej ściany kliknij na wybrany element."))
             {

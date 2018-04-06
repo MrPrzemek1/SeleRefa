@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Threading;
+using System.Linq;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 
@@ -41,29 +42,17 @@ namespace RawaTests.Helpers.DriverHelper
                     throw new NotImplementedException("I do not know the driver that you supplied.");
             }
         }
-        public static IWebElement FindElement(By by, int second=3)
-            {
-                wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(second));
-                IWebElement result;
-
-                try
-                { 
-                    result = wait.Until(ExpectedConditions.ElementIsVisible(by));
-                }
-                catch (Exception)
-                {
-                    result = null;
-                }
-                return result;
-            }
+        public static IWebElement FindElement(By by)
+        {
+            return FindElements(by).FirstOrDefault();
+        }
         public static IList<IWebElement> FindElements(By by, int second=5)
         {
             IList<IWebElement> result = new List<IWebElement>();
             wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(second));
             try
             {
-                IWebElement loader =  wait.Until(ExpectedConditions.ElementExists(By.ClassName("loading")));
-                result = Driver.FindElements(by);
+                result = wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(by));
             }
             catch (Exception)
             {
