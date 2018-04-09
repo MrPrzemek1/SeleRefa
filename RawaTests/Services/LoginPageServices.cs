@@ -17,11 +17,11 @@ namespace RawaTests.Services
 
         public LoginPageModel GetLoginPageModel()
         {
-            var CompanyName =new NxInput(FindElement(By.XPath(LoginPageElementsLocators.CompanyInput)));
-            var Login = new NxInput(FindElement(By.XPath(LoginPageElementsLocators.LoginInput)));
-            var Password = new NxInput(FindElement(By.XPath(LoginPageElementsLocators.PasswordInput)));
-            var SubmitButton = new NxButton(FindElement(By.XPath(LoginPageElementsLocators.submitLogin)));
-            var ValidateField = new NxLabels(FindElement(By.XPath(LoginPageElementsLocators.ValidateField)));
+            var CompanyName =new NxInput(FindWebElements(By.XPath(LoginPageElementsLocators.CompanyInput)));
+            var Login = new NxInput(FindWebElements(By.XPath(LoginPageElementsLocators.LoginInput)));
+            var Password = new NxInput(FindWebElements(By.XPath(LoginPageElementsLocators.PasswordInput)));
+            var SubmitButton = new NxButton(FindWebElements(By.XPath(LoginPageElementsLocators.submitLogin)));
+            var ValidateField = new NxLabels(FindWebElements(By.XPath(LoginPageElementsLocators.ValidateField)));
 
             LoginPageModel model = new LoginPageModel(CompanyName, Login, Password, SubmitButton, ValidateField);
             return model;

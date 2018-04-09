@@ -28,15 +28,12 @@ namespace RawaTests.Tests
         [Test]
         public void HomePageElementsIsDisplayed()
         {
-            var homePage = homePageSrv.GetHomePageModel();
-            Assert.IsTrue(homePage.IsValid());
+           
         }
         [Test]
         public void HomePage()
         {
-            var homePage = homePageSrv.GetHomePageModel();
-            Assert.AreEqual(HomePageElementsLocators.HomePageUrl, homePage.HomePageImage.GetElementAttribute("src"));
-            Assert.AreEqual(FooterAndHeader.HEADER, homePage.Header.Text);
+
         }
     }
 }

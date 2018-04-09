@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RawaTests", "RawaTests\RawaTests.csproj", "{254F5675-84AF-48E9-9BFE-6BAC41C1BAE0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageObjectPattern", "PageObjectPattern\PageObjectPattern.csproj", "{21B5EA6B-AF59-4214-9833-C231B123125D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{254F5675-84AF-48E9-9BFE-6BAC41C1BAE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{254F5675-84AF-48E9-9BFE-6BAC41C1BAE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{254F5675-84AF-48E9-9BFE-6BAC41C1BAE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21B5EA6B-AF59-4214-9833-C231B123125D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21B5EA6B-AF59-4214-9833-C231B123125D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21B5EA6B-AF59-4214-9833-C231B123125D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21B5EA6B-AF59-4214-9833-C231B123125D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -21,10 +21,12 @@ namespace RawaTests.Tests
         private HomePageServices homePage;
         private StepOneFacade StepOneFcd;
         private GroupOptionServices optionServices;
+        private DimensionServices dimSrv;
         public TestsStepOne()
         {
             homePage = new HomePageServices();
             StepOneFcd = FacadeBuilder.GetStepOneFacade();
+            dimSrv = new DimensionServices();
 
             optionServices = new GroupOptionServices();
         }
@@ -69,19 +71,10 @@ namespace RawaTests.Tests
         public void VerifingyModelChangeAfterClickingOnShape_Positive()
         {
             Thread.Sleep(2000);
-          var a = Driver.FindElements(By.XPath("//html//div[@class='roomForm-container']//li"));
-            foreach(var element in a)
-            {
-                var labelWE = element.FindElement(By.XPath("//label[@class='set-room-params-letters']"));
-                var btnPlusWE = element.FindElement(By.XPath("//label[@class='set-room-params-letters']"));
-                var btnMinusWE = element.FindElement(By.XPath("//label[@class='set-room-params-letters']"));
-                var inputWE = element.FindElement(By.XPath("//label[@class='set-room-params-letters']"));
-                if(!string.IsNullOrEmpty(labelWE.Text))
-                {
-                    new DimensionModel()
-                }
-            }
-          
+            var a = dimSrv.GetDimensions();
+            var b = a.GetFieldByDescription("B");
+            b.PlusSign.Click();
+            
         }
         [Test]
         public void VerifingyModelChangeAfterClickingOnShape_Negative()

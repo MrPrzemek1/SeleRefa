@@ -14,7 +14,6 @@ namespace RawaTests.Model.Base.Buttons
         public NxButton(IWebElement e) : base(e)
         {
             element = e;
-        }
-        
+        }      
     }
  }

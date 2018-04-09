@@ -9,7 +9,8 @@ using System.Reflection;
 using System.Threading;
 using System.Linq;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
-
+using RawaTests.Model.Base.Buttons;
+using RawaTests.IWebElements;
 
 namespace RawaTests.Helpers.DriverHelper
 {
@@ -42,17 +43,17 @@ namespace RawaTests.Helpers.DriverHelper
                     throw new NotImplementedException("I do not know the driver that you supplied.");
             }
         }
-        public static IWebElement FindElement(By by)
+        public static IWebElement FindWebElement(this IWebElement e, By by)
         {
-            return FindElements(by).FirstOrDefault();
+            return e.FindElements(by).FirstOrDefault();
         }
-        public static IList<IWebElement> FindElements(By by, int second=5)
+        public static IList<IWebElement> FindWebElements(By by, int second=5)
         {
             IList<IWebElement> result = new List<IWebElement>();
             wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(second));
             try
             {
-                result = wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(by));
+                result = wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(by));               
             }
             catch (Exception)
             {
@@ -60,7 +61,6 @@ namespace RawaTests.Helpers.DriverHelper
             }
             return result;
         }
-
         public static void Goto(string url, bool useBaseUrl = true)
             {
                 if (useBaseUrl)
@@ -110,6 +110,10 @@ namespace RawaTests.Helpers.DriverHelper
             {
                 return null;
             }
+        }
+        public static IBaseWebElement Find(By by)
+        {
+            return new BaseWebElement(Driver.FindElement(by));
         }
     }
 }

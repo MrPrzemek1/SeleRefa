@@ -1,9 +1,11 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using static RawaTests.Helpers.DriverHelper.DriverHelp;
@@ -15,7 +17,11 @@ namespace RawaTests.IWebElements
     {
         private IWebElement element;
         WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(2));
-        public BaseWebElement(IWebElement e) => element = e;
+        public BaseWebElement(IWebElement e)
+        {
+            element = e;
+        }
+
         public BaseWebElement(IList<IWebElement> list) => list = new List<IWebElement>();
 
         public string Text => element.Text;
@@ -32,6 +38,11 @@ namespace RawaTests.IWebElements
         public virtual void Click()
         {
             wait.Until(ExpectedConditions.ElementToBeClickable(element)).Click();
+        }
+
+        public static IBaseWebElement Find(By by)
+        {
+            return new BaseWebElement(Driver.FindElement(by));
         }
     }
 }

@@ -6,10 +6,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{254F5675-84AF-48E9-9BFE-6BAC41C1BAE0}</ProjectGuid>
+    <ProjectGuid>{21B5EA6B-AF59-4214-9833-C231B123125D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>RawaTests</RootNamespace>
-    <AssemblyName>RawaTests</AssemblyName>
+    <RootNamespace>PageObjectPattern</RootNamespace>
+    <AssemblyName>PageObjectPattern</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -39,6 +39,9 @@
     <Reference Include="nunit.framework, Version=3.10.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="SeleniumExtras.PageObjects, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetSeleniumExtras.PageObjects.3.11.0\lib\net45\SeleniumExtras.PageObjects.dll</HintPath>
+    </Reference>
     <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
     </Reference>
@@ -59,60 +62,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\AlertHelper.cs" />
-    <Compile Include="Helpers\ButtonHelper.cs" />
-    <Compile Include="Helpers\DriverHelp.cs" />
-    <Compile Include="Helpers\WebElementHelper.cs" />
-    <Compile Include="HtmlStrings\ConstStrings\FooterAndHeader.cs" />
-    <Compile Include="HtmlStrings\ConstStrings\HTMLConsts.cs" />
-    <Compile Include="HtmlStrings\ConstStrings\StaticButtons.cs" />
-    <Compile Include="HtmlStrings\ElementsLocators\HomePageElementsLocators.cs" />
-    <Compile Include="HtmlStrings\ConstStrings\LoginData.cs" />
-    <Compile Include="HtmlStrings\ElementsLocators\LoginPageElementsLocators.cs" />
-    <Compile Include="HtmlStrings\ElementsLocators\StepOne\DimensionElementsLocators.cs" />
-    <Compile Include="HtmlStrings\ElementsLocators\StepOne\ImageRoomElements.cs" />
-    <Compile Include="HtmlStrings\ElementsLocators\StepOne\ShapeElementsLocators.cs" />
-    <Compile Include="HtmlStrings\ElementsLocators\StepTwo\StepTwoLocators.cs" />
-    <Compile Include="IDriverService.cs" />
-    <Compile Include="Models\StepOne\FullStepOneModel\StepOneFacade.cs" />
-    <Compile Include="Models\StepOne\Room3D\Room3DViewPageModel.cs" />
-    <Compile Include="Models\StepOne\FullStepOneModel\StepOneServices.cs" />
-    <Compile Include="Models\StepTwo\Groups\GroupOptionModel.cs" />
-    <Compile Include="Models\StepTwo\Groups\GroupOptionPageModel.cs" />
-    <Compile Include="Services\StepTwoServices\GroupOptionServices.cs" />
-    <Compile Include="WebElements\BaseNxWebElement\BaseWebElement.cs" />
-    <Compile Include="WebElements\BaseNxWebElement\IBaseWebElement.cs" />
-    <Compile Include="WebElements\Images\INxImage.cs" />
-    <Compile Include="WebElements\Images\NxImage.cs" />
-    <Compile Include="WebElements\Input\INxInput.cs" />
-    <Compile Include="WebElements\Input\NxInput.cs" />
-    <Compile Include="WebElements\Labels\INxLabels.cs" />
-    <Compile Include="WebElements\Labels\NxLabels.cs" />
-    <Compile Include="Models\Base\BaseModel.cs" />
-    <Compile Include="WebElements\Buttons\INxButton.cs" />
-    <Compile Include="WebElements\Buttons\NxButton.cs" />
-    <Compile Include="Models\Home\HomePageModel.cs" />
-    <Compile Include="Models\Login\LoginModel.cs" />
-    <Compile Include="Models\StepOne\Shape\ShapeRoomPageModel.cs" />
-    <Compile Include="Models\Home\HomeModel.cs" />
-    <Compile Include="Models\Login\LoginPageModel.cs" />
-    <Compile Include="Models\StepOne\Shape\ShapeRoomModel.cs" />
+    <Compile Include="DriverHelper.cs" />
+    <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\StepOne\Room3D\Room3DViewModel.cs" />
-    <Compile Include="Models\StepOne\Dimension\DimensionModel.cs" />
-    <Compile Include="Services\Base\BaseService.cs" />
-    <Compile Include="Services\StepOneServices\DimensionServices.cs" />
-    <Compile Include="Models\StepOne\Dimension\DimensionsPageModel.cs" />
-    <Compile Include="Services\HomePageServices.cs" />
-    <Compile Include="Services\LoginPageServices.cs" />
-    <Compile Include="Services\StepOneServices\Room3DServices.cs" />
-    <Compile Include="Services\StepOneServices\ShapeRoomServices.cs" />
-    <Compile Include="Tests\Base\BaseTest.cs" />
+    <Compile Include="Tests\BaseTest.cs" />
     <Compile Include="Tests\HomePageTests.cs" />
-    <Compile Include="Tests\LoginPageTests.cs" />
-    <Compile Include="Tests\TestsStepOne.cs" />
-    <Compile Include="HtmlStrings\ConstStrings\ValidateTextsHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -121,17 +76,16 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Selenium.Chrome.WebDriver.2.37\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.2.37\build\Selenium.Chrome.WebDriver.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.2.37\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.2.37\build\Selenium.Chrome.WebDriver.targets'))" />
-    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.37.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.2.37.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
     <Error Condition="!Exists('..\packages\NUnit.3.10.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.10.1\build\NUnit.props'))" />
     <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.10.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.10.0\build\net35\NUnit3TestAdapter.props'))" />
+    <Error Condition="!Exists('..\packages\Selenium.Chrome.WebDriver.2.37\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Chrome.WebDriver.2.37\build\Selenium.Chrome.WebDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.37.0\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.2.37.0\build\Selenium.WebDriver.ChromeDriver.targets'))" />
   </Target>
+  <Import Project="..\packages\Selenium.Chrome.WebDriver.2.37\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.2.37\build\Selenium.Chrome.WebDriver.targets')" />
   <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.2.37.0\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.2.37.0\build\Selenium.WebDriver.ChromeDriver.targets')" />
 </Project>

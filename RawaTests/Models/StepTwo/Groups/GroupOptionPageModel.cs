@@ -68,15 +68,5 @@ namespace RawaTests.Models.StepTwo.Groups
             }
             return result;
         }
-        public bool atr()
-        {
-            var a = FindElement(By.XPath("//div[contains(@class,'left-table-step2-container')]"));
-            bool result = true;
-            if (a.Text.Equals("Aby zmienić kolorystykę wybranej ściany kliknij na wybrany element."))
-            {
-                return result;
-            }
-            return false;
-        }
     }
 }
