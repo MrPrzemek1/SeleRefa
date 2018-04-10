@@ -4,7 +4,7 @@ using RawaTests.IWebElements;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using static RawaTests.Helpers.DriverHelper.DriverHelp;
+using static RawaTests.Helpers.DriverHelper.DriverHelper;
 
 namespace RawaTests.Model.Base.Buttons
 {

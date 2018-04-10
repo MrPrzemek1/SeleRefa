@@ -2,7 +2,7 @@
 using RawaTests.Helpers;
 using RawaTests.HtmlStrings.ConstStrings;
 using RawaTests.Services;
-using static RawaTests.Helpers.DriverHelper.DriverHelp;
+using static RawaTests.Helpers.DriverHelper.DriverHelper;
 
 namespace RawaTests.Tests
 {
@@ -18,12 +18,11 @@ namespace RawaTests.Tests
         [OneTimeSetUp]
         public void TestInizialize()
         {
-            Initialize();
+           
         }
         [OneTimeTearDown]
         public void EndTest()
         {
-            Quit();
         }
         [Test]
         public void HomePageElementsIsDisplayed()

@@ -1,11 +1,16 @@
 ﻿using NUnit.Framework;
 using RawaTests.Services;
-using static RawaTests.Helpers.DriverHelper.DriverHelp;
+using static RawaTests.Helpers.DriverHelper.DriverHelper;
 using RawaTests.ValidateMessages;
+using RawaTests.Managers;
+using RawaTests.Tests.Base;
+using RawaTests.Helpers;
+using RawaTests.Model;
+
 namespace RawaTests.Tests
 {
     [TestFixture(Category ="LoginPageTests")]
-    public class LoginPageTests
+    public class LoginPageTests : BaseTest
     {
         LoginPageServices loginServices;
         HomePageServices homeServices;
@@ -16,26 +21,15 @@ namespace RawaTests.Tests
             homeServices = new HomePageServices();
         }
 
-        [OneTimeSetUp]
-        public void TestInizialize()
-        {
-            Initialize();        
-        }
-
-        [OneTimeTearDown]
-        public void EndTest()
-        {
-            Quit();
-        }
-
         [Test,Description("asdas"), Order(1)]
         public void CorrectLogin()
         {
-            //var homePage = homeServices.GetHomePageModel();
             homeServices.GetHomePageModel().LoginBtn.Click();
-            var loginPage = loginServices.GetLoginPageModel();
+
+            LoginPageModel loginPage = loginServices.GetLoginPageModel();
             loginPage.SetLoginData();
             loginPage.SubmitButton.Click();
+            //loginPage.SubmitButton.Click();
             Assert.IsTrue(homeServices.GetHomePageModel().Logout.Contains(ValidateTextsHelper.LoginText));
         }
 
@@ -56,6 +50,5 @@ namespace RawaTests.Tests
         {
             
         }
-
     }
 }

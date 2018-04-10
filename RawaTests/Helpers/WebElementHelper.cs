@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.IWebElements;
+using RawaTests.Managers;
 using RawaTests.Model.Base.Buttons;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static RawaTests.Helpers.DriverHelper.DriverHelp;
+using static RawaTests.Helpers.DriverHelper.DriverHelper;
 
 namespace RawaTests.Helpers
 {
@@ -18,7 +19,7 @@ namespace RawaTests.Helpers
         {
             try
             {
-               IWebElement element = Driver.FindElement(by);
+               IWebElement element = DriverManager.CreateInstance().FindWebElementAndWait(by);
                return new NxButton(element);
             }
             catch (Exception)

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static RawaTests.Helpers.DriverHelper.DriverHelp;
+using static RawaTests.Helpers.DriverHelper.DriverHelper;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace RawaTests.Model.Room3D

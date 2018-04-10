@@ -1,7 +1,15 @@
-﻿namespace RawaTests.Services.Base
+﻿using RawaTests.Managers;
+
+namespace RawaTests.Services.Base
 {
-    abstract class BaseService
+    public abstract class BaseService
     {
-              
+        protected DriverManager Manager { get; set; }
+
+        public BaseService()
+        {
+            Manager = DriverManager.CreateInstance();
+        }
+
     }
 }

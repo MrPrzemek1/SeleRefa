@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using RawaTests.WebElements.TextElements;
-using static RawaTests.Helpers.DriverHelper.DriverHelp;
-using static RawaTests.Helpers.DriverHelper.DriverHelp.Drivers;
 
 namespace RawaTests.IWebElements.TextElements
 {

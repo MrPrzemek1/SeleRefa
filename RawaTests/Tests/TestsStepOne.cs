@@ -6,7 +6,7 @@ using RawaTests.Helpers;
 using System.Threading;
 using System.Linq;
 using RawaTests.Model.StepTwo;
-using static RawaTests.Helpers.DriverHelper.DriverHelp;
+using static RawaTests.Helpers.DriverHelper.DriverHelper;
 using OpenQA.Selenium;
 using RawaTests.Services.StepTwoServices;
 using System.Drawing;
@@ -22,6 +22,7 @@ namespace RawaTests.Tests
         private StepOneFacade StepOneFcd;
         private GroupOptionServices optionServices;
         private DimensionServices dimSrv;
+
         public TestsStepOne()
         {
             homePage = new HomePageServices();
@@ -29,13 +30,6 @@ namespace RawaTests.Tests
             dimSrv = new DimensionServices();
 
             optionServices = new GroupOptionServices();
-        }
-
-        public override void End() { }
-
-        public override void Init()
-        {
-            homePage.GetHomePageModel().StartButton.Click();
         }
         /// <summary>
         /// Test sprawdzajacy czy po kilknieciu w kształt pomieszczenia jego klasa zmienia sie na active
@@ -56,14 +50,7 @@ namespace RawaTests.Tests
         public void VerifyingModelRoomSizeAfterChangingDimension()
         {
 
-            //stepOne.GetFullModel().Shapes.GetShapes().GetShapeById("28");
-            Thread.Sleep(1000);
-            Driver.FindElement(By.XPath("//html//div[@class='roomForm-container']//li[1]"));
-
-            //ButtonHelper.ClickButtonNext();
-            var a = Driver.FindElements(By.XPath("//html//div[@class='roomForm-container']//li"));
-            //var b = a.GetAttribute("class");
-            Thread.Sleep(1000);
+            var a = StepOneFcd.GetRoomDimension();
 
 
         }

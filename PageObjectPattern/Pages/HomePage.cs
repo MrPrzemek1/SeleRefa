@@ -37,7 +37,7 @@ namespace PageObjectPattern.Pages
         public HomePage(IWebDriver driver)
         {
             driver = Driver;
-            PageFactory.InitElements(Driver, );
+            PageFactory.InitElements(Driver, this);
         }
 
         public void ClickStartButton()
