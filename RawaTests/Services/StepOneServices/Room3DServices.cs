@@ -1,17 +1,13 @@
 ﻿using OpenQA.Selenium;
-using RawaTests.Helpers;
 using RawaTests.HtmlStrings.ElementsLocators.StepOne;
 using RawaTests.IWebElements;
 using RawaTests.IWebElements.TextElements;
 using RawaTests.Model.Room3D;
 using RawaTests.Services.Base;
-using System;
-using System.Collections.Generic;
-using static RawaTests.Helpers.DriverHelper.DriverHelper;
 
 namespace RawaTests.Services
 {
-   public class Room3DServices : BaseService
+    public class Room3DServices : BaseService
     {
         public Room3DServices() : base()
         {

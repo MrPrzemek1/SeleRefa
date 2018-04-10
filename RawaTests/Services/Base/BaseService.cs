@@ -10,6 +10,5 @@ namespace RawaTests.Services.Base
         {
             Manager = DriverManager.CreateInstance();
         }
-
     }
 }

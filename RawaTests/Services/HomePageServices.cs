@@ -24,11 +24,12 @@ namespace RawaTests.Services
             var homePageImage = new NxImage(Manager.FindWebElementAndWait(By.ClassName(HomePageElementsLocators.HomePageImage)));
             var logoImage = new NxImage(Manager.FindWebElementAndWait(By.XPath(HomePageElementsLocators.HomePageLogo)));
             var footer = new NxLabels(Manager.FindWebElementAndWait(By.XPath(HomePageElementsLocators.Footer)));
-            var loginBtn = new NxButton(Manager.FindWebElementAndWait(By.XPath(HomePageElementsLocators.LoginButton)));
+            var loginButton = new NxButton(Manager.FindWebElementAndWait(By.XPath(HomePageElementsLocators.LoginButton)));
             var header = new NxLabels(Manager.FindWebElementAndWait(By.XPath(HomePageElementsLocators.Header)));
-            var logout = new NxLabels(Manager.FindWebElementAndWait(By.Id(HomePageElementsLocators.LogoutDiv)));
+            var logoutDiv = new NxLabels(Manager.FindWebElementAndWait(By.Id(HomePageElementsLocators.LogoutDiv)));
+            var logoutButton = logoutDiv.FindElementAndWait<NxButton>(By.TagName(HomePageElementsLocators.LogoutButton));
 
-            HomePageModel homeModel = new HomePageModel(startButton, homePageImage, logoImage, footer, loginBtn, header, logout); 
+            HomePageModel homeModel = new HomePageModel(startButton, homePageImage, logoImage, footer, loginButton, header, logoutDiv, logoutButton); 
 
             return homeModel;
         }

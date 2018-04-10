@@ -2,16 +2,10 @@
 using NUnit.Framework;
 using RawaTests.Tests.Base;
 using RawaTests.Services;
-using RawaTests.Helpers;
 using System.Threading;
-using System.Linq;
 using RawaTests.Model.StepTwo;
-using static RawaTests.Helpers.DriverHelper.DriverHelper;
-using OpenQA.Selenium;
 using RawaTests.Services.StepTwoServices;
-using System.Drawing;
 using RawaTests.Lists;
-using static RawaTests.Models.StepTwo.Groups.GroupOptionPageModel;
 
 namespace RawaTests.Tests
 {
@@ -51,7 +45,6 @@ namespace RawaTests.Tests
         {
 
             var a = StepOneFcd.GetRoomDimension();
-
 
         }
         [Test,Description("Test 2")]

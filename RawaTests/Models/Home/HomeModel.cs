@@ -13,6 +13,7 @@ namespace RawaTests.Model
         public INxLabels Footer { get; set;}
         public INxButton LoginBtn { get; set; }
         public INxLabels Header { get; set; }
-        public INxLabels Logout { get; set; }
+        public INxLabels LogoutDiv { get; set; }
+        public INxButton LogoutButton { get; set; }
     }
 }

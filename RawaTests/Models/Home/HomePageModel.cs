@@ -1,13 +1,12 @@
 ﻿using RawaTests.Model.Base.Buttons;
 using RawaTests.IWebElements;
-using RawaTests.IWebElements.TextElements;
 using RawaTests.WebElements.TextElements;
 
 namespace RawaTests.Model.Home
 {
     class HomePageModel : HomeModel
     {
-        public HomePageModel(INxButton startBtn, INxImage homeImg, INxImage logoImg, INxLabels footer, INxButton loginBtn, INxLabels header, INxLabels logout)
+        public HomePageModel(INxButton startBtn, INxImage homeImg, INxImage logoImg, INxLabels footer, INxButton loginBtn, INxLabels header, INxLabels logoutDiv, INxButton logoutBtn)
         {
             StartButton = startBtn;
             HomePageImage = homeImg;
@@ -15,7 +14,8 @@ namespace RawaTests.Model.Home
             Footer = footer;
             LoginBtn = loginBtn;
             Header = header;
-            Logout = logout;
+            LogoutDiv = logoutDiv;
+            LogoutButton = logoutBtn;
         }
         public override bool IsValid()
         {

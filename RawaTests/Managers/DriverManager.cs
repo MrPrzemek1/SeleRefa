@@ -1,22 +1,18 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Support.UI;
 using RawaTests.Helpers.DriverHelper;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RawaTests.Managers
 {
     public class DriverManager
     {
         private const string _baseUrl = "http://demo.net-art.eu/";
-
 
         private static DriverManager Instance;
         public static DriverManager CreateInstance(DriverType type = DriverType.Chrome)
@@ -63,22 +59,30 @@ namespace RawaTests.Managers
 
         public IWebElement FindWebElementAndWait(By by)
         {
-            if (FindWebElementsAndWait(by)==null)
+            var find = FindWebElementsAndWait(by);
+            if (find == null)
             {
                 return null;
             }
-            return FindWebElementsAndWait(by).FirstOrDefault();
+            else
+                return find.FirstOrDefault();
         }
-        public IList<IWebElement> FindWebElementsAndWait(By by, int second = 5)
+        public IList<IWebElement> FindWebElementsAndWait(By by, int second = 2)
         {
             return DriverHelper.FindWebElementsAndWait(Driver, by, second);
         }
 
         public IWebElement FindWebElementAndWait(IWebElement e, By by)
         {
-            return FindWebElementsAndWait(e, by).FirstOrDefault();
+            var find = FindWebElementsAndWait(e, by);
+            if (find == null)
+            {
+                return null;
+            }
+            else
+                return find.FirstOrDefault();
         }
-        public IList<IWebElement> FindWebElementsAndWait(IWebElement e, By by, int second = 5)
+        public IList<IWebElement> FindWebElementsAndWait(IWebElement e, By by, int second = 2)
         {
             return DriverHelper.FindWebElementsAndWait(Driver, e, by, second);
         }

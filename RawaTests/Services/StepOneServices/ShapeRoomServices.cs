@@ -7,8 +7,6 @@ using RawaTests.Lists;
 using RawaTests.Model;
 using RawaTests.Services.Base;
 using System.Collections.Generic;
-using System.Linq;
-using static RawaTests.Helpers.DriverHelper.DriverHelper;
 
 namespace RawaTests.Services
 {

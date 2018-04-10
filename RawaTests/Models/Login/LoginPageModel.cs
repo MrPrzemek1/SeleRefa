@@ -18,7 +18,7 @@ namespace RawaTests.Model
             ValidateFieldElement = validateField;
         }
 
-        public void SetLoginData()
+        public void SetCorrectLoginData()
         {
             CompanyNameInput.SendText(LoginData.CompanyName);
             LoginInput.SendText(LoginData.Login);

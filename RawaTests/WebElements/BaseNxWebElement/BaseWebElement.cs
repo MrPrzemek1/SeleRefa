@@ -1,16 +1,10 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using RawaTests.Helpers.DriverHelper;
 using RawaTests.Managers;
-using SeleniumExtras.WaitHelpers;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading;
-using static RawaTests.Helpers.DriverHelper.DriverHelper;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace RawaTests.IWebElements
@@ -18,7 +12,7 @@ namespace RawaTests.IWebElements
     public class BaseWebElement : IBaseWebElement
     {
         private IWebElement element;
-        WebDriverWait wait = new WebDriverWait(DriverManager.CreateInstance().Driver, TimeSpan.FromSeconds(2));
+        WebDriverWait wait;
         public BaseWebElement(IWebElement e)
         {
             element = e;
@@ -30,7 +24,16 @@ namespace RawaTests.IWebElements
 
         public bool Dispalyed()
         {
-            return element.Displayed;
+            bool result = true;
+            try
+            {
+                result = element.Displayed;               
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return result;
         }
 
         public string GetAttribute(string attribute)
@@ -39,6 +42,7 @@ namespace RawaTests.IWebElements
         }
         public virtual void Click()
         {
+            wait = new WebDriverWait(DriverManager.CreateInstance().Driver, TimeSpan.FromSeconds(20));
             wait.Until(ExpectedConditions.ElementToBeClickable(element)).Click();
         }
 
@@ -48,7 +52,12 @@ namespace RawaTests.IWebElements
         }
         public IWebElement FindElementAndWait(By by)
         {
-            return DriverHelper.FindWebElementAndWait(DriverManager.CreateInstance().Driver, element, by);
+            var find = DriverHelper.FindWebElementAndWait(DriverManager.CreateInstance().Driver, element, by);
+            if (find==null)
+            {
+                return null;
+            }
+            return find;
         }
 
         public T FindElementAndWait<T>(By by) where T : BaseWebElement
