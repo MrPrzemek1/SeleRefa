@@ -21,6 +21,5 @@ namespace RawaTests.Model.Home
         {
             return StartButton != null && HomePageImage.GetElementAttribute("src") != null;
         }
-        
     }
 }

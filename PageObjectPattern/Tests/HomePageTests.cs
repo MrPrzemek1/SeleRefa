@@ -11,7 +11,8 @@ namespace PageObjectPattern.Tests
     [TestFixture]
     public class HomePageTests
     {
-        HomePage homePage;
+        
+        private IWebDriver driver;
         //IWebDriver driver;
         public HomePageTests()
         {
@@ -20,19 +21,20 @@ namespace PageObjectPattern.Tests
         [SetUp]
         public void SetUp()
         {
-            Initialize();
-            PageFactory.InitElements(Driver, new HomePage(Driver));
-
+            driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Navigate().GoToUrl("http://demo.net-art.eu/konfigurator3d");
         }
         [TearDown]
         public void EndTest()
         {
-            Quit();
+            driver.Quit();
         }
         [Test]
         public void TestMethod()
         {
-            homePage.StartButton.Click();
+            HomePage homePage = new HomePage(driver);
+            homePage.ClickStartButton();
         }
     }
 }

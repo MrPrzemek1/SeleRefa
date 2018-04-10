@@ -6,40 +6,18 @@ using OpenQA.Selenium.Chrome;
 
 namespace PageObjectPattern.Pages
 {
-    public class HomePage
+    class HomePage
     {
-        //private IWebDriver driver;
+        private IWebDriver driver;
 
         [FindsBy(How = How.XPath, Using = "//button[@class='btn btn-primary btn-lg btn-start']")]
-        [CacheLookup]
-        public IWebElement StartButton { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//div[@class' col-xs-10 title']")]
-        [CacheLookup]
-        public IWebElement Header { get; set; }
-
-        [FindsBy(How = How.ClassName, Using = "img-responsive")]
-        [CacheLookup]
-        public IWebElement HomeImage { get; set; }
-
-        [FindsBy(How = How.ClassName, Using = "logo")]
-        [CacheLookup]
-        public IWebElement LogoImage { get; set; }
-
-        [FindsBy(How = How.ClassName, Using = "link-login")]
-        [CacheLookup]
-        public IWebElement LoginLink { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//div[@class=' col-xs-12 footer-wraper']")]
-        [CacheLookup]
-        public IWebElement Footer { get; set; }
+        private IWebElement StartButton { get; set; }
 
         public HomePage(IWebDriver driver)
         {
-            driver = Driver;
-            PageFactory.InitElements(Driver, this);
+            this.driver = driver;
+            PageFactory.InitElements(driver, this);
         }
-
         public void ClickStartButton()
         {
             StartButton.Click();

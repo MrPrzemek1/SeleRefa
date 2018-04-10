@@ -24,7 +24,8 @@ namespace RawaTests.Tests
         [SetUp]
         public void SetUp()
         {
-            homeServices.GetHomePageModel().LoginBtn.Click();
+            var a = homeServices.GetHomePageModel();
+            a.LoginBtn.Click();
 
         }
         [Test,Description("asdas"), Order(1)]
