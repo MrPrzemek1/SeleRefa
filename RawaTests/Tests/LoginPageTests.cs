@@ -26,7 +26,6 @@ namespace RawaTests.Tests
         {
             var a = homeServices.GetHomePageModel();
             a.LoginBtn.Click();
-
         }
         [Test,Description("asdas"), Order(1)]
         public void CorrectLogin()
@@ -38,7 +37,7 @@ namespace RawaTests.Tests
             var a = homeServices.GetHomePageModel();
             a.LogoutButton.Click();
             Manager.Driver.SwitchTo().Alert().Accept();
-            //Assert.IsFalse(a.LogoutDiv.Dispalyed());
+            Assert.IsFalse(a.LogoutDiv.Dispalyed());
         }
 
         [Test, Order(2)]
@@ -52,14 +51,14 @@ namespace RawaTests.Tests
             Manager.Driver.FindElement(By.Name("username")).SendKeys("Radosław Gierach");
             Manager.Driver.FindElement(By.Name("password")).SendKeys("MADZIAZZ");
             Manager.Driver.FindElement(By.XPath("//input[@class='btn btn-primary btn-lg btn-login']")).Click();
-            WebDriverWait wait = new WebDriverWait(Manager.Driver, TimeSpan.FromSeconds(5));
-            wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("div-logout")));
-            var b = Manager.Driver.FindElement(By.ClassName("div-logout"));
-            var c = b.FindElement(By.TagName("Button"));
-            c.Click();
-            Manager.Driver.SwitchTo().Alert().Accept();
-            wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@class='btn btn-primary btn-lg btn-start']")));
-            Assert.IsTrue(Manager.Driver.FindElement(By.ClassName("link-login")).Displayed);
+            //WebDriverWait wait = new WebDriverWait(Manager.Driver, TimeSpan.FromSeconds(5));
+            //wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("div-logout")));
+            //var b = Manager.Driver.FindElement(By.ClassName("div-logout"));
+            //var c = b.FindElement(By.TagName("Button"));
+            //c.Click();
+            //Manager.Driver.SwitchTo().Alert().Accept();
+            //wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@class='btn btn-primary btn-lg btn-start']")));
+            //Assert.IsTrue(Manager.Driver.FindElement(By.ClassName("link-login")).Displayed);
 
         }
         [Test]

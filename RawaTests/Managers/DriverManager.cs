@@ -28,7 +28,7 @@ namespace RawaTests.Managers
         {
             Instance = null;
         }
-        
+       
         public IWebDriver Driver { get; private set; }
 
         public DriverType CurrentDriverType { get; private set; }
@@ -59,34 +59,38 @@ namespace RawaTests.Managers
 
         public IWebElement FindWebElementAndWait(By by)
         {
-            var find = FindWebElementsAndWait(by);
-            if (find == null)
-            {
-                return null;
-            }
-            else
-                return find.FirstOrDefault();
+           return DriverHelper.FindWebElementAndWait(Driver,by);
         }
-        public IList<IWebElement> FindWebElementsAndWait(By by, int second = 2)
+        public IList<IWebElement> FindWebElementsAndWait(By by)
         {
-            return DriverHelper.FindWebElementsAndWait(Driver, by, second);
+            return DriverHelper.FindWebElementsAndWait(Driver, by);
+        }
+
+        public IWebElement FindWebElementWithoutWait(By by)
+        {
+            return DriverHelper.FindWebElementWithoutWait(Driver, by);
+        }
+        public IList<IWebElement> FindWebElementsWithoutWait(By by)
+        {
+            return DriverHelper.FindWebElementsWithoutWait(Driver, by);
         }
 
         public IWebElement FindWebElementAndWait(IWebElement e, By by)
         {
-            var find = FindWebElementsAndWait(e, by);
-            if (find == null)
-            {
-                return null;
-            }
-            else
-                return find.FirstOrDefault();
+            return DriverHelper.FindWebElementAndWait(Driver, e, by);
         }
-        public IList<IWebElement> FindWebElementsAndWait(IWebElement e, By by, int second = 2)
+        public IList<IWebElement> FindWebElementsAndWait(IWebElement e, By by)
         {
-            return DriverHelper.FindWebElementsAndWait(Driver, e, by, second);
+            return DriverHelper.FindWebElementsAndWait(Driver, e, by);
         }
-
+        public IList<IWebElement> FindWebElementsWithoutWait(IWebElement e, By by)
+        {
+            return DriverHelper.FindWebElementsWithoutWait(e, by);
+        }
+        public void Wait(By by)
+        {
+            DriverHelper.Wait(Driver, by);
+        }
         private void Initialize()
         {
             Goto("konfigurator3d");

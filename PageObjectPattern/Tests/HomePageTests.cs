@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.PageObjects;
 using PageObjectPattern.Pages;
 using static PageObjectPattern.DriverHelper;
@@ -8,7 +9,7 @@ using PageFactory = SeleniumExtras.PageObjects.PageFactory;
 
 namespace PageObjectPattern.Tests
 {
-    [TestFixture]
+    [TestFixture]   
     public class HomePageTests
     {
         
@@ -21,7 +22,7 @@ namespace PageObjectPattern.Tests
         [SetUp]
         public void SetUp()
         {
-            driver = new ChromeDriver();
+            driver = new FirefoxDriver();
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("http://demo.net-art.eu/konfigurator3d");
         }

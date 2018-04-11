@@ -9,57 +9,129 @@ namespace RawaTests.Helpers.DriverHelper
 {
     public static class DriverHelper
     {
-        public static IList<IWebElement> FindWebElementsAndWait(IWebDriver Driver, By by, int second = 2)
+        private const int TIME = 50;
+        /// <summary>
+        /// Metoda wyszukująca na stronie listy IWebElementów z możliwościa ustawienia czasu oczekiwania na ich pojawienie się.
+        /// </summary>
+        /// <param name="driver">sterownik przeglądarki</param>
+        /// <param name="by">lokator szukanego elementu</param>
+        /// <param name="milliseconds">czas oczekiwania na pojawienie sie elementu</param>
+        /// <returns></returns>
+        public static IList<IWebElement> FindWebElementsAndWait(IWebDriver driver, By by, int milliseconds = TIME)
         {
-            IList<IWebElement> result = new List<IWebElement>();
-            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(second));
-            try
-            {
-                result = wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(by));
-                result = Driver.FindElements(by);
-            }
-            catch (Exception)
-            {
-                result = null;
-            }
-            return result;
+            return Wait(driver, by, milliseconds);
         }
-
-        public static IList<IWebElement> FindWebElementsAndWait(IWebDriver Driver, IWebElement element, By by, int second = 2)
+        public static IWebElement FindWebElementAndWait(IWebDriver driver, By by)
         {
-            IList<IWebElement> result = new List<IWebElement>();
-            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(second));
-            try
-            {
-                result = wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(by));
-                result = element.FindElements(by);
-            }
-            catch (Exception)
-            {
-                result = null;
-            }
-            return result;
-        }
-
-
-        public static IWebElement FindWebElementAndWait(IWebDriver driver, By by, int second = 5)
-        {
-            var find = FindWebElementsAndWait(driver, by, second);
-            if (find == null)
-            {
-                return null;
-            }          
-                return find.FirstOrDefault();
-        }
-
-        public static IWebElement FindWebElementAndWait(IWebDriver driver, IWebElement element, By by, int second = 5)
-        {
-            var find = FindWebElementsAndWait(driver, element, by, second);
+            var find = FindWebElementsAndWait(driver, by);
             if (find == null)
             {
                 return null;
             }
             return find.FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Metoda wyszukująca listy IWebElementów w kontekście całej strony bez oczekiwania.
+        /// </summary>
+        /// <param name="Driver">Sterownik przeglądarki</param>
+        /// <param name="by">lokator szukanego elementu</param>
+        /// <returns></returns>
+        public static IList<IWebElement> FindWebElementsWithoutWait(IWebDriver Driver, By by)
+        {
+            try
+            {               
+                return Driver.FindElements(by);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public static IWebElement FindWebElementWithoutWait(IWebDriver driver, By by)
+        {
+            var find = FindWebElementsWithoutWait(driver, by);
+            if (find == null)
+            {
+                return null;
+            }
+            return find.FirstOrDefault();
+        }
+        /// <summary>
+        /// Metoda która wyszukuje listę IWebElementów w kontekście innego elementu na stronie z oczekiewaniem na jego pojawienie sie
+        /// </summary>
+        /// <param name="Driver">Sterownik przeglądarki</param>
+        /// <param name="element">element w kontekscie ktorego szukamy</param>
+        /// <param name="by">lokator szukanego elementu</param>
+        /// <param name="milliseconds">czas oczekiwania na pojawienie się elementu</param>
+        /// <returns></returns>
+        public static IList<IWebElement> FindWebElementsAndWait(IWebDriver Driver, IWebElement element, By by, int milliseconds = TIME)
+        {
+            try
+            {
+                Wait(Driver, by, milliseconds);
+                return element.FindElements(by);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public static IWebElement FindWebElementAndWait(IWebDriver driver, IWebElement element, By by, int millisecond = TIME)
+        {
+            var find = FindWebElementsAndWait(driver, element, by, millisecond);
+            if (find == null)
+            {
+                return null;
+            }
+            return find.FirstOrDefault();
+        }
+        /// <summary>
+        /// Metoda która szuka listy IWebElementów w kontekcie IWebElementu bez czekania na jego pojawienie się.
+        /// </summary>
+        /// <param name="element">element w kontekscie ktorego szukamy</param>
+        /// <param name="by">loktor elementu ktorego szukamy</param>
+        /// <returns></returns>
+        public static IList<IWebElement> FindWebElementsWithoutWait(IWebElement element, By by)
+        {
+            try
+            {
+                return element.FindElements(by);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public static IWebElement FindWebElementWithoutWait(IWebElement element, By by)
+        {
+            var find = FindWebElementsWithoutWait(element, by);
+            if (find == null)
+            {
+                return null;
+            }
+            return find.FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Metoda czekająca aż dana lista elementów na stronie pojawi się i zwracająca listę tych elementów.
+        /// </summary>
+        /// <param name="driver">sterownik przeglądarki</param>
+        /// <param name="by">lokator szukanego elementu</param>
+        /// <param name="millisecond">czas oczekiwania na pojawienie sie elementu</param>
+        /// <returns>Liste IWebElementów</returns>
+        public static IList<IWebElement> Wait(IWebDriver driver , By by, int millisecond = TIME)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(millisecond));
+            try
+            {
+                return wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(by));               
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
     }
 }
