@@ -6,6 +6,7 @@ using System.Threading;
 using RawaTests.Model.StepTwo;
 using RawaTests.Services.StepTwoServices;
 using RawaTests.Lists;
+using System;
 
 namespace RawaTests.Tests
 {
@@ -13,38 +14,40 @@ namespace RawaTests.Tests
     class TestsStepOne : BaseTest
     {
         private HomePageServices homePage;
-        private GroupOptionServices optionServices;
         private DimensionServices dimSrv;
-
+        private ShapeRoomServices shapeServices;
         public TestsStepOne()
         {
             homePage = new HomePageServices();
             dimSrv = new DimensionServices();
-
-            optionServices = new GroupOptionServices();
+            shapeServices = new ShapeRoomServices();
         }
-        /// <summary>
-        /// Test sprawdzajacy czy po kilknieciu w kształt pomieszczenia jego klasa zmienia sie na active
-        /// </summary>
-        [Test,Order(1)]
+        [SetUp]
+        public void SetUpStepOneTests()
+        {
+            homePage.GetHomePageModel().StartButton.Click();
+            
+        }
+        [Test,Category("StepOne"),Order(1)]
         public void VerifyClickedElementChangeClass()
         {
-           
+            ShapeRoomPageModel shapes = shapeServices.GetShapes();
+            Assert.IsTrue(shapes.ClickingOnTheShapes());
         }
 
-        [Test,Description("Test")]
+        [Test,Category("StepOne"), Order(2)]
         public void VerifyingModelRoomSizeAfterChangingDimension()
         {
 
 
         }
-        [Test,Description("Test 2")]
+        [Test, Category("StepOne"), Order(3)]
         public void VerifingyModelChangeAfterClickingOnShape_Positive()
         {
             
             
         }
-        [Test]
+        [Test, Category("StepOne"), Order(4)]
         public void VerifingyModelChangeAfterClickingOnShape_Negative()
         {
         }

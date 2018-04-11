@@ -21,8 +21,35 @@ namespace RawaTests.Lists
         }
         public void ClickShapeById(string id)
         {
-             Shapes.Where(e => e.ShapeOfRoom.GetElementAttribute("shape-id") == id).FirstOrDefault().ShapeOfRoom.Click();
-             
+             Shapes.Where(e => e.ShapeOfRoom.GetElementAttribute("shape-id") == id).FirstOrDefault().ShapeOfRoom.Click();            
+        }
+        public string GetAttribute(int i)
+        {
+            return Shapes[i].ShapeOfRoom.GetAttribute("class");
+        }
+        /// <summary>
+        /// Metoda sprawdzająca czy po kilknięciu w miniaturke pomieszczenia jej klasa zmienia się na active
+        /// </summary>
+        /// <returns></returns>
+        public bool ClickingOnTheShapes()
+        {
+            string[] shapesArray = new String[] { "23", "25", "26", "27", "28", "30" };
+            List<bool> ClassChanged = new List<bool>();
+            for (int i = 0; i < shapesArray.Length; i++)
+            {
+                ClickShapeById(shapesArray[i]);
+                if (GetAttribute(i).Equals("active"))
+                {
+                    ClassChanged.Add(true);
+                }
+                else
+                    ClassChanged.Add(false);
+            }
+            if (ClassChanged.All(e=>e==true))
+            {
+                return true;
+            }
+            return false;            
         }
     }
 }

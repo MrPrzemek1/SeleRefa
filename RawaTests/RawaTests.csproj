@@ -60,12 +60,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\WebElementExtension.cs" />
-    <Compile Include="Helpers\AlertHelper.cs" />
     <Compile Include="Helpers\ButtonHelper.cs" />
     <Compile Include="Helpers\DriverHelper.cs" />
-    <Compile Include="Helpers\WebElementHelper.cs" />
     <Compile Include="HtmlStrings\ConstStrings\FooterAndHeader.cs" />
-    <Compile Include="HtmlStrings\ConstStrings\HTMLConsts.cs" />
     <Compile Include="HtmlStrings\ConstStrings\StaticButtons.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\HomePageElementsLocators.cs" />
     <Compile Include="HtmlStrings\ConstStrings\LoginData.cs" />
