@@ -78,7 +78,6 @@
     <Compile Include="Managers\DriverManager.cs" />
     <Compile Include="Models\StepOne\FullStepOneModel\StepOneFacade.cs" />
     <Compile Include="Models\StepOne\Room3D\Room3DViewPageModel.cs" />
-    <Compile Include="Models\StepOne\FullStepOneModel\StepOneServices.cs" />
     <Compile Include="Models\StepTwo\Groups\GroupOptionModel.cs" />
     <Compile Include="Models\StepTwo\Groups\GroupOptionPageModel.cs" />
     <Compile Include="Services\StepTwoServices\GroupOptionServices.cs" />

@@ -16,16 +16,12 @@ namespace RawaTests.Services
         public Room3DViewPageModel Get3DModel()
         {
             var model = new NxImage(Manager.FindWebElementAndWait(By.ClassName(ImageRoomElementsLocators.Room3DViewClass)));
-            //var dim = new List<IWebElement>(Manager.FindWebElementsAndWait(model, By.ClassName(ImageRoomElementsLocators.Room3DDimenision)));
             var dim = model.FindElementsAndWait<NxLabels>(By.ClassName(ImageRoomElementsLocators.Room3DDimenision));
-
-            IWebElement dimE = model.FindElementAndWait(By.ClassName(ImageRoomElementsLocators.Room3DDimenision));
-            NxLabels eeee = new NxLabels(dimE);
-
 
             Room3DViewPageModel result = new Room3DViewPageModel();
 
             result.RoomImage = model != null ? model : model = null;
+
             for (int i = 0; i < dim.Count; i++)
             {
                 result.Room3D.Add(new Room3DViewModel

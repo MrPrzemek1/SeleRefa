@@ -21,9 +21,8 @@ namespace RawaTests.Services
         public HomePageModel GetHomePageModel()
         {
             System.Console.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff"));
-            Manager.Wait(By.XPath(HomePageElementsLocators.ButtonStart));
 
-            var startButton = new NxButton(Manager.FindWebElementWithoutWait(By.XPath(HomePageElementsLocators.ButtonStart)));
+            var startButton = new NxButton(Manager.FindWebElementAndWait(By.XPath(HomePageElementsLocators.ButtonStart)));
             var homePageImage = new NxImage(Manager.FindWebElementWithoutWait(By.ClassName(HomePageElementsLocators.HomePageImage)));
             var logoImage = new NxImage(Manager.FindWebElementWithoutWait(By.XPath(HomePageElementsLocators.HomePageLogo)));
             var footer = new NxLabels(Manager.FindWebElementWithoutWait(By.XPath(HomePageElementsLocators.Footer)));
@@ -33,7 +32,7 @@ namespace RawaTests.Services
             var logoutButton = logoutDiv.FindElementAndWait<NxButton>(By.TagName(HomePageElementsLocators.LogoutButton));
             System.Console.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff"));
 
-            HomePageModel homeModel = new HomePageModel(startButton, homePageImage, logoImage, footer, loginButton, header, logoutDiv, logoutButton); //startButton, homePageImage, logoImage, footer, header, logoutDiv, logoutButton
+            HomePageModel homeModel = new HomePageModel(startButton, homePageImage, logoImage, footer, loginButton, header, logoutDiv, logoutButton);
 
             return homeModel;
         }

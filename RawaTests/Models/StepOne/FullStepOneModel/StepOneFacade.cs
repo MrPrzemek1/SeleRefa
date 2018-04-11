@@ -31,7 +31,7 @@ namespace RawaTests.Model.StepTwo
         {
             return this.Dimensions.GetDimensions();
         }
-        public Room3DViewPageModel GetRoomDimension()
+        public Room3DViewPageModel GetRoom3DModel()
         {
             return this.RoomView.Get3DModel();
         }

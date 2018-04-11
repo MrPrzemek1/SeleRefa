@@ -42,7 +42,7 @@ namespace RawaTests.IWebElements
         }
         public virtual void Click()
         {
-            wait = new WebDriverWait(DriverManager.CreateInstance().Driver, TimeSpan.FromSeconds(20));
+            wait = new WebDriverWait(DriverManager.CreateInstance().Driver, TimeSpan.FromSeconds(5));
             wait.Until(ExpectedConditions.ElementToBeClickable(element)).Click();
         }
 

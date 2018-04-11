@@ -19,5 +19,13 @@ namespace RawaTests.Extensions
         {
             return DriverHelper.FindWebElementsAndWait(DriverManager.CreateInstance().Driver, by);
         }
+        public static IWebElement FindElementWithoutWait(this IWebElement e, By by)
+        {
+            return DriverHelper.FindWebElementWithoutWait(e,by);
+        }
+        public static IList<IWebElement> FindElementsWithoutWait(this IWebElement e, By by)
+        {
+            return DriverHelper.FindWebElementsWithoutWait(e, by);
+        }
     }
 }

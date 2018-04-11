@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace RawaTests.IWebElements
 {
-    public interface INxImage
+    public interface INxImage : IBaseWebElement
     {
         string GetElementAttribute(string atributte);
-        void Click();
     }
 }

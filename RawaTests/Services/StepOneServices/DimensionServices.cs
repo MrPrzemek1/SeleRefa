@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.Extensions;
 using RawaTests.Helpers;
+using RawaTests.Helpers.DriverHelper;
 using RawaTests.IWebElements.TextElements;
 using RawaTests.Model.Base.Buttons;
 using RawaTests.Services.Base;
@@ -23,11 +24,12 @@ namespace RawaTests.StepOne
             var elementsList = Manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.ListOfDimension));
             foreach (var element in elementsList)
             {
-                var labelWE = element.FindWebElementAndWait(By.ClassName(DimensionElementsLocators.DescriptionFieldClass));
-                var btnPlusWE = element.FindWebElementAndWait(By.ClassName(DimensionElementsLocators.PlusSignClass));
-                var btnMinusWE = element.FindWebElementAndWait(By.ClassName(DimensionElementsLocators.MinusSignClass));
-                var inputWE = element.FindWebElementAndWait(By.ClassName(DimensionElementsLocators.InputFieldClass));
-                if (labelWE.GetAttribute("class").Equals(DimensionElementsLocators.DescriptionFieldClass))
+                var labelWE = element.FindElementWithoutWait(By.ClassName(DimensionElementsLocators.DescriptionFieldClass));
+                var btnPlusWE = element.FindElementWithoutWait(By.ClassName(DimensionElementsLocators.PlusSignClass));
+                var btnMinusWE = element.FindElementWithoutWait(By.ClassName(DimensionElementsLocators.MinusSignClass));
+                var inputWE = element.FindElementWithoutWait(By.ClassName(DimensionElementsLocators.InputFieldClass));
+
+                if (labelWE != null)
                 {
                     result.Elements.Add(new DimensionModel
                     {

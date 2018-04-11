@@ -61,5 +61,9 @@ namespace RawaTests.Model
         {
             return LoginInput != null;
         }
+        public void ClearLoginInput()
+        {
+            LoginInput.Clear();
+        }
     }
 }

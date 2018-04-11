@@ -56,16 +56,26 @@ namespace RawaTests.Managers
                     throw new NotImplementedException("I do not know the driver that you supplied.");
             }
         }
-
+        #region Wyszukiwanie i czekanie na elementy.
         public IWebElement FindWebElementAndWait(By by)
         {
-           return DriverHelper.FindWebElementAndWait(Driver,by);
+            return DriverHelper.FindWebElementAndWait(Driver, by);
         }
         public IList<IWebElement> FindWebElementsAndWait(By by)
         {
             return DriverHelper.FindWebElementsAndWait(Driver, by);
         }
+        public IList<IWebElement> FindWebElementsAndWait(IWebElement e, By by)
+        {
+            return DriverHelper.FindWebElementsAndWait(Driver, e, by);
+        }
+        public IWebElement FindWebElementAndWait(IWebElement e, By by)
+        {
+            return DriverHelper.FindWebElementAndWait(Driver, e, by);
+        }
+        #endregion
 
+        #region Wyszukiwanie elementów bez czekania na nie
         public IWebElement FindWebElementWithoutWait(By by)
         {
             return DriverHelper.FindWebElementWithoutWait(Driver, by);
@@ -74,19 +84,12 @@ namespace RawaTests.Managers
         {
             return DriverHelper.FindWebElementsWithoutWait(Driver, by);
         }
-
-        public IWebElement FindWebElementAndWait(IWebElement e, By by)
-        {
-            return DriverHelper.FindWebElementAndWait(Driver, e, by);
-        }
-        public IList<IWebElement> FindWebElementsAndWait(IWebElement e, By by)
-        {
-            return DriverHelper.FindWebElementsAndWait(Driver, e, by);
-        }
         public IList<IWebElement> FindWebElementsWithoutWait(IWebElement e, By by)
         {
             return DriverHelper.FindWebElementsWithoutWait(e, by);
         }
+        #endregion
+
         public void Wait(By by)
         {
             DriverHelper.Wait(Driver, by);

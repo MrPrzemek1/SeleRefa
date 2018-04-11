@@ -20,6 +20,11 @@ namespace RawaTests.StepOne
         {
             Elements = new List<DimensionModel>();
         }
+        /// <summary>
+        /// Metoda wybierające pola do edycji wymiarów obrazka przy pomocy opisu ściany np: "A"
+        /// </summary>
+        /// <param name="desc">Litera opisująca ścianę</param>
+        /// <returns></returns>
         public DimensionModel GetFieldByDescription(string desc)
         {
             return Elements.Where(e => e.Description.Text.Equals(desc)).FirstOrDefault();

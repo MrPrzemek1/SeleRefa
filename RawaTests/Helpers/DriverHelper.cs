@@ -9,7 +9,7 @@ namespace RawaTests.Helpers.DriverHelper
 {
     public static class DriverHelper
     {
-        private const int TIME = 50;
+        private const int TIME = 2000;
         /// <summary>
         /// Metoda wyszukująca na stronie listy IWebElementów z możliwościa ustawienia czasu oczekiwania na ich pojawienie się.
         /// </summary>
@@ -124,6 +124,8 @@ namespace RawaTests.Helpers.DriverHelper
         public static IList<IWebElement> Wait(IWebDriver driver , By by, int millisecond = TIME)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(millisecond));
+            wait.PollingInterval = TimeSpan.FromMilliseconds(50);
+
             try
             {
                 return wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(by));               

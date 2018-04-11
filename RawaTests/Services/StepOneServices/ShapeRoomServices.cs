@@ -18,8 +18,8 @@ namespace RawaTests.Services
         }
         public ShapeRoomPageModel GetShapes()
         {
-            var shape_id = new List<IWebElement>(Manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.Shapeid)));
-            var header = new NxLabels(Manager.FindWebElementAndWait(By.XPath(ShapeElementsLocators.ShapeHeader)));
+            var shape_id = Manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.Shapeid));
+            var header = new NxLabels(Manager.FindWebElementWithoutWait(By.XPath(ShapeElementsLocators.ShapeHeader)));
 
             ShapeRoomPageModel listOfShapes = new ShapeRoomPageModel();
             listOfShapes.Header = header ?? (header = null);
@@ -36,26 +36,5 @@ namespace RawaTests.Services
             
             return listOfShapes;
         }
-
-        /// <summary>
-        /// Metoda wybierająca jeden z kształtów pomieszczeń
-        /// </summary>
-        /// <param name="id">id pomieszczenia ktore chcemy wybrac</param>
-        /// <returns></returns>
-        //public ShapeRoomModel GetShapeByID(string id)
-        //{
-        //    var usedShape = GetShapes();
-        //    return usedShape.Shapes.Where(e => e.Id == id).FirstOrDefault();
-        //}
-        /// <summary>
-        /// Metoda zwracająca wybrany atrybut HTML
-        /// </summary>
-        /// <param name="attributeName">nazwa atrybutu html ktory chcemy pobrac</param>
-        /// <param name="room">Aktywny kształt pomieszczenia</param>
-        /// <returns></returns>
-        //public string GetUsedShapeAttribute(string attributeName,ShapeRoomModel room)
-        //{
-        //    return room.ShapeOfRoom.GetAttribute(attributeName);
-        //}
     }
 }

@@ -23,9 +23,9 @@ namespace RawaTests.Services
         {
             System.Console.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff"));
 
-            var CompanyName =new NxInput(Manager.FindWebElementAndWait(By.XPath(LoginPageElementsLocators.CompanyInput)));
-            var Login = new NxInput(Manager.FindWebElementWithoutWait(By.XPath(LoginPageElementsLocators.LoginInput)));
-            var Password = new NxInput(Manager.FindWebElementWithoutWait(By.XPath(LoginPageElementsLocators.PasswordInput)));
+            var CompanyName =new NxInput(Manager.FindWebElementAndWait(By.Name(LoginPageElementsLocators.CompanyInput)));
+            var Login = new NxInput(Manager.FindWebElementWithoutWait(By.Name(LoginPageElementsLocators.LoginInput)));
+            var Password = new NxInput(Manager.FindWebElementWithoutWait(By.Name(LoginPageElementsLocators.PasswordInput)));
             var SubmitButton = new NxButton(Manager.FindWebElementWithoutWait(By.XPath(LoginPageElementsLocators.submitLogin)));
             var ValidateField = new NxLabels(Manager.FindWebElementWithoutWait(By.XPath(LoginPageElementsLocators.ValidateField)));
 

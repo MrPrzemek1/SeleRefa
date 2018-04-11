@@ -7,10 +7,13 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
+using RawaTests.Model.Home;
+using RawaTests.Model.StepTwo;
+using RawaTests.StepOne;
 
 namespace RawaTests.Tests
 {
-    [TestFixture(Category ="LoginPageTests")]
+    [TestFixture(Category = "LoginPageTests")]
     public class LoginPageTests : BaseTest
     {
         LoginPageServices loginServices;
@@ -21,55 +24,71 @@ namespace RawaTests.Tests
             loginServices = new LoginPageServices();
             homeServices = new HomePageServices();
         }
-        [SetUp]
-        public void SetUp()
+        [OneTimeSetUp] 
+        public void SetUpLoginPageTests()
         {
-            var a = homeServices.GetHomePageModel();
-            a.LoginBtn.Click();
+            homeServices.GetHomePageModel().LoginBtn.Click();
         }
-        [Test,Description("asdas"), Order(1)]
+        [Test,Category("LoginPage"), Order(1)]
         public void CorrectLogin()
         {
             LoginPageModel loginPage = loginServices.GetLoginPageModel();
             loginPage.SetCorrectLoginData();
             loginPage.SubmitButton.Click();
-            Assert.IsTrue(homeServices.GetHomePageModel().LogoutDiv.Contains(ValidateTextsHelper.LoginText));
-            var a = homeServices.GetHomePageModel();
-            a.LogoutButton.Click();
+            HomePageModel homePageAfterLogin = homeServices.GetHomePageModel();
+            Assert.IsTrue(homePageAfterLogin.LogoutDiv.Dispalyed());
+            Assert.IsTrue(homePageAfterLogin.LogoutDiv.Text.Equals(ValidateTextsHelper.CorrectLoginText));
+        }
+
+        [Test,Category("LoginPage"), Order(2)]
+        public void VerifyingValidateTextWhenCompanyNameIsEmpty()
+        {
+            homeServices.GetHomePageModel().LogoutButton.Click();
             Manager.Driver.SwitchTo().Alert().Accept();
-            Assert.IsFalse(a.LogoutDiv.Dispalyed());
-        }
+            homeServices.GetHomePageModel().LoginBtn.Click();
 
-        [Test, Order(2)]
-        public void VerifyingCompanyValidateTexts()
-        {
-            Manager.Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
-            var a = Manager.Driver.FindElement(By.XPath("//div[@class='col-xs-12 div-login']"));
-            var dd = a.FindElement(By.ClassName("link-login"));
-            dd.Click();
-            Manager.Driver.FindElement(By.Name("company")).SendKeys("rmg");
-            Manager.Driver.FindElement(By.Name("username")).SendKeys("Radosław Gierach");
-            Manager.Driver.FindElement(By.Name("password")).SendKeys("MADZIAZZ");
-            Manager.Driver.FindElement(By.XPath("//input[@class='btn btn-primary btn-lg btn-login']")).Click();
-            //WebDriverWait wait = new WebDriverWait(Manager.Driver, TimeSpan.FromSeconds(5));
-            //wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("div-logout")));
-            //var b = Manager.Driver.FindElement(By.ClassName("div-logout"));
-            //var c = b.FindElement(By.TagName("Button"));
-            //c.Click();
-            //Manager.Driver.SwitchTo().Alert().Accept();
-            //wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//button[@class='btn btn-primary btn-lg btn-start']")));
-            //Assert.IsTrue(Manager.Driver.FindElement(By.ClassName("link-login")).Displayed);
-
+            LoginPageModel loginPage = loginServices.GetLoginPageModel();
+            loginPage.LoginInput.SendText("Test");
+            loginPage.PasswordInput.SendText("test");
+            loginPage.SubmitButton.Click();
+            LoginPageModel loginAfterSubmit = loginServices.GetLoginPageModel();
+            Assert.IsTrue(loginAfterSubmit.ValidateFieldIsDisplayed);
+            Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.CompanyValidateText));
         }
-        [Test]
-        public void VerifingValidateTextWhenAllLoginDataFieldAreEmpty()
+        [Test, Category("LoginPage"), Order(3)]
+        public void VerifingValidateTextWhenUserNameIsEmpty()
         {
-            
+            Manager.Driver.Navigate().Refresh();
+            homeServices.GetHomePageModel().LoginBtn.Click();
+            LoginPageModel loginPage = loginServices.GetLoginPageModel();
+            loginPage.CompanyNameInput.SendText("lalala");
+            loginPage.PasswordInput.SendText("lalala");
+            loginPage.SubmitButton.Click();
+            LoginPageModel loginAfterSubmit = loginServices.GetLoginPageModel();
+            Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.LoginValidateText));
         }
-        [Test]
-        public void VerifyWrongLoginDataValidationText()
+        [Test, Category("LoginPage"), Order(4)]
+        public void VerifingValidateTextPasswordFieldIsEmpty()
         {
-            
+            Manager.Driver.Navigate().Refresh();
+            homeServices.GetHomePageModel().LoginBtn.Click();
+            LoginPageModel loginPage = loginServices.GetLoginPageModel();
+            loginPage.CompanyNameInput.SendText("lalala");
+            loginPage.LoginInput.SendText("lalala");
+            loginPage.SubmitButton.Click();
+            LoginPageModel loginAfterSubmit = loginServices.GetLoginPageModel();
+            Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.PasswordValidateText));
+        }
+        [Test, Category("LoginPage"), Order(5)]
+        public void VerifingValidateTextWhenLoginDataWasIncorrect()
+        {
+            Manager.Driver.Navigate().Refresh();
+            homeServices.GetHomePageModel().LoginBtn.Click();
+            LoginPageModel loginPage = loginServices.GetLoginPageModel();
+            loginPage.SetLoginData("Test","Test","Test");
+            loginPage.SubmitButton.Click();
+            LoginPageModel loginAfterSubmit = loginServices.GetLoginPageModel();
+            Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.ErrorValidateText));
         }
     }
 }

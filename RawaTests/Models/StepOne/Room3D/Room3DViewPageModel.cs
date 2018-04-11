@@ -16,11 +16,15 @@ namespace RawaTests.Model.Room3D
     {
         public NxImage RoomImage { get; set; }
         public IList<Room3DViewModel> Room3D { get; set; }
+
         public Room3DViewPageModel()
         {
             Room3D = new List<Room3DViewModel>();
         }
-
+        /// <summary>
+        /// Metoda zwracająca tablicę z atrybutami "style" które odzwierciedlają wielkość obrazka.
+        /// </summary>
+        /// <returns></returns>
         public string[] GetRoomDimension()
         {
             return Room3D.Select(e => e.Room3DDimension.GetAttribute("style")).ToArray();
