@@ -1,7 +1,7 @@
 ﻿using RawaTests.Model.Base.Buttons;
 using RawaTests.IWebElements;
 using RawaTests.WebElements.TextElements;
-
+using RawaTests.HtmlStrings.ConstStrings;
 namespace RawaTests.Model.Home
 {
     class HomePageModel : HomeModel
@@ -19,7 +19,7 @@ namespace RawaTests.Model.Home
         }
         public override bool IsValid()
         {
-            return StartButton != null && HomePageImage.GetElementAttribute("src") != null;
+            return StartButton.Dispalyed() && HomePageImage.GetElementAttribute("src") != null && Footer.Text.Equals(FooterAndHeader.FOOTER) && Header.Text.Equals(FooterAndHeader.HEADER);
         }
     }
 }

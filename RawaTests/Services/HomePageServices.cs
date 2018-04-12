@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using static RawaTests.Helpers.WebElementHelper;
 using RawaTests.Model.Home;
 using RawaTests.Services.Base;
 using RawaTests.Model.Base.Buttons;
@@ -17,7 +16,10 @@ namespace RawaTests.Services
         {
 
         }
-
+        /// <summary>
+        /// Metoda budująca model strony głównej.
+        /// </summary>
+        /// <returns></returns>
         public HomePageModel GetHomePageModel()
         {
             System.Console.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff"));

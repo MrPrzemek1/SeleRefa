@@ -30,7 +30,7 @@ namespace RawaTests.Lists
         /// <summary>
         /// Metoda sprawdzająca czy po kilknięciu w miniaturke pomieszczenia jej klasa zmienia się na active
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Zwraca true jezeli dla wszystkich elementow klasa zmieniła się na odpowiednią</returns>
         public bool ClickingOnTheShapes()
         {
             string[] shapesArray = new String[] { "23", "25", "26", "27", "28", "30" };

@@ -80,6 +80,10 @@ namespace RawaTests.Managers
         {
             return DriverHelper.FindWebElementWithoutWait(Driver, by);
         }
+        public IWebElement FindWebElementWithoutWait(IWebElement e, By by)
+        {
+            return DriverHelper.FindWebElementWithoutWait(e, by);
+        }
         public IList<IWebElement> FindWebElementsWithoutWait(By by)
         {
             return DriverHelper.FindWebElementsWithoutWait(Driver, by);

@@ -77,7 +77,14 @@
     <Compile Include="Models\StepOne\Room3D\Room3DViewPageModel.cs" />
     <Compile Include="Models\StepTwo\Groups\GroupOptionModel.cs" />
     <Compile Include="Models\StepTwo\Groups\GroupOptionPageModel.cs" />
+    <Compile Include="Models\StepTwo\PanelElement\PanelElementColorModel.cs" />
+    <Compile Include="Models\StepTwo\PanelElement\PanelElementDoorModel.cs" />
+    <Compile Include="Services\StepTwoServices\Colors\PanelListColorService.cs" />
     <Compile Include="Services\StepTwoServices\GroupOptionServices.cs" />
+    <Compile Include="Models\StepTwo\PanelElement\PanelListDoorModel.cs" />
+    <Compile Include="Services\StepTwoServices\PanelListDoorServices.cs" />
+    <Compile Include="Tests\AllTests.cs" />
+    <Compile Include="Tests\StepOneTests.cs" />
     <Compile Include="WebElements\BaseNxWebElement\BaseWebElement.cs" />
     <Compile Include="WebElements\BaseNxWebElement\IBaseWebElement.cs" />
     <Compile Include="WebElements\Images\INxImage.cs" />
@@ -106,10 +113,9 @@
     <Compile Include="Services\LoginPageServices.cs" />
     <Compile Include="Services\StepOneServices\Room3DServices.cs" />
     <Compile Include="Services\StepOneServices\ShapeRoomServices.cs" />
-    <Compile Include="Tests\Base\BaseTest.cs" />
+    <Compile Include="Tests\BaseTest.cs" />
     <Compile Include="Tests\HomePageTests.cs" />
     <Compile Include="Tests\LoginPageTests.cs" />
-    <Compile Include="Tests\TestsStepOne.cs" />
     <Compile Include="HtmlStrings\ConstStrings\ValidateTextsHelper.cs" />
   </ItemGroup>
   <ItemGroup>

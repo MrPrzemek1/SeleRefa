@@ -1,32 +1,25 @@
 ﻿using NUnit.Framework;
 using RawaTests.Managers;
-using static RawaTests.Helpers.DriverHelper.DriverHelper;
 
-namespace RawaTests.Tests.Base
+namespace RawaTests.Tests
 {
-    [SetUpFixture]
+    [SetUpFixture,Category("Rawa"),]
     public abstract class BaseTest
     {
         protected DriverManager Manager { get; set; }
 
         public BaseTest()
-        {
-            
+        {           
         }
-        //public abstract void Init();
-
-        //public abstract void End();
         [OneTimeSetUp]
-        public void TestInizialize()
+        public virtual void TestInizialize()
         {
             Manager = DriverManager.CreateInstance();
         }
         [OneTimeTearDown]
-        public void EndTest()
+        public virtual void EndTest()
         {
-            
             Manager.Quit();
         }
-        
     }
 }

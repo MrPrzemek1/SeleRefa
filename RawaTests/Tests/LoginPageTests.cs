@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using RawaTests.Services;
 using RawaTests.ValidateMessages;
-using RawaTests.Tests.Base;
+using RawaTests.Tests;
 using RawaTests.Model;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -13,7 +13,7 @@ using RawaTests.StepOne;
 
 namespace RawaTests.Tests
 {
-    [TestFixture(Category = "LoginPageTests")]
+    [TestFixture,Category("Rawa")]
     public class LoginPageTests : BaseTest
     {
         LoginPageServices loginServices;
@@ -24,14 +24,12 @@ namespace RawaTests.Tests
             loginServices = new LoginPageServices();
             homeServices = new HomePageServices();
         }
-        [OneTimeSetUp] 
-        public void SetUpLoginPageTests()
-        {
-            homeServices.GetHomePageModel().LoginBtn.Click();
-        }
-        [Test,Category("LoginPage"), Order(1)]
+
+        [Test, Order(1)]
         public void CorrectLogin()
         {
+            homeServices.GetHomePageModel().LoginBtn.Click();
+
             LoginPageModel loginPage = loginServices.GetLoginPageModel();
             loginPage.SetCorrectLoginData();
             loginPage.SubmitButton.Click();
@@ -40,7 +38,7 @@ namespace RawaTests.Tests
             Assert.IsTrue(homePageAfterLogin.LogoutDiv.Text.Equals(ValidateTextsHelper.CorrectLoginText));
         }
 
-        [Test,Category("LoginPage"), Order(2)]
+        [Test, Order(2)]
         public void VerifyingValidateTextWhenCompanyNameIsEmpty()
         {
             homeServices.GetHomePageModel().LogoutButton.Click();
@@ -55,7 +53,7 @@ namespace RawaTests.Tests
             Assert.IsTrue(loginAfterSubmit.ValidateFieldIsDisplayed);
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.CompanyValidateText));
         }
-        [Test, Category("LoginPage"), Order(3)]
+        [Test, Order(3)]
         public void VerifingValidateTextWhenUserNameIsEmpty()
         {
             Manager.Driver.Navigate().Refresh();
@@ -67,7 +65,7 @@ namespace RawaTests.Tests
             LoginPageModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.LoginValidateText));
         }
-        [Test, Category("LoginPage"), Order(4)]
+        [Test, Order(4)]
         public void VerifingValidateTextPasswordFieldIsEmpty()
         {
             Manager.Driver.Navigate().Refresh();
@@ -79,7 +77,7 @@ namespace RawaTests.Tests
             LoginPageModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.PasswordValidateText));
         }
-        [Test, Category("LoginPage"), Order(5)]
+        [Test, Order(5)]
         public void VerifingValidateTextWhenLoginDataWasIncorrect()
         {
             Manager.Driver.Navigate().Refresh();
@@ -90,5 +88,6 @@ namespace RawaTests.Tests
             LoginPageModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.ErrorValidateText));
         }
+
     }
 }

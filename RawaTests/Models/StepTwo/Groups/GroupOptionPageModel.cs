@@ -39,6 +39,7 @@ namespace RawaTests.Models.StepTwo.Groups
         }
         private void MainClick(GroupType type)
         {
+            Thread.Sleep(2000);
             GroupOption.Where(e => String.Equals(e.NameOfGroup.GetAttribute("value"), groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.Click();
         }
 
@@ -52,8 +53,8 @@ namespace RawaTests.Models.StepTwo.Groups
         }
         private Dictionary<GroupType, string> groupName = new Dictionary<GroupType, string>()
         {
-            {GroupType.KOLOR,"Kolorystyka ścian i podłóg"},
-            {GroupType.DRZWI,"Drzwi"},
+            {GroupType.KOLOR,"color"},
+            {GroupType.DRZWI,"door"},
             {GroupType.OKNA,"window"},
             {GroupType.SZAFKI_ECO,"Szafki kuchenne eco"},
             {GroupType.SZAFKI_SIPMLY,"Szafki kuchenne simply"}

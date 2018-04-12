@@ -125,9 +125,9 @@ namespace RawaTests.Helpers.DriverHelper
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(millisecond));
             wait.PollingInterval = TimeSpan.FromMilliseconds(50);
-
             try
             {
+                wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//div[@class='loading-show']")));
                 return wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(by));               
             }
             catch (Exception)

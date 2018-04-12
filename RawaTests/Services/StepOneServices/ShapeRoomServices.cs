@@ -16,6 +16,10 @@ namespace RawaTests.Services
         {
 
         }
+        /// <summary>
+        /// Metoda budująca model listy kształtów pomieszczeń.
+        /// </summary>
+        /// <returns></returns>
         public ShapeRoomPageModel GetShapes()
         {
             var shape_id = Manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.Shapeid));

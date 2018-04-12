@@ -23,7 +23,7 @@ namespace RawaTests.Services.StepTwoServices
         }
         public GroupOptionPageModel GetOptionModel()
         {
-            var radio = new List<IWebElement>(Manager.FindWebElementsAndWait(By.XPath(StepTwoLocators.GroupOption)));
+            var radio = new List<IWebElement>(Manager.FindWebElementsAndWait(By.XPath(StepTwoLocators.groupOption)));
 
             GroupOptionPageModel model = new GroupOptionPageModel();
             for (int i = 0; i < radio.Count; i++)

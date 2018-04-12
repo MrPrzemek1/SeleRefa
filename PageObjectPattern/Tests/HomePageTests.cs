@@ -31,11 +31,5 @@ namespace PageObjectPattern.Tests
         {
             driver.Quit();
         }
-        [Test]
-        public void TestMethod()
-        {
-            HomePage homePage = new HomePage(driver);
-            homePage.ClickStartButton();
-        }
     }
 }
