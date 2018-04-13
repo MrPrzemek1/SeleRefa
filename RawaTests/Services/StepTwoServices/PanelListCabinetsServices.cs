@@ -16,9 +16,14 @@ namespace RawaTests.Services.StepTwoServices
         public PanelListCabinetsWCModel GetCabinetPanel()
         {
             NxWELabelModel filtrPanel = new NxWELabelModel(Manager.FindWebElementAndWait(By.ClassName(CabinetsPanelLocator.filtrPanel)));
-            var filtrButton = filtrPanel.FindElementAndWait<NxWEButtonModel>(By.XPath(CabinetsPanelLocator.filtrButton));
-            var dropdowns = filtrPanel.FindElementsAndWait<NxWEButtonModel>((By.XPath(CabinetsPanelLocator.filtrDropdown)));
-            NxWELabelModel CollectionGroup = new NxWELabelModel(Manager.FindWebElementAndWait(By.Id()));
+            NxWEButtonModel filtrButton = filtrPanel.FindElementAndWait<NxWEButtonModel>(By.XPath(CabinetsPanelLocator.filtrButton));
+            List<NxWEButtonModel> dropdowns = filtrPanel.FindElementsAndWait<NxWEButtonModel>((By.XPath(CabinetsPanelLocator.filtrDropdown)));
+            NxWELabelModel collectionGroup = new NxWELabelModel(Manager.FindWebElementAndWait(By.Id(CabinetsPanelLocator.collectionGroup)));
+            List<NxWEButtonModel> subGroup = collectionGroup.FindElementsAndWait<NxWEButtonModel>(By.ClassName(CabinetsPanelLocator.collectionSubGroup));
+            List<NxWEImageModel> images = collectionGroup.FindElementsAndWait<NxWEImageModel>(By.XPath(CabinetsPanelLocator.cabinetImages));
+
+            PanelListCabinetsWCModel result = new PanelListCabinetsWCModel(filtrPanel,filtrButton,dropdowns,collectionGroup,subGroup,images);
+            return result;
         }
     }
 }

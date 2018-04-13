@@ -1,9 +1,11 @@
 ﻿using NUnit.Framework;
 using RawaTests.ContainersModels.Home;
+using RawaTests.Helpers;
 using RawaTests.Lists;
 using RawaTests.Model;
 using RawaTests.Model.Room3D;
 using RawaTests.Services;
+using RawaTests.Services.StepTwoServices;
 using RawaTests.StepOne;
 using RawaTests.ValidateMessages;
 
@@ -17,7 +19,8 @@ namespace RawaTests.Tests
         private DimensionWCServices dimensionServices;
         private ShapeRoomServices shapeServices;
         private Room3DServices roomViewServices;
-
+        GroupOptionServices groupOptionServices;
+        PanelListCabinetsServices cabinetsServices;
         public AllTests()
         {
             homeServices = new HomePageWCServices();
@@ -25,6 +28,8 @@ namespace RawaTests.Tests
             dimensionServices = new DimensionWCServices();
             shapeServices = new ShapeRoomServices();
             roomViewServices = new Room3DServices();
+            groupOptionServices = new GroupOptionServices();
+            cabinetsServices = new PanelListCabinetsServices();
         }
         [Test,Order(1)]
         public void HomePageElementsIsDisplayed()
@@ -141,11 +146,10 @@ namespace RawaTests.Tests
             Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().StartButton.Click();
 
-            ShapesRoomWCModel shapes = shapeServices.GetShapes();
-            shapes.ClickShapeById("27");
-            DimensionsWCModel roomDimension = dimensionServices.GetDimensions();
-            roomDimension.GetFieldByDescription("A").PlusSign.Click();
-            Assert.IsTrue(roomDimension.GetFieldByDescription("C").Input.GetAttribute("class").Equals("wallSizeInput changed"));
+            ButtonHelper.ClickButtonNext();
+            var a = groupOptionServices.GetOptionModel();
+            a.GetOptionCabinetsSimple();
+            var b = cabinetsServices.GetCabinetPanel();
         }
 
     }
