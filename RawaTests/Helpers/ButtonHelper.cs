@@ -2,9 +2,7 @@
 using OpenQA.Selenium.Support.UI;
 using RawaTests.HtmlStrings.ConstStrings;
 using RawaTests.Managers;
-using RawaTests.Model.Base.Buttons;
 using System;
-using static RawaTests.Helpers.DriverHelper.DriverHelper;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace RawaTests.Helpers

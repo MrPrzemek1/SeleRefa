@@ -15,6 +15,7 @@ namespace RawaTests.Tests
         public virtual void TestInizialize()
         {
             Manager = DriverManager.CreateInstance();
+
         }
         [OneTimeTearDown]
         public virtual void EndTest()

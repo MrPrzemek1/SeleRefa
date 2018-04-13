@@ -1,33 +1,28 @@
 ﻿using NUnit.Framework;
+using RawaTests.ContainersModels.Home;
 using RawaTests.Lists;
 using RawaTests.Model;
-using RawaTests.Model.Home;
 using RawaTests.Model.Room3D;
 using RawaTests.Services;
 using RawaTests.StepOne;
 using RawaTests.ValidateMessages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RawaTests.Tests
 {
     [TestFixture]
     class AllTests : BaseTest
     {
-        HomePageServices homeServices;
-        LoginPageServices loginServices;
-        private DimensionServices dimensionServices;
+        HomePageWCServices homeServices;
+        LoginPageWCServices loginServices;
+        private DimensionWCServices dimensionServices;
         private ShapeRoomServices shapeServices;
         private Room3DServices roomViewServices;
 
         public AllTests()
         {
-            homeServices = new HomePageServices();
-            loginServices = new LoginPageServices();
-            dimensionServices = new DimensionServices();
+            homeServices = new HomePageWCServices();
+            loginServices = new LoginPageWCServices();
+            dimensionServices = new DimensionWCServices();
             shapeServices = new ShapeRoomServices();
             roomViewServices = new Room3DServices();
         }
@@ -42,10 +37,10 @@ namespace RawaTests.Tests
         {
             homeServices.GetHomePageModel().LoginBtn.Click();
 
-            LoginPageModel loginPage = loginServices.GetLoginPageModel();
+            ActionOnWCLoginPage loginPage = loginServices.GetLoginPageModel();
             loginPage.SetCorrectLoginData();
             loginPage.SubmitButton.Click();
-            HomePageModel homePageAfterLogin = homeServices.GetHomePageModel();
+            ActionOnWCHomePage homePageAfterLogin = homeServices.GetHomePageModel();
             Assert.IsTrue(homePageAfterLogin.LogoutDiv.Dispalyed());
             Assert.IsTrue(homePageAfterLogin.LogoutDiv.Text.Equals(ValidateTextsHelper.CorrectLoginText));
         }
@@ -57,11 +52,11 @@ namespace RawaTests.Tests
             Manager.Driver.SwitchTo().Alert().Accept();
             homeServices.GetHomePageModel().LoginBtn.Click();
 
-            LoginPageModel loginPage = loginServices.GetLoginPageModel();
+            ActionOnWCLoginPage loginPage = loginServices.GetLoginPageModel();
             loginPage.LoginInput.SendText("Test");
             loginPage.PasswordInput.SendText("test");
             loginPage.SubmitButton.Click();
-            LoginPageModel loginAfterSubmit = loginServices.GetLoginPageModel();
+            ActionOnWCLoginPage loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateFieldIsDisplayed);
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.CompanyValidateText));
         }
@@ -70,11 +65,11 @@ namespace RawaTests.Tests
         {
             Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().LoginBtn.Click();
-            LoginPageModel loginPage = loginServices.GetLoginPageModel();
+            ActionOnWCLoginPage loginPage = loginServices.GetLoginPageModel();
             loginPage.CompanyNameInput.SendText("lalala");
             loginPage.PasswordInput.SendText("lalala");
             loginPage.SubmitButton.Click();
-            LoginPageModel loginAfterSubmit = loginServices.GetLoginPageModel();
+            ActionOnWCLoginPage loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.LoginValidateText));
         }
         [Test, Order(5)]
@@ -82,11 +77,11 @@ namespace RawaTests.Tests
         {
             Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().LoginBtn.Click();
-            LoginPageModel loginPage = loginServices.GetLoginPageModel();
+            ActionOnWCLoginPage loginPage = loginServices.GetLoginPageModel();
             loginPage.CompanyNameInput.SendText("lalala");
             loginPage.LoginInput.SendText("lalala");
             loginPage.SubmitButton.Click();
-            LoginPageModel loginAfterSubmit = loginServices.GetLoginPageModel();
+            ActionOnWCLoginPage loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.PasswordValidateText));
         }
         [Test, Order(6)]
@@ -94,10 +89,10 @@ namespace RawaTests.Tests
         {
             Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().LoginBtn.Click();
-            LoginPageModel loginPage = loginServices.GetLoginPageModel();
+            ActionOnWCLoginPage loginPage = loginServices.GetLoginPageModel();
             loginPage.SetLoginData("Test", "Test", "Test");
             loginPage.SubmitButton.Click();
-            LoginPageModel loginAfterSubmit = loginServices.GetLoginPageModel();
+            ActionOnWCLoginPage loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.ErrorValidateText));
         }
         [Test, Order(7)]
@@ -106,7 +101,7 @@ namespace RawaTests.Tests
             Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().StartButton.Click();
 
-            ShapeRoomPageModel shapes = shapeServices.GetShapes();
+            ShapesRoomWCModel shapes = shapeServices.GetShapes();
             Assert.IsTrue(shapes.ClickingOnTheShapes());
         }
         [Test, Order(8)]
@@ -115,12 +110,12 @@ namespace RawaTests.Tests
             Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().StartButton.Click();
 
-            ShapeRoomPageModel shapes = shapeServices.GetShapes();
+            ShapesRoomWCModel shapes = shapeServices.GetShapes();
             shapes.ClickShapeById("27");
-            Room3DViewPageModel roomView = roomViewServices.Get3DModel();
+            Rooms3DWCModel roomView = roomViewServices.Get3DModel();
             var dimensionRoomView = roomView.GetRoomDimension();
             shapes.ClickShapeById("28");
-            Room3DViewPageModel roomAfterChangeShape = roomViewServices.Get3DModel();
+            Rooms3DWCModel roomAfterChangeShape = roomViewServices.Get3DModel();
             var dimensionAfterChangeShape = roomAfterChangeShape.GetRoomDimension();
             Assert.AreNotSame(roomView.RoomImage, roomAfterChangeShape.RoomImage);
             Assert.AreNotEqual(dimensionRoomView, dimensionAfterChangeShape);
@@ -128,14 +123,14 @@ namespace RawaTests.Tests
         [Test, Order(9)]
         public void VerifingySizeOfRoomModelChangeAfterChangeDimension()
         {
-            Manager.Driver.Navigate().Refresh();
+            //Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().StartButton.Click();
 
-            Room3DViewPageModel roomModel = roomViewServices.Get3DModel();
+            Rooms3DWCModel roomModel = roomViewServices.Get3DModel();
             var roomDimension = roomModel.GetRoomDimension();
-            DimensionsPageModel dimensionOfRoom = dimensionServices.GetDimensions();
+            DimensionsWCModel dimensionOfRoom = dimensionServices.GetDimensions();
             dimensionOfRoom.GetFieldByDescription("B").PlusSign.Click();
-            Room3DViewPageModel roomModelAfterChange = roomViewServices.Get3DModel();
+            Rooms3DWCModel roomModelAfterChange = roomViewServices.Get3DModel();
             var roomDimensionAfterChange = roomModelAfterChange.GetRoomDimension();
 
             Assert.AreNotEqual(roomDimension, roomDimensionAfterChange);
@@ -146,9 +141,9 @@ namespace RawaTests.Tests
             Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().StartButton.Click();
 
-            ShapeRoomPageModel shapes = shapeServices.GetShapes();
+            ShapesRoomWCModel shapes = shapeServices.GetShapes();
             shapes.ClickShapeById("27");
-            DimensionsPageModel roomDimension = dimensionServices.GetDimensions();
+            DimensionsWCModel roomDimension = dimensionServices.GetDimensions();
             roomDimension.GetFieldByDescription("A").PlusSign.Click();
             Assert.IsTrue(roomDimension.GetFieldByDescription("C").Input.GetAttribute("class").Equals("wallSizeInput changed"));
         }

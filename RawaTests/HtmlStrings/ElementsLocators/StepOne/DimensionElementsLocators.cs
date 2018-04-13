@@ -9,7 +9,8 @@
         public static string MinusSignClass = "btn-dec";
         public static string InputFieldClass = "wallSizeInput";
         public static string DescriptionFieldClass = "set-room-params-letters";
-        public static string Header = "//label[@class='set-room-params-header']";
+        public static string DescriptionHeightClass = "set-room-params-height";
+        public static string Header = "set-room-params-header']";
 
     }
 }

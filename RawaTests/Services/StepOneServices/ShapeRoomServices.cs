@@ -1,12 +1,10 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.Helpers;
 using RawaTests.HtmlStrings.ElementsLocators.StepOne;
-using RawaTests.IWebElements;
-using RawaTests.IWebElements.TextElements;
 using RawaTests.Lists;
 using RawaTests.Model;
 using RawaTests.Services.Base;
-using System.Collections.Generic;
+using RawaTests.WebElementsModels;
 
 namespace RawaTests.Services
 {
@@ -20,20 +18,20 @@ namespace RawaTests.Services
         /// Metoda budująca model listy kształtów pomieszczeń.
         /// </summary>
         /// <returns></returns>
-        public ShapeRoomPageModel GetShapes()
+        public ShapesRoomWCModel GetShapes()
         {
             var shape_id = Manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.Shapeid));
-            var header = new NxLabels(Manager.FindWebElementWithoutWait(By.XPath(ShapeElementsLocators.ShapeHeader)));
+            var header = new NxWELabelModel(Manager.FindWebElementWithoutWait(By.XPath(ShapeElementsLocators.ShapeHeader)));
 
-            ShapeRoomPageModel listOfShapes = new ShapeRoomPageModel();
+            ShapesRoomWCModel listOfShapes = new ShapesRoomWCModel();
             listOfShapes.Header = header ?? (header = null);
 
             for (int i = 0; i < shape_id.Count; i++)
             {
                 {
-                    listOfShapes.Shapes.Add(new ShapeRoomModel
+                    listOfShapes.Shapes.Add(new ShapeRoomWCModel
                     {
-                        ShapeOfRoom = new NxImage(shape_id[i]),
+                        ShapeOfRoom = new NxWEImageModel(shape_id[i]),
                     });
                 }
             }

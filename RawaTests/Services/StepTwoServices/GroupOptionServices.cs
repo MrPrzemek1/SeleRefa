@@ -1,17 +1,10 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
 using RawaTests.HtmlStrings.ElementsLocators.StepTwo;
-using RawaTests.IWebElements.TextElements;
-using RawaTests.Model.Base.Buttons;
 using RawaTests.Models.StepTwo;
 using RawaTests.Models.StepTwo.Groups;
 using RawaTests.Services.Base;
-using System;
+using RawaTests.WebElementsModels;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static RawaTests.Helpers.DriverHelper.DriverHelper;
 
 namespace RawaTests.Services.StepTwoServices
 {
@@ -21,16 +14,16 @@ namespace RawaTests.Services.StepTwoServices
         {
 
         }
-        public GroupOptionPageModel GetOptionModel()
+        public GroupOptionsWCModel GetOptionModel()
         {
             var radio = new List<IWebElement>(Manager.FindWebElementsAndWait(By.XPath(StepTwoLocators.groupOption)));
 
-            GroupOptionPageModel model = new GroupOptionPageModel();
+            GroupOptionsWCModel model = new GroupOptionsWCModel();
             for (int i = 0; i < radio.Count; i++)
             {
-                model.GroupOption.Add(new GroupOptionModel
+                model.GroupOption.Add(new GroupOptionWCModel
                 {
-                    NameOfGroup = new NxLabels(radio[i]),
+                    NameOfGroup = new NxWELabelModel(radio[i]),
                 });
             }
             return model;           

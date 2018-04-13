@@ -1,23 +1,17 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.HtmlStrings.ElementsLocators.StepTwo;
-using RawaTests.IWebElements.TextElements;
-using RawaTests.Models.StepTwo.PanelElement;
 using RawaTests.Services.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RawaTests.WebElementsModels;
 
 namespace RawaTests.Models.StepTwo
 {
     class PanelListColorService : BaseService
     {
-        public PanelElementColorModel GetPanelListForColors()
+        public PanelListColorModel GetPanelListForColors()
         {
             var panel = Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.panelList));
 
-            PanelElementColorModel panelElement = new PanelElementColorModel(new NxLabels(panel));
+            PanelListColorModel panelElement = new PanelListColorModel(new NxWELabelModel(panel));
             return panelElement;
         }
     }

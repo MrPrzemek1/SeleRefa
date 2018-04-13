@@ -10,12 +10,12 @@ namespace RawaTests.Tests
     [TestFixture(Category ="Rawa")]
     class HomePageTests : BaseTest
     {
-        HomePageServices homePageSrv;
+        HomePageWCServices homePageSrv;
         GroupOptionServices groupOptionServices;
         PanelListDoorServices doorServices;
         public HomePageTests()
         {
-            homePageSrv = new HomePageServices();
+            homePageSrv = new HomePageWCServices();
             groupOptionServices = new GroupOptionServices();
             doorServices = new PanelListDoorServices();
         }

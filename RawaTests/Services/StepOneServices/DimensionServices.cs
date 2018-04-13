@@ -1,44 +1,35 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.Extensions;
 using RawaTests.Helpers;
-using RawaTests.Helpers.DriverHelper;
-using RawaTests.IWebElements.TextElements;
-using RawaTests.Model.Base.Buttons;
 using RawaTests.Services.Base;
-using RawaTests.WebElements.Input;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+using RawaTests.WebElementsModels;
 namespace RawaTests.StepOne
 {
-    public class DimensionServices : BaseService
+    public class DimensionWCServices : BaseService
     {
-        public DimensionServices() : base()
+        public DimensionWCServices() : base()
         {
 
         }
-        public DimensionsPageModel GetDimensions()
+        public DimensionsWCModel GetDimensions()
         {         
-            DimensionsPageModel result = new DimensionsPageModel();
-
+            DimensionsWCModel result = new DimensionsWCModel();
+            result.Header = new NxWELabelModel(Manager.FindWebElementWithoutWait(By.XPath(DimensionElementsLocators.Header)));
             var elementsList = Manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.ListOfDimension));
             foreach (var element in elementsList)
             {
-                var labelWE = element.FindElementWithoutWait(By.ClassName(DimensionElementsLocators.DescriptionFieldClass));
-                var btnPlusWE = element.FindElementWithoutWait(By.ClassName(DimensionElementsLocators.PlusSignClass));
-                var btnMinusWE = element.FindElementWithoutWait(By.ClassName(DimensionElementsLocators.MinusSignClass));
-                var inputWE = element.FindElementWithoutWait(By.ClassName(DimensionElementsLocators.InputFieldClass));
-
-                if (labelWE != null)
-                {
-                    result.Elements.Add(new DimensionModel
+                var labelWE = new NxWELabelModel(Manager.FindWebElementAndWait(element, By.ClassName(DimensionElementsLocators.DescriptionFieldClass)));
+                var btnPlusWE = new NxWEButtonModel(Manager.FindWebElementWithoutWait(element, By.ClassName(DimensionElementsLocators.PlusSignClass)));
+                var btnMinusWE = new NxWEButtonModel(Manager.FindWebElementWithoutWait(element, By.ClassName(DimensionElementsLocators.MinusSignClass)));
+                var inputWE = new NxWEInputModel(Manager.FindWebElementWithoutWait(element, By.ClassName(DimensionElementsLocators.InputFieldClass)));
+               
+                    result.DimensionElements.Add(new DimensionWCModel
                     {
-                        Description = new NxLabels(labelWE),
-                        PlusSign = new NxButton(btnPlusWE),
-                        MinusSign = new NxButton(btnMinusWE),
-                        Input = new NxInput(inputWE),
-                    });
-                }
+                        Description = labelWE,
+                        PlusSign = btnPlusWE,
+                        MinusSign = btnMinusWE,
+                        Input = inputWE,
+                    });                        
             }
             return result;
 
