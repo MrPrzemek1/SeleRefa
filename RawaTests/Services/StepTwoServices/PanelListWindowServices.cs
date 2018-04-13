@@ -8,11 +8,11 @@ namespace RawaTests.Services.StepTwoServices
 {
     class PanelListWindowServices : BaseService
     {
-        public PanelListWindowModel GetListForWindow()
+        public PanelListWindowWCModel GetListForWindow()
         {
             NxWELabelModel list = new NxWELabelModel(Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.panelList)));
             var windowImages = list.FindElementsAndWait<NxWEImageModel>((By.XPath(StepTwoLocators.windowsImages)));
-            PanelListWindowModel panel = new PanelListWindowModel(list, windowImages);
+            PanelListWindowWCModel panel = new PanelListWindowWCModel(list, windowImages);
 
             return panel;
         }

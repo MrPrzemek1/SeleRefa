@@ -4,13 +4,13 @@ using System.Linq;
 
 namespace RawaTests.Services.StepTwoServices
 {
-    public class PanelListDoorModel
+    public class PanelListDoorWCModel
     {
         NxWELabelModel ListOfElements { get; set; }
         IList<NxWEImageModel> DoorList { get; set; }
         NxWELabelModel DoorProducent { get; set; }
 
-        public  PanelListDoorModel(NxWELabelModel div, IList<NxWEImageModel> alalal, NxWELabelModel doorProducent )
+        public  PanelListDoorWCModel(NxWELabelModel div, IList<NxWEImageModel> alalal, NxWELabelModel doorProducent )
         {
             ListOfElements = div;
             DoorList = alalal;

@@ -70,7 +70,10 @@
     <Compile Include="ContainersModels\StepOne\Room3D\Rooms3DWCModel.cs" />
     <Compile Include="ContainersModels\StepOne\Shape\ShapeRoomWCModel.cs" />
     <Compile Include="ContainersModels\StepOne\Shape\ShapesRoomWCModel.cs" />
+    <Compile Include="ContainersModels\StepTwo\Groups\GroupOptionsWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\Groups\GroupOptionWCModel.cs" />
+    <Compile Include="ContainersModels\StepTwo\PanelElement\PanelListCabinetsWCModel.cs" />
+    <Compile Include="ContainersModels\StepTwo\PanelElement\PanelListColorWCModel.cs" />
     <Compile Include="Extensions\WebElementExtension.cs" />
     <Compile Include="Helpers\ButtonHelper.cs" />
     <Compile Include="Helpers\DriverHelper.cs" />
@@ -82,19 +85,19 @@
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\DimensionElementsLocators.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ImageRoomElements.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ShapeElementsLocators.cs" />
+    <Compile Include="HtmlStrings\ElementsLocators\StepTwo\CabinetsPanelLocator.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepTwo\StepTwoLocators.cs" />
     <Compile Include="IDriverService.cs" />
     <Compile Include="Managers\DriverManager.cs" />
     <Compile Include="ContainersModels\Base\BaseWebContainerListModel.cs" />
     <Compile Include="ContainersModels\StepOne\FullStepOneModel\StepOneFacade.cs" />
-    <Compile Include="ContainersModels\StepTwo\Groups\GroupOptionPageModel.cs" />
-    <Compile Include="ContainersModels\StepTwo\PanelElement\PanelListColorModel.cs" />
-    <Compile Include="ContainersModels\StepTwo\PanelElement\PanelListWindowModel.cs" />
+    <Compile Include="ContainersModels\StepTwo\PanelElement\PanelListWindowWCModel.cs" />
     <Compile Include="Services\HomePageWCServices.cs" />
     <Compile Include="Services\StepOneServices\DimensionServices.cs" />
-    <Compile Include="Services\StepTwoServices\Colors\PanelListColorService.cs" />
+    <Compile Include="Services\StepTwoServices\PanelListCabinetsServices.cs" />
+    <Compile Include="Services\StepTwoServices\PanelListColorService.cs" />
     <Compile Include="Services\StepTwoServices\GroupOptionServices.cs" />
-    <Compile Include="ContainersModels\StepTwo\PanelElement\PanelListDoorModel.cs" />
+    <Compile Include="ContainersModels\StepTwo\PanelElement\PanelListDoorWCModel.cs" />
     <Compile Include="Services\StepTwoServices\PanelListDoorServices.cs" />
     <Compile Include="Services\StepTwoServices\PanelListWindowServices.cs" />
     <Compile Include="Tests\AllTests.cs" />
@@ -123,7 +126,9 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\StepTwoServices\CabinetsPanelList\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.Chrome.WebDriver.2.37\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.2.37\build\Selenium.Chrome.WebDriver.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

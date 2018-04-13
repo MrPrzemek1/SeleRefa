@@ -3,13 +3,13 @@ using RawaTests.WebElementsModels;
 
 namespace RawaTests.Models.StepTwo
 {
-    public class PanelListColorModel : BaseWebContainerModel
+    public class PanelListColorWCModel : BaseWebContainerModel
     {
         public NxWELabelModel PanelList { get; set; }
 
         public string Header { get { return PanelList.Text; } }
 
-        public PanelListColorModel(NxWELabelModel panel)
+        public PanelListColorWCModel(NxWELabelModel panel)
         {
             PanelList = panel;
         }

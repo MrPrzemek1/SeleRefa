@@ -7,11 +7,11 @@ namespace RawaTests.Models.StepTwo
 {
     class PanelListColorService : BaseService
     {
-        public PanelListColorModel GetPanelListForColors()
+        public PanelListColorWCModel GetPanelListForColors()
         {
-            var panel = Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.panelList));
+            var panel = new NxWELabelModel(Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.panelList)));
 
-            PanelListColorModel panelElement = new PanelListColorModel(new NxWELabelModel(panel));
+            PanelListColorWCModel panelElement = new PanelListColorWCModel(panel);
             return panelElement;
         }
     }

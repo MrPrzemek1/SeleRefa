@@ -7,13 +7,13 @@ namespace RawaTests.Services.StepTwoServices
 {
     public class PanelListDoorServices : BaseService
     {
-        public PanelListDoorModel GetPanelForDoors()
+        public PanelListDoorWCModel GetPanelForDoors()
         {
             NxWELabelModel list = new NxWELabelModel(Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.doorPanelList)));
             var doors = list.FindElementsAndWait<NxWEImageModel>(By.XPath(StepTwoLocators.doorsImages));
             NxWELabelModel doorProducent = new NxWELabelModel(Manager.FindWebElementWithoutWait(By.ClassName(StepTwoLocators.doorsProducent)));
 
-            PanelListDoorModel panelModel = new PanelListDoorModel(list, doors, doorProducent);
+            PanelListDoorWCModel panelModel = new PanelListDoorWCModel(list, doors, doorProducent);
 
             return panelModel;
         }
