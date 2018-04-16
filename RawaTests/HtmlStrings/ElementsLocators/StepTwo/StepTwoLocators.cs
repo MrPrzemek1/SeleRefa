@@ -8,7 +8,7 @@ namespace RawaTests.HtmlStrings.ElementsLocators.StepTwo
 {
     public class StepTwoLocators
     {
-        public static string groupOption = "//input[@name='module']";
+        public static string groupOption = "module";
         public static string panelList = "//div[@class='panel-elements panel-element-list']";
         public static string doorPanelList = "//ul[@class='panel-elements-list door-list']";
         public static string doorsImages = "//*[@object-type='door']";

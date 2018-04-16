@@ -8,6 +8,7 @@ using RawaTests.Services;
 using RawaTests.Services.StepTwoServices;
 using RawaTests.StepOne;
 using RawaTests.ValidateMessages;
+using OpenQA.Selenium;
 
 namespace RawaTests.Tests
 {
@@ -20,7 +21,8 @@ namespace RawaTests.Tests
         private ShapeRoomServices shapeServices;
         private Room3DServices roomViewServices;
         GroupOptionServices groupOptionServices;
-        PanelListCabinetsServices cabinetsServices;
+        PanelListCabinetsFilterServices cabinetsServices;
+        private PanelListCabinetsCollectionSerivces panelListCabinetsCollectionSerivces;
         public AllTests()
         {
             homeServices = new HomePageWCServices();
@@ -29,7 +31,8 @@ namespace RawaTests.Tests
             shapeServices = new ShapeRoomServices();
             roomViewServices = new Room3DServices();
             groupOptionServices = new GroupOptionServices();
-            cabinetsServices = new PanelListCabinetsServices();
+            cabinetsServices = new PanelListCabinetsFilterServices();
+            panelListCabinetsCollectionSerivces = new PanelListCabinetsCollectionSerivces();
         }
         [Test,Order(1)]
         public void HomePageElementsIsDisplayed()
@@ -143,13 +146,14 @@ namespace RawaTests.Tests
         [Test, Order(10)]
         public void CheckingTheClassChangeForTheElementAfterChangingTheDimensionsOnTheDependentWall()
         {
-            Manager.Driver.Navigate().Refresh();
+           // Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().StartButton.Click();
 
             ButtonHelper.ClickButtonNext();
             var a = groupOptionServices.GetOptionModel();
             a.GetOptionCabinetsSimple();
-            var b = cabinetsServices.GetCabinetPanel();
+            var c = panelListCabinetsCollectionSerivces.GetCollectionModel();
+            var b = cabinetsServices.GetCabinetFilterPanel();
         }
 
     }

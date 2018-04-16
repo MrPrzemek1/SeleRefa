@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace RawaTests.StepOne
 {
-    public class DimensionsWCModel : DimensionWCModel
+    public class DimensionsWCModel
     {
         public NxWELabelModel Header { get; set; }
 
@@ -31,9 +31,6 @@ namespace RawaTests.StepOne
         {
             return DimensionElements.Where(e => e.Description.Text.Equals(desc)).FirstOrDefault();
         }
-        public override bool IsValid()
-        {
-            throw new System.NotImplementedException();
-        }
+
     }
 }

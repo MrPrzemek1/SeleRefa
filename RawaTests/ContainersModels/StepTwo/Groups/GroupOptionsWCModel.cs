@@ -34,7 +34,6 @@ namespace RawaTests.Models.StepTwo.Groups
         }
         public void GetOptionCabinetsSimple()
         {
-            //GroupOption.Where(e => String.Equals(e.NameOfGroup.Text, "Szafki kuchenne Simply", StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.Click();
             MainClick(GroupType.SZAFKI_SIPMLY);
         }
         private void MainClick(GroupType type)

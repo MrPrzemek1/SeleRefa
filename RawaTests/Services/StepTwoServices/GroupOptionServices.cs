@@ -16,7 +16,7 @@ namespace RawaTests.Services.StepTwoServices
         }
         public GroupOptionsWCModel GetOptionModel()
         {
-            var radio = new List<IWebElement>(Manager.FindWebElementsAndWait(By.XPath(StepTwoLocators.groupOption)));
+            var radio = new List<IWebElement>(Manager.FindWebElementsAndWait(By.Name(StepTwoLocators.groupOption)));
 
             GroupOptionsWCModel model = new GroupOptionsWCModel();
 
