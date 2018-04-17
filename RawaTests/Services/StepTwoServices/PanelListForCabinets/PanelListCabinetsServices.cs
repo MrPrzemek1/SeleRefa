@@ -1,24 +1,21 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.ContainersModels.StepTwo.PanelElement;
+using RawaTests.HtmlStrings.ElementsLocators.StepTwo;
 using RawaTests.Services.Base;
+using RawaTests.WebElementsModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RawaTests.HtmlStrings.ElementsLocators.StepTwo;
-using RawaTests.WebElementsModels;
-using RawaTests.Helpers.DriverHelper;
-using RawaTests.ContainersModels.StepTwo.PanelElement.PanelElementForCabinets;
-using RawaTests.HtmlStrings.ElementsLocators.StepTwo;
 
-namespace RawaTests.Services.StepTwoServices
+namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
 {
-    class PanelListCabinetsCollectionSerivces : BaseService
+    class PanelListCabinetsServices : BaseService
     {
-        public PanelListCabinetsCollectionWCModel GetCollectionModel()
-        {             
-
+        //servis do pol z szafkami
+        public PanelListCabinetsCollectionWCModel GetCabintesCollectionModel()
+        {
             var listOfCollection = new NxWEButtonModel(Manager.FindWebElementAndWait(By.XPath(CabinetsPanelLocator.collectionGroup)));
             var group = listOfCollection.FindElementsAndWait<NxWEButtonModel>(By.XPath(CabinetsPanelLocator.SzafkiSimplyDolneGrupy));
 
@@ -30,7 +27,15 @@ namespace RawaTests.Services.StepTwoServices
             }
             return null;
         }
+        // servis do pola filtrowania
+        public PanelListCabinetsFilterWCModel GetCabinetFilterPanel()
+        {
+            NxWELabelModel filtrPanel = new NxWELabelModel(Manager.FindWebElementAndWait(By.ClassName(CabinetsPanelLocator.filtrPanel)));
+            List<NxWEButtonModel> dropdowns = filtrPanel.FindElementsAndWait<NxWEButtonModel>((By.XPath(CabinetsPanelLocator.filtrDropdown)));
 
-        
+            PanelListCabinetsFilterWCModel result = new PanelListCabinetsFilterWCModel(filtrPanel, dropdowns);
+
+            return result;
+        }
     }
 }

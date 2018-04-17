@@ -72,7 +72,6 @@
     <Compile Include="ContainersModels\StepOne\Shape\ShapesRoomWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\Groups\GroupOptionsWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\Groups\GroupOptionWCModel.cs" />
-    <Compile Include="ContainersModels\StepTwo\PanelElement\PanelElementForCabinets\PanelListCabinetsCollectionListWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\PanelElement\PanelElementForCabinets\PanelListCabinetsCollectionWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\PanelElement\PanelElementForCabinets\PanelListCabinetsFilterWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\PanelElement\PanelListColorWCModel.cs" />
@@ -96,12 +95,11 @@
     <Compile Include="ContainersModels\StepTwo\PanelElement\PanelListWindowWCModel.cs" />
     <Compile Include="Services\HomePageWCServices.cs" />
     <Compile Include="Services\StepOneServices\DimensionServices.cs" />
-    <Compile Include="Services\StepTwoServices\PanelListForCabinets\PanelListCabinetsCollectionSerivces.cs" />
-    <Compile Include="Services\StepTwoServices\PanelListForCabinets\PanelListCabinetsFilterServices.cs" />
     <Compile Include="Services\StepTwoServices\PanelListColorService.cs" />
     <Compile Include="Services\StepTwoServices\GroupOptionServices.cs" />
     <Compile Include="ContainersModels\StepTwo\PanelElement\PanelListDoorWCModel.cs" />
     <Compile Include="Services\StepTwoServices\PanelListDoorServices.cs" />
+    <Compile Include="Services\StepTwoServices\PanelListForCabinets\PanelListCabinetsServices.cs" />
     <Compile Include="Services\StepTwoServices\PanelListWindowServices.cs" />
     <Compile Include="Tests\AllTests.cs" />
     <Compile Include="Tests\StepOneTests.cs" />
