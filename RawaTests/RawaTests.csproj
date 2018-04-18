@@ -77,11 +77,11 @@
     <Compile Include="ContainersModels\StepTwo\PanelElement\PanelListColorWCModel.cs" />
     <Compile Include="Helpers\ButtonHelper.cs" />
     <Compile Include="Helpers\DriverHelper.cs" />
-    <Compile Include="HtmlStrings\ConstStrings\FooterAndHeader.cs" />
+    <Compile Include="HtmlStrings\ConstStrings\FooterAndHeaderConsts.cs" />
     <Compile Include="HtmlStrings\ConstStrings\HtmlAttributesConsts.cs" />
-    <Compile Include="HtmlStrings\ConstStrings\StaticButtons.cs" />
+    <Compile Include="HtmlStrings\ConstStrings\StaticButtonsConsts.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\HomePageElementsLocators.cs" />
-    <Compile Include="HtmlStrings\ConstStrings\LoginData.cs" />
+    <Compile Include="HtmlStrings\ConstStrings\LoginDataConsts.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\LoginPageElementsLocators.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\DimensionElementsLocators.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ImageRoomElements.cs" />
@@ -113,7 +113,7 @@
     <Compile Include="Tests\BaseTest.cs" />
     <Compile Include="Tests\HomePageTests.cs" />
     <Compile Include="Tests\LoginPageTests.cs" />
-    <Compile Include="HtmlStrings\ConstStrings\ValidateTextsHelper.cs" />
+    <Compile Include="HtmlStrings\ConstStrings\ValidateTextsHelperConsts.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

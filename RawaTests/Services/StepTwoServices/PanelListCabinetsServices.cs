@@ -24,10 +24,8 @@ namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
             IList<IWebElement> group = listOfCollection.FindWebElements(By.XPath(CabinetsPanelLocator.collectionSub));
             var szafkiDolne = listOfCollection.FindWebElements(By.XPath("//a[@href]"));
             
-            var szafki = szafkiDolne.Where() szafkiGrupa.FindWebElements(By.TagName("label"));
-            var image = szafkiGrupa.FindWebElements(By.ClassName("furnitures-items"));
 
-            PanelListCabinetsCollectionWCModel result = new PanelListCabinetsCollectionWCModel(szafkiDolne, szafki, image);
+            PanelListCabinetsCollectionWCModel result = new PanelListCabinetsCollectionWCModel();
             return result;
             
         }

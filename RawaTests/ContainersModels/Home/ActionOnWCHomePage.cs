@@ -20,7 +20,7 @@ namespace RawaTests.ContainersModels.Home
         }
         public override bool IsValid()
         {
-            return StartButton.Displayed && HomePageImage.GetAttributeSrc() != null && Footer.Text.Equals(FooterAndHeader.FOOTER) && Header.Text.Equals(FooterAndHeader.HEADER);
+            return StartButton.Displayed && HomePageImage.GetAttributeSrc() != null && Footer.Text.Equals(FooterAndHeaderConsts.FOOTER) && Header.Text.Equals(FooterAndHeaderConsts.HEADER);
         }
     }
 }

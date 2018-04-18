@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RawaTests.HtmlStrings.ConstStrings
 {
-    class StaticButtons
+    class StaticButtonsConsts
     {
         public static string ButtonNext = "//button[@class='btn btn-primary btn-lg next-button']";
         public static string ButtonPrev = "//button[@class='btn btn-primary btn-lg back-button']";
