@@ -41,7 +41,7 @@ namespace RawaTests
 
         public static void ClickIfElementIsClickable(this IWebElement e)
         {
-            DriverHelper.WaitUntil(DriverManager.CreateInstance().Driver, ExpectedConditions.ElementToBeClickable(e));
+            DriverHelper.WaitUntil(DriverManager.CreateInstance().Driver, ExpectedConditions.ElementToBeClickable(e)).Click();
         }
 
     }

@@ -7,6 +7,7 @@ namespace RawaTests.Model.Room3D
 {
     public class Rooms3DWCModel
     {
+        public IWebElement RoomImage { get; set; }
         public IList<Room3DWCModel> Room3D { get; set; }
 
         public Rooms3DWCModel()

@@ -10,6 +10,7 @@ using RawaTests.StepOne;
 using RawaTests.ValidateMessages;
 using OpenQA.Selenium;
 using System.Linq;
+using RawaTests.Services.StepTwoServices.PanelListForCabinets;
 
 namespace RawaTests.Tests
 {
@@ -22,7 +23,7 @@ namespace RawaTests.Tests
         private ShapeRoomServices shapeServices;
         private Room3DServices roomViewServices;
         GroupOptionServices groupOptionServices;
-        
+        PanelListCabinetsServices panelListCabinetsServices;
         public AllTests()
         {
             homeServices = new HomePageWCServices();
@@ -31,7 +32,7 @@ namespace RawaTests.Tests
             shapeServices = new ShapeRoomServices();
             roomViewServices = new Room3DServices();
             groupOptionServices = new GroupOptionServices();
-            
+            panelListCabinetsServices = new PanelListCabinetsServices();
         }
         [Test,Order(1)]
         public void HomePageElementsIsDisplayed()
@@ -142,17 +143,18 @@ namespace RawaTests.Tests
 
             Assert.AreNotEqual(roomDimension, roomDimensionAfterChange);
         }
-        //[Test, Order(10)]
-        //public void CheckingTheClassChangeForTheElementAfterChangingTheDimensionsOnTheDependentWall()
-        //{
-        //   // Manager.Driver.Navigate().Refresh();
-        //    homeServices.GetHomePageModel().StartButton.Click();
+        [Test, Order(10)]
+        public void CheckingTheClassChangeForTheElementAfterChangingTheDimensionsOnTheDependentWall()
+        {
+            // Manager.Driver.Navigate().Refresh();
+            homeServices.GetHomePageModel().StartButton.Click();
 
-        //    ButtonHelper.ClickButtonNext();
-        //    var a = groupOptionServices.GetOptionModel();
-        //    a.GetOptionCabinetsSimple();
-            
-        //}
+            ButtonHelper.ClickButtonNext();
+            var a = groupOptionServices.GetOptionModel();
+            a.GetOptionCabinetsSimple();
+            var b = panelListCabinetsServices.GetCabintesCollectionModel();
+
+        }
 
     }
 }

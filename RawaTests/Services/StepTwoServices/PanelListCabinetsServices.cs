@@ -13,22 +13,23 @@ namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
 {
     class PanelListCabinetsServices : BaseService
     {
+        public PanelListCabinetsServices() : base()
+        {
+
+        }
         //servis do pol z szafkami
         public PanelListCabinetsCollectionWCModel GetCabintesCollectionModel()
         {
-            var listOfCollection = Manager.FindWebElementAndWait(By.XPath(CabinetsPanelLocator.collectionGroup));
+            var listOfCollection = Manager.FindWebElementAndWait(By.Id(CabinetsPanelLocator.collectionGroup));
             IList<IWebElement> group = listOfCollection.FindWebElements(By.XPath(CabinetsPanelLocator.collectionSub));
-
-            IList<IWebElement> list = new List<IWebElement>();
+            var szafkiDolne = listOfCollection.FindWebElements(By.XPath("//a[@href]"));
             
-            foreach (var item in group)
-            {          
-                var button2 = item.FindWebElements(By.TagName("a"));
+            var szafki = szafkiDolne.Where() szafkiGrupa.FindWebElements(By.TagName("label"));
+            var image = szafkiGrupa.FindWebElements(By.ClassName("furnitures-items"));
 
-                var categoryHelper = item.FindWebElement(By.XPath("//div[@aria-expanded]"));
-                var category = categoryHelper.FindWebElements(By.TagName("label"));
-                
-            }
+            PanelListCabinetsCollectionWCModel result = new PanelListCabinetsCollectionWCModel(szafkiDolne, szafki, image);
+            return result;
+            
         }
         // servis do pola filtrowania
         public PanelListCabinetsFilterWCModel GetCabinetFilterPanel()
