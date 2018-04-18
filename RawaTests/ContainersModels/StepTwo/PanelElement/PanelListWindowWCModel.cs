@@ -1,15 +1,15 @@
-﻿using RawaTests.Models.Base;
-using RawaTests.WebElementsModels;
+﻿using OpenQA.Selenium;
+using RawaTests.Models.Base;
 using System.Collections.Generic;
 
 namespace RawaTests.Models.StepTwo.PanelElement
 {
-    public class PanelListWindowWCModel : BaseListModel<NxWEImageModel>
+    public class PanelListWindowWCModel
     {
-        NxWELabelModel ListOfElements { get; set; }
-        IList<NxWEImageModel> WindowList { get; set; }
+        IWebElement ListOfElements { get; set; }
+        IList<IWebElement> WindowList { get; set; }
 
-        public PanelListWindowWCModel(NxWELabelModel div, IList<NxWEImageModel> images) : base(images)
+        public PanelListWindowWCModel(IWebElement div, IList<IWebElement> images)
         {
             ListOfElements = div;
             WindowList = images;

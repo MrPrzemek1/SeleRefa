@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.HtmlStrings.ElementsLocators.StepTwo;
 using RawaTests.Services.Base;
-using RawaTests.WebElementsModels;
 
 namespace RawaTests.Models.StepTwo
 {
@@ -9,7 +8,7 @@ namespace RawaTests.Models.StepTwo
     {
         public PanelListColorWCModel GetPanelListForColors()
         {
-            var panel = new NxWELabelModel(Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.panelList)));
+            var panel = Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.panelList));
 
             PanelListColorWCModel panelElement = new PanelListColorWCModel(panel);
             return panelElement;

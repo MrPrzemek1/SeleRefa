@@ -2,7 +2,6 @@
 using RawaTests.HtmlStrings.ElementsLocators.StepTwo;
 using RawaTests.Models.StepTwo.PanelElement;
 using RawaTests.Services.Base;
-using RawaTests.WebElementsModels;
 
 namespace RawaTests.Services.StepTwoServices
 {
@@ -10,8 +9,8 @@ namespace RawaTests.Services.StepTwoServices
     {
         public PanelListWindowWCModel GetListForWindow()
         {
-            NxWELabelModel list = new NxWELabelModel(Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.panelList)));
-            var windowImages = list.FindElementsAndWait<NxWEImageModel>((By.XPath(StepTwoLocators.windowsImages)));
+            IWebElement list = Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.panelList));
+            var windowImages = list.FindWebElements(By.XPath(StepTwoLocators.windowsImages));
             PanelListWindowWCModel panel = new PanelListWindowWCModel(list, windowImages);
 
             return panel;

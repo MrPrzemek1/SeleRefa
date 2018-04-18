@@ -9,7 +9,9 @@ namespace RawaTests.Helpers.DriverHelper
 {
     public static class DriverHelper
     {
-        private const int TIME = 2000;
+        private const int TIME = 5000;
+        private const int POLLING = 50;
+
         /// <summary>
         /// Metoda wyszukująca na stronie listy IWebElementów z możliwościa ustawienia czasu oczekiwania na ich pojawienie się.
         /// </summary>
@@ -121,14 +123,15 @@ namespace RawaTests.Helpers.DriverHelper
         /// <param name="by">lokator szukanego elementu</param>
         /// <param name="millisecond">czas oczekiwania na pojawienie sie elementu</param>
         /// <returns>Liste IWebElementów</returns>
-        public static IList<IWebElement> Wait(IWebDriver driver , By by, int millisecond = TIME)
+        public static IList<IWebElement> Wait(IWebDriver driver, By by, int millisecond = TIME)
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(millisecond));
-            wait.PollingInterval = TimeSpan.FromMilliseconds(50);
+            wait.PollingInterval = TimeSpan.FromMilliseconds(POLLING);
             try
             {
                 wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//div[@class='loading-show']")));
-                return wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(by));               
+
+                return wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(by));
             }
             catch (Exception)
             {
@@ -139,7 +142,7 @@ namespace RawaTests.Helpers.DriverHelper
         public static TResult WaitUntil<TResult>(IWebDriver driver, Func<IWebDriver, TResult> condition, int millisecond = TIME) where TResult : class
         {
             WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(millisecond));
-            wait.PollingInterval = TimeSpan.FromMilliseconds(50);
+            wait.PollingInterval = TimeSpan.FromMilliseconds(POLLING);
             try
             {
                 return wait.Until(condition);

@@ -1,15 +1,15 @@
-﻿using RawaTests.Model.Base;
-using RawaTests.WebElementsModels;
+﻿using OpenQA.Selenium;
+using RawaTests.Model.Base;
 
 namespace RawaTests.Models.StepTwo
 {
     public class PanelListColorWCModel : BaseWebContainerModel
     {
-        public NxWELabelModel PanelList { get; set; }
+        public IWebElement PanelList { get; set; }
 
         public string Header { get { return PanelList.Text; } }
 
-        public PanelListColorWCModel(NxWELabelModel panel)
+        public PanelListColorWCModel(IWebElement panel)
         {
             PanelList = panel;
         }

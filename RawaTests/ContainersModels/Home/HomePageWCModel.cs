@@ -1,17 +1,17 @@
-﻿using RawaTests.Model.Base;
-using RawaTests.WebElementsModels;
+﻿using OpenQA.Selenium;
+using RawaTests.Model.Base;
 
 namespace RawaTests.Model
 {
     abstract public class HomePageWCModel : BaseWebContainerModel
     {
-        public NxWEButtonModel StartButton { get; set; }
-        public NxWEImageModel HomePageImage { get; set; }
-        public NxWEImageModel LogoImage { get; set; }
-        public NxWELabelModel Footer { get; set;}
-        public NxWEButtonModel LoginBtn { get; set; }
-        public NxWELabelModel Header { get; set; }
-        public NxWELabelModel LogoutDiv { get; set; }
-        public NxWEButtonModel LogoutButton { get; set; }
+        public IWebElement StartButton { get; set; }
+        public IWebElement HomePageImage { get; set; }
+        public IWebElement LogoImage { get; set; }
+        public IWebElement Footer { get; set;}
+        public IWebElement LoginBtn { get; set; }
+        public IWebElement Header { get; set; }
+        public IWebElement LogoutDiv { get; set; }
+        public IWebElement LogoutButton { get; set; }
     }
 }

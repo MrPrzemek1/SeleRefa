@@ -2,7 +2,6 @@
 using RawaTests.Helpers;
 using RawaTests.Model;
 using RawaTests.Services.Base;
-using RawaTests.WebElementsModels;
 using System;
 
 namespace RawaTests.Services
@@ -17,11 +16,11 @@ namespace RawaTests.Services
         {
             System.Console.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff"));
 
-            var CompanyName =new NxWEInputModel(Manager.FindWebElementAndWait(By.Name(LoginPageElementsLocators.CompanyInput)));
-            var Login = new NxWEInputModel(Manager.FindWebElementWithoutWait(By.Name(LoginPageElementsLocators.LoginInput)));
-            var Password = new NxWEInputModel(Manager.FindWebElementWithoutWait(By.Name(LoginPageElementsLocators.PasswordInput)));
-            var SubmitButton = new NxWEButtonModel(Manager.FindWebElementWithoutWait(By.XPath(LoginPageElementsLocators.submitLogin)));
-            var ValidateField = new NxWELabelModel(Manager.FindWebElementWithoutWait(By.XPath(LoginPageElementsLocators.ValidateField)));
+            var CompanyName =Manager.FindWebElementAndWait(By.Name(LoginPageElementsLocators.CompanyInput));
+            var Login = Manager.FindWebElement(By.Name(LoginPageElementsLocators.LoginInput));
+            var Password = Manager.FindWebElement(By.Name(LoginPageElementsLocators.PasswordInput));
+            var SubmitButton = Manager.FindWebElement(By.XPath(LoginPageElementsLocators.submitLogin));
+            var ValidateField = Manager.FindWebElement(By.XPath(LoginPageElementsLocators.ValidateField));
 
             ActionOnWCLoginPage model = new ActionOnWCLoginPage(CompanyName, Login, Password, SubmitButton, ValidateField);
             System.Console.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff"));

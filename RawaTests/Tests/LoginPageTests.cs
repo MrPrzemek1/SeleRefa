@@ -26,7 +26,7 @@ namespace RawaTests.Tests
             loginPage.SetCorrectLoginData();
             loginPage.SubmitButton.Click();
             HomePageWCModel homePageAfterLogin = homeServices.GetHomePageModel();
-            Assert.IsTrue(homePageAfterLogin.LogoutDiv.Dispalyed());
+            Assert.IsTrue(homePageAfterLogin.LogoutDiv.Displayed);
             Assert.IsTrue(homePageAfterLogin.LogoutDiv.Text.Equals(ValidateTextsHelper.CorrectLoginText));
         }
 
@@ -38,8 +38,8 @@ namespace RawaTests.Tests
             homeServices.GetHomePageModel().LoginBtn.Click();
 
             ActionOnWCLoginPage loginPage = loginServices.GetLoginPageModel();
-            loginPage.LoginInput.SendText("Test");
-            loginPage.PasswordInput.SendText("test");
+            loginPage.LoginInput.SendKeys("Test");
+            loginPage.PasswordInput.SendKeys("test");
             loginPage.SubmitButton.Click();
             ActionOnWCLoginPage loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateFieldIsDisplayed);
@@ -51,8 +51,8 @@ namespace RawaTests.Tests
             Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().LoginBtn.Click();
             ActionOnWCLoginPage loginPage = loginServices.GetLoginPageModel();
-            loginPage.CompanyNameInput.SendText("lalala");
-            loginPage.PasswordInput.SendText("lalala");
+            loginPage.CompanyNameInput.SendKeys("lalala");
+            loginPage.PasswordInput.SendKeys("lalala");
             loginPage.SubmitButton.Click();
             ActionOnWCLoginPage loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.LoginValidateText));
@@ -63,8 +63,8 @@ namespace RawaTests.Tests
             Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().LoginBtn.Click();
             ActionOnWCLoginPage loginPage = loginServices.GetLoginPageModel();
-            loginPage.CompanyNameInput.SendText("lalala");
-            loginPage.LoginInput.SendText("lalala");
+            loginPage.CompanyNameInput.SendKeys("lalala");
+            loginPage.LoginInput.SendKeys("lalala");
             loginPage.SubmitButton.Click();
             ActionOnWCLoginPage loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.PasswordValidateText));

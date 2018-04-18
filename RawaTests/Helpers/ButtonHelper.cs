@@ -4,6 +4,7 @@ using RawaTests.HtmlStrings.ConstStrings;
 using RawaTests.Managers;
 using System;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
+using RawaTests.Helpers;
 
 namespace RawaTests.Helpers
 {
@@ -11,13 +12,13 @@ namespace RawaTests.Helpers
     {  
         public static void ClickButtonNext()
         {
-            var buttonNext = DriverManager.CreateInstance().WaiTUntil(ExpectedConditions.ElementIsVisible(By.XPath(StaticButtons.ButtonNext)));
-            buttonNext.Click();
+            var buttonNext = DriverHelper.DriverHelper.WaitUntil(DriverManager.CreateInstance().Driver,ExpectedConditions.ElementIsVisible(By.XPath(StaticButtons.ButtonNext)));
+            buttonNext.ClickIfElementIsClickable();
         }
         public static void ClickButtonPrev()
         {
-            var ButtonPrev = DriverManager.CreateInstance().WaiTUntil(ExpectedConditions.ElementIsVisible(By.XPath(StaticButtons.ButtonPrev)));
-            ButtonPrev.Click();
+            var ButtonPrev = DriverHelper.DriverHelper.WaitUntil(DriverManager.CreateInstance().Driver, ExpectedConditions.ElementIsVisible(By.XPath(StaticButtons.ButtonPrev)));
+            ButtonPrev.ClickIfElementIsClickable();
         }
     }
 }

@@ -4,7 +4,6 @@ using RawaTests.HtmlStrings.ElementsLocators.StepOne;
 using RawaTests.Lists;
 using RawaTests.Model;
 using RawaTests.Services.Base;
-using RawaTests.WebElementsModels;
 
 namespace RawaTests.Services
 {
@@ -21,7 +20,7 @@ namespace RawaTests.Services
         public ShapesRoomWCModel GetShapes()
         {
             var shape_id = Manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.Shapeid));
-            var header = new NxWELabelModel(Manager.FindWebElementWithoutWait(By.XPath(ShapeElementsLocators.ShapeHeader)));
+            var header = Manager.FindWebElementAndWait(By.XPath(ShapeElementsLocators.ShapeHeader));
 
             ShapesRoomWCModel listOfShapes = new ShapesRoomWCModel();
             listOfShapes.Header = header ?? (header = null);
@@ -31,7 +30,7 @@ namespace RawaTests.Services
                 {
                     listOfShapes.Shapes.Add(new ShapeRoomWCModel
                     {
-                        ShapeOfRoom = new NxWEImageModel(shape_id[i]),
+                        ShapeOfRoom =shape_id[i],
                     });
                 }
             }

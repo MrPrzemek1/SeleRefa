@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.Services.Base;
 using RawaTests.HtmlStrings.ElementsLocators.StepTwo;
-using RawaTests.WebElementsModels;
 
 namespace RawaTests.Services.StepTwoServices
 {
@@ -9,9 +8,9 @@ namespace RawaTests.Services.StepTwoServices
     {
         public PanelListDoorWCModel GetPanelForDoors()
         {
-            NxWELabelModel list = new NxWELabelModel(Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.doorPanelList)));
-            var doors = list.FindElementsAndWait<NxWEImageModel>(By.XPath(StepTwoLocators.doorsImages));
-            NxWELabelModel doorProducent = new NxWELabelModel(Manager.FindWebElementWithoutWait(By.ClassName(StepTwoLocators.doorsProducent)));
+            IWebElement list = Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.doorPanelList));
+            var doors = list.FindWebElements(By.XPath(StepTwoLocators.doorsImages));
+            IWebElement doorProducent = Manager.FindWebElement(By.ClassName(StepTwoLocators.doorsProducent));
 
             PanelListDoorWCModel panelModel = new PanelListDoorWCModel(list, doors, doorProducent);
 

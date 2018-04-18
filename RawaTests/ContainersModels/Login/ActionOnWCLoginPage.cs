@@ -1,12 +1,12 @@
-﻿using RawaTests.Helpers;
+﻿using OpenQA.Selenium;
+using RawaTests.Helpers;
 using RawaTests.Model.Login;
-using RawaTests.WebElementsModels;
 
 namespace RawaTests.Model
 {
     class ActionOnWCLoginPage : LoginPageWCModel
     {
-        public ActionOnWCLoginPage(NxWEInputModel company, NxWEInputModel Login, NxWEInputModel password, NxWEButtonModel loginButton, NxWELabelModel validateField = null)
+        public ActionOnWCLoginPage(IWebElement company, IWebElement Login, IWebElement password, IWebElement loginButton, IWebElement validateField = null)
         {
             CompanyNameInput = company;
             LoginInput = Login;
@@ -17,9 +17,9 @@ namespace RawaTests.Model
 
         public void SetCorrectLoginData()
         {
-            CompanyNameInput.SendText(LoginData.CompanyName);
-            LoginInput.SendText(LoginData.Login);
-            PasswordInput.SendText(LoginData.Password);
+            CompanyNameInput.SendKeys(LoginData.CompanyName);
+            LoginInput.SendKeys(LoginData.Login);
+            PasswordInput.SendKeys(LoginData.Password);
         }
 
         public bool ValidateFieldIsDisplayed
@@ -27,7 +27,7 @@ namespace RawaTests.Model
             get
             {
                 if (ValidateFieldElement != null)
-                    return ValidateFieldElement.Dispalyed();
+                    return ValidateFieldElement.Displayed;
                 else
                     return false;
             }
@@ -50,9 +50,9 @@ namespace RawaTests.Model
         }
         public void SetLoginData(string company, string login, string pass)
         {
-            CompanyNameInput.SendText(company);
-            LoginInput.SendText(login);
-            PasswordInput.SendText(pass);
+            CompanyNameInput.SendKeys(company);
+            LoginInput.SendKeys(login);
+            PasswordInput.SendKeys(pass);
         }
         public override bool IsValid()
         {

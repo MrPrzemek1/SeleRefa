@@ -48,7 +48,7 @@ namespace RawaTests.Tests
             loginPage.SetCorrectLoginData();
             loginPage.SubmitButton.Click();
             ActionOnWCHomePage homePageAfterLogin = homeServices.GetHomePageModel();
-            Assert.IsTrue(homePageAfterLogin.LogoutDiv.Dispalyed());
+            Assert.IsTrue(homePageAfterLogin.LogoutDiv.Displayed);
             Assert.IsTrue(homePageAfterLogin.LogoutDiv.Text.Equals(ValidateTextsHelper.CorrectLoginText));
         }
 
@@ -60,8 +60,8 @@ namespace RawaTests.Tests
             homeServices.GetHomePageModel().LoginBtn.Click();
 
             ActionOnWCLoginPage loginPage = loginServices.GetLoginPageModel();
-            loginPage.LoginInput.SendText("Test");
-            loginPage.PasswordInput.SendText("test");
+            loginPage.LoginInput.SendKeys("Test");
+            loginPage.PasswordInput.SendKeys("test");
             loginPage.SubmitButton.Click();
             ActionOnWCLoginPage loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateFieldIsDisplayed);
@@ -73,8 +73,8 @@ namespace RawaTests.Tests
             Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().LoginBtn.Click();
             ActionOnWCLoginPage loginPage = loginServices.GetLoginPageModel();
-            loginPage.CompanyNameInput.SendText("lalala");
-            loginPage.PasswordInput.SendText("lalala");
+            loginPage.CompanyNameInput.SendKeys("lalala");
+            loginPage.PasswordInput.SendKeys("lalala");
             loginPage.SubmitButton.Click();
             ActionOnWCLoginPage loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.LoginValidateText));
@@ -85,8 +85,8 @@ namespace RawaTests.Tests
             Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().LoginBtn.Click();
             ActionOnWCLoginPage loginPage = loginServices.GetLoginPageModel();
-            loginPage.CompanyNameInput.SendText("lalala");
-            loginPage.LoginInput.SendText("lalala");
+            loginPage.CompanyNameInput.SendKeys("lalala");
+            loginPage.LoginInput.SendKeys("lalala");
             loginPage.SubmitButton.Click();
             ActionOnWCLoginPage loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.PasswordValidateText));
@@ -124,13 +124,13 @@ namespace RawaTests.Tests
             shapes.ClickShapeById("28");
             Rooms3DWCModel roomAfterChangeShape = roomViewServices.Get3DModel();
             var dimensionAfterChangeShape = roomAfterChangeShape.GetRoomDimension();
-            Assert.AreNotSame(roomView.RoomImage, roomAfterChangeShape.RoomImage);
+            Assert.AreNotSame(roomView.GetRoomDimension(), roomAfterChangeShape.GetRoomDimension());
             Assert.AreNotEqual(dimensionRoomView, dimensionAfterChangeShape);
         }
         [Test, Order(9)]
         public void VerifingySizeOfRoomModelChangeAfterChangeDimension()
         {
-            //Manager.Driver.Navigate().Refresh();
+            Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().StartButton.Click();
 
             Rooms3DWCModel roomModel = roomViewServices.Get3DModel();
@@ -142,24 +142,17 @@ namespace RawaTests.Tests
 
             Assert.AreNotEqual(roomDimension, roomDimensionAfterChange);
         }
-        [Test, Order(10)]
-        public void CheckingTheClassChangeForTheElementAfterChangingTheDimensionsOnTheDependentWall()
-        {
-           // Manager.Driver.Navigate().Refresh();
-            homeServices.GetHomePageModel().StartButton.Click();
+        //[Test, Order(10)]
+        //public void CheckingTheClassChangeForTheElementAfterChangingTheDimensionsOnTheDependentWall()
+        //{
+        //   // Manager.Driver.Navigate().Refresh();
+        //    homeServices.GetHomePageModel().StartButton.Click();
 
-            ButtonHelper.ClickButtonNext();
-            var a = groupOptionServices.GetOptionModel();
-            a.GetOptionCabinetsSimple();
-            var b = Manager.Driver.FindElement(By.Id("accordion"));
-            var c = Manager.FindWebElementsWithoutWait(b, By.XPath("//div[@class='panel panel-default']"));
-            c.Where(e => e.Text.Contains("SZAFKI GÓRNE")).FirstOrDefault().Click();
-            foreach (var item in c)
-            {
-                var d = Manager.FindWebElementWithoutWait(item, By.TagName("a"));
-                var e = Manager.FindWebElementWithoutWait(item, By.XPath("//div[@aria-expanded]"));
-            }
-        }
+        //    ButtonHelper.ClickButtonNext();
+        //    var a = groupOptionServices.GetOptionModel();
+        //    a.GetOptionCabinetsSimple();
+            
+        //}
 
     }
 }

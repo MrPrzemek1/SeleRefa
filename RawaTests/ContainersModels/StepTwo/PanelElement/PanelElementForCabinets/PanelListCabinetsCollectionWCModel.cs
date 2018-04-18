@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
-using RawaTests.WebElementsModels;
 
 namespace RawaTests.ContainersModels.StepTwo.PanelElement
 {
     class PanelListCabinetsCollectionWCModel
     {
-        NxWEButtonModel collection;
-        IList<NxWEButtonModel> subCollection;
-        IList<NxWEImageModel> images;
+        IList<IWebElement> collection;
+        IList<IWebElement> subCollection;
+        IList<IWebElement> images;
 
-        public PanelListCabinetsCollectionWCModel(NxWEButtonModel collection=null, IList<NxWEButtonModel> subCollection=null, IList<NxWEImageModel> images=null)
+        public PanelListCabinetsCollectionWCModel(IList<IWebElement> collection = null, IList<IWebElement> subCollection = null, IList<IWebElement> images = null)
         {
             this.collection = collection;
             this.subCollection = subCollection;
             this.images = images;
+
         }
 
         public void lalal()

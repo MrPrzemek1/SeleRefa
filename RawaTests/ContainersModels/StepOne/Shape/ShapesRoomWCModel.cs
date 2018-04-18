@@ -1,5 +1,6 @@
-﻿using RawaTests.Model;
-using RawaTests.WebElementsModels;
+﻿using OpenQA.Selenium;
+using RawaTests.HtmlStrings.ConstStrings;
+using RawaTests.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace RawaTests.Lists
 {
     public class ShapesRoomWCModel
     {
-        public NxWELabelModel Header { get; set; }
+        public IWebElement Header { get; set; }
         public List<ShapeRoomWCModel> Shapes { get; set; }
 
         public ShapesRoomWCModel()
@@ -21,7 +22,7 @@ namespace RawaTests.Lists
         /// <param name="id">id pomieszczenia</param>
         public void ClickShapeById(string id)
         {
-             Shapes.Where(e => e.ShapeOfRoom.GetElementAttribute("shape-id") == id).FirstOrDefault().ShapeOfRoom.Click();            
+             Shapes.Where(e => e.ShapeOfRoom.GetAttribute(HtmlAttributesConsts.SHAPE_ID) == id).FirstOrDefault().ShapeOfRoom.ClickIfElementIsClickable();            
         }
         /// <summary>
         /// Metoda zwracająca atrybut "class"
@@ -30,7 +31,7 @@ namespace RawaTests.Lists
         /// <returns></returns>
         public string GetAttribute(int i)
         {
-            return Shapes[i].ShapeOfRoom.GetAttribute("class");
+            return Shapes[i].ShapeOfRoom.GetAttribute(HtmlAttributesConsts.CLASS);
         }
         /// <summary>
         /// Metoda sprawdzająca czy po kilknięciu w miniaturke pomieszczenia jej klasa zmienia się na active
@@ -43,7 +44,7 @@ namespace RawaTests.Lists
             for (int i = 0; i < shapesArray.Length; i++)
             {
                 ClickShapeById(shapesArray[i]);
-                if (GetAttribute(i).Equals("active"))
+                if (GetAttribute(i).Equals(HtmlAttributesConsts.ACTIVE))
                 {
                     ClassChanged.Add(true);
                 }

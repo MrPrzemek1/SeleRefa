@@ -1,9 +1,10 @@
-﻿using RawaTests.WebElementsModels;
+﻿
+using OpenQA.Selenium;
 
 namespace RawaTests.Models.StepTwo
 {
     public class GroupOptionWCModel
     {
-        public NxWELabelModel NameOfGroup { get; set; }
+        public IWebElement NameOfGroup { get; set; }
     }
 }

@@ -1,12 +1,13 @@
-﻿using RawaTests.HtmlStrings.ConstStrings;
+﻿using OpenQA.Selenium;
+using RawaTests.HtmlStrings.ConstStrings;
 using RawaTests.Model;
-using RawaTests.WebElementsModels;
+using RawaTests;
 
 namespace RawaTests.ContainersModels.Home
 {
     class ActionOnWCHomePage : HomePageWCModel
     {
-        public ActionOnWCHomePage(NxWEButtonModel startBtn, NxWEImageModel homeImg, NxWEImageModel logoImg, NxWELabelModel footer, NxWEButtonModel loginBtn, NxWELabelModel header, NxWELabelModel logoutDiv, NxWEButtonModel logoutBtn)
+        public ActionOnWCHomePage(IWebElement startBtn, IWebElement homeImg, IWebElement logoImg, IWebElement footer, IWebElement loginBtn, IWebElement header, IWebElement logoutDiv, IWebElement logoutBtn)
         {
             StartButton = startBtn;
             HomePageImage = homeImg;
@@ -19,7 +20,7 @@ namespace RawaTests.ContainersModels.Home
         }
         public override bool IsValid()
         {
-            return StartButton.Dispalyed() && HomePageImage.GetElementAttribute("src") != null && Footer.Text.Equals(FooterAndHeader.FOOTER) && Header.Text.Equals(FooterAndHeader.HEADER);
+            return StartButton.Displayed && HomePageImage.GetAttributeSrc() != null && Footer.Text.Equals(FooterAndHeader.FOOTER) && Header.Text.Equals(FooterAndHeader.HEADER);
         }
     }
 }

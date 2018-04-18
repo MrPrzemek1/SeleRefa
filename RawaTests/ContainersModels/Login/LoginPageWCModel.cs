@@ -1,15 +1,15 @@
-﻿using RawaTests.Model.Base;
-using RawaTests.WebElementsModels;
+﻿using OpenQA.Selenium;
+using RawaTests.Model.Base;
 
 namespace RawaTests.Model.Login
 {
     abstract class LoginPageWCModel : BaseWebContainerModel
     {
-        public NxWEInputModel CompanyNameInput { get; set; }
-        public NxWEInputModel LoginInput { get; set; }
-        public NxWEInputModel PasswordInput { get; set; }
-        public NxWEButtonModel SubmitButton { get; set; }
-        public NxWELabelModel ValidateFieldElement { get; set; }
+        public IWebElement CompanyNameInput { get; set; }
+        public IWebElement LoginInput { get; set; }
+        public IWebElement PasswordInput { get; set; }
+        public IWebElement SubmitButton { get; set; }
+        public IWebElement ValidateFieldElement { get; set; }
     }
 
 }

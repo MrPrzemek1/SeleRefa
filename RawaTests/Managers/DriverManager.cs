@@ -57,6 +57,7 @@ namespace RawaTests.Managers
             }
         }
         #region Wyszukiwanie i czekanie na elementy.
+
         public IWebElement FindWebElementAndWait(By by)
         {
             return DriverHelper.FindWebElementAndWait(Driver, by);
@@ -65,44 +66,21 @@ namespace RawaTests.Managers
         {
             return DriverHelper.FindWebElementsAndWait(Driver, by);
         }
-        public IList<IWebElement> FindWebElementsAndWait(IWebElement e, By by)
-        {
-            return DriverHelper.FindWebElementsAndWait(Driver, e, by);
-        }
-        public IWebElement FindWebElementAndWait(IWebElement e, By by)
-        {
-            return DriverHelper.FindWebElementAndWait(Driver, e, by);
-        }
+
         #endregion
 
         #region Wyszukiwanie elementów bez czekania na nie
-        public IWebElement FindWebElementWithoutWait(By by)
+        public IWebElement FindWebElement(By by)
         {
             return DriverHelper.FindWebElementWithoutWait(Driver, by);
         }
-        public IWebElement FindWebElementWithoutWait(IWebElement e, By by)
-        {
-            return DriverHelper.FindWebElementWithoutWait(e, by);
-        }
-        public IList<IWebElement> FindWebElementsWithoutWait(By by)
+       
+        public IList<IWebElement> FindWebElements(By by)
         {
             return DriverHelper.FindWebElementsWithoutWait(Driver, by);
         }
-        public IList<IWebElement> FindWebElementsWithoutWait(IWebElement e, By by)
-        {
-            return DriverHelper.FindWebElementsWithoutWait(e, by);
-        }
+
         #endregion
-
-        public void Wait(By by)
-        {
-            DriverHelper.Wait(Driver, by);
-        }
-
-        public TResult WaiTUntil<TResult>(Func<IWebDriver, TResult> condition) where TResult : class
-        {
-            return DriverHelper.WaitUntil<TResult>(Driver, condition);
-        }
 
         private void Initialize()
         {

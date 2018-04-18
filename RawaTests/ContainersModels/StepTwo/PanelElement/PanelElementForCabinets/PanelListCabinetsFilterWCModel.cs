@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using RawaTests.WebElementsModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +9,10 @@ namespace RawaTests.ContainersModels.StepTwo.PanelElement
 {
     public class PanelListCabinetsFilterWCModel
     {
-        NxWELabelModel FiltrPanel { get; set; }
-        IList<NxWEButtonModel> FiltrDropown { get; set; }
+        IWebElement FiltrPanel { get; set; }
+        IList<IWebElement> FiltrDropown { get; set; }
 
-        public PanelListCabinetsFilterWCModel(NxWELabelModel filtrPanel, List<NxWEButtonModel> filtrDropdown)
+        public PanelListCabinetsFilterWCModel(IWebElement filtrPanel, IList<IWebElement> filtrDropdown)
         {
             FiltrPanel = filtrPanel;
             FiltrDropown = filtrDropdown;

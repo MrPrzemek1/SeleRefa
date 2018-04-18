@@ -27,8 +27,8 @@ namespace RawaTests.Tests
         [Test]
         public void VerifyClickedElementChangeClass()
         {
-            Manager.Driver.Navigate().Refresh();
-            homePageServices.GetHomePageModel().StartButton.Click();
+           // Manager.Driver.Navigate().Refresh();
+            homePageServices.GetHomePageModel().StartButton.ClickIfElementIsClickable();
 
             ShapesRoomWCModel shapes = shapeServices.GetShapes();
             Assert.IsTrue(shapes.ClickingOnTheShapes());
@@ -37,7 +37,7 @@ namespace RawaTests.Tests
         public void VerifyingModelRoomChangeAfterChangeShape()
         {
             Manager.Driver.Navigate().Refresh();
-            homePageServices.GetHomePageModel().StartButton.Click();
+            homePageServices.GetHomePageModel().StartButton.ClickIfElementIsClickable();
 
             ShapesRoomWCModel shapes = shapeServices.GetShapes();
             shapes.ClickShapeById("27");
@@ -46,7 +46,7 @@ namespace RawaTests.Tests
             shapes.ClickShapeById("28");
             Rooms3DWCModel roomAfterChangeShape = roomViewServices.Get3DModel();
             var dimensionAfterChangeShape = roomAfterChangeShape.GetRoomDimension();
-            Assert.AreNotSame(roomView.RoomImage, roomAfterChangeShape.RoomImage);
+            Assert.AreNotSame(roomView.GetRoomDimension(), roomAfterChangeShape.GetRoomDimension());
             Assert.AreNotEqual(dimensionRoomView, dimensionAfterChangeShape);
         }
         [Test]
@@ -76,14 +76,14 @@ namespace RawaTests.Tests
             roomDimension.GetFieldByDescription("A").PlusSign.Click();
             Assert.IsTrue(roomDimension.GetFieldByDescription("C").Input.GetAttribute("class").Equals("wallSizeInput changed"));
         }
-        [Test]
-        public void sdfsdf()
-        {
-            homePageServices.GetHomePageModel().StartButton.Click();
+        //[Test]
+        //public void sdfsdf()
+        //{
+        //    homePageServices.GetHomePageModel().StartButton.Click();
             
-            DimensionsWCModel roomDimension = dimensionServices.GetDimensions();
-            roomDimension.GetFieldByDescription("A");
-            Assert.IsTrue(roomDimension.GetFieldByDescription("C").Input.GetAttribute("class").Equals("wallSizeInput changed"));
-        }
+        //    DimensionsWCModel roomDimension = dimensionServices.GetDimensions();
+        //    roomDimension.GetFieldByDescription("A");
+        //    Assert.IsTrue(roomDimension.GetFieldByDescription("C").Input.GetAttribute("class").Equals("wallSizeInput changed"));
+        //}
     }
 }

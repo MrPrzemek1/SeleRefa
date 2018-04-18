@@ -3,7 +3,6 @@ using RawaTests.HtmlStrings.ElementsLocators.StepTwo;
 using RawaTests.Models.StepTwo;
 using RawaTests.Models.StepTwo.Groups;
 using RawaTests.Services.Base;
-using RawaTests.WebElementsModels;
 using System.Collections.Generic;
 
 namespace RawaTests.Services.StepTwoServices
@@ -16,7 +15,7 @@ namespace RawaTests.Services.StepTwoServices
         }
         public GroupOptionsWCModel GetOptionModel()
         {
-            var radio = new List<IWebElement>(Manager.FindWebElementsAndWait(By.Name(StepTwoLocators.groupOption)));
+            var radio = Manager.FindWebElementsAndWait(By.Name(StepTwoLocators.groupOption));
 
             GroupOptionsWCModel model = new GroupOptionsWCModel();
 
@@ -24,7 +23,7 @@ namespace RawaTests.Services.StepTwoServices
             {
                 model.GroupOption.Add(new GroupOptionWCModel
                 {
-                    NameOfGroup = new NxWELabelModel(radio[i]),
+                    NameOfGroup = radio[i],
                 });
             }
             return model;           

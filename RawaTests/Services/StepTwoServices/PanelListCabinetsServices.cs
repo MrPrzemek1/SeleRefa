@@ -1,13 +1,13 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.ContainersModels.StepTwo.PanelElement;
 using RawaTests.HtmlStrings.ElementsLocators.StepTwo;
-using RawaTests.Services.Base;
-using RawaTests.WebElementsModels;
+using RawaTests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RawaTests.Services.Base;
 
 namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
 {
@@ -16,27 +16,25 @@ namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
         //servis do pol z szafkami
         public PanelListCabinetsCollectionWCModel GetCabintesCollectionModel()
         {
-            var listOfCollection = new NxWEButtonModel(Manager.FindWebElementAndWait(By.XPath(CabinetsPanelLocator.collectionGroup)));
-            var group = listOfCollection.FindElementsAndWait<NxWELabelModel>(By.XPath(CabinetsPanelLocator.collectionSub));
+            var listOfCollection = Manager.FindWebElementAndWait(By.XPath(CabinetsPanelLocator.collectionGroup));
+            IList<IWebElement> group = listOfCollection.FindWebElements(By.XPath(CabinetsPanelLocator.collectionSub));
 
+            IList<IWebElement> list = new List<IWebElement>();
+            
             foreach (var item in group)
-            {
-                var button2 = item.FindElementAndWait<NxWEButtonModel>(By.TagName("a"));
+            {          
+                var button2 = item.FindWebElements(By.TagName("a"));
 
-                var button = new NxWEButtonModel(Manager.FindWebElementAndWait(item.GetIWebElementElement(), By.TagName("a")));
-                var categoryHelper = Manager.FindWebElementWithoutWait(item, By.XPath("//div[@aria-expanded]"));
-                var category = Manager.FindWebElementsWithoutWait(categoryHelper, By.TagName("label"));
-
-                PanelListCabinetsCollectionWCModel result = new PanelListCabinetsCollectionWCModel(group, group, images);
-                return result;
+                var categoryHelper = item.FindWebElement(By.XPath("//div[@aria-expanded]"));
+                var category = categoryHelper.FindWebElements(By.TagName("label"));
+                
             }
-            return null;
         }
         // servis do pola filtrowania
         public PanelListCabinetsFilterWCModel GetCabinetFilterPanel()
         {
-            NxWELabelModel filtrPanel = new NxWELabelModel(Manager.FindWebElementAndWait(By.ClassName(CabinetsPanelLocator.filtrPanel)));
-            List<NxWEButtonModel> dropdowns = filtrPanel.FindElementsAndWait<NxWEButtonModel>((By.XPath(CabinetsPanelLocator.filtrDropdown)));
+            IWebElement filtrPanel = Manager.FindWebElementAndWait(By.ClassName(CabinetsPanelLocator.filtrPanel));
+            IList<IWebElement> dropdowns = filtrPanel.FindWebElements(By.XPath(CabinetsPanelLocator.filtrDropdown));
 
             PanelListCabinetsFilterWCModel result = new PanelListCabinetsFilterWCModel(filtrPanel, dropdowns);
 
