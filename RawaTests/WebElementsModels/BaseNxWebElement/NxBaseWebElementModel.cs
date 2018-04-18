@@ -35,6 +35,10 @@ namespace RawaTests.WebElementsModels
             }
             return result;
         }
+        public IWebElement GetIWebElementElement()
+        {
+            return element;
+        }
 
         public string GetAttribute(string attribute)
         {
@@ -42,9 +46,7 @@ namespace RawaTests.WebElementsModels
         }
         public virtual void Click()
         {
-            wait = new WebDriverWait(DriverManager.CreateInstance().Driver, TimeSpan.FromSeconds(10));
-            wait.PollingInterval = TimeSpan.FromMilliseconds(50);
-            wait.Until(ExpectedConditions.ElementToBeClickable(element)).Click();
+            DriverManager.CreateInstance().WaiTUntil(ExpectedConditions.ElementToBeClickable(element)).Click();
         }
 
         public List<IWebElement> FindElementsAndWait(By by)

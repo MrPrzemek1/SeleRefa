@@ -98,6 +98,12 @@ namespace RawaTests.Managers
         {
             DriverHelper.Wait(Driver, by);
         }
+
+        public TResult WaiTUntil<TResult>(Func<IWebDriver, TResult> condition) where TResult : class
+        {
+            return DriverHelper.WaitUntil<TResult>(Driver, condition);
+        }
+
         private void Initialize()
         {
             Goto("konfigurator3d");

@@ -34,14 +34,14 @@ namespace RawaTests.Helpers.DriverHelper
         /// <summary>
         /// Metoda wyszukująca listy IWebElementów w kontekście całej strony bez oczekiwania.
         /// </summary>
-        /// <param name="Driver">Sterownik przeglądarki</param>
+        /// <param name="driver">Sterownik przeglądarki</param>
         /// <param name="by">lokator szukanego elementu</param>
         /// <returns></returns>
-        public static IList<IWebElement> FindWebElementsWithoutWait(IWebDriver Driver, By by)
+        public static IList<IWebElement> FindWebElementsWithoutWait(IWebDriver driver, By by)
         {
             try
             {               
-                return Driver.FindElements(by);
+                return driver.FindElements(by);
             }
             catch
             {
@@ -129,6 +129,20 @@ namespace RawaTests.Helpers.DriverHelper
             {
                 wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//div[@class='loading-show']")));
                 return wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(by));               
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public static TResult WaitUntil<TResult>(IWebDriver driver, Func<IWebDriver, TResult> condition, int millisecond = TIME) where TResult : class
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(millisecond));
+            wait.PollingInterval = TimeSpan.FromMilliseconds(50);
+            try
+            {
+                return wait.Until(condition);
             }
             catch (Exception)
             {

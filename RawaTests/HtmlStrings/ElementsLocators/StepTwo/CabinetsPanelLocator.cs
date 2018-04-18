@@ -12,10 +12,10 @@ namespace RawaTests.HtmlStrings.ElementsLocators.StepTwo
         public static string filtrButton = "//*[@role='button']";
         public static string filtrDropdown = "//html//div[@class='container step1']//li";
         public static string collapsdropdown = "collapseFilter";
-        public static string collectionGroup = "//html//div[@id='accordion']/div";
+        public static string collectionGroup = "accordion";
         public static string SzafkiSimplyDolne = "47413";
-        public static string SzafkiSimplyDolneGrupy = "//html//div[@id='47413']//label";
-        public static string collectionSubGroup = "//html//div[@class='container step1']//label/input";
+        public static string collectionSub = "//div[@class='panel panel-default']";
+        public static string collectionSubGroup = "//div[@aria-expanded]";
         public static string cabinetImages = "//div[@object-type='furniture']";
     }
 }

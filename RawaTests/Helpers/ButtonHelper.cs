@@ -8,18 +8,15 @@ using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 namespace RawaTests.Helpers
 {
     public class ButtonHelper
-    {
-
+    {  
         public static void ClickButtonNext()
         {
-            WebDriverWait wait = new WebDriverWait(DriverManager.CreateInstance().Driver, TimeSpan.FromSeconds(5));
-            var buttonNext = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(StaticButtons.ButtonNext)));
+            var buttonNext = DriverManager.CreateInstance().WaiTUntil(ExpectedConditions.ElementIsVisible(By.XPath(StaticButtons.ButtonNext)));
             buttonNext.Click();
         }
         public static void ClickButtonPrev()
         {
-            WebDriverWait wait = new WebDriverWait(DriverManager.CreateInstance().Driver, TimeSpan.FromSeconds(5));
-            var ButtonPrev = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(StaticButtons.ButtonPrev)));
+            var ButtonPrev = DriverManager.CreateInstance().WaiTUntil(ExpectedConditions.ElementIsVisible(By.XPath(StaticButtons.ButtonPrev)));
             ButtonPrev.Click();
         }
     }

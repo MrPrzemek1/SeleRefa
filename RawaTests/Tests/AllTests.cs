@@ -9,6 +9,7 @@ using RawaTests.Services.StepTwoServices;
 using RawaTests.StepOne;
 using RawaTests.ValidateMessages;
 using OpenQA.Selenium;
+using System.Linq;
 
 namespace RawaTests.Tests
 {
@@ -21,8 +22,7 @@ namespace RawaTests.Tests
         private ShapeRoomServices shapeServices;
         private Room3DServices roomViewServices;
         GroupOptionServices groupOptionServices;
-        PanelListCabinetsFilterServices cabinetsServices;
-        private PanelListCabinetsCollectionSerivces panelListCabinetsCollectionSerivces;
+        
         public AllTests()
         {
             homeServices = new HomePageWCServices();
@@ -31,8 +31,7 @@ namespace RawaTests.Tests
             shapeServices = new ShapeRoomServices();
             roomViewServices = new Room3DServices();
             groupOptionServices = new GroupOptionServices();
-            cabinetsServices = new PanelListCabinetsFilterServices();
-            panelListCabinetsCollectionSerivces = new PanelListCabinetsCollectionSerivces();
+            
         }
         [Test,Order(1)]
         public void HomePageElementsIsDisplayed()
@@ -152,8 +151,14 @@ namespace RawaTests.Tests
             ButtonHelper.ClickButtonNext();
             var a = groupOptionServices.GetOptionModel();
             a.GetOptionCabinetsSimple();
-            var c = panelListCabinetsCollectionSerivces.GetCollectionModel();
-            var b = cabinetsServices.GetCabinetFilterPanel();
+            var b = Manager.Driver.FindElement(By.Id("accordion"));
+            var c = Manager.FindWebElementsWithoutWait(b, By.XPath("//div[@class='panel panel-default']"));
+            c.Where(e => e.Text.Contains("SZAFKI GÓRNE")).FirstOrDefault().Click();
+            foreach (var item in c)
+            {
+                var d = Manager.FindWebElementWithoutWait(item, By.TagName("a"));
+                var e = Manager.FindWebElementWithoutWait(item, By.XPath("//div[@aria-expanded]"));
+            }
         }
 
     }

@@ -17,12 +17,17 @@ namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
         public PanelListCabinetsCollectionWCModel GetCabintesCollectionModel()
         {
             var listOfCollection = new NxWEButtonModel(Manager.FindWebElementAndWait(By.XPath(CabinetsPanelLocator.collectionGroup)));
-            var group = listOfCollection.FindElementsAndWait<NxWEButtonModel>(By.XPath(CabinetsPanelLocator.SzafkiSimplyDolneGrupy));
+            var group = listOfCollection.FindElementsAndWait<NxWELabelModel>(By.XPath(CabinetsPanelLocator.collectionSub));
 
             foreach (var item in group)
             {
-                var images = item.FindElementsAndWait<NxWEImageModel>(By.XPath(CabinetsPanelLocator.cabinetImages));
-                PanelListCabinetsCollectionWCModel result = new PanelListCabinetsCollectionWCModel(listOfCollection, group, images);
+                var button2 = item.FindElementAndWait<NxWEButtonModel>(By.TagName("a"));
+
+                var button = new NxWEButtonModel(Manager.FindWebElementAndWait(item.GetIWebElementElement(), By.TagName("a")));
+                var categoryHelper = Manager.FindWebElementWithoutWait(item, By.XPath("//div[@aria-expanded]"));
+                var category = Manager.FindWebElementsWithoutWait(categoryHelper, By.TagName("label"));
+
+                PanelListCabinetsCollectionWCModel result = new PanelListCabinetsCollectionWCModel(group, group, images);
                 return result;
             }
             return null;

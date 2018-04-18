@@ -99,7 +99,7 @@
     <Compile Include="Services\StepTwoServices\GroupOptionServices.cs" />
     <Compile Include="ContainersModels\StepTwo\PanelElement\PanelListDoorWCModel.cs" />
     <Compile Include="Services\StepTwoServices\PanelListDoorServices.cs" />
-    <Compile Include="Services\StepTwoServices\PanelListForCabinets\PanelListCabinetsServices.cs" />
+    <Compile Include="Services\StepTwoServices\PanelListCabinetsServices.cs" />
     <Compile Include="Services\StepTwoServices\PanelListWindowServices.cs" />
     <Compile Include="Tests\AllTests.cs" />
     <Compile Include="Tests\StepOneTests.cs" />
@@ -127,7 +127,9 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\StepTwoServices\PanelListForCabinets\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Selenium.Chrome.WebDriver.2.37\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('..\packages\Selenium.Chrome.WebDriver.2.37\build\Selenium.Chrome.WebDriver.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
