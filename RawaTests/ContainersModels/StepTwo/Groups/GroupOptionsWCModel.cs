@@ -12,6 +12,7 @@ namespace RawaTests.Models.StepTwo.Groups
     public class GroupOptionsWCModel
     {
         public IList<GroupOptionWCModel> GroupOption;
+
         public GroupOptionsWCModel()
         {
             GroupOption = new List<GroupOptionWCModel>();
@@ -32,14 +33,13 @@ namespace RawaTests.Models.StepTwo.Groups
         {
             MainClick(GroupType.SZAFKI_ECO);
         }
-        public void GetOptionCabinetsSimple()
+        public void GetOptionCabinetsSimply()
         {
             MainClick(GroupType.SZAFKI_SIPMLY);
         }
         private void MainClick(GroupType type)
         {
-            Thread.Sleep(2000);
-            GroupOption.Where(e => String.Equals(e.NameOfGroup.GetAttribute("value"), groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.Click();
+            GroupOption.Where(e => String.Equals(e.NameOfGroup.GetAttribute("value"), groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.ClickIfElementIsClickable();
         }
 
         public enum GroupType

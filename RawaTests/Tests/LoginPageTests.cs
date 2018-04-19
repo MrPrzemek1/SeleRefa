@@ -2,6 +2,7 @@
 using RawaTests.Services;
 using RawaTests.ValidateMessages;
 using RawaTests.Model;
+using RawaTests.Model.Login;
 
 namespace RawaTests.Tests
 {
@@ -22,7 +23,7 @@ namespace RawaTests.Tests
         {
             homeServices.GetHomePageModel().LoginBtn.Click();
 
-            ActionOnWCLoginPage loginPage = loginServices.GetLoginPageModel();
+            LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.SetCorrectLoginData();
             loginPage.SubmitButton.Click();
             HomePageWCModel homePageAfterLogin = homeServices.GetHomePageModel();
@@ -37,11 +38,11 @@ namespace RawaTests.Tests
             Manager.Driver.SwitchTo().Alert().Accept();
             homeServices.GetHomePageModel().LoginBtn.Click();
 
-            ActionOnWCLoginPage loginPage = loginServices.GetLoginPageModel();
+            LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.LoginInput.SendKeys("Test");
             loginPage.PasswordInput.SendKeys("test");
             loginPage.SubmitButton.Click();
-            ActionOnWCLoginPage loginAfterSubmit = loginServices.GetLoginPageModel();
+            LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateFieldIsDisplayed);
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.CompanyValidateText));
         }
@@ -50,11 +51,11 @@ namespace RawaTests.Tests
         {
             Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().LoginBtn.Click();
-            ActionOnWCLoginPage loginPage = loginServices.GetLoginPageModel();
+            LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.CompanyNameInput.SendKeys("lalala");
             loginPage.PasswordInput.SendKeys("lalala");
             loginPage.SubmitButton.Click();
-            ActionOnWCLoginPage loginAfterSubmit = loginServices.GetLoginPageModel();
+            LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.LoginValidateText));
         }
         [Test, Order(4)]
@@ -62,11 +63,11 @@ namespace RawaTests.Tests
         {
             Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().LoginBtn.Click();
-            ActionOnWCLoginPage loginPage = loginServices.GetLoginPageModel();
+            LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.CompanyNameInput.SendKeys("lalala");
             loginPage.LoginInput.SendKeys("lalala");
             loginPage.SubmitButton.Click();
-            ActionOnWCLoginPage loginAfterSubmit = loginServices.GetLoginPageModel();
+            LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.PasswordValidateText));
         }
         [Test, Order(5)]
@@ -74,10 +75,10 @@ namespace RawaTests.Tests
         {
             Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().LoginBtn.Click();
-            ActionOnWCLoginPage loginPage = loginServices.GetLoginPageModel();
+            LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.SetLoginData("Test","Test","Test");
             loginPage.SubmitButton.Click();
-            ActionOnWCLoginPage loginAfterSubmit = loginServices.GetLoginPageModel();
+            LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.ErrorValidateText));
         }
 

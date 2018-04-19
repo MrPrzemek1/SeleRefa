@@ -11,33 +11,72 @@ using RawaTests.Services.Base;
 
 namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
 {
-    class PanelListCabinetsServices : BaseService
+    class PanelCabinetsServices : BaseService
     {
-        public PanelListCabinetsServices() : base()
+        public PanelCabinetsServices() : base()
         {
 
         }
-        //servis do pol z szafkami
-        public PanelListCabinetsCollectionWCModel GetCabintesCollectionModel()
+        //serwis który zwraca szafki dolne Eco
+        public PanelCabinetsCollectionWCModel GetEcoLowerCabintesModel()
         {
-            var listOfCollection = Manager.FindWebElementAndWait(By.Id(CabinetsPanelLocator.collectionGroup));
-            IList<IWebElement> group = listOfCollection.FindWebElements(By.XPath(CabinetsPanelLocator.collectionSub));
-            var szafkiDolne = listOfCollection.FindWebElements(By.XPath("//a[@href]"));
-            
+            IWebElement nameGroupOfCabintesButton = Manager.FindWebElement(By.XPath(CabinetsPanelLocator.bottomCabintesEco));
+            IWebElement cabinetsHelper = Manager.FindWebElement(By.Id(CabinetsPanelLocator.ecoBottomId));
+            IWebElement openCabintes = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocator.bottomOpenCabinetsEco));
+            IWebElement closedCabintes = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocator.bottomClosedCabinetsEco));
+            IWebElement imagesOfCabinets = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocator.bottomImagesOfCabinetsEco));
 
-            PanelListCabinetsCollectionWCModel result = new PanelListCabinetsCollectionWCModel();
+            PanelCabinetsCollectionWCModel result = new PanelCabinetsCollectionWCModel(nameGroupOfCabintesButton,openCabintes,closedCabintes,imagesOfCabinets);
+
+            return result;          
+        }
+        public PanelCabinetsCollectionWCModel GetEcoUpperCabintesModel()
+        {
+            IWebElement nameGroupOfCabintesButton = Manager.FindWebElement(By.XPath(CabinetsPanelLocator.upperCabinetsEco));
+            IWebElement cabinetsHelper = Manager.FindWebElement(By.Id(CabinetsPanelLocator.ecoUpperId));
+            IWebElement openCabintes = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocator.upperOpenCabinetsEco));
+            IWebElement closedCabintes = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocator.upperClosedCabinetsEco));
+            IWebElement imagesOfCabinets = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocator.upperImagesOfCabinetsEco));
+
+            PanelCabinetsCollectionWCModel result = new PanelCabinetsCollectionWCModel(nameGroupOfCabintesButton, openCabintes, closedCabintes, imagesOfCabinets);
+
             return result;
-            
+        }
+        public PanelCabinetsCollectionWCModel GetSimplyLowerCabintesModel()
+        {
+            IWebElement nameGroupOfCabintesButton = Manager.FindWebElementAndWait(By.XPath(CabinetsPanelLocator.bottomCabintesSimply));
+            IWebElement cabinetsHelper = Manager.FindWebElement(By.Id(CabinetsPanelLocator.simplyBottomId));
+            IWebElement openCabintes = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocator.bottomOpenCabinetsSimply));
+            IWebElement closedCabintes = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocator.bottomClosedCabinetsSimply));
+            IWebElement imagesOfCabinets = cabinetsHelper.FindWebElementAndWait(By.XPath(CabinetsPanelLocator.bottomImagesOfCabinetsSimply));
+
+            PanelCabinetsCollectionWCModel result = new PanelCabinetsCollectionWCModel(nameGroupOfCabintesButton, openCabintes, closedCabintes, imagesOfCabinets);
+
+            return result;
+        }
+        public PanelCabinetsCollectionWCModel GetSimplyUpperCabintesModel()
+        {
+            IWebElement nameGroupOfCabintesButton = Manager.FindWebElement(By.XPath(CabinetsPanelLocator.bottomCabintesSimply));
+            IWebElement cabinetsHelper = Manager.FindWebElement(By.Id(CabinetsPanelLocator.simplyUpperId));
+            IWebElement openCabintes = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocator.bottomOpenCabinetsSimply));
+            IWebElement closedCabintes = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocator.bottomClosedCabinetsSimply));
+            IWebElement imagesOfCabinets = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocator.bottomImagesOfCabinetsSimply));
+
+            PanelCabinetsCollectionWCModel result = new PanelCabinetsCollectionWCModel(nameGroupOfCabintesButton, openCabintes, closedCabintes, imagesOfCabinets);
+
+            return result;
         }
         // servis do pola filtrowania
-        public PanelListCabinetsFilterWCModel GetCabinetFilterPanel()
+        public PanelCabinetFilterWCModel GetCabinetFilterPanel()
         {
-            IWebElement filtrPanel = Manager.FindWebElementAndWait(By.ClassName(CabinetsPanelLocator.filtrPanel));
-            IList<IWebElement> dropdowns = filtrPanel.FindWebElements(By.XPath(CabinetsPanelLocator.filtrDropdown));
+            IWebElement filterButton = Manager.FindWebElementAndWait(By.XPath(CabinetsPanelLocator.filterButton));
+            IWebElement filterBodyColor = Manager.FindWebElement(By.XPath(CabinetsPanelLocator.filterBodyColor));
+            IWebElement filterFrontType = Manager.FindWebElement(By.XPath(CabinetsPanelLocator.filterFrontType));
 
-            PanelListCabinetsFilterWCModel result = new PanelListCabinetsFilterWCModel(filtrPanel, dropdowns);
+            PanelCabinetFilterWCModel result = new PanelCabinetFilterWCModel(filterButton, filterBodyColor, filterFrontType);
 
             return result;
+            
         }
     }
 }

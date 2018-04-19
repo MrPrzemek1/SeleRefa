@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.Helpers;
 using RawaTests.Model;
+using RawaTests.Model.Login;
 using RawaTests.Services.Base;
 using System;
 
@@ -12,7 +13,7 @@ namespace RawaTests.Services
         {
 
         }
-        public ActionOnWCLoginPage GetLoginPageModel()
+        public LoginPageWCModel GetLoginPageModel()
         {
             System.Console.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff"));
 
@@ -22,7 +23,7 @@ namespace RawaTests.Services
             var SubmitButton = Manager.FindWebElement(By.XPath(LoginPageElementsLocators.submitLogin));
             var ValidateField = Manager.FindWebElement(By.XPath(LoginPageElementsLocators.ValidateField));
 
-            ActionOnWCLoginPage model = new ActionOnWCLoginPage(CompanyName, Login, Password, SubmitButton, ValidateField);
+            LoginPageWCModel model = new LoginPageWCModel(CompanyName, Login, Password, SubmitButton, ValidateField);
             System.Console.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff"));
 
             return model;

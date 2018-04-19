@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using RawaTests.Services;
 using RawaTests.Lists;
-using RawaTests.Model.Room3D;
 using RawaTests.Tests;
 using RawaTests.Managers;
 
@@ -41,12 +40,12 @@ namespace RawaTests.Tests
 
             ShapesRoomWCModel shapes = shapeServices.GetShapes();
             shapes.ClickShapeById("27");
-            Rooms3DWCModel roomView = roomViewServices.Get3DModel();
-            var dimensionRoomView = roomView.GetRoomDimension();
+            Room3DWCModel roomView = roomViewServices.Get3DModel();
+            var dimensionRoomView = roomView.Room3dImageDimension;
             shapes.ClickShapeById("28");
-            Rooms3DWCModel roomAfterChangeShape = roomViewServices.Get3DModel();
-            var dimensionAfterChangeShape = roomAfterChangeShape.GetRoomDimension();
-            Assert.AreNotSame(roomView.GetRoomDimension(), roomAfterChangeShape.GetRoomDimension());
+            Room3DWCModel roomAfterChangeShape = roomViewServices.Get3DModel();
+            var dimensionAfterChangeShape = roomAfterChangeShape.Room3dImageDimension;
+            Assert.AreNotSame(roomView.Room3dImageDimension, roomAfterChangeShape.Room3dImageDimension);
             Assert.AreNotEqual(dimensionRoomView, dimensionAfterChangeShape);
         }
         [Test]
@@ -55,12 +54,12 @@ namespace RawaTests.Tests
             Manager.Driver.Navigate().Refresh();
             homePageServices.GetHomePageModel().StartButton.Click();
 
-            Rooms3DWCModel roomModel = roomViewServices.Get3DModel();
-            var roomDimension = roomModel.GetRoomDimension();
+            Room3DWCModel roomModel = roomViewServices.Get3DModel();
+            var roomDimension = roomModel.Room3dImageDimension;
             DimensionsWCModel dimensionOfRoom = dimensionServices.GetDimensions();
             dimensionOfRoom.GetFieldByDescription("B").PlusSign.Click();
-            Rooms3DWCModel roomModelAfterChange = roomViewServices.Get3DModel();
-            var roomDimensionAfterChange = roomModelAfterChange.GetRoomDimension();
+            Room3DWCModel roomModelAfterChange = roomViewServices.Get3DModel();
+            var roomDimensionAfterChange = roomModelAfterChange.Room3dImageDimension;
 
             Assert.AreNotEqual(roomDimension, roomDimensionAfterChange);
         }

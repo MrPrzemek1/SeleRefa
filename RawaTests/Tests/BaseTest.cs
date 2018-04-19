@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
 using RawaTests.Managers;
+using System.IO;
+using System.Reflection;
 
 namespace RawaTests.Tests
 {

@@ -1,5 +1,4 @@
 ﻿using RawaTests.Lists;
-using RawaTests.Model.Room3D;
 using RawaTests.Services;
 using RawaTests.StepOne;
 
@@ -26,7 +25,7 @@ namespace RawaTests.Model.StepTwo
         {
             return this.Dimensions.GetDimensions();
         }
-        public Rooms3DWCModel GetRoom3DModel()
+        public Room3DWCModel GetRoom3DModel()
         {
             return this.RoomView.Get3DModel();
         }
