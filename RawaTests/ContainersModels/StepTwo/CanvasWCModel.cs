@@ -11,5 +11,9 @@ namespace RawaTests.ContainersModels.StepTwo
     {
         public IWebElement CanvasImage { get; set; }
 
+        public CanvasWCModel(IWebElement canvasImage)
+        {
+            CanvasImage = canvasImage;
+        }
     }  
 }

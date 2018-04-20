@@ -12,15 +12,15 @@ namespace RawaTests.Tests
     {
         private HomePageWCServices homePageServices;
         private DimensionWCServices dimensionServices;
-        private ShapeRoomServices shapeServices;
-        private Room3DServices roomViewServices;
+        private ShapeRoomWCServices shapeServices;
+        private Room3DWCServices roomViewServices;
 
         public StepOneTests()
         {
             homePageServices = new HomePageWCServices();
             dimensionServices = new DimensionWCServices();
-            shapeServices = new ShapeRoomServices();
-            roomViewServices = new Room3DServices();
+            shapeServices = new ShapeRoomWCServices();
+            roomViewServices = new Room3DWCServices();
         }
 
         [Test]

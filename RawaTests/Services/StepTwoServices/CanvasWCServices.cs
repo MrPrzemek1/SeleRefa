@@ -14,7 +14,7 @@ namespace RawaTests.Services.StepTwoServices
     {
         public CanvasWCModel GetCanvasModel()
         {
-            IWebElement canvas = Manager.FindWebElement(By.XPath(CabinetsPanelLocator.canvas));
+            IWebElement canvas = Manager.FindWebElement(By.XPath(CabinetsPanelLocators.canvas));
             CanvasWCModel model = new CanvasWCModel(canvas);
             return model;
         }

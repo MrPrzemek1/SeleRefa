@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RawaTests.HtmlStrings.ElementsLocators.StepTwo
 {
-    public class ActiveCabinetLocator
+    public class ActiveCabinetLocators
     {
         public static string panelHeader = "//div[@class='div-form-active-element']//h5";
         //prawy panel

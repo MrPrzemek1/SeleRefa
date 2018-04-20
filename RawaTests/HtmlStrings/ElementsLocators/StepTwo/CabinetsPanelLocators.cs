@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RawaTests.HtmlStrings.ElementsLocators.StepTwo
 {
-    public class CabinetsPanelLocator
+    public class CabinetsPanelLocators
     {
         //filtry
         public static string filterButton = "//a[@role='button'][contains(text(),'Filtrowanie')]";

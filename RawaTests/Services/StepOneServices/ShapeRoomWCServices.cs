@@ -7,9 +7,9 @@ using RawaTests.Services.Base;
 
 namespace RawaTests.Services
 {
-    public class ShapeRoomServices : BaseService
+    public class ShapeRoomWCServices : BaseService
     {
-        public ShapeRoomServices() : base()
+        public ShapeRoomWCServices() : base()
         {
 
         }

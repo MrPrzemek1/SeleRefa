@@ -7,10 +7,10 @@ namespace RawaTests.Model.StepTwo
     public class StepOneFacade
     {
         private DimensionWCServices Dimensions { get; set; }
-        private ShapeRoomServices Shapes { get; set; }
-        private Room3DServices RoomView { get; set; }
+        private ShapeRoomWCServices Shapes { get; set; }
+        private Room3DWCServices RoomView { get; set; }
 
-        public StepOneFacade(DimensionWCServices pageModel, ShapeRoomServices shapeModel, Room3DServices roomModel)
+        public StepOneFacade(DimensionWCServices pageModel, ShapeRoomWCServices shapeModel, Room3DWCServices roomModel)
         {
             Dimensions = pageModel;
             Shapes = shapeModel;

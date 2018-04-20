@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RawaTests.HtmlStrings.ElementsLocators.StepTwo
 {
-    public class ActiveWindowFormLocator
+    public class ActiveWindowFormLocators
     {
         public static string formHeader = "//div[@class='div-form-active-element']//h5";
         //prawa strona formularza

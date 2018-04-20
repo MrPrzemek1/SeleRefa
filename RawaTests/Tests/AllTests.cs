@@ -18,7 +18,7 @@ using XnaFan.ImageComparison;
 using System;
 using OpenQA.Selenium;
 using RawaTests.ContainersModels.StepTwo;
-
+using RawaTests.Extensions;
 namespace RawaTests.Tests
 {
     [TestFixture]
@@ -27,10 +27,10 @@ namespace RawaTests.Tests
         HomePageWCServices homeServices;
         LoginPageWCServices loginServices;
         private DimensionWCServices dimensionServices;
-        private ShapeRoomServices shapeServices;
-        private Room3DServices roomViewServices;
+        private ShapeRoomWCServices shapeServices;
+        private Room3DWCServices roomViewServices;
         GroupOptionWCServices groupOptionServices;
-        PanelCabinetsWCServices panelCabinetsServices;
+        LeftTableStepTwoWCServices leftPanelServices;
         CanvasWCServices canvasServices;
         ActiveCabinetWCServices activeCabinetServices;
         public AllTests()
@@ -38,10 +38,10 @@ namespace RawaTests.Tests
             homeServices = new HomePageWCServices();
             loginServices = new LoginPageWCServices();
             dimensionServices = new DimensionWCServices();
-            shapeServices = new ShapeRoomServices();
-            roomViewServices = new Room3DServices();
+            shapeServices = new ShapeRoomWCServices();
+            roomViewServices = new Room3DWCServices();
             groupOptionServices = new GroupOptionWCServices();
-            panelCabinetsServices = new PanelCabinetsWCServices();
+            leftPanelServices = new LeftTableStepTwoWCServices();
             canvasServices = new CanvasWCServices();
             activeCabinetServices = new ActiveCabinetWCServices();
         }
@@ -161,22 +161,17 @@ namespace RawaTests.Tests
             homeServices.GetHomePageModel().StartButton.Click();
             ButtonHelper.ClickButtonNext();
             var options = groupOptionServices.GetOptionModel();
-            options.GetOptionCabinetsSimply();
-            var simplyLower = panelCabinetsServices.GetSimplyLowerCabintesModel();
+            options.GetOptionWindow();
+
+            var windows = leftPanelServices.GetListForWindow();
+            IWebElement windowImage = windows.GetWindowById("49");
             var canvas = canvasServices.GetCanvasModel().CanvasImage;
-            
+
             ImageHelper.MakeScreenshot(PathConsts.SCREENONE);
 
             Actions action = new Actions(DriverManager.CreateInstance().Driver);
 
-            action.ClickAndHold(simplyLower.ImagesOfCabinets).MoveByOffset(585, 207).Perform();
-            action.Release(canvas).Build().Perform();
-            Thread.Sleep(1000);
-            action.DragAndDrop(simplyLower.ImagesOfCabinets, canvas).Perform();
-            Thread.Sleep(1000);
-            action.Release(canvas).Build().Perform();
-
-            ActiveCabinetFullWCModel model = activeCabinetServices.GetActiveCabinetModel();
+            action.DragDropAndWait(windowImage, canvas, 100);
             
             ImageHelper.MakeScreenshot(PathConsts.SCREENTWO);
             Assert.IsTrue(ImageHelper.CheckingImagesAreDifferent());

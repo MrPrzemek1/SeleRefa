@@ -3,6 +3,7 @@ using RawaTests.Helpers;
 using RawaTests.Managers;
 using RawaTests.Services;
 using RawaTests.Services.StepTwoServices;
+using RawaTests.Services.StepTwoServices.PanelListForCabinets;
 using System.Threading;
 
 namespace RawaTests.Tests
@@ -12,12 +13,12 @@ namespace RawaTests.Tests
     {
         HomePageWCServices homePageSrv;
         GroupOptionWCServices groupOptionServices;
-        PanelDoorWCServices doorServices;
+        LeftTableStepTwoWCServices doorServices;
         public HomePageTests()
         {
             homePageSrv = new HomePageWCServices();
             groupOptionServices = new GroupOptionWCServices();
-            doorServices = new PanelDoorWCServices();
+            doorServices = new LeftTableStepTwoWCServices();
         }
         [Test]
         public void HomePageElementsIsDisplayed()

@@ -13,5 +13,6 @@ namespace RawaTests.HtmlStrings.ConstStrings
         public const string SHAPE_ID = "shape-id";
         public const string ACTIVE = "active";
         public const string STYLE = "style";
+        public const string OBJECT_ID = "object-id";
     }
 }
