@@ -99,7 +99,9 @@
     <Compile Include="ContainersModels\StepTwo\ActiveCabinetForm\ActiveCabinetFullWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\ActiveCabinetForm\ActiveCabinetLeftTableWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\ActiveCabinetForm\ActiveCabinetRightTableWCModel.cs" />
-    <Compile Include="ContainersModels\StepTwo\ActiveWindowForm\ActiveWindowRightTableWCModel.cs" />
+    <Compile Include="ContainersModels\StepTwo\ActiveWindowForm\ActiveWindowFullWCModel.cs" />
+    <Compile Include="ContainersModels\StepTwo\ActiveWindowForm\ActiveWindowLeftTableWCModel.cs" />
+    <Compile Include="ContainersModels\StepTwo\ActiveWindowForm\ActiveWindowRightTableWCModel1.cs" />
     <Compile Include="ContainersModels\StepTwo\CanvasWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\Groups\GroupOptionsWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\Groups\GroupOptionWCModel.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ImageRoomElements.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ShapeElementsLocators.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepTwo\ActiveCabinetLocator.cs" />
+    <Compile Include="HtmlStrings\ElementsLocators\StepTwo\ActiveWindowFormLocator.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepTwo\CabinetsPanelLocator.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepTwo\StepTwoLocators.cs" />
     <Compile Include="IDriverService.cs" />
@@ -132,6 +135,7 @@
     <Compile Include="Services\StepTwoServices\ActiveCabinetWCServices.cs" />
     <Compile Include="Services\HomePageWCServices.cs" />
     <Compile Include="Services\StepOneServices\DimensionServices.cs" />
+    <Compile Include="Services\StepTwoServices\ActiveWindowWCServices.cs" />
     <Compile Include="Services\StepTwoServices\CanvasWCServices.cs" />
     <Compile Include="Services\StepTwoServices\GroupOptionWCServices.cs" />
     <Compile Include="Services\StepTwoServices\PanelCabinetsWCServices.cs" />
