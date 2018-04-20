@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using RawaTests.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,8 @@ namespace RawaTests.Helpers.DriverHelper
 {
     public static class DriverHelper
     {
-        private const int TIME = 5000;
+        private const int TIME = 10000;
         private const int POLLING = 50;
-
         /// <summary>
         /// Metoda wyszukująca na stronie listy IWebElementów z możliwościa ustawienia czasu oczekiwania na ich pojawienie się.
         /// </summary>
@@ -42,8 +42,12 @@ namespace RawaTests.Helpers.DriverHelper
         public static IList<IWebElement> FindWebElementsWithoutWait(IWebDriver driver, By by)
         {
             try
-            {               
-                return driver.FindElements(by);
+            {
+                if (true)
+                {
+                    return driver.FindElements(by);
+                }            
+                
             }
             catch
             {
@@ -129,7 +133,7 @@ namespace RawaTests.Helpers.DriverHelper
             wait.PollingInterval = TimeSpan.FromMilliseconds(POLLING);
             try
             {
-                wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//div[@class='loading-show']")));
+                wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//div[@class='loading show']")));
 
                 return wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(by));
             }

@@ -7,9 +7,9 @@ using System.Collections.Generic;
 
 namespace RawaTests.Services.StepTwoServices
 {
-    public class GroupOptionServices : BaseService
+    public class GroupOptionWCServices : BaseService
     {
-        public GroupOptionServices() : base()
+        public GroupOptionWCServices() : base()
         {
 
         }

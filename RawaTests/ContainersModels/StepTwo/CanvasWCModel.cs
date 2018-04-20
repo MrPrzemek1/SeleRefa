@@ -9,16 +9,7 @@ namespace RawaTests.ContainersModels.StepTwo
 {
     public class CanvasWCModel
     {
-        IWebElement CanvasImage { get; set; }
+        public IWebElement CanvasImage { get; set; }
 
-        public CanvasWCModel(IWebElement canvasImage)
-        {
-            this.CanvasImage = canvasImage;
-        }
-
-        public IWebElement GetCanvas()
-        {
-            return this.CanvasImage;
-        }
     }  
 }

@@ -15,6 +15,10 @@ using OpenQA.Selenium.Interactions;
 using System.Threading;
 using RawaTests.HtmlStrings.ConstStrings;
 using XnaFan.ImageComparison;
+using System;
+using OpenQA.Selenium;
+using RawaTests.ContainersModels.StepTwo;
+
 namespace RawaTests.Tests
 {
     [TestFixture]
@@ -25,9 +29,10 @@ namespace RawaTests.Tests
         private DimensionWCServices dimensionServices;
         private ShapeRoomServices shapeServices;
         private Room3DServices roomViewServices;
-        GroupOptionServices groupOptionServices;
-        PanelCabinetsServices panelListCabinetsServices;
-        CanvasServices canvasServices;
+        GroupOptionWCServices groupOptionServices;
+        PanelCabinetsWCServices panelCabinetsServices;
+        CanvasWCServices canvasServices;
+        ActiveCabinetWCServices activeCabinetServices;
         public AllTests()
         {
             homeServices = new HomePageWCServices();
@@ -35,9 +40,10 @@ namespace RawaTests.Tests
             dimensionServices = new DimensionWCServices();
             shapeServices = new ShapeRoomServices();
             roomViewServices = new Room3DServices();
-            groupOptionServices = new GroupOptionServices();
-            panelListCabinetsServices = new PanelCabinetsServices();
-            canvasServices = new CanvasServices();
+            groupOptionServices = new GroupOptionWCServices();
+            panelCabinetsServices = new PanelCabinetsWCServices();
+            canvasServices = new CanvasWCServices();
+            activeCabinetServices = new ActiveCabinetWCServices();
         }
         [Test,Order(1)]
         public void HomePageElementsIsDisplayed()
@@ -152,30 +158,26 @@ namespace RawaTests.Tests
         public void CheckingTheClassChangeForTheElementAfterChangingTheDimensionsOnTheDependentWall()
         {
             // Manager.Driver.Navigate().Refresh();
-            ImageHelper.MakeScreenshot(PathConsts.SCREENONE);
-
             homeServices.GetHomePageModel().StartButton.Click();
-
-            var model3d = roomViewServices.Get3DModel();
-
             ButtonHelper.ClickButtonNext();
             var options = groupOptionServices.GetOptionModel();
-
             options.GetOptionCabinetsSimply();
-            var simplyLower = panelListCabinetsServices.GetSimplyLowerCabintesModel();
-            var canvas = canvasServices.GetCanvasModel();
-
+            var simplyLower = panelCabinetsServices.GetSimplyLowerCabintesModel();
+            var canvas = canvasServices.GetCanvasModel().CanvasImage;
             
+            ImageHelper.MakeScreenshot(PathConsts.SCREENONE);
 
             Actions action = new Actions(DriverManager.CreateInstance().Driver);
 
-            action.ClickAndHold(simplyLower.GetImage()).MoveByOffset(585, 207).Perform();
+            action.ClickAndHold(simplyLower.ImagesOfCabinets).MoveByOffset(585, 207).Perform();
+            action.Release(canvas).Build().Perform();
             Thread.Sleep(1000);
-            action.Release(canvas.GetCanvas()).Build().Perform();
+            action.DragAndDrop(simplyLower.ImagesOfCabinets, canvas).Perform();
+            Thread.Sleep(1000);
+            action.Release(canvas).Build().Perform();
 
-            action.DragAndDrop(simplyLower.GetImage(), canvas.GetCanvas()).Perform();
-            action.Release(canvas.GetCanvas()).Build().Perform();
-
+            ActiveCabinetFullWCModel model = activeCabinetServices.GetActiveCabinetModel();
+            
             ImageHelper.MakeScreenshot(PathConsts.SCREENTWO);
             Assert.IsTrue(ImageHelper.CheckingImagesAreDifferent());
             //Assert.IsFalse(ImageHelper.ImageCompare(bitMapFromScreenOne, bitMapFromScreenOne, 3));

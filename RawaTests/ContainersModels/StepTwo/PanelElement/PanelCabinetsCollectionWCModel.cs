@@ -12,10 +12,10 @@ namespace RawaTests.ContainersModels.StepTwo.PanelElement
 {
     class PanelCabinetsCollectionWCModel
     {
-        IWebElement NameGropuOfCabinetsButton { get; set; }
-        IWebElement OpenGroupCabinets { get; set; }
-        IWebElement ClosedGroupCabintes { get; set; }
-        IWebElement ImagesOfCabinets { get; set; }
+        public IWebElement NameGropuOfCabinetsButton { get; set; }
+        public IWebElement OpenGroupCabinets { get; set; }
+        public IWebElement ClosedGroupCabintes { get; set; }
+        public IWebElement ImagesOfCabinets { get; set; }
 
         public PanelCabinetsCollectionWCModel(IWebElement nameGroupButton, IWebElement openCabinets, IWebElement closedCabinets, IWebElement imagesCabinets)
         {
@@ -24,23 +24,5 @@ namespace RawaTests.ContainersModels.StepTwo.PanelElement
             this.ClosedGroupCabintes = closedCabinets;
             this.ImagesOfCabinets = imagesCabinets;
         }
-        public void GetOpenedGroupOfCabinets()
-        {
-            ClosedGroupCabintes.ClickIfElementIsClickable();
-        }
-        public void GetClosedGroupOfCabinets()
-        {
-            ClosedGroupCabintes.ClickIfElementIsClickable();
-        }
-        public void ExpandCabinetsGroup()
-        {
-            NameGropuOfCabinetsButton.ClickIfElementIsClickable();
-        }
-        public IWebElement GetImage()
-        {
-            return this.ImagesOfCabinets;
-        }
-
-
     }
 }

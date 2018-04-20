@@ -11,9 +11,9 @@ using RawaTests.Services.Base;
 
 namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
 {
-    class PanelCabinetsServices : BaseService
+    class PanelCabinetsWCServices : BaseService
     {
-        public PanelCabinetsServices() : base()
+        public PanelCabinetsWCServices() : base()
         {
 
         }

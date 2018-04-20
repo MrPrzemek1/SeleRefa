@@ -11,13 +11,13 @@ namespace RawaTests.Tests
     class HomePageTests : BaseTest
     {
         HomePageWCServices homePageSrv;
-        GroupOptionServices groupOptionServices;
-        PanelListDoorServices doorServices;
+        GroupOptionWCServices groupOptionServices;
+        PanelDoorWCServices doorServices;
         public HomePageTests()
         {
             homePageSrv = new HomePageWCServices();
-            groupOptionServices = new GroupOptionServices();
-            doorServices = new PanelListDoorServices();
+            groupOptionServices = new GroupOptionWCServices();
+            doorServices = new PanelDoorWCServices();
         }
         [Test]
         public void HomePageElementsIsDisplayed()

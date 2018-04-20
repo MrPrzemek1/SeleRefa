@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace RawaTests.Services.StepTwoServices
 {
-    public class CanvasServices : BaseService
+    public class CanvasWCServices : BaseService
     {
         public CanvasWCModel GetCanvasModel()
         {

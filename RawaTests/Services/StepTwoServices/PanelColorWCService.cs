@@ -4,13 +4,13 @@ using RawaTests.Services.Base;
 
 namespace RawaTests.Models.StepTwo
 {
-    class PanelListColorService : BaseService
+    class PanelColorWCService : BaseService
     {
-        public PanelListColorWCModel GetPanelListForColors()
+        public PanelColorWCModel GetPanelListForColors()
         {
             var panel = Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.panelList));
 
-            PanelListColorWCModel panelElement = new PanelListColorWCModel(panel);
+            PanelColorWCModel panelElement = new PanelColorWCModel(panel);
             return panelElement;
         }
     }

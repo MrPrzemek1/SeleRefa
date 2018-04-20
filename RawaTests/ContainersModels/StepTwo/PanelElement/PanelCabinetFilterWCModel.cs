@@ -9,9 +9,9 @@ namespace RawaTests.ContainersModels.StepTwo.PanelElement
 {
     public class PanelCabinetFilterWCModel
     {
-        IWebElement FilterButton { get; set; }
-        IWebElement FilterCabinetBodyColor { get; set; }
-        IWebElement FilterFrontType { get; set; }
+        public IWebElement FilterButton { get; set; }
+        public IWebElement FilterCabinetBodyColor { get; set; }
+        public IWebElement FilterFrontType { get; set; }
 
         public PanelCabinetFilterWCModel(IWebElement filterButton, IWebElement bodyColor, IWebElement frontType)
         {

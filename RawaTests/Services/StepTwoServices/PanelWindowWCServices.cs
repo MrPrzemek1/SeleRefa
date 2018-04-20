@@ -5,13 +5,13 @@ using RawaTests.Services.Base;
 
 namespace RawaTests.Services.StepTwoServices
 {
-    class PanelListWindowServices : BaseService
+    class PanelWindowWCServices : BaseService
     {
-        public PanelListWindowWCModel GetListForWindow()
+        public PanelWindowWCModel GetListForWindow()
         {
             IWebElement list = Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.panelList));
             var windowImages = list.FindWebElements(By.XPath(StepTwoLocators.windowsImages));
-            PanelListWindowWCModel panel = new PanelListWindowWCModel(list, windowImages);
+            PanelWindowWCModel panel = new PanelWindowWCModel(list, windowImages);
 
             return panel;
         }
