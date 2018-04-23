@@ -70,7 +70,6 @@ namespace RawaTests.Tests
         public void VerifyingValidateTextWhenCompanyNameIsEmpty()
         {
             homeServices.GetHomePageModel().LogoutButton.Click();
-            Manager.Driver.SwitchTo().Alert().Accept();
             homeServices.GetHomePageModel().LoginBtn.Click();
 
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
@@ -166,11 +165,12 @@ namespace RawaTests.Tests
             //window.GetOptionWindow();
             var canvas = canvasServices.GetCanvasModel().CanvasImage;
             string pathfirst = ImageHelper.MakeScreenshot();
+            ImageHelper.MakeScreenshot("lalala");
             //var source = leftPanelServices.GetListForWindow().GetWindowById("49");
             canvas.Click();
             var colorpicker = colorPicker.GetFullModel();
             colorpicker.allColors.GetRandomColor().Click();
-            var submit=  Manager.FindWebElement(By.XPath("//button[@type='button'][contains(text(),'Wybierz')]"));
+            var submit = Manager.FindWebElement(By.XPath("//button[@type='button'][contains(text(),'Wybierz')]"));
             submit.Click();
             //Actions action = new Actions(DriverManager.CreateInstance().Driver);
             //Actions actionSecond = new Actions(DriverManager.CreateInstance().Driver);
