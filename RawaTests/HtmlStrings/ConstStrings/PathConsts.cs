@@ -8,7 +8,7 @@ namespace RawaTests.HtmlStrings.ConstStrings
 {
     public static class PathConsts
     {
-        public const string SCREENONE = @"E:\ScreanshotSelenium\screenOne.jpg";
-        public const string SCREENTWO = @"E:\ScreanshotSelenium\screenTwo.jpg";
+        public const string SCREENONE = @"E:\ScreanshotSelenium\";
+        public const string SCREENTWO = @"E:\ScreanshotSelenium\";
     }
 }

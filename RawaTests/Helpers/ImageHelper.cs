@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -117,15 +118,21 @@ namespace RawaTests.Helpers
             return true;
         }
 
+        public static string MakeScreenshot()
+        {
+            string path = CreateRandomPath();
+            Screenshot screan1 = ((ITakesScreenshot)DriverManager.CreateInstance().Driver).GetScreenshot();
+            screan1.SaveAsFile(path, ScreenshotImageFormat.Jpeg);
+            return path;
+        }
         public static void MakeScreenshot(string path)
         {
             Screenshot screan1 = ((ITakesScreenshot)DriverManager.CreateInstance().Driver).GetScreenshot();
-            screan1.SaveAsFile(path, ScreenshotImageFormat.Jpeg);
+            screan1.SaveAsFile(@"E:\ScreanshotSelenium\" + path, ScreenshotImageFormat.Jpeg);
         }
-
-        public static bool CheckingImagesAreDifferent()
+        public static bool CheckingImagesAreDifferent(string pathFirst, string pathSecond)
         {
-            float differencePixels = ImageTool.GetPercentageDifference(PathConsts.SCREENONE, PathConsts.SCREENTWO);
+            float differencePixels = ImageTool.GetPercentageDifference(pathFirst, pathSecond);
             bool result = true;
             if (differencePixels!=0)
             {
@@ -134,6 +141,11 @@ namespace RawaTests.Helpers
             else
                 result = false;
             return result;
+        }
+        private static string CreateRandomPath()
+        {
+            string path = string.Format(@"E:\ScreanshotSelenium\{0}.jpeg", Guid.NewGuid());
+            return path;
         }
     }
 }

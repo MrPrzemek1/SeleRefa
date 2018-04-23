@@ -24,7 +24,7 @@ namespace PageObjectPattern.Tests
         [SetUp]
         public void SetUp()
         {
-            driver = new FirefoxDriver();
+            driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("http://interactjs.io/");
 
@@ -37,6 +37,7 @@ namespace PageObjectPattern.Tests
             Actions actions = new Actions(driver);
             var source = driver.FindElement(By.XPath("//div[@id='yes-drop']"));
             var target = driver.FindElement(By.XPath("//div[@id='inner-dropzone']"));
+            actions.DragAndDropToOffset(source, 804, 769).Perform();
             actions.DragAndDrop(source, target).Perform() ;
         }
         [TearDown]

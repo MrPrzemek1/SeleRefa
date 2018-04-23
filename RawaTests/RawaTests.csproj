@@ -36,6 +36,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="IronPython, Version=2.7.8.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
       <HintPath>..\packages\IronPython.2.7.8.1\lib\net45\IronPython.dll</HintPath>
@@ -99,10 +108,16 @@
     <Compile Include="ContainersModels\StepTwo\ActiveCabinetForm\ActiveCabinetFullWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\ActiveCabinetForm\ActiveCabinetLeftTableWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\ActiveCabinetForm\ActiveCabinetRightTableWCModel.cs" />
+    <Compile Include="ContainersModels\StepTwo\ActiveDoorForm\ActiveDoorWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\ActiveWindowForm\ActiveWindowFullWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\ActiveWindowForm\ActiveWindowLeftTableWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\ActiveWindowForm\ActiveWindowRightTableWCModel1.cs" />
     <Compile Include="ContainersModels\StepTwo\CanvasWCModel.cs" />
+    <Compile Include="ContainersModels\StepTwo\ColorPicker\AllColorsInSingleRowWCModel.cs" />
+    <Compile Include="ContainersModels\StepTwo\ColorPicker\AllRowsWithColorsWCModel.cs" />
+    <Compile Include="ContainersModels\StepTwo\ColorPicker\ColorPickerWCModel.cs" />
+    <Compile Include="ContainersModels\StepTwo\ColorPicker\SingleColorWCModel.cs" />
+    <Compile Include="ContainersModels\StepTwo\ColorPicker\SingleRowWithColorsWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\Groups\GroupOptionsWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\Groups\GroupOptionWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\PanelElement\PanelColorWCModel.cs" />
@@ -125,8 +140,10 @@
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ImageRoomElementsLocatorsLocators.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ShapeElementsLocators.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepTwo\ActiveCabinetLocators.cs" />
+    <Compile Include="HtmlStrings\ElementsLocators\StepTwo\ActiveDoorFormLocators.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepTwo\ActiveWindowFormLocators.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepTwo\CabinetsPanelLocators.cs" />
+    <Compile Include="HtmlStrings\ElementsLocators\StepTwo\ColorPickerLocators.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepTwo\StepTwoLocators.cs" />
     <Compile Include="IDriverService.cs" />
     <Compile Include="Managers\DriverManager.cs" />
@@ -137,8 +154,10 @@
     <Compile Include="Services\StepOneServices\ShapeRoomWCServices.cs" />
     <Compile Include="Services\StepTwoServices\ActiveCabinetWCServices.cs" />
     <Compile Include="Services\HomePageWCServices.cs" />
+    <Compile Include="Services\StepTwoServices\ActiveDoorWCServices.cs" />
     <Compile Include="Services\StepTwoServices\ActiveWindowWCServices.cs" />
     <Compile Include="Services\StepTwoServices\CanvasWCServices.cs" />
+    <Compile Include="Services\StepTwoServices\ColorPickerServies.cs" />
     <Compile Include="Services\StepTwoServices\GroupOptionWCServices.cs" />
     <Compile Include="Services\StepTwoServices\LeftTableStepTwoWCServices.cs" />
     <Compile Include="Tests\AllTests.cs" />
@@ -156,6 +175,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

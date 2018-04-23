@@ -10,8 +10,6 @@ namespace RawaTests.StepOne
 
         public IList<DimensionWCModel> DimensionElements { get; set; }
 
-        public DimensionsWCModel HeightRoomElement { get; set; }
-
         public DimensionsWCModel()
         {
             DimensionElements = new List<DimensionWCModel>();
@@ -25,10 +23,5 @@ namespace RawaTests.StepOne
         {
             return DimensionElements.Where(e => e.Description.Text.Equals(desc)).FirstOrDefault();
         }
-        public DimensionWCModel GetRoom(string desc)
-        {
-            return DimensionElements.Where(e => e.Description.Text.Equals(desc)).FirstOrDefault();
-        }
-
     }
 }

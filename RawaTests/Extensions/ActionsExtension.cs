@@ -13,12 +13,16 @@ namespace RawaTests.Extensions
     {
         public static void DragDropAndWait(this Actions action, IWebElement source, IWebElement target, int waitInMilliseconds)
         {
-            action.DragAndDropToOffset(source, 480,180).Perform();
-            for (int i = 0; i < 100; i++)
-            {
-                action.ClickAndHold(source).MoveByOffset(500, 170).Release().Click().Build().Perform();
-                i++;
-            }
+            action.ClickAndHold(source)
+                .MoveByOffset(550, 150)
+                .Release()
+                .Build()
+                .Perform();
+            action.DragAndDropToOffset(source, 560, 145).Perform();
+            action.DragAndDropToOffset(source, 565, 135).Perform();
+            action.DragAndDropToOffset(source, 570, 130).Perform();
+            action.DragAndDrop(source, target).Perform();
+
         }
     }
 }

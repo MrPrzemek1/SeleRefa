@@ -1,6 +1,8 @@
 ﻿using OpenQA.Selenium;
+using RawaTests.HtmlStrings.ConstStrings;
 using RawaTests.Model.Base;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RawaTests
 {
@@ -18,10 +20,10 @@ namespace RawaTests
         {
             return Room3dImage != null;
         }
-        //public string[] GetRoomDimension()
-        //{
-        //    return Room3dImage.Select(e => e.Room3dImage.GetAttribute(HtmlAttributesConsts.STYLE)).ToArray();
-        //}
+        public string[] GetRoomDimension()
+        {
+            return Room3dImageDimension.Select(e => e.GetAttribute(HtmlAttributesConsts.STYLE)).ToArray();
+        }
     }
 
 }

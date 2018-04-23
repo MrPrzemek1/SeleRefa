@@ -33,6 +33,7 @@ namespace RawaTests.Tests
         LeftTableStepTwoWCServices leftPanelServices;
         CanvasWCServices canvasServices;
         ActiveCabinetWCServices activeCabinetServices;
+        ColorPickerServies colorPicker;
         public AllTests()
         {
             homeServices = new HomePageWCServices();
@@ -44,6 +45,7 @@ namespace RawaTests.Tests
             leftPanelServices = new LeftTableStepTwoWCServices();
             canvasServices = new CanvasWCServices();
             activeCabinetServices = new ActiveCabinetWCServices();
+            colorPicker = new ColorPickerServies();
         }
         [Test,Order(1)]
         public void HomePageElementsIsDisplayed()
@@ -146,11 +148,11 @@ namespace RawaTests.Tests
             homeServices.GetHomePageModel().StartButton.Click();
 
             Room3DWCModel roomModel = roomViewServices.Get3DModel();
-            var roomDimension = roomModel.Room3dImageDimension;
+            var roomDimension = roomModel.GetRoomDimension();
             DimensionsWCModel dimensionOfRoom = dimensionServices.GetDimensions();
             dimensionOfRoom.GetFieldByDescription("B").PlusSign.Click();
             Room3DWCModel roomModelAfterChange = roomViewServices.Get3DModel();
-            var roomDimensionAfterChange = roomModelAfterChange.Room3dImageDimension;
+            var roomDimensionAfterChange = roomModelAfterChange.GetRoomDimension();
 
             Assert.AreNotEqual(roomDimension, roomDimensionAfterChange);
         }
@@ -160,24 +162,27 @@ namespace RawaTests.Tests
             // Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().StartButton.Click();
             ButtonHelper.ClickButtonNext();
-            var options = groupOptionServices.GetOptionModel();
-            options.GetOptionWindow();
-
-            var windows = leftPanelServices.GetListForWindow();
-            IWebElement windowImage = windows.GetWindowById("49");
+            //var window = groupOptionServices.GetOptionModel();
+            //window.GetOptionWindow();
             var canvas = canvasServices.GetCanvasModel().CanvasImage;
+            string pathfirst = ImageHelper.MakeScreenshot();
+            //var source = leftPanelServices.GetListForWindow().GetWindowById("49");
+            canvas.Click();
+            var colorpicker = colorPicker.GetFullModel();
+            colorpicker.allColors.GetRandomColor().Click();
+            var submit=  Manager.FindWebElement(By.XPath("//button[@type='button'][contains(text(),'Wybierz')]"));
+            submit.Click();
+            //Actions action = new Actions(DriverManager.CreateInstance().Driver);
+            //Actions actionSecond = new Actions(DriverManager.CreateInstance().Driver);
+            //actionSecond.ClickAndHold(canvas).MoveByOffset(100, 0).Release().Build().Perform();
+            //action.DragDropAndWait(source, canvas, 100);
+            //action.DragAndDrop(source,canvas).Perform();
 
-            ImageHelper.MakeScreenshot(PathConsts.SCREENONE);
-
-            Actions action = new Actions(DriverManager.CreateInstance().Driver);
-
-            action.DragDropAndWait(windowImage, canvas, 100);
-            
-            ImageHelper.MakeScreenshot(PathConsts.SCREENTWO);
-            Assert.IsTrue(ImageHelper.CheckingImagesAreDifferent());
+            string pathsecond = ImageHelper.MakeScreenshot();
+            Assert.IsTrue(ImageHelper.CheckingImagesAreDifferent(pathfirst, pathsecond));
             //Assert.IsFalse(ImageHelper.ImageCompare(bitMapFromScreenOne, bitMapFromScreenOne, 3));
-            File.Delete(PathConsts.SCREENONE);
-            File.Delete(PathConsts.SCREENTWO);
+            File.Delete(pathfirst);
+            File.Delete(pathsecond);
         }
 
     }
