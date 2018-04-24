@@ -33,7 +33,7 @@ namespace RawaTests.Tests
         LeftTableStepTwoWCServices leftPanelServices;
         CanvasWCServices canvasServices;
         ActiveCabinetWCServices activeCabinetServices;
-        ColorPickerServies colorPicker;
+        ColorPickerServies colorPickerServices;
         public AllTests()
         {
             homeServices = new HomePageWCServices();
@@ -45,7 +45,7 @@ namespace RawaTests.Tests
             leftPanelServices = new LeftTableStepTwoWCServices();
             canvasServices = new CanvasWCServices();
             activeCabinetServices = new ActiveCabinetWCServices();
-            colorPicker = new ColorPickerServies();
+            colorPickerServices = new ColorPickerServies();
         }
         [Test,Order(1)]
         public void HomePageElementsIsDisplayed()
@@ -156,33 +156,34 @@ namespace RawaTests.Tests
             Assert.AreNotEqual(roomDimension, roomDimensionAfterChange);
         }
         [Test, Order(10)]
-        public void CheckingTheClassChangeForTheElementAfterChangingTheDimensionsOnTheDependentWall()
+        public void CheckingIfTheColorOfTheFloorChanges()
         {
-            // Manager.Driver.Navigate().Refresh();
             homeServices.GetHomePageModel().StartButton.Click();
             ButtonHelper.ClickButtonNext();
-            //var window = groupOptionServices.GetOptionModel();
-            //window.GetOptionWindow();
-            var canvas = canvasServices.GetCanvasModel().CanvasImage;
             string pathfirst = ImageHelper.MakeScreenshot();
-            ImageHelper.MakeScreenshot("lalala");
-            //var source = leftPanelServices.GetListForWindow().GetWindowById("49");
-            canvas.Click();
-            var colorpicker = colorPicker.GetFullModel();
-            colorpicker.allColors.GetRandomColor().Click();
-            var submit = Manager.FindWebElement(By.XPath("//button[@type='button'][contains(text(),'Wybierz')]"));
-            submit.Click();
-            //Actions action = new Actions(DriverManager.CreateInstance().Driver);
-            //Actions actionSecond = new Actions(DriverManager.CreateInstance().Driver);
-            //actionSecond.ClickAndHold(canvas).MoveByOffset(100, 0).Release().Build().Perform();
-            //action.DragDropAndWait(source, canvas, 100);
-            //action.DragAndDrop(source,canvas).Perform();
-
+            var canvas = canvasServices.GetCanvasModel();
+            canvas.OpenColorPickerOnCanvas();
+            ColorPickerWCModel colorpicker = colorPickerServices.GetFullColorPickerModel();
+            colorpicker.allColors.GetRandomColor();
+            colorpicker.rightPanel.SubmitButton.ClickIfElementIsClickable();
             string pathsecond = ImageHelper.MakeScreenshot();
             Assert.IsTrue(ImageHelper.CheckingImagesAreDifferent(pathfirst, pathsecond));
-            //Assert.IsFalse(ImageHelper.ImageCompare(bitMapFromScreenOne, bitMapFromScreenOne, 3));
             File.Delete(pathfirst);
             File.Delete(pathsecond);
+        }
+        [Test]
+        public void Testowy()
+        {
+            homeServices.GetHomePageModel().StartButton.Click();
+            ButtonHelper.ClickButtonNext();
+            var window = groupOptionServices.GetOptionModel();
+            window.GetOptionWindow();
+            var source = leftPanelServices.GetListForWindow().GetWindowById("49");
+
+            Actions action = new Actions(DriverManager.CreateInstance().Driver);
+            Actions actionSecond = new Actions(DriverManager.CreateInstance().Driver);
+
+
         }
 
     }

@@ -11,8 +11,10 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using XnaFan.ImageComparison;
+using RawaTests.Helpers.DriverHelper;
+using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
-namespace RawaTests.Helpers
+namespace RawaTests
 {
     public class ImageHelper
     {
@@ -22,6 +24,7 @@ namespace RawaTests.Helpers
         /// <returns></returns>
         public static string MakeScreenshot()
         {
+            DriverHelper.WaitUntil(DriverManager.CreateInstance().Driver, ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
             string path = CreateRandomPath();
             Screenshot screan1 = ((ITakesScreenshot)DriverManager.CreateInstance().Driver).GetScreenshot();
             screan1.SaveAsFile(path, ScreenshotImageFormat.Jpeg);
@@ -33,6 +36,7 @@ namespace RawaTests.Helpers
         /// <param name="path"> nazwa pliku</param>
         public static void MakeScreenshot(string path)
         {
+            DriverHelper.WaitUntil(DriverManager.CreateInstance().Driver, ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
             ((ITakesScreenshot)DriverManager.CreateInstance().Driver).GetScreenshot().SaveAsFile(PathConsts.SCREEN + path+".jpeg");
         }
         /// <summary>

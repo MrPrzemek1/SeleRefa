@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace RawaTests.HtmlStrings.ConstStrings
 {
-    public static class FooterAndHeaderConsts
+    public static class Configurator3DConsts
     {
+        public const string LOADER = "//div[@class='loading show']";
         public const string FOOTER = "© 2018 RAWA Fabryka Mebli. Wszelkie prawa zastrzeżone.";
         public const string HEADER = "Zaprojektuj swoją kuchnię 3D";
 

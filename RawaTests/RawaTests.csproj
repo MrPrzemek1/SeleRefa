@@ -116,6 +116,8 @@
     <Compile Include="ContainersModels\StepTwo\ColorPicker\AllColorsInSingleRowWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\ColorPicker\AllRowsWithColorsWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\ColorPicker\ColorPickerWCModel.cs" />
+    <Compile Include="ContainersModels\StepTwo\ColorPicker\ColorSliderWCModel.cs" />
+    <Compile Include="ContainersModels\StepTwo\ColorPicker\RightPanelColorPickerWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\ColorPicker\SingleColorWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\ColorPicker\SingleRowWithColorsWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\Groups\GroupOptionsWCModel.cs" />
@@ -129,7 +131,7 @@
     <Compile Include="Helpers\ButtonHelper.cs" />
     <Compile Include="Helpers\DriverHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
-    <Compile Include="HtmlStrings\ConstStrings\FooterAndHeaderConsts.cs" />
+    <Compile Include="HtmlStrings\ConstStrings\Configurator3DConsts.cs" />
     <Compile Include="HtmlStrings\ConstStrings\HtmlAttributesConsts.cs" />
     <Compile Include="HtmlStrings\ConstStrings\PathConsts.cs" />
     <Compile Include="HtmlStrings\ConstStrings\StaticButtonsConsts.cs" />

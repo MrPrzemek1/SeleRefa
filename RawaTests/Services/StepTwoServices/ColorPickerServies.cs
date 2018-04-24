@@ -13,11 +13,13 @@ namespace RawaTests.Services.StepTwoServices
 {
     public class ColorPickerServies: BaseService
     {
-        public ColorPickerWCModel GetFullModel()
+        #region LeftPanelOfColorPicker      
+        public ColorPickerWCModel GetFullColorPickerModel()
         {
-            var rows = GetAllRowsWithColors();
-            var colors = GetColorsFromSingleRow();
-            ColorPickerWCModel model = new ColorPickerWCModel(rows , colors);
+            AllRowsWithColorsWCModel rows = GetAllRowsWithColors();
+            AllColorsInSingleRowWCModel colors = GetColorsFromSingleRow();
+            RightPanelColorPickerWCModel rightPanel = GetRightPanelColorPickerModel();
+            ColorPickerWCModel model = new ColorPickerWCModel(rows , colors, rightPanel);
             return model;
         }
         private SingleRowWithColorsWCModel GetSingleRowsWithColors()
@@ -57,5 +59,24 @@ namespace RawaTests.Services.StepTwoServices
             }
             return allColorsInSingleRow;
         }
+        #endregion
+        #region RightPanelOfColorPicker
+        private RightPanelColorPickerWCModel GetRightPanelColorPickerModel()
+        {
+            IWebElement colorSquare = Manager.FindWebElement(By.ClassName(ColorPickerLocators.colorSquare));
+            IWebElement submintButton = Manager.FindWebElement(By.ClassName(ColorPickerLocators.submitButton));
+            IWebElement cancelButton = Manager.FindWebElement(By.ClassName(ColorPickerLocators.cancelButton));
+            ColorSliderWCModel slider = GetPickerSliderModel();
+            RightPanelColorPickerWCModel rightPanelModel = new RightPanelColorPickerWCModel(colorSquare,cancelButton,submintButton,slider);
+            return rightPanelModel;
+        }
+        private ColorSliderWCModel GetPickerSliderModel()
+        {
+            IWebElement colorColumn = Manager.FindWebElement(By.ClassName(ColorPickerLocators.colorColumn));
+            IWebElement colorSlider = colorColumn.FindWebElement(By.ClassName(ColorPickerLocators.colorSlider));
+            ColorSliderWCModel sliderModel = new ColorSliderWCModel(colorColumn, colorSlider);
+            return sliderModel;
+        }
+        #endregion
     }
 }

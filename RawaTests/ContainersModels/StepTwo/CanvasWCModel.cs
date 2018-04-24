@@ -1,4 +1,6 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
+using RawaTests.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,14 @@ namespace RawaTests.ContainersModels.StepTwo
         public CanvasWCModel(IWebElement canvasImage)
         {
             CanvasImage = canvasImage;
+        }
+
+        public void OpenColorPickerOnCanvas()
+        {
+            Actions actions = new Actions(DriverManager.CreateInstance().Driver);
+            actions.Click(CanvasImage).Perform();
+            actions.SendKeys(Keys.Home).Perform();
+                
         }
     }  
 }

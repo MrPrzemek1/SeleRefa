@@ -29,7 +29,7 @@ namespace RawaTests.Model
     }
     public override bool IsValid()
     {
-        return StartButton.Displayed && HomePageImage.GetAttributeSrc() != null && Footer.Text.Equals(FooterAndHeaderConsts.FOOTER) && Header.Text.Equals(FooterAndHeaderConsts.HEADER);
+        return StartButton.Displayed && HomePageImage.GetAttributeSrc() != null && Footer.Text.Equals(Configurator3DConsts.FOOTER) && Header.Text.Equals(Configurator3DConsts.HEADER);
     }
     }
 }

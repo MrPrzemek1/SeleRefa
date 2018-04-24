@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using RawaTests.HtmlStrings.ConstStrings;
 using RawaTests.Managers;
 using System;
 using System.Collections.Generic;
@@ -133,7 +134,7 @@ namespace RawaTests.Helpers.DriverHelper
             wait.PollingInterval = TimeSpan.FromMilliseconds(POLLING);
             try
             {
-                wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//div[@class='loading show']")));
+                wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
 
                 return wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(by));
             }
@@ -154,6 +155,19 @@ namespace RawaTests.Helpers.DriverHelper
             catch (Exception)
             {
                 return null;
+            }
+        }
+        public static bool WaitUntil(IWebDriver driver, Func<IWebDriver, bool> condition, int millisecond = TIME)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(millisecond));
+            wait.PollingInterval = TimeSpan.FromMilliseconds(POLLING);
+            try
+            {
+                return wait.Until(condition);
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }
