@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.HtmlStrings.ConstStrings;
+using RawaTests.Model.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RawaTests.ContainersModels.StepTwo.ActiveDoorForm
 {
-    public class ActiveDoorWCModel
+    public class ActiveDoorWCModel : BaseWebContainerModel
     {
         public IWebElement Header { get; set; }
         public IWebElement DoorImageThumb { get; set; }
@@ -23,11 +24,9 @@ namespace RawaTests.ContainersModels.StepTwo.ActiveDoorForm
             DeleteButton = deleteButton;
         }
 
-        public bool IsValid()
+        public override bool IsValid()
         {
-            bool result;
-            result = Header.Text.Contains(Configurator3DConsts.ACTIVEDOORHEADER) && DoorImageThumb.GetAttributeSrc() != null && DoorDimension.Text != null && DeleteButton.Displayed;
-            return result;
+            return Header.Text.Contains(Configurator3DConsts.ACTIVEELEMENTHEADER) && DoorImageThumb.GetAttributeSrc() != null && DoorDimension.Text != null && DeleteButton.Displayed;
         }
     }
 }

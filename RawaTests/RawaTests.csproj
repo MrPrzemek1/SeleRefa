@@ -127,7 +127,6 @@
     <Compile Include="ContainersModels\StepTwo\PanelElement\PanelCabinetFilterWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\PanelElement\PanelCabinetsCollectionWCModel.cs" />
     <Compile Include="ContainersModels\StepTwo\PanelElement\PanelWindowWCModel.cs" />
-    <Compile Include="Extensions\ActionsExtension.cs" />
     <Compile Include="Helpers\ButtonHelper.cs" />
     <Compile Include="Helpers\DriverHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />

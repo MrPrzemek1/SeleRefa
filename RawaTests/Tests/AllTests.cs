@@ -10,15 +10,9 @@ using RawaTests.Services.StepTwoServices.PanelListForCabinets;
 using RawaTests.Model.Login;
 using System.IO;
 using RawaTests.Managers;
-using System.Drawing;
-using OpenQA.Selenium.Interactions;
-using System.Threading;
-using RawaTests.HtmlStrings.ConstStrings;
-using XnaFan.ImageComparison;
 using System;
 using OpenQA.Selenium;
 using RawaTests.ContainersModels.StepTwo;
-using RawaTests.Extensions;
 namespace RawaTests.Tests
 {
     [TestFixture]
@@ -205,34 +199,42 @@ namespace RawaTests.Tests
         [Test]
         public void DragAndDropDoors()
         {
-            homeServices.GetHomePageModel().StartButton.ClickIfElementIsClickable();
-            ButtonHelper.ClickButtonNext();
             groupOptionServices.GetOptionModel().GetOptionDoor();
             var door = leftPanelServices.GetPanelForDoors().GetRandomDoor();
-            var canvas = canvasServices.GetCanvasModel().CanvasImage;            
-            Actions actions1 = new Actions(DriverManager.CreateInstance().Driver);
-            actions1.ClickAndHold(canvas)
-                .MoveByOffset(100, -50)
-                .Release()
-                .Build()
-                .Perform();
-           
-            Actions act = new Actions(DriverManager.CreateInstance().Driver);
-            act.ClickAndHold(door).MoveToElement(canvas).MoveByOffset(5,5).Release(canvas).Build().Perform();
+            var canvas = canvasServices.GetCanvasModel().CanvasImage;
+            ActionsManager.CreateAction().RotateElement(canvas);
+            ActionsManager.CreateAction().CustomDragAndDrop(door,canvas);
             Assert.IsTrue(activeDoorServices.GetActiveDoorForm().IsValid());
         }
         [Test]
         public void DeleteActiveDoor()
         {
-            homeServices.GetHomePageModel().StartButton.ClickIfElementIsClickable();
-            ButtonHelper.ClickButtonNext();
             groupOptionServices.GetOptionModel().GetOptionDoor();
-            var door = leftPanelServices.GetPanelForDoors().GetRandomDoor();
-            var canvas = canvasServices.GetCanvasModel().CanvasImage;
+            IWebElement door = leftPanelServices.GetPanelForDoors().GetRandomDoor();
+            IWebElement canvas = canvasServices.GetCanvasModel().CanvasImage;
             ActionsManager.CreateAction().RotateElement(canvas);
-            ActionsManager.CreateAction().DragAndDrop(door, canvas);
+            ActionsManager.CreateAction().CustomDragAndDrop(door, canvas);
             activeDoorServices.GetActiveDoorForm().DeleteButton.ClickIfElementIsClickable();
             DriverManager.CreateInstance().AcceptAlert();
+            try
+            {
+                Assert.IsTrue(!activeDoorServices.GetActiveDoorForm().IsValid());
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "Test zaliczony");
+            }
+        }
+        [Test]
+        public void lalal()
+        {
+            homeServices.GetHomePageModel().StartButton.ClickIfElementIsClickable();
+            ButtonHelper.ClickButtonNext();
+            groupOptionServices.GetOptionModel().GetOptionCabinetsSimply();
+            IWebElement cabinets = leftPanelServices.GetSimplyLowerCabintesModel().ImagesOfCabinets;
+            IWebElement canvas = canvasServices.GetCanvasModel().CanvasImage;
+            ActionsManager.CreateAction().RotateElement(canvas, -100,50);
+            ActionsManager.CreateAction().CustomDragAndDrop(cabinets, canvas,15,15);
             try
             {
                 Assert.IsTrue(!activeDoorServices.GetActiveDoorForm().IsValid());
