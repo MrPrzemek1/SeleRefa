@@ -33,6 +33,8 @@ namespace RawaTests.Tests
         LeftTableStepTwoWCServices leftPanelServices;
         CanvasWCServices canvasServices;
         ActiveCabinetWCServices activeCabinetServices;
+        ActiveDoorWCServices activeDoorServices;
+        ActiveWindowWCServices activeWindowServices;
         ColorPickerServies colorPickerServices;
         public AllTests()
         {
@@ -46,6 +48,8 @@ namespace RawaTests.Tests
             canvasServices = new CanvasWCServices();
             activeCabinetServices = new ActiveCabinetWCServices();
             colorPickerServices = new ColorPickerServies();
+            activeDoorServices = new ActiveDoorWCServices();
+            activeWindowServices = new ActiveWindowWCServices();
         }
         [Test,Order(1)]
         public void HomePageElementsIsDisplayed()
@@ -199,30 +203,44 @@ namespace RawaTests.Tests
             File.Delete(pathsecond);
         }
         [Test]
-        public void TestDragDropa()
+        public void DragAndDropDoors()
         {
             homeServices.GetHomePageModel().StartButton.ClickIfElementIsClickable();
             ButtonHelper.ClickButtonNext();
             groupOptionServices.GetOptionModel().GetOptionDoor();
             var door = leftPanelServices.GetPanelForDoors().GetRandomDoor();
-            var canvas = canvasServices.GetCanvasModel().CanvasImage;
+            var canvas = canvasServices.GetCanvasModel().CanvasImage;            
             Actions actions1 = new Actions(DriverManager.CreateInstance().Driver);
             actions1.ClickAndHold(canvas)
                 .MoveByOffset(100, -50)
                 .Release()
                 .Build()
                 .Perform();
-            for (int i = 0; i < 1200; i++)
-            {
-                Actions actions = new Actions(DriverManager.CreateInstance().Driver);
-                actions
-                    .DragAndDrop(door,canvas)
-                    .Release()
-                    .Build()
-                    .Perform();
-                i++;
-            }                          
+           
+            Actions act = new Actions(DriverManager.CreateInstance().Driver);
+            act.ClickAndHold(door).MoveToElement(canvas).MoveByOffset(5,5).Release(canvas).Build().Perform();
+            Assert.IsTrue(activeDoorServices.GetActiveDoorForm().IsValid());
         }
-
+        [Test]
+        public void DeleteActiveDoor()
+        {
+            homeServices.GetHomePageModel().StartButton.ClickIfElementIsClickable();
+            ButtonHelper.ClickButtonNext();
+            groupOptionServices.GetOptionModel().GetOptionDoor();
+            var door = leftPanelServices.GetPanelForDoors().GetRandomDoor();
+            var canvas = canvasServices.GetCanvasModel().CanvasImage;
+            ActionsManager.CreateAction().RotateElement(canvas);
+            ActionsManager.CreateAction().DragAndDrop(door, canvas);
+            activeDoorServices.GetActiveDoorForm().DeleteButton.ClickIfElementIsClickable();
+            DriverManager.CreateInstance().AcceptAlert();
+            try
+            {
+                Assert.IsTrue(!activeDoorServices.GetActiveDoorForm().IsValid());
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "Test zaliczony");
+            }
+        }
     }
 }

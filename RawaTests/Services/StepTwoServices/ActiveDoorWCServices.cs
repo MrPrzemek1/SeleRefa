@@ -15,7 +15,7 @@ namespace RawaTests.Services.StepTwoServices
         public ActiveDoorWCModel GetActiveDoorForm()
         {
             IWebElement header = Manager.FindWebElement(By.ClassName(ActiveDoorFormLocators.headerClass));
-            IWebElement image = Manager.FindWebElement(By.ClassName(ActiveDoorFormLocators.imageClass));
+            IWebElement image = Manager.FindWebElement(By.ClassName(ActiveDoorFormLocators.imageClass)).FindWebElement(By.TagName("img"));
             IWebElement doorDimension = Manager.FindWebElement(By.XPath(ActiveDoorFormLocators.doorDimension));
             IWebElement deleteButton = Manager.FindWebElement(By.ClassName(ActiveDoorFormLocators.deleteButton));
 

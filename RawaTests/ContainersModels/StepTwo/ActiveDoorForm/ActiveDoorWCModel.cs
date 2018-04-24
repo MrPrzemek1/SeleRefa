@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using RawaTests.HtmlStrings.ConstStrings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,13 @@ namespace RawaTests.ContainersModels.StepTwo.ActiveDoorForm
             DoorImageThumb = doorImageThumb;
             DoorDimension = doorDimension;
             DeleteButton = deleteButton;
+        }
+
+        public bool IsValid()
+        {
+            bool result;
+            result = Header.Text.Contains(Configurator3DConsts.ACTIVEDOORHEADER) && DoorImageThumb.GetAttributeSrc() != null && DoorDimension.Text != null && DeleteButton.Displayed;
+            return result;
         }
     }
 }

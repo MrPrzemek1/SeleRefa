@@ -109,5 +109,9 @@ namespace RawaTests.Managers
             IE
         }
 
+        public void AcceptAlert()
+        {
+            Driver.SwitchTo().Alert().Accept();
+        }
     }
 }

@@ -11,6 +11,6 @@ namespace RawaTests.HtmlStrings.ConstStrings
         public const string LOADER = "//div[@class='loading show']";
         public const string FOOTER = "© 2018 RAWA Fabryka Mebli. Wszelkie prawa zastrzeżone.";
         public const string HEADER = "Zaprojektuj swoją kuchnię 3D";
-
+        public const string ACTIVEDOORHEADER = "Parametry aktywnego elementu:";
     }
 }
