@@ -22,7 +22,7 @@ namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
         //serwis który zwraca szafki dolne Eco
         public PanelCabinetsCollectionWCModel GetEcoLowerCabintesModel()
         {
-            IWebElement nameGroupOfCabintesButton = Manager.FindWebElement(By.XPath(CabinetsPanelLocators.bottomCabintesEco));
+            IWebElement nameGroupOfCabintesButton = Manager.FindWebElementAndWait(By.XPath(CabinetsPanelLocators.bottomCabintesEco));
             IWebElement cabinetsHelper = Manager.FindWebElement(By.Id(CabinetsPanelLocators.ecoBottomId));
             IWebElement openCabintes = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocators.bottomOpenCabinetsEco));
             IWebElement closedCabintes = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocators.bottomClosedCabinetsEco));
@@ -34,7 +34,7 @@ namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
         }
         public PanelCabinetsCollectionWCModel GetEcoUpperCabintesModel()
         {
-            IWebElement nameGroupOfCabintesButton = Manager.FindWebElement(By.XPath(CabinetsPanelLocators.upperCabinetsEco));
+            IWebElement nameGroupOfCabintesButton = Manager.FindWebElementAndWait(By.XPath(CabinetsPanelLocators.upperCabinetsEco));
             IWebElement cabinetsHelper = Manager.FindWebElement(By.Id(CabinetsPanelLocators.ecoUpperId));
             IWebElement openCabintes = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocators.upperOpenCabinetsEco));
             IWebElement closedCabintes = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocators.upperClosedCabinetsEco));
@@ -58,7 +58,7 @@ namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
         }
         public PanelCabinetsCollectionWCModel GetSimplyUpperCabintesModel()
         {
-            IWebElement nameGroupOfCabintesButton = Manager.FindWebElement(By.XPath(CabinetsPanelLocators.bottomCabintesSimply));
+            IWebElement nameGroupOfCabintesButton = Manager.FindWebElementAndWait(By.XPath(CabinetsPanelLocators.bottomCabintesSimply));
             IWebElement cabinetsHelper = Manager.FindWebElement(By.Id(CabinetsPanelLocators.simplyUpperId));
             IWebElement openCabintes = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocators.bottomOpenCabinetsSimply));
             IWebElement closedCabintes = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocators.bottomClosedCabinetsSimply));
@@ -79,14 +79,14 @@ namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
 
             return result;        
         }
-        public PanelColorWCModel GetPanelListForColors()
+        public PanelColorWCModel GetPanelForColors()
         {
             var panel = Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.panelList));
 
             PanelColorWCModel panelElement = new PanelColorWCModel(panel);
             return panelElement;
         }
-        public PanelWindowWCModel GetListForWindow()
+        public PanelWindowWCModel GetPanelForWindow()
         {
             IWebElement list = Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.panelList));
             var windowImages = list.FindWebElements(By.XPath(StepTwoLocators.windowsImages));

@@ -56,11 +56,11 @@ namespace RawaTests.Tests
         [Test, Order(2)]
         public void CorrectLogin()
         {
-            homeServices.GetHomePageModel().LoginBtn.Click();
+            homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable();
 
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.SetCorrectLoginData();
-            loginPage.SubmitButton.Click();
+            loginPage.SubmitButton.ClickIfElementIsClickable();
             HomePageWCModel homePageAfterLogin = homeServices.GetHomePageModel();
             Assert.IsTrue(homePageAfterLogin.LogoutDiv.Displayed);
             Assert.IsTrue(homePageAfterLogin.LogoutDiv.Text.Equals(ValidateTextsHelper.CorrectLoginText));
@@ -69,13 +69,13 @@ namespace RawaTests.Tests
         [Test, Order(3)]
         public void VerifyingValidateTextWhenCompanyNameIsEmpty()
         {
-            homeServices.GetHomePageModel().LogoutButton.Click();
-            homeServices.GetHomePageModel().LoginBtn.Click();
+            homeServices.GetHomePageModel().LogoutButton.ClickIfElementIsClickable();
+            homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable();
 
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.LoginInput.SendKeys("Test");
             loginPage.PasswordInput.SendKeys("test");
-            loginPage.SubmitButton.Click();
+            loginPage.SubmitButton.ClickIfElementIsClickable();
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateFieldIsDisplayed);
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.CompanyValidateText));
@@ -84,11 +84,11 @@ namespace RawaTests.Tests
         public void VerifingValidateTextWhenUserNameIsEmpty()
         {
             Manager.Driver.Navigate().Refresh();
-            homeServices.GetHomePageModel().LoginBtn.Click();
+            homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable();
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.CompanyNameInput.SendKeys("lalala");
             loginPage.PasswordInput.SendKeys("lalala");
-            loginPage.SubmitButton.Click();
+            loginPage.SubmitButton.ClickIfElementIsClickable();
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.LoginValidateText));
         }
@@ -96,7 +96,7 @@ namespace RawaTests.Tests
         public void VerifingValidateTextPasswordFieldIsEmpty()
         {
             Manager.Driver.Navigate().Refresh();
-            homeServices.GetHomePageModel().LoginBtn.Click();
+            homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable();
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.CompanyNameInput.SendKeys("lalala");
             loginPage.LoginInput.SendKeys("lalala");
@@ -108,10 +108,10 @@ namespace RawaTests.Tests
         public void VerifingValidateTextWhenLoginDataWasIncorrect()
         {
             Manager.Driver.Navigate().Refresh();
-            homeServices.GetHomePageModel().LoginBtn.Click();
+            homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable();
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.SetLoginData("Test", "Test", "Test");
-            loginPage.SubmitButton.Click();
+            loginPage.SubmitButton.ClickIfElementIsClickable();
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.ErrorValidateText));
         }
@@ -119,7 +119,7 @@ namespace RawaTests.Tests
         public void VerifyClickedElementChangeClass()
         {
             Manager.Driver.Navigate().Refresh();
-            homeServices.GetHomePageModel().StartButton.Click();
+            homeServices.GetHomePageModel().StartButton.ClickIfElementIsClickable();
 
             ShapesRoomWCModel shapes = shapeServices.GetShapes();
             Assert.IsTrue(shapes.ClickingOnTheShapes());
@@ -128,7 +128,7 @@ namespace RawaTests.Tests
         public void VerifyingModelRoomChangeAfterChangeShape()
         {
             Manager.Driver.Navigate().Refresh();
-            homeServices.GetHomePageModel().StartButton.Click();
+            homeServices.GetHomePageModel().StartButton.ClickIfElementIsClickable();
 
             ShapesRoomWCModel shapes = shapeServices.GetShapes();
             shapes.ClickShapeById("27");
@@ -144,46 +144,84 @@ namespace RawaTests.Tests
         public void VerifingySizeOfRoomModelChangeAfterChangeDimension()
         {
             Manager.Driver.Navigate().Refresh();
-            homeServices.GetHomePageModel().StartButton.Click();
+            homeServices.GetHomePageModel().StartButton.ClickIfElementIsClickable();
 
             Room3DWCModel roomModel = roomViewServices.Get3DModel();
             var roomDimension = roomModel.GetRoomDimension();
             DimensionsWCModel dimensionOfRoom = dimensionServices.GetDimensions();
-            dimensionOfRoom.GetFieldByDescription("B").PlusSign.Click();
+            dimensionOfRoom.GetFieldByDescription("B").PlusSign.ClickIfElementIsClickable();
             Room3DWCModel roomModelAfterChange = roomViewServices.Get3DModel();
             var roomDimensionAfterChange = roomModelAfterChange.GetRoomDimension();
 
             Assert.AreNotEqual(roomDimension, roomDimensionAfterChange);
         }
         [Test, Order(10)]
-        public void CheckingIfTheColorOfTheFloorChanges()
+        public void ChangesFloorColorUsingColorPallete()
         {
-            homeServices.GetHomePageModel().StartButton.Click();
             ButtonHelper.ClickButtonNext();
             string pathfirst = ImageHelper.MakeScreenshot();
             var canvas = canvasServices.GetCanvasModel();
             canvas.OpenColorPickerOnCanvas();
             ColorPickerWCModel colorpicker = colorPickerServices.GetFullColorPickerModel();
-            colorpicker.allColors.GetRandomColor();
+            colorpicker.allColors.GetRandomColor().ClickIfElementIsClickable();
             colorpicker.rightPanel.SubmitButton.ClickIfElementIsClickable();
             string pathsecond = ImageHelper.MakeScreenshot();
             Assert.IsTrue(ImageHelper.CheckingImagesAreDifferent(pathfirst, pathsecond));
             File.Delete(pathfirst);
             File.Delete(pathsecond);
         }
-        [Test]
-        public void Testowy()
+        [Test, Order(11)]
+        public void ChangeColorUsingColorSlider()
         {
-            homeServices.GetHomePageModel().StartButton.Click();
+            string pathfirst = ImageHelper.MakeScreenshot();
+            var canvas = canvasServices.GetCanvasModel();
+            canvas.OpenColorPickerOnCanvas();
+            ColorPickerWCModel colorpicker = colorPickerServices.GetFullColorPickerModel();
+            colorpicker.rightPanel.ColorSlider.ChangeColorWithSlider(-20);
+            colorpicker.rightPanel.SubmitButton.Click();
+            string pathsecond = ImageHelper.MakeScreenshot();
+            Assert.IsTrue(ImageHelper.CheckingImagesAreDifferent(pathfirst, pathsecond));
+            File.Delete(pathfirst);
+            File.Delete(pathsecond);
+        }
+        [Test, Order(12)]
+        public void ChangeColorUsingColorSquare()
+        {
+            string pathfirst = ImageHelper.MakeScreenshot();
+            var canvas = canvasServices.GetCanvasModel();
+            canvas.OpenColorPickerOnCanvas();
+            ColorPickerWCModel colorpicker = colorPickerServices.GetFullColorPickerModel();
+            colorpicker.rightPanel.ChangeColorWithSquare();
+            colorpicker.rightPanel.SubmitButton.Click();
+            string pathsecond = ImageHelper.MakeScreenshot();
+            Assert.IsTrue(ImageHelper.CheckingImagesAreDifferent(pathfirst, pathsecond));
+            File.Delete(pathfirst);
+            File.Delete(pathsecond);
+        }
+        [Test]
+        public void TestDragDropa()
+        {
+            homeServices.GetHomePageModel().StartButton.ClickIfElementIsClickable();
             ButtonHelper.ClickButtonNext();
-            var window = groupOptionServices.GetOptionModel();
-            window.GetOptionWindow();
-            var source = leftPanelServices.GetListForWindow().GetWindowById("49");
-
-            Actions action = new Actions(DriverManager.CreateInstance().Driver);
-            Actions actionSecond = new Actions(DriverManager.CreateInstance().Driver);
-
-
+            groupOptionServices.GetOptionModel().GetOptionDoor();
+            var door = leftPanelServices.GetPanelForDoors().GetRandomDoor();
+            var canvas = canvasServices.GetCanvasModel().CanvasImage;
+            Actions actions1 = new Actions(DriverManager.CreateInstance().Driver);
+            actions1.ClickAndHold(canvas)
+                .MoveByOffset(100, -50)
+                .Release()
+                .Build()
+                .Perform();
+            for (int i = 0; i < 1200; i++)
+            {
+                Actions actions = new Actions(DriverManager.CreateInstance().Driver);
+                actions
+                    .DragAndDrop(door,canvas)
+                    .Release()
+                    .Build()
+                    .Perform();
+                i++;
+            }                          
         }
 
     }

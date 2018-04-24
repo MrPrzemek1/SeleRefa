@@ -2,6 +2,8 @@
 using RawaTests.Helpers;
 using RawaTests.Services.Base;
 using RawaTests;
+using System;
+
 namespace RawaTests.StepOne
 {
     public class DimensionWCServices : BaseService
@@ -11,16 +13,16 @@ namespace RawaTests.StepOne
 
         }
         public DimensionsWCModel GetDimensions()
-        {         
+        {
             DimensionsWCModel result = new DimensionsWCModel();
             result.Header = Manager.FindWebElement(By.XPath(DimensionElementsLocators.Header));
             var elementsList = Manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.ListOfDimension));
             foreach (var element in elementsList)
             {
-                var labelWE = element.FindWebElementAndWait(By.ClassName(DimensionElementsLocators.DescriptionFieldClass));
-                var btnPlusWE = element.FindWebElementAndWait(By.ClassName(DimensionElementsLocators.PlusSignClass)); 
-                var btnMinusWE = element.FindWebElementAndWait(By.ClassName(DimensionElementsLocators.MinusSignClass)); 
-                var inputWE = element.FindWebElementAndWait(By.ClassName(DimensionElementsLocators.InputFieldClass));
+                var labelWE = element.FindWebElement(By.ClassName(DimensionElementsLocators.DescriptionFieldClass));
+                var btnPlusWE = element.FindWebElement(By.ClassName(DimensionElementsLocators.PlusSignClass)); 
+                var btnMinusWE = element.FindWebElement(By.ClassName(DimensionElementsLocators.MinusSignClass)); 
+                var inputWE = element.FindWebElement(By.ClassName(DimensionElementsLocators.InputFieldClass));
 
                 result.DimensionElements.Add(new DimensionWCModel
                     {

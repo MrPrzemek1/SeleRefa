@@ -17,7 +17,7 @@ namespace RawaTests.ContainersModels.StepTwo.ColorPicker
         }
         public IWebElement GetRandomColor()
         {
-            
+           
             Random random = new Random((int)DateTime.Now.Ticks);
             int r = random.Next(allColorsInSingleRow.Count);
             return allColorsInSingleRow.ElementAt(r).SingleColor;

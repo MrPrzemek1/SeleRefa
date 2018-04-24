@@ -38,6 +38,6 @@ namespace RawaTests.HtmlStrings.ElementsLocators.StepTwo
         public static string upperClosedCabinetsSimply = "//html//div[@id='47414']//label[2]/input[1]";
         public static string upperImagesOfCabinetsSimply = "//div[@object-type='furniture']";
 
-        public static string canvas = "//canvas";
+        public static string canvas = "//div[@class='scene3d']";
     }
 }

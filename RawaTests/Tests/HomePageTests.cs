@@ -25,17 +25,5 @@ namespace RawaTests.Tests
         {
             Assert.IsTrue(homePageSrv.GetHomePageModel().IsValid());
         }
-        [Test]
-        public void Test()
-        {
-            homePageSrv.GetHomePageModel().StartButton.Click();
-            ButtonHelper.ClickButtonNext();
-            Thread.Sleep(2000);
-            var a = groupOptionServices.GetOptionModel();
-            a.GetOptionDoor();
-            var b = doorServices.GetPanelForDoors();
-            var c = b.GetDoorId();
-            
-        }
     }
 }

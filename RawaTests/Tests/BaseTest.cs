@@ -22,6 +22,11 @@ namespace RawaTests.Tests
         [OneTimeTearDown]
         public virtual void EndTest()
         {
+            DirectoryInfo di = new DirectoryInfo(@"E:\ScreanshotSelenium");
+            foreach (FileInfo file in di.GetFiles())
+            {
+                file.Delete();
+            }
             Manager.Quit();
         }
     }

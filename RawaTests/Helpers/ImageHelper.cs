@@ -24,7 +24,7 @@ namespace RawaTests
         /// <returns></returns>
         public static string MakeScreenshot()
         {
-            DriverHelper.WaitUntil(DriverManager.CreateInstance().Driver, ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
+            WaitBeforScreen();
             string path = CreateRandomPath();
             Screenshot screan1 = ((ITakesScreenshot)DriverManager.CreateInstance().Driver).GetScreenshot();
             screan1.SaveAsFile(path, ScreenshotImageFormat.Jpeg);
@@ -35,9 +35,10 @@ namespace RawaTests
         /// </summary>
         /// <param name="path"> nazwa pliku</param>
         public static void MakeScreenshot(string path)
-        {
-            DriverHelper.WaitUntil(DriverManager.CreateInstance().Driver, ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
-            ((ITakesScreenshot)DriverManager.CreateInstance().Driver).GetScreenshot().SaveAsFile(PathConsts.SCREEN + path+".jpeg");
+        { 
+           WaitBeforScreen();
+           DriverHelper.WaitUntil(DriverManager.CreateInstance().Driver, ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
+           ((ITakesScreenshot)DriverManager.CreateInstance().Driver).GetScreenshot().SaveAsFile(PathConsts.SCREEN + path+".jpeg");
         }
         /// <summary>
         /// Metoda sprawdzająca czy dwa obrazku sa takie same. W parametrach przyjmuje ścieżki do plików
@@ -66,6 +67,10 @@ namespace RawaTests
             
             string path = string.Format(@"E:\ScreanshotSelenium\{0}.jpeg", Guid.NewGuid());
             return path;
+        }
+        private static void WaitBeforScreen()
+        {
+            DriverHelper.WaitUntil(DriverManager.CreateInstance().Driver, ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
         }
     }
 }

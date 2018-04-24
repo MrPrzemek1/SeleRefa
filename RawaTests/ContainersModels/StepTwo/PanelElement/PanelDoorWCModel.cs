@@ -1,4 +1,6 @@
 ﻿using OpenQA.Selenium;
+using RawaTests.HtmlStrings.ConstStrings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,9 +19,16 @@ namespace RawaTests.Services.StepTwoServices
             DoorProducent = doorProducent; 
         }
 
-        public List<string> GetDoorId()
+        private List<string> GetDoorId()
         {
-            return DoorList.Select(e => e.GetAttribute("object-id")).ToList();
+            return DoorList.Select(e => e.GetAttribute(HtmlAttributesConsts.OBJECT_ID)).ToList();
+        }
+        public IWebElement GetRandomDoor()
+        {
+            List<string> doorList = GetDoorId();
+            Random r = new Random();
+            string randomList = doorList[r.Next(0, doorList.Count)];
+            return DoorList.Where(e => e.GetAttribute(HtmlAttributesConsts.OBJECT_ID).Equals(randomList)).FirstOrDefault();
         }
     }
 }
