@@ -26,7 +26,7 @@ namespace RawaTests.Tests
         [Test]
         public void VerifyClickedElementChangeClass()
         {
-           // Manager.Driver.Navigate().Refresh();
+            Manager.Driver.Navigate().Refresh();
             homePageServices.GetHomePageModel().StartButton.ClickIfElementIsClickable();
 
             ShapesRoomWCModel shapes = shapeServices.GetShapes();
@@ -66,7 +66,7 @@ namespace RawaTests.Tests
         [Test]
         public void CheckingTheClassChangeForTheElementAfterChangingTheDimensionsOnTheDependentWall()
         {
-            Manager.Driver.Navigate().Refresh();
+            //Manager.Driver.Navigate().Refresh();
             homePageServices.GetHomePageModel().StartButton.Click();
 
             ShapesRoomWCModel shapes = shapeServices.GetShapes();

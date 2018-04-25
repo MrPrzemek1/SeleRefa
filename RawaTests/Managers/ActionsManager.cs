@@ -1,10 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RawaTests.Helpers.DriverHelper;
+using RawaTests.HtmlStrings.ConstStrings;
+using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace RawaTests.Managers
 {
@@ -36,7 +34,7 @@ namespace RawaTests.Managers
         }
         public void CustomDragAndDropForCabinets(IWebElement source, IWebElement taget, int xPosiotion = 5, int yPostion = 5)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 15; i++)
             {
                 Action.ClickAndHold(source).MoveToElement(taget).MoveByOffset(xPosiotion, yPostion).Release(taget).Build().Perform();
                 i++;
@@ -50,6 +48,7 @@ namespace RawaTests.Managers
         /// <param name="yPostion">obrót po osi Y w pixelach</param>
         public void RotateElement(IWebElement element, int xPosiotion = 100, int yPostion = -50)
         {
+            DriverHelper.WaitUntil(DriverManager.CreateInstance().Driver, ExpectedConditions.InvisibilityOfElementLocated(By.ClassName(Configurator3DConsts.LOADER)));
             Action.ClickAndHold(element)
                 .MoveByOffset(xPosiotion, yPostion)
                 .Release()

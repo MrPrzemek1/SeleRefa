@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RawaTests.Tests
@@ -35,7 +36,7 @@ namespace RawaTests.Tests
             homeServices = new HomePageWCServices(Manager);
             shapeRoomServices = new ShapeRoomWCServices(Manager);
         }
-        [Test, Order(10)]
+        [Test, Order(1)]
         public void ChangesFloorColorUsingColorPallete()
         {
             homeServices.GetHomePageModel().StartButton.ClickIfElementIsClickable();
@@ -50,20 +51,20 @@ namespace RawaTests.Tests
 
             Assert.IsTrue(ImageHelper.CheckingImagesAreDifferent(pathfirst, pathsecond));
         }
-        [Test, Order(11)]
+        [Test, Order(2)]
         public void ChangeColorUsingColorSlider()
         {
             string pathfirst = ImageHelper.MakeScreenshot();
             var canvas = canvasServices.GetCanvasModel();
             canvas.OpenColorPickerOnCanvas();
             ColorPickerWCModel colorpicker = colorPickerServices.GetFullColorPickerModel();
-            colorpicker.rightPanel.ColorSlider.ChangeColorWithSlider(30);
-            colorpicker.rightPanel.SubmitButton.Click();
+            colorpicker.rightPanel.ColorSlider.ChangeColorWithSlider(50);
+            colorpicker.rightPanel.SubmitButton.ClickIfElementIsClickable();
             string pathsecond = ImageHelper.MakeScreenshot();
 
             Assert.IsTrue(ImageHelper.CheckingImagesAreDifferent(pathfirst, pathsecond));
         }
-        [Test, Order(12)]
+        [Test, Order(3)]
         public void ChangeColorUsingColorSquare()
         {
             //ClearBasket();
@@ -77,7 +78,7 @@ namespace RawaTests.Tests
 
             Assert.IsTrue(ImageHelper.CheckingImagesAreDifferent(pathfirst, pathsecond));
         }
-        [Test]
+        [Test, Order(4)]
         public void DragAndDropDoors()
         {
             ClearBasket();
@@ -88,35 +89,11 @@ namespace RawaTests.Tests
             ActionsManager.CreateAction().CustomDragAndDropForWindowAndDoor(door, canvas);
             Assert.IsTrue(activeElementServices.GetActiveDoorForm().IsValid());
         }
-        [Test]
-        public void RemoveActiveWindow()
-        {
-            activeElementServices.GetFullActiveWindowWCModel().leftTableWCModel.DeleteWindowButton.ClickIfElementIsClickable();
-            try
-            {
-                Assert.IsTrue(activeElementServices.GetActiveDoorForm().IsValid());
-
-            }
-            catch (NullReferenceException e)
-            {
-                Console.WriteLine(e.Message + "test zaliczony");
-            }
-        }
-        [Test]
-        public void DragAndDropWindows()
-        {
-            ClearBasket();
-            groupOptionServices.GetOptionModel().GetOptionWindow();
-            IWebElement door = leftPanelServices.GetPanelForWindow().GetRandomWindow();
-            IWebElement canvas = canvasServices.GetCanvasModel().CanvasImage;
-            ActionsManager.CreateAction().RotateElement(canvas);
-            ActionsManager.CreateAction().CustomDragAndDropForWindowAndDoor(door, canvas);
-            Assert.IsTrue(activeElementServices.GetActiveDoorForm().IsValid());
-        }
-        [Test]
+        [Test,Order(5)]
         public void RemoveActiveDoors()
         {
             activeElementServices.GetActiveDoorForm().DeleteButton.ClickIfElementIsClickable();
+            DriverManager.CreateInstance().AcceptAlert();
             try
             {
                 Assert.IsTrue(activeElementServices.GetActiveDoorForm().IsValid());
@@ -128,14 +105,41 @@ namespace RawaTests.Tests
             }
         }
 
-        [Test]
+        [Test, Order(6)]
+        public void DragAndDropWindows()
+        {
+            //ClearBasket();
+            groupOptionServices.GetOptionModel().GetOptionWindow();
+            IWebElement door = leftPanelServices.GetPanelForWindow().GetRandomWindow();
+            IWebElement canvas = canvasServices.GetCanvasModel().CanvasImage;
+            //ActionsManager.CreateAction().RotateElement(canvas);
+            ActionsManager.CreateAction().CustomDragAndDropForWindowAndDoor(door, canvas);
+            Assert.IsTrue(activeElementServices.GetActiveDoorForm().IsValid());
+        }
+        [Test, Order(7)]
+        public void RemoveActiveWindow()
+        {
+            activeElementServices.GetFullActiveWindowWCModel().leftTableWCModel.DeleteWindowButton.ClickIfElementIsClickable();
+            DriverManager.CreateInstance().AcceptAlert();
+            try
+            {
+                Assert.IsTrue(activeElementServices.GetFullActiveWindowWCModel().IsValid());
+
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message + "test zaliczony");
+            }
+        }
+
+        [Test, Order(8)]
         public void VerifyRotateCabinetUsingInput()
         {
             groupOptionServices.GetOptionModel().GetOptionCabinetsSimply();
             IWebElement cabinets = leftPanelServices.GetSimplyLowerCabintesModel().ImagesOfCabinets;
-            IWebElement canvas = canvasServices.GetCanvasModel().CanvasImage;
-            ActionsManager.CreateAction().RotateElement(canvas, -100, 50);
-            ActionsManager.CreateAction().CustomDragAndDropForCabinets(cabinets, canvas, 30, 30);
+            IWebElement canvas = canvasServices.GetCanvasModel().CanvasImage;             
+            ActionsManager.CreateAction().RotateElement(canvas, -200, 100);
+            ActionsManager.CreateAction().CustomDragAndDropForCabinets(cabinets, canvas, 20, 20);
             string screenOne = ImageHelper.MakeScreenshot();
             var model = activeElementServices.GetActiveCabinetModel();
             model.RightPanel.RotationInput.SendKeys("2");
