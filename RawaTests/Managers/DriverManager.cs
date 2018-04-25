@@ -19,11 +19,10 @@ namespace RawaTests.Managers
             if (Instance == null || Instance.CurrentDriverType != type)
             {
                 Instance = new DriverManager(type);
-                Instance.Initialize();
             }
             return Instance;
         }
-        private static void Clear()
+        public void Clear()
         {
             Instance = null;
         }
@@ -81,7 +80,7 @@ namespace RawaTests.Managers
 
         #endregion
 
-        private void Initialize()
+        public void Initialize()
         {
             Goto("konfigurator3d");
             MaximizeWindow();

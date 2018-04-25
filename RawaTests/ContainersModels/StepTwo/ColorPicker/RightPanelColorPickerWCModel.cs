@@ -25,8 +25,9 @@ namespace RawaTests.ContainersModels.StepTwo.ColorPicker
         }
         public void ChangeColorWithSquare()
         {
-            Actions actions = new Actions(DriverManager.CreateInstance().Driver);
-            actions.ClickAndHold(ColorSquare)
+            ActionsManager.CreateAction().
+           
+            ClickAndHold(ColorSquare)
                 .MoveByOffset(25, 15)
                 .Release()
                 .Build()

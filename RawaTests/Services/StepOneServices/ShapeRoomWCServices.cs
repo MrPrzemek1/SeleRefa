@@ -2,6 +2,7 @@
 using RawaTests.Helpers;
 using RawaTests.HtmlStrings.ElementsLocators.StepOne;
 using RawaTests.Lists;
+using RawaTests.Managers;
 using RawaTests.Model;
 using RawaTests.Services.Base;
 
@@ -9,7 +10,7 @@ namespace RawaTests.Services
 {
     public class ShapeRoomWCServices : BaseService
     {
-        public ShapeRoomWCServices() : base()
+        public ShapeRoomWCServices(DriverManager manager) : base(manager)
         {
 
         }

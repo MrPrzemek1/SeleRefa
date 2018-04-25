@@ -2,12 +2,13 @@
 using RawaTests.Services.Base;
 using RawaTests.Helpers;
 using RawaTests.Model;
+using RawaTests.Managers;
 
 namespace RawaTests.Services
 {
     class HomePageWCServices : BaseService
     {
-        public HomePageWCServices() : base()
+        public HomePageWCServices(DriverManager manager) : base(manager)
         {
 
         }

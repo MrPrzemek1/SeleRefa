@@ -1,17 +1,17 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.ContainersModels.StepTwo;
 using RawaTests.HtmlStrings.ElementsLocators.StepTwo;
+using RawaTests.Managers;
 using RawaTests.Services.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RawaTests.Services.StepTwoServices
 {
     public class CanvasWCServices : BaseService
     {
+        public CanvasWCServices(DriverManager manager) : base(manager)
+        {
+
+        }
         public CanvasWCModel GetCanvasModel()
         {
             IWebElement canvas = Manager.FindWebElementAndWait(By.XPath(CabinetsPanelLocators.canvas));

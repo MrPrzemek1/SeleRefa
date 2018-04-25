@@ -7,7 +7,7 @@ using RawaTests.Managers;
 
 namespace RawaTests.Tests
 {
-    [TestFixture(Category = "Rawa")]
+    [TestFixture, Category("StepOne")]
     class StepOneTests : BaseTest
     {
         private HomePageWCServices homePageServices;
@@ -15,12 +15,12 @@ namespace RawaTests.Tests
         private ShapeRoomWCServices shapeServices;
         private Room3DWCServices roomViewServices;
 
-        public StepOneTests()
+        public StepOneTests() : base()
         {
-            homePageServices = new HomePageWCServices();
-            dimensionServices = new DimensionWCServices();
-            shapeServices = new ShapeRoomWCServices();
-            roomViewServices = new Room3DWCServices();
+            homePageServices = new HomePageWCServices(Manager);
+            dimensionServices = new DimensionWCServices(Manager);
+            shapeServices = new ShapeRoomWCServices(Manager);
+            roomViewServices = new Room3DWCServices(Manager);
         }
 
         [Test]
@@ -75,14 +75,5 @@ namespace RawaTests.Tests
             roomDimension.GetFieldByDescription("A").PlusSign.Click();
             Assert.IsTrue(roomDimension.GetFieldByDescription("C").Input.GetAttribute("class").Equals("wallSizeInput changed"));
         }
-        //[Test]
-        //public void sdfsdf()
-        //{
-        //    homePageServices.GetHomePageModel().StartButton.Click();
-            
-        //    DimensionsWCModel roomDimension = dimensionServices.GetDimensions();
-        //    roomDimension.GetFieldByDescription("A");
-        //    Assert.IsTrue(roomDimension.GetFieldByDescription("C").Input.GetAttribute("class").Equals("wallSizeInput changed"));
-        //}
     }
 }

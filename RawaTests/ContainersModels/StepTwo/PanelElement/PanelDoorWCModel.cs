@@ -25,10 +25,10 @@ namespace RawaTests.Services.StepTwoServices
         }
         public IWebElement GetRandomDoor()
         {
-            List<string> doorList = GetDoorId();
+            List<string> doorsId = GetDoorId();
             Random r = new Random();
-            string randomList = doorList[r.Next(0, doorList.Count)];
-            return DoorList.Where(e => e.GetAttribute(HtmlAttributesConsts.OBJECT_ID).Equals(randomList)).FirstOrDefault();
+            string randomDoor = doorsId[r.Next(0, doorsId.Count)];
+            return DoorList.Where(e => e.GetAttribute(HtmlAttributesConsts.OBJECT_ID).Equals(randomDoor)).FirstOrDefault();
         }
     }
 }

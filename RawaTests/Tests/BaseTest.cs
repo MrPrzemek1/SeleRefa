@@ -11,13 +11,13 @@ namespace RawaTests.Tests
         protected DriverManager Manager { get; set; }
 
         public BaseTest()
-        {           
+        {
+            Manager = DriverManager.CreateInstance();
         }
         [OneTimeSetUp]
         public virtual void TestInizialize()
         {
-            Manager = DriverManager.CreateInstance();
-
+            Manager.Initialize();
         }
         [OneTimeTearDown]
         public virtual void EndTest()
@@ -27,6 +27,7 @@ namespace RawaTests.Tests
             {
                 file.Delete();
             }
+            Manager.Clear();
             Manager.Quit();
         }
     }

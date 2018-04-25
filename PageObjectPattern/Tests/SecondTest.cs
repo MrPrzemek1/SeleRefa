@@ -1,30 +1,29 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.PageObjects;
-using PageObjectPattern.Pages;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading;
-using static PageObjectPattern.DriverHelper;
-using PageFactory = SeleniumExtras.PageObjects.PageFactory;
+using System.Threading.Tasks;
 
 namespace PageObjectPattern.Tests
-{ 
+{
     //[TestFixture]
-    public class HomePageTests : BaseTest
+    class SecondTest : BaseTest
     {
-        public HomePageTests() : base()
+        public SecondTest() : base()
         {
 
         }
         private IWebDriver driver;
-        public HomePageTests(IWebDriver driver):base(driver)
+        public SecondTest(IWebDriver driver) :base(driver)
         {
             this.driver = driver;
         }
-       // [Test,Category("asd")]
-        public void lalaasla()
+        //[Test, Category("asd")]
+        public void lalala()
         {
             driver.FindElement(By.XPath("//html//div[2]/label[4]")).Click();
             Thread.Sleep(2000);
@@ -32,12 +31,7 @@ namespace PageObjectPattern.Tests
             var source = driver.FindElement(By.XPath("//div[@id='yes-drop']"));
             var target = driver.FindElement(By.XPath("//div[@id='inner-dropzone']"));
             actions.DragAndDropToOffset(source, 804, 769).Perform();
-            actions.DragAndDrop(source, target).Perform() ;
-        }
-        [TearDown]
-        public void EndTest()
-        {
-            driver.Quit();
+            actions.DragAndDrop(source, target).Perform();
         }
     }
 }

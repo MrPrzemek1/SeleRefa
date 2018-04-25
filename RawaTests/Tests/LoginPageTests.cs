@@ -6,22 +6,22 @@ using RawaTests.Model.Login;
 
 namespace RawaTests.Tests
 {
-    [TestFixture,Category("Rawa")]
+    [TestFixture,Category("Login")]
     public class LoginPageTests : BaseTest
     {
         LoginPageWCServices loginServices;
         HomePageWCServices homeServices;
 
-        public LoginPageTests()
+        public LoginPageTests() : base()
         {
-            loginServices = new LoginPageWCServices();
-            homeServices = new HomePageWCServices();
+            loginServices = new LoginPageWCServices(Manager);
+            homeServices = new HomePageWCServices(Manager);
         }
 
         [Test, Order(1)]
         public void CorrectLogin()
         {
-            homeServices.GetHomePageModel().LoginBtn.Click();
+            homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable();
 
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.SetCorrectLoginData();
@@ -34,14 +34,13 @@ namespace RawaTests.Tests
         [Test, Order(2)]
         public void VerifyingValidateTextWhenCompanyNameIsEmpty()
         {
-            homeServices.GetHomePageModel().LogoutButton.Click();
-            Manager.Driver.SwitchTo().Alert().Accept();
-            homeServices.GetHomePageModel().LoginBtn.Click();
+            homeServices.GetHomePageModel().LogoutButton.ClickIfElementIsClickable();
+            homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable();
 
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.LoginInput.SendKeys("Test");
             loginPage.PasswordInput.SendKeys("test");
-            loginPage.SubmitButton.Click();
+            loginPage.SubmitButton.ClickIfElementIsClickable();
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateFieldIsDisplayed);
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.CompanyValidateText));
@@ -50,11 +49,11 @@ namespace RawaTests.Tests
         public void VerifingValidateTextWhenUserNameIsEmpty()
         {
             Manager.Driver.Navigate().Refresh();
-            homeServices.GetHomePageModel().LoginBtn.Click();
+            homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable();
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.CompanyNameInput.SendKeys("lalala");
             loginPage.PasswordInput.SendKeys("lalala");
-            loginPage.SubmitButton.Click();
+            loginPage.SubmitButton.ClickIfElementIsClickable();
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.LoginValidateText));
         }
@@ -62,11 +61,11 @@ namespace RawaTests.Tests
         public void VerifingValidateTextPasswordFieldIsEmpty()
         {
             Manager.Driver.Navigate().Refresh();
-            homeServices.GetHomePageModel().LoginBtn.Click();
+            homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable();
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.CompanyNameInput.SendKeys("lalala");
             loginPage.LoginInput.SendKeys("lalala");
-            loginPage.SubmitButton.Click();
+            loginPage.SubmitButton.ClickIfElementIsClickable();
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.PasswordValidateText));
         }
@@ -74,10 +73,10 @@ namespace RawaTests.Tests
         public void VerifingValidateTextWhenLoginDataWasIncorrect()
         {
             Manager.Driver.Navigate().Refresh();
-            homeServices.GetHomePageModel().LoginBtn.Click();
+            homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable();
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.SetLoginData("Test","Test","Test");
-            loginPage.SubmitButton.Click();
+            loginPage.SubmitButton.ClickIfElementIsClickable();
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.ErrorValidateText));
         }

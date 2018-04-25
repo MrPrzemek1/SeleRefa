@@ -1,12 +1,13 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.HtmlStrings.ElementsLocators.StepOne;
+using RawaTests.Managers;
 using RawaTests.Services.Base;
 
 namespace RawaTests.Services
 {
     public class Room3DWCServices : BaseService
     {
-        public Room3DWCServices() : base()
+        public Room3DWCServices(DriverManager manager) : base(manager)
         {
 
         }

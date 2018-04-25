@@ -36,7 +36,7 @@ namespace RawaTests.Managers
         }
         public void CustomDragAndDropForCabinets(IWebElement source, IWebElement taget, int xPosiotion = 5, int yPostion = 5)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Action.ClickAndHold(source).MoveToElement(taget).MoveByOffset(xPosiotion, yPostion).Release(taget).Build().Perform();
                 i++;

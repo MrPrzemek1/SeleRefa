@@ -2,17 +2,17 @@
 using RawaTests.ContainersModels.StepTwo;
 using RawaTests.ContainersModels.StepTwo.ColorPicker;
 using RawaTests.HtmlStrings.ElementsLocators.StepTwo;
+using RawaTests.Managers;
 using RawaTests.Services.Base;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RawaTests.Services.StepTwoServices
 {
     public class ColorPickerServies: BaseService
     {
+        public ColorPickerServies(DriverManager manager) : base(manager)
+        {
+        }
         #region LeftPanelOfColorPicker      
         public ColorPickerWCModel GetFullColorPickerModel()
         {

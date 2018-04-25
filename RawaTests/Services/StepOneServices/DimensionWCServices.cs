@@ -3,12 +3,13 @@ using RawaTests.Helpers;
 using RawaTests.Services.Base;
 using RawaTests;
 using System;
+using RawaTests.Managers;
 
 namespace RawaTests.StepOne
 {
     public class DimensionWCServices : BaseService
     {
-        public DimensionWCServices() : base()
+        public DimensionWCServices(DriverManager manager) : base(manager)
         {
 
         }

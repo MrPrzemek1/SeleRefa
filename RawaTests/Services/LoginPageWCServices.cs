@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.Helpers;
-using RawaTests.Model;
+using RawaTests.Managers;
 using RawaTests.Model.Login;
 using RawaTests.Services.Base;
 using System;
@@ -9,7 +9,7 @@ namespace RawaTests.Services
 {
     class LoginPageWCServices : BaseService
     {
-        public LoginPageWCServices() : base()
+        public LoginPageWCServices(DriverManager manager) : base(manager)
         {
 
         }

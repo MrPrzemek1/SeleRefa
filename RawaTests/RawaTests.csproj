@@ -153,10 +153,8 @@
     <Compile Include="Services\StepOneServices\DimensionWCServices.cs" />
     <Compile Include="Services\StepOneServices\Room3DWCServices.cs" />
     <Compile Include="Services\StepOneServices\ShapeRoomWCServices.cs" />
-    <Compile Include="Services\StepTwoServices\ActiveCabinetWCServices.cs" />
     <Compile Include="Services\HomePageWCServices.cs" />
-    <Compile Include="Services\StepTwoServices\ActiveDoorWCServices.cs" />
-    <Compile Include="Services\StepTwoServices\ActiveWindowWCServices.cs" />
+    <Compile Include="Services\StepTwoServices\ActiveElementFormWCServices.cs" />
     <Compile Include="Services\StepTwoServices\CanvasWCServices.cs" />
     <Compile Include="Services\StepTwoServices\ColorPickerServies.cs" />
     <Compile Include="Services\StepTwoServices\GroupOptionWCServices.cs" />
@@ -172,6 +170,7 @@
     <Compile Include="Tests\HomePageTests.cs" />
     <Compile Include="Tests\LoginPageTests.cs" />
     <Compile Include="HtmlStrings\ConstStrings\ValidateTextsHelperConsts.cs" />
+    <Compile Include="Tests\StepTwoTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

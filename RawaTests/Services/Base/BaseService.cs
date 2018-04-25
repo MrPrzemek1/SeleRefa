@@ -6,9 +6,9 @@ namespace RawaTests.Services.Base
     {
         protected DriverManager Manager { get; set; }
 
-        public BaseService()
+        public BaseService(DriverManager manager)
         {
-            Manager = DriverManager.CreateInstance();
+            Manager = manager;
         }
     }
 }

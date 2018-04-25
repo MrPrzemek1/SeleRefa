@@ -15,12 +15,12 @@ namespace RawaTests.ContainersModels.StepTwo.ColorPicker
         {
             allColorsInSingleRow = new List<SingleColorWCModel>();
         }
-        public IWebElement GetRandomColor()
+        public void GetRandomColor()
         {
            
             Random random = new Random((int)DateTime.Now.Ticks);
             int r = random.Next(allColorsInSingleRow.Count);
-            return allColorsInSingleRow.ElementAt(r).SingleColor;
+            allColorsInSingleRow.ElementAt(r).SingleColor.ClickIfElementIsClickable();
         }
     }
 }

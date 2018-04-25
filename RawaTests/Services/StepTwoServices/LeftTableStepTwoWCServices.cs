@@ -1,21 +1,16 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.ContainersModels.StepTwo.PanelElement;
 using RawaTests.HtmlStrings.ElementsLocators.StepTwo;
-using RawaTests;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using RawaTests.Services.Base;
 using RawaTests.Models.StepTwo;
 using RawaTests.Models.StepTwo.PanelElement;
+using RawaTests.Managers;
 
 namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
 {
     class LeftTableStepTwoWCServices : BaseService
     {
-        public LeftTableStepTwoWCServices() : base()
+        public LeftTableStepTwoWCServices(DriverManager manager) : base(manager)
         {
 
         }
