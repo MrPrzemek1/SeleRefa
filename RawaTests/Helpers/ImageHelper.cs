@@ -48,7 +48,7 @@ namespace RawaTests
         /// <returns></returns>
         public static bool CheckingImagesAreDifferent(string pathFirst, string pathSecond)
         {
-            float differencePixels = ImageTool.GetPercentageDifference(pathFirst, pathSecond);
+            float differencePixels = ImageTool.GetPercentageDifference(pathFirst, pathSecond, 0);
             bool result = true;
             if (differencePixels!=0)
             {
@@ -70,6 +70,7 @@ namespace RawaTests
         }
         private static void WaitBeforScreen()
         {
+            ActionsManager.CreateAction().SendKeys(Keys.Home).Perform();
             DriverHelper.WaitUntil(DriverManager.CreateInstance().Driver, ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
         }
     }

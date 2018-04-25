@@ -30,12 +30,17 @@ namespace RawaTests.Managers
         /// <param name="taget">element na który chcemy przenieść</param>
         /// <param name="xPosiotion">przesuniecie po osi X w pixelach</param>
         /// <param name="yPostion">przesuniecie po osi Y w pixelach</param>
-        public void CustomDragAndDrop(IWebElement source, IWebElement taget, int xPosiotion = 5, int yPostion = 5)
+        public void CustomDragAndDropForWindowAndDoor(IWebElement source, IWebElement taget, int xPosiotion = 5, int yPostion = 5)
         {
             Action.ClickAndHold(source).MoveToElement(taget).MoveByOffset(xPosiotion, yPostion).Release(taget).Build().Perform();
-            Action.ClickAndHold(source).MoveToElement(taget).MoveByOffset(xPosiotion, yPostion).Release(taget).Build().Perform();
-            Action.ClickAndHold(source).MoveToElement(taget).MoveByOffset(xPosiotion, yPostion).Release(taget).Build().Perform();
-
+        }
+        public void CustomDragAndDropForCabinets(IWebElement source, IWebElement taget, int xPosiotion = 5, int yPostion = 5)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Action.ClickAndHold(source).MoveToElement(taget).MoveByOffset(xPosiotion, yPostion).Release(taget).Build().Perform();
+                i++;
+            }
         }
         /// <summary>
         /// Metoda która obraca element o podane współrzędne
