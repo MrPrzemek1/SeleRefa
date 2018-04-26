@@ -8,9 +8,10 @@ namespace RawaTests.Services.StepTwoServices
 {
     public class CanvasWCServices : BaseService
     {
+        private DriverManager Manager;
         public CanvasWCServices(DriverManager manager) : base(manager)
         {
-
+            Manager = manager;
         }
         public CanvasWCModel GetCanvasModel()
         {

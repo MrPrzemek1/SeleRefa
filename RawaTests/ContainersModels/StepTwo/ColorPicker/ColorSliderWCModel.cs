@@ -19,14 +19,14 @@ namespace RawaTests.ContainersModels.StepTwo.ColorPicker
             ColorColumn = colorColumn;
             ColorSlider = colorSlider;
         }
-        public void ChangeColorWithSlider(int yPosition)
-        {
-            Actions actions = new Actions(DriverManager.CreateInstance().Driver);
-            actions.ClickAndHold(ColorSlider)
-                .MoveByOffset(0, yPosition)
-                .Release()
-                .Build()
-                .Perform();
-        }
+        //public void ChangeColorWithSlider(int yPosition)
+        //{
+        //    Actions actions = new Actions(DriverManager.CreateInstance().Driver);
+        //    actions.ClickAndHold(ColorSlider)
+        //        .MoveByOffset(0, yPosition)
+        //        .Release()
+        //        .Build()
+        //        .Perform();
+        //}
     }
 }

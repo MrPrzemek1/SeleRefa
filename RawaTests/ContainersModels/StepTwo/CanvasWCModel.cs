@@ -18,12 +18,12 @@ namespace RawaTests.ContainersModels.StepTwo
             CanvasImage = canvasImage;
         }
 
-        public void OpenColorPickerOnCanvas()
-        {
-            Actions actions = new Actions(DriverManager.CreateInstance().Driver);
-            actions.Click(CanvasImage).Perform();
-            actions.SendKeys(Keys.Home).Perform();
+        //public void OpenColorPickerOnCanvas()
+        //{
+        //    Actions actions = new Actions(DriverManager.CreateInstance().Driver);
+        //    actions.Click(CanvasImage).Perform();
+        //    actions.SendKeys(Keys.Home).Perform();
                 
-        }
+        //}
     }  
 }

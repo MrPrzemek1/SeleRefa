@@ -15,33 +15,20 @@ namespace RawaTests.Managers
     {
         private const string _baseUrl = "http://demo.net-art.eu/";
 
-        private static DriverManager Instance;
-        public static DriverManager CreateInstance(DriverType type = DriverType.Chrome)
+        public DriverType Type { get; private set; }
+
+        public DriverManager(DriverType type)
         {
-            if (Instance == null || Instance.CurrentDriverType != type)
-            {
-                Instance = new DriverManager(type);
-            }
-            return Instance;
-        }
-        public void Clear()
-        {
-            Instance = null;
+            Type = type;
+
+            Driver = GetDriver(type);
         }
        
         public IWebDriver Driver { get; private set; }
 
-        public DriverType CurrentDriverType { get; private set; }
-
         public string Title { get { return Driver.Title; } }
 
-        private DriverManager(DriverType type)
-        {
-            CurrentDriverType = type;
-            Driver = GetDriver(type);
-        }
-
-        public static IWebDriver GetDriver(DriverType driver)
+        public IWebDriver GetDriver(DriverType driver)
         {
             switch (driver)
             {
@@ -106,13 +93,6 @@ namespace RawaTests.Managers
         public void Quit()
         {
             Driver.Quit();
-        }
-        public enum DriverType
-        {
-            Chrome,
-            Firefox,
-            IE,
-            Opera
         }
 
         public void AcceptAlert()

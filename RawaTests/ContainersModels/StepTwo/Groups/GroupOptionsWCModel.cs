@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using RawaTests.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace RawaTests.Models.StepTwo.Groups
     public class GroupOptionsWCModel
     {
         public IList<GroupOptionWCModel> GroupOption;
-
+        private DriverManager Manager;
         public GroupOptionsWCModel()
         {
             GroupOption = new List<GroupOptionWCModel>();
@@ -39,7 +40,7 @@ namespace RawaTests.Models.StepTwo.Groups
         }
         private void MainClick(GroupType type)
         {
-            GroupOption.Where(e => String.Equals(e.NameOfGroup.GetAttribute("value"), groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.ClickIfElementIsClickable();
+            GroupOption.Where(e => String.Equals(e.NameOfGroup.GetAttribute("value"), groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.ClickIfElementIsClickable(Manager.Driver);
         }
 
         public enum GroupType

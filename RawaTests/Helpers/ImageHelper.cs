@@ -18,6 +18,7 @@ namespace RawaTests
 {
     public class ImageHelper
     {
+        private static DriverManager Manager;
         /// <summary>
         /// Metoda robiąca screenshota i zwracająca scieżkę do niego
         /// </summary>
@@ -26,7 +27,7 @@ namespace RawaTests
         {
             WaitBeforScreen();
             string path = CreateRandomPath();
-            Screenshot screan1 = ((ITakesScreenshot)DriverManager.CreateInstance().Driver).GetScreenshot();
+            Screenshot screan1 = ((ITakesScreenshot)Manager.Driver).GetScreenshot();
             screan1.SaveAsFile(path, ScreenshotImageFormat.Jpeg);
             return path;
         }
@@ -37,8 +38,8 @@ namespace RawaTests
         public static void MakeScreenshot(string path)
         { 
            WaitBeforScreen();
-           DriverHelper.WaitUntil(DriverManager.CreateInstance().Driver, ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
-           ((ITakesScreenshot)DriverManager.CreateInstance().Driver).GetScreenshot().SaveAsFile(PathConsts.SCREEN + path+".jpeg");
+           DriverHelper.WaitUntil(Manager.Driver, ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
+           ((ITakesScreenshot)Manager.Driver).GetScreenshot().SaveAsFile(PathConsts.SCREEN + path+".jpeg");
         }
         /// <summary>
         /// Metoda sprawdzająca czy dwa obrazku sa takie same. W parametrach przyjmuje ścieżki do plików
@@ -70,8 +71,8 @@ namespace RawaTests
         }
         private static void WaitBeforScreen()
         {
-            ActionsManager.CreateAction().SendKeys(Keys.Home).Perform();
-            DriverHelper.WaitUntil(DriverManager.CreateInstance().Driver, ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
+            ActionManager.Create(Manager.Driver).SendKeys(Keys.Home).Perform();
+            DriverHelper.WaitUntil(Manager.Driver, ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
         }
     }
 }

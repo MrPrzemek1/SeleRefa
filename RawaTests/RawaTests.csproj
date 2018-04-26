@@ -148,9 +148,12 @@
     <Compile Include="HtmlStrings\ElementsLocators\StepTwo\ColorPickerLocators.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepTwo\StepTwoLocators.cs" />
     <Compile Include="Managers\ActionsManager.cs" />
+    <Compile Include="Managers\BrowserType.cs" />
     <Compile Include="Managers\DriverManager.cs" />
     <Compile Include="ContainersModels\Base\BaseWebContainerListModel.cs" />
     <Compile Include="ContainersModels\StepOne\FullStepOneModel\StepOneFacade.cs" />
+    <Compile Include="Managers\ManagerBuilder.cs" />
+    <Compile Include="Services\Builder\ServiceBuilder.cs" />
     <Compile Include="Services\StepOneServices\DimensionWCServices.cs" />
     <Compile Include="Services\StepOneServices\Room3DWCServices.cs" />
     <Compile Include="Services\StepOneServices\ShapeRoomWCServices.cs" />

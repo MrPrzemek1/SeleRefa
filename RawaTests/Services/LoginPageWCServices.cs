@@ -9,9 +9,10 @@ namespace RawaTests.Services
 {
     class LoginPageWCServices : BaseService
     {
+        private DriverManager Manager;
         public LoginPageWCServices(DriverManager manager) : base(manager)
         {
-
+            Manager = manager;
         }
         public LoginPageWCModel GetLoginPageModel()
         {

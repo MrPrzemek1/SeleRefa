@@ -10,9 +10,10 @@ namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
 {
     class LeftTableStepTwoWCServices : BaseService
     {
+        private DriverManager Manager;
         public LeftTableStepTwoWCServices(DriverManager manager) : base(manager)
         {
-
+            Manager = manager;
         }
         //serwis który zwraca szafki dolne Eco
         public PanelCabinetsCollectionWCModel GetEcoLowerCabintesModel()
@@ -45,7 +46,7 @@ namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
             IWebElement cabinetsHelper = Manager.FindWebElement(By.Id(CabinetsPanelLocators.simplyBottomId));
             IWebElement openCabintes = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocators.bottomOpenCabinetsSimply));
             IWebElement closedCabintes = cabinetsHelper.FindWebElement(By.XPath(CabinetsPanelLocators.bottomClosedCabinetsSimply));
-            IWebElement imagesOfCabinets = cabinetsHelper.FindWebElementAndWait(By.XPath(CabinetsPanelLocators.bottomImagesOfCabinetsSimply));
+            IWebElement imagesOfCabinets = cabinetsHelper.FindWebElementAndWait(Manager.Driver,By.XPath(CabinetsPanelLocators.bottomImagesOfCabinetsSimply));
 
             PanelCabinetsCollectionWCModel result = new PanelCabinetsCollectionWCModel(nameGroupOfCabintesButton, openCabintes, closedCabintes, imagesOfCabinets);
 
@@ -84,7 +85,7 @@ namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
         public PanelWindowWCModel GetPanelForWindow()
         {
             IWebElement list = Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.panelList));
-            var windowImages = list.FindWebElements(By.XPath(StepTwoLocators.windowsImages));
+            var windowImages = list.FindWebElements(Manager.Driver,By.XPath(StepTwoLocators.windowsImages));
             PanelWindowWCModel panel = new PanelWindowWCModel(list, windowImages);
 
             return panel;
@@ -92,7 +93,7 @@ namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
         public PanelDoorWCModel GetPanelForDoors()
         {
             IWebElement list = Manager.FindWebElementAndWait(By.XPath(StepTwoLocators.doorPanelList));
-            var doors = list.FindWebElements(By.XPath(StepTwoLocators.doorsImages));
+            var doors = list.FindWebElements(Manager.Driver,By.XPath(StepTwoLocators.doorsImages));
             IWebElement doorProducent = Manager.FindWebElement(By.ClassName(StepTwoLocators.doorsProducent));
 
             PanelDoorWCModel panelModel = new PanelDoorWCModel(list, doors, doorProducent);

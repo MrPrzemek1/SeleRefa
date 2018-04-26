@@ -23,15 +23,15 @@ namespace RawaTests.ContainersModels.StepTwo.ColorPicker
             SubmitButton = submitButton;
             ColorSlider = colorSlider;
         }
-        public void ChangeColorWithSquare()
-        {
-            ActionsManager.CreateAction().
+        //public void ChangeColorWithSquare()
+        //{
+        //    ActionManager.Create().
            
-            ClickAndHold(ColorSquare)
-                .MoveByOffset(25, 15)
-                .Release()
-                .Build()
-                .Perform();
-        }
+        //    ClickAndHold(ColorSquare)
+        //        .MoveByOffset(25, 15)
+        //        .Release()
+        //        .Build()
+        //        .Perform();
+        //}
     }
 }

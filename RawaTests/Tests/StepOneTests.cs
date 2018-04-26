@@ -4,6 +4,7 @@ using RawaTests.Services;
 using RawaTests.Lists;
 using RawaTests.Tests;
 using RawaTests.Managers;
+using RawaTests.Services.Builder;
 
 namespace RawaTests.Tests
 {
@@ -17,17 +18,17 @@ namespace RawaTests.Tests
 
         public StepOneTests() : base()
         {
-            homePageServices = new HomePageWCServices(Manager);
-            dimensionServices = new DimensionWCServices(Manager);
-            shapeServices = new ShapeRoomWCServices(Manager);
-            roomViewServices = new Room3DWCServices(Manager);
+            homePageServices = ServiceBuilder.BuildService <HomePageWCServices>(Manager);
+            dimensionServices = ServiceBuilder.BuildService <DimensionWCServices>(Manager);
+            shapeServices = ServiceBuilder.BuildService <ShapeRoomWCServices>(Manager);
+            roomViewServices = ServiceBuilder.BuildService <Room3DWCServices>(Manager);
         }
 
         [Test]
         public void VerifyClickedElementChangeClass()
         {
             Manager.Driver.Navigate().Refresh();
-            homePageServices.GetHomePageModel().StartButton.ClickIfElementIsClickable();
+            homePageServices.GetHomePageModel().StartButton.ClickIfElementIsClickable(Manager.Driver);
 
             ShapesRoomWCModel shapes = shapeServices.GetShapes();
             Assert.IsTrue(shapes.ClickingOnTheShapes());
@@ -36,7 +37,7 @@ namespace RawaTests.Tests
         public void VerifyingModelRoomChangeAfterChangeShape()
         {
             Manager.Driver.Navigate().Refresh();
-            homePageServices.GetHomePageModel().StartButton.ClickIfElementIsClickable();
+            homePageServices.GetHomePageModel().StartButton.ClickIfElementIsClickable(Manager.Driver);
 
             ShapesRoomWCModel shapes = shapeServices.GetShapes();
             shapes.ClickShapeById("27");

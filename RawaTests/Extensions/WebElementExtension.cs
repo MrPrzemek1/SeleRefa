@@ -14,17 +14,17 @@ namespace RawaTests
 {
     public static class WebElementExtension
     {
-        public static IList<IWebElement> FindWebElementsAndWait(this IWebElement element, By by)
+        public static IList<IWebElement> FindWebElementsAndWait(this IWebElement element,IWebDriver driver, By by)
         {
-            return DriverHelper.FindWebElementsAndWait(DriverManager.CreateInstance().Driver, element, by);
+            return DriverHelper.FindWebElementsAndWait(driver, element, by);
         }
 
-        public static IWebElement FindWebElementAndWait(this IWebElement element, By by)
+        public static IWebElement FindWebElementAndWait(this IWebElement element, IWebDriver driver, By by)
         {
-            return DriverHelper.FindWebElementAndWait(DriverManager.CreateInstance().Driver, element, by);
+            return DriverHelper.FindWebElementAndWait(driver, element, by);
         }
 
-        public static IList<IWebElement> FindWebElements(this IWebElement element, By by)
+        public static IList<IWebElement> FindWebElements(this IWebElement element, IWebDriver driver, By by)
         {
             return DriverHelper.FindWebElementsWithoutWait(element, by);
         }
@@ -39,9 +39,9 @@ namespace RawaTests
             return element.GetAttribute(HtmlAttributesConsts.SRC);
         }
 
-        public static void ClickIfElementIsClickable(this IWebElement e)
+        public static void ClickIfElementIsClickable(this IWebElement e,IWebDriver driver)
         {
-            DriverHelper.WaitUntil(DriverManager.CreateInstance().Driver, ExpectedConditions.ElementToBeClickable(e)).Click();
+            DriverHelper.WaitUntil(driver, ExpectedConditions.ElementToBeClickable(e)).Click();
         }
 
     }

@@ -9,9 +9,10 @@ namespace RawaTests.StepOne
 {
     public class DimensionWCServices : BaseService
     {
+        private DriverManager Manager;
         public DimensionWCServices(DriverManager manager) : base(manager)
         {
-
+            Manager = manager;
         }
         public DimensionsWCModel GetDimensions()
         {

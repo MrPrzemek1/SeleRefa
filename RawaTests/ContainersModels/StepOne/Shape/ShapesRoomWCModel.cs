@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.HtmlStrings.ConstStrings;
+using RawaTests.Managers;
 using RawaTests.Model;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace RawaTests.Lists
     {
         public IWebElement Header { get; set; }
         public List<ShapeRoomWCModel> Shapes { get; set; }
-
+        private DriverManager Manager;
         public ShapesRoomWCModel()
         {
             Shapes = new List<ShapeRoomWCModel>();
@@ -22,7 +23,7 @@ namespace RawaTests.Lists
         /// <param name="id">id pomieszczenia</param>
         public void ClickShapeById(string id)
         {
-             Shapes.Where(e => e.ShapeOfRoom.GetAttribute(HtmlAttributesConsts.SHAPE_ID) == id).FirstOrDefault().ShapeOfRoom.ClickIfElementIsClickable();            
+             Shapes.Where(e => e.ShapeOfRoom.GetAttribute(HtmlAttributesConsts.SHAPE_ID) == id).FirstOrDefault().ShapeOfRoom.ClickIfElementIsClickable(Manager.Driver);            
         }
         /// <summary>
         /// Metoda zwracająca atrybut "class"

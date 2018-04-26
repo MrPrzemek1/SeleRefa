@@ -14,25 +14,12 @@ namespace RawaTests.Tests
         {
             
         }
-        public virtual void TestInizialize([Values]DriverManager.DriverType type)
+        public virtual void InizializeManager([Values]DriverType type)
         {
-            if (type == DriverManager.DriverType.Chrome)
+            if (Manager==null || Manager.Type!=type)
             {
-                Manager = DriverManager.CreateInstance(DriverManager.DriverType.Chrome);
+                Manager = new DriverManager(type);
             }
-            else if (type == DriverManager.DriverType.Firefox)
-            {
-                Manager = DriverManager.CreateInstance(DriverManager.DriverType.Firefox);
-            }
-            else if (type == DriverManager.DriverType.Opera)
-            {
-                Manager = DriverManager.CreateInstance(DriverManager.DriverType.Opera);
-            }
-            else if (type == DriverManager.DriverType.IE)
-            {
-                Manager = DriverManager.CreateInstance(DriverManager.DriverType.IE);
-            }
-
             Manager.Initialize();
         }
         [TearDown]
@@ -43,7 +30,6 @@ namespace RawaTests.Tests
             {
                 file.Delete();
             }
-            Manager.Clear();
             Manager.Quit();
         }
     }

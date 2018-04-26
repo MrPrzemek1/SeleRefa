@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using RawaTests.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace RawaTests.ContainersModels.StepTwo.ColorPicker
     public class AllColorsInSingleRowWCModel
     {
         public List<SingleColorWCModel> allColorsInSingleRow { get; set; }
-
+        private DriverManager Manager;
         public AllColorsInSingleRowWCModel()
         {
             allColorsInSingleRow = new List<SingleColorWCModel>();
@@ -20,7 +21,7 @@ namespace RawaTests.ContainersModels.StepTwo.ColorPicker
            
             Random random = new Random((int)DateTime.Now.Ticks);
             int r = random.Next(allColorsInSingleRow.Count);
-            allColorsInSingleRow.ElementAt(r).SingleColor.ClickIfElementIsClickable();
+            allColorsInSingleRow.ElementAt(r).SingleColor.ClickIfElementIsClickable(Manager.Driver);
         }
     }
 }

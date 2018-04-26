@@ -16,8 +16,10 @@ namespace RawaTests.Services.StepTwoServices
 {
     class ActiveElementFormWCServices : BaseService
     {
+        private DriverManager Manager;
         public ActiveElementFormWCServices(DriverManager manager) : base(manager)
         {
+            Manager = manager;
         }
         #region Formularz aktywnych drzwi        
         public ActiveDoorWCModel GetActiveDoorForm()
