@@ -1,6 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Opera;
 using RawaTests.Helpers.DriverHelper;
 using System;
 using System.Collections.Generic;
@@ -39,7 +41,7 @@ namespace RawaTests.Managers
             Driver = GetDriver(type);
         }
 
-        private IWebDriver GetDriver(DriverType driver)
+        public static IWebDriver GetDriver(DriverType driver)
         {
             switch (driver)
             {
@@ -50,8 +52,12 @@ namespace RawaTests.Managers
                     return new ChromeDriver(chromeDriverPath);
                 case DriverType.Firefox:
                     return new FirefoxDriver();
+                case DriverType.IE:
+                    return new InternetExplorerDriver();
+                case DriverType.Opera:
+                    return new OperaDriver();
                 default:
-                    throw new NotImplementedException("I do not know the driver that you supplied.");
+                    return new ChromeDriver();
             }
         }
         #region Wyszukiwanie i czekanie na elementy.
@@ -105,7 +111,8 @@ namespace RawaTests.Managers
         {
             Chrome,
             Firefox,
-            IE
+            IE,
+            Opera
         }
 
         public void AcceptAlert()

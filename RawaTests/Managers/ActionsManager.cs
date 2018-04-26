@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Interactions;
 using RawaTests.Helpers.DriverHelper;
 using RawaTests.HtmlStrings.ConstStrings;
+using System.Threading;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace RawaTests.Managers
@@ -25,20 +26,21 @@ namespace RawaTests.Managers
         /// Metoda ktora przenosi i upuszcza element na drugi element. Po znalezieniu się nad elementem docelowym wykonywane jest przesunięcie obiektu nad nim w celu umieszczenia przenoszonego elemetu na elemencie docelowym
         /// </summary>
         /// <param name="source">element który chcemy przenieść</param>
-        /// <param name="taget">element na który chcemy przenieść</param>
+        /// <param name="target">element na który chcemy przenieść</param>
         /// <param name="xPosiotion">przesuniecie po osi X w pixelach</param>
         /// <param name="yPostion">przesuniecie po osi Y w pixelach</param>
-        public void CustomDragAndDropForWindowAndDoor(IWebElement source, IWebElement taget, int xPosiotion = 5, int yPostion = 5)
+        public void CustomDragAndDropForWindowAndDoor(IWebElement source, IWebElement target, int xPosiotion = 5, int yPostion = 5)
         {
-            Action.ClickAndHold(source).MoveToElement(taget).MoveByOffset(xPosiotion, yPostion).Release(taget).Build().Perform();
-        }
-        public void CustomDragAndDropForCabinets(IWebElement source, IWebElement taget, int xPosiotion = 5, int yPostion = 5)
+            Action.ClickAndHold(source).MoveToElement(target).MoveByOffset(xPosiotion, yPostion).Release(target).Build().Perform();       
+         }
+        public void CustomDragAndDropForCabinets(IWebElement source, IWebElement target, int xPosiotion = 5, int yPostion = 5)
         {
-            for (int i = 0; i < 15; i++)
-            {
-                Action.ClickAndHold(source).MoveToElement(taget).MoveByOffset(xPosiotion, yPostion).Release(taget).Build().Perform();
-                i++;
-            }
+
+                CreateAction().ClickAndHold(source).MoveToElement(target).MoveByOffset(10,10).Perform();
+                Thread.Sleep(500);
+                CreateAction().Release(target).Perform();
+                //Action.ClickAndHold(source).MoveToElement(taget).MoveByOffset(xPosiotion, yPostion).Release(taget).Build().Perform();
+                //i++;
         }
         /// <summary>
         /// Metoda która obraca element o podane współrzędne

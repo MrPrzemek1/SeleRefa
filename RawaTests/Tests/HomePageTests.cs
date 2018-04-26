@@ -2,6 +2,8 @@
 using RawaTests.Services;
 using RawaTests.Services.StepTwoServices;
 using RawaTests.Services.StepTwoServices.PanelListForCabinets;
+using RawaTests.Managers;
+using System.Collections.Generic;
 
 namespace RawaTests.Tests
 {
@@ -13,13 +15,18 @@ namespace RawaTests.Tests
         LeftTableStepTwoWCServices doorServices;
         public HomePageTests() : base()
         {
+
+        }
+        [Test]
+        [TestCaseSource(typeof(DriverManager),"DriverType")]
+        public void HomePageElementsIsDisplayed([Values]DriverManager.DriverType type)
+        {
+            TestInizialize(type);
+
             homePageSrv = new HomePageWCServices(Manager);
             groupOptionServices = new GroupOptionWCServices(Manager);
             doorServices = new LeftTableStepTwoWCServices(Manager);
-        }
-        [Test]
-        public void HomePageElementsIsDisplayed()
-        {
+
             Assert.IsTrue(homePageSrv.GetHomePageModel().IsValid());
         }
     }

@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.IE;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +22,20 @@ namespace PageObjectPattern.Tests
         {
             this.driver = driver;
         }
-        [OneTimeSetUp]
-        public virtual void TestInizialize()
+        public virtual void TestInizialize(string browser)
         {
-            driver = new ChromeDriver();
+            if (browser.Equals("chrome"))
+            {
+                driver = new ChromeDriver();
+            }
+            else if (browser.Equals("firefox"))
+            {
+                driver = new FirefoxDriver();
+            }
+            else if (browser.Equals("ie"))
+            {
+                driver = new InternetExplorerDriver();
+            }
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("http://interactjs.io/");
 
@@ -33,5 +45,6 @@ namespace PageObjectPattern.Tests
         {
             driver.Quit();
         }
+
     }
 }

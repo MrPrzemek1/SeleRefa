@@ -5,21 +5,37 @@ using System.Reflection;
 
 namespace RawaTests.Tests
 {
-    [SetUpFixture,Category("Rawa"),]
+    [SetUpFixture,Category("Rawa")]
     public abstract class BaseTest
     {
         protected DriverManager Manager { get; set; }
 
         public BaseTest()
         {
-            Manager = DriverManager.CreateInstance();
+            
         }
-        [OneTimeSetUp]
-        public virtual void TestInizialize()
+        public virtual void TestInizialize([Values]DriverManager.DriverType type)
         {
+            if (type == DriverManager.DriverType.Chrome)
+            {
+                Manager = DriverManager.CreateInstance(DriverManager.DriverType.Chrome);
+            }
+            else if (type == DriverManager.DriverType.Firefox)
+            {
+                Manager = DriverManager.CreateInstance(DriverManager.DriverType.Firefox);
+            }
+            else if (type == DriverManager.DriverType.Opera)
+            {
+                Manager = DriverManager.CreateInstance(DriverManager.DriverType.Opera);
+            }
+            else if (type == DriverManager.DriverType.IE)
+            {
+                Manager = DriverManager.CreateInstance(DriverManager.DriverType.IE);
+            }
+
             Manager.Initialize();
         }
-        [OneTimeTearDown]
+        [TearDown]
         public virtual void EndTest()
         {
             DirectoryInfo di = new DirectoryInfo(@"E:\ScreanshotSelenium");

@@ -8,11 +8,6 @@ using RawaTests.Services.StepTwoServices;
 using RawaTests.Services.StepTwoServices.PanelListForCabinets;
 using RawaTests.StepOne;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace RawaTests.Tests
 {
@@ -138,11 +133,11 @@ namespace RawaTests.Tests
             groupOptionServices.GetOptionModel().GetOptionCabinetsSimply();
             IWebElement cabinets = leftPanelServices.GetSimplyLowerCabintesModel().ImagesOfCabinets;
             IWebElement canvas = canvasServices.GetCanvasModel().CanvasImage;             
-            ActionsManager.CreateAction().RotateElement(canvas, -200, 100);
+           // ActionsManager.CreateAction().RotateElement(canvas, -200, 100);
             ActionsManager.CreateAction().CustomDragAndDropForCabinets(cabinets, canvas, 20, 20);
             string screenOne = ImageHelper.MakeScreenshot();
             var model = activeElementServices.GetActiveCabinetModel();
-            model.RightPanel.RotationInput.SendKeys("2");
+            model.RightPanel.RotationInput.SendKeys("20");
             ActionsManager.CreateAction().Click(model.LeftPanel.CabinetImageThumb).Build().Perform();
             string screenSecond = ImageHelper.MakeScreenshot();
 
