@@ -13,20 +13,21 @@ namespace RawaTests.ContainersModels.StepTwo.ColorPicker
     {
         public IWebElement ColorColumn { get; set; }
         public IWebElement ColorSlider { get; set; }
-
-        public ColorSliderWCModel(IWebElement colorColumn, IWebElement colorSlider)
+        private IWebDriver Driver;
+        public ColorSliderWCModel(IWebDriver driver, IWebElement colorColumn, IWebElement colorSlider)
         {
+            this.Driver = driver;
             ColorColumn = colorColumn;
             ColorSlider = colorSlider;
         }
-        //public void ChangeColorWithSlider(int yPosition)
-        //{
-        //    Actions actions = new Actions(DriverManager.CreateInstance().Driver);
-        //    actions.ClickAndHold(ColorSlider)
-        //        .MoveByOffset(0, yPosition)
-        //        .Release()
-        //        .Build()
-        //        .Perform();
-        //}
+        public void ChangeColorWithSlider(int yPosition)
+        {
+            Actions actions = new Actions(Driver);
+            actions.ClickAndHold(ColorSlider)
+                .MoveByOffset(0, yPosition)
+                .Release()
+                .Build()
+                .Perform();
+        }
     }
 }

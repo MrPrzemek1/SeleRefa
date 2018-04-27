@@ -4,24 +4,32 @@ using RawaTests.ValidateMessages;
 using RawaTests.Model;
 using RawaTests.Model.Login;
 using RawaTests.Services.Builder;
+using RawaTests.Managers;
 
 namespace RawaTests.Tests
 {
     [TestFixture,Category("Login")]
+    [TestFixtureSource(typeof(DriverManager), "DriverType")]
+    [Parallelizable(ParallelScope.Self)]
     public class LoginPageTests : BaseTest
     {
         LoginPageWCServices loginServices;
         HomePageWCServices homeServices;
 
         public LoginPageTests() : base()
-        {
-            loginServices = ServiceBuilder.BuildService <LoginPageWCServices>(Manager);
-            homeServices = ServiceBuilder.BuildService <HomePageWCServices>(Manager);
+        {           
         }
 
-        [Test, Order(1)]
-        public void CorrectLogin()
+        public override void Init(DriverType type)
         {
+            base.Init(type);
+            homeServices = new HomePageWCServices(Manager);
+            loginServices = new LoginPageWCServices(Manager);
+        }
+        [Test, Order(1)]
+        public void CorrectLogin([Values]DriverType type)
+        {
+            Init(type);
             homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable(Manager.Driver);
 
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
@@ -33,9 +41,9 @@ namespace RawaTests.Tests
         }
 
         [Test, Order(2)]
-        public void VerifyingValidateTextWhenCompanyNameIsEmpty()
+        public void VerifyingValidateTextWhenCompanyNameIsEmpty([Values]DriverType type)
         {
-            homeServices.GetHomePageModel().LogoutButton.ClickIfElementIsClickable(Manager.Driver);
+            Init(type);
             homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable(Manager.Driver);
 
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
@@ -47,9 +55,10 @@ namespace RawaTests.Tests
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.CompanyValidateText));
         }
         [Test, Order(3)]
-        public void VerifingValidateTextWhenUserNameIsEmpty()
+        public void VerifingValidateTextWhenUserNameIsEmpty([Values]DriverType type)
         {
-            Manager.Driver.Navigate().Refresh();
+            Init(type);
+
             homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable(Manager.Driver);
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.CompanyNameInput.SendKeys("lalala");
@@ -59,9 +68,10 @@ namespace RawaTests.Tests
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.LoginValidateText));
         }
         [Test, Order(4)]
-        public void VerifingValidateTextPasswordFieldIsEmpty()
+        public void VerifingValidateTextPasswordFieldIsEmpty([Values]DriverType type)
         {
-            Manager.Driver.Navigate().Refresh();
+            Init(type);
+
             homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable(Manager.Driver);
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.CompanyNameInput.SendKeys("lalala");
@@ -71,9 +81,10 @@ namespace RawaTests.Tests
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.PasswordValidateText));
         }
         [Test, Order(5)]
-        public void VerifingValidateTextWhenLoginDataWasIncorrect()
+        public void VerifingValidateTextWhenLoginDataWasIncorrect([Values]DriverType type)
         {
-            Manager.Driver.Navigate().Refresh();
+            Init(type);
+
             homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable(Manager.Driver);
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.SetLoginData("Test","Test","Test");

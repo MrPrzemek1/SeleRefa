@@ -39,7 +39,7 @@ namespace RawaTests
             return element.GetAttribute(HtmlAttributesConsts.SRC);
         }
 
-        public static void ClickIfElementIsClickable(this IWebElement e,IWebDriver driver)
+        public static void ClickIfElementIsClickable(this IWebElement e, IWebDriver driver)
         {
             DriverHelper.WaitUntil(driver, ExpectedConditions.ElementToBeClickable(e)).Click();
         }

@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using RawaTests.Managers;
+using RawaTests.Services.Builder;
 using System.IO;
 using System.Reflection;
 
@@ -16,11 +17,12 @@ namespace RawaTests.Tests
         }
         public virtual void InizializeManager([Values]DriverType type)
         {
-            if (Manager==null || Manager.Type!=type)
-            {
-                Manager = new DriverManager(type);
-            }
+            Manager = new DriverManager(type);
             Manager.Initialize();
+        }
+        public virtual void Init(DriverType type)
+        {
+            InizializeManager(type);
         }
         [TearDown]
         public virtual void EndTest()

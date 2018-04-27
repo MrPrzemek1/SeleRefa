@@ -29,7 +29,7 @@ namespace RawaTests.Services
 
             var logoutButton = logoutDiv.FindWebElement(By.TagName(HomePageElementsLocators.LogoutButton));
 
-            HomePageWCModel homeModel = new HomePageWCModel(startButton, homePageImage, logoImage, footer, loginButton, header, logoutDiv, logoutButton);
+            HomePageWCModel homeModel = new HomePageWCModel(Manager.Driver,startButton, homePageImage, logoImage, footer, loginButton, header, logoutDiv, logoutButton);
 
             return homeModel;
         }

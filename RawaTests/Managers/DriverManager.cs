@@ -3,6 +3,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Opera;
+using OpenQA.Selenium.Remote;
 using RawaTests.Helpers.DriverHelper;
 using System;
 using System.Collections.Generic;
@@ -40,9 +41,17 @@ namespace RawaTests.Managers
                 case DriverType.Firefox:
                     return new FirefoxDriver();
                 case DriverType.IE:
-                    return new InternetExplorerDriver();
-                case DriverType.Opera:
-                    return new OperaDriver();
+                    InternetExplorerOptions optionsIE = new InternetExplorerOptions();
+                    //optionsIE.EnableNativeEvents = false;
+                    optionsIE.IgnoreZoomLevel = true;
+                    optionsIE.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
+                    optionsIE.RequireWindowFocus = true;
+                    return new InternetExplorerDriver(optionsIE);
+                //case DriverType.Opera:
+                //    OperaOptions operaOptions = new OperaOptions();
+                //    operaOptions.BinaryLocation = @"E:\GitHub\SeleRefa\RawaTests\bin\Debug";
+                //    //operaOptions.ToCapabilities();
+                //    return new OperaDriver(@"E:\GitHub\SeleRefa\RawaTests\bin\Debug", operaOptions);
                 default:
                     return new ChromeDriver();
             }

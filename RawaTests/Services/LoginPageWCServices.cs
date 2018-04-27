@@ -24,7 +24,7 @@ namespace RawaTests.Services
             var SubmitButton = Manager.FindWebElement(By.XPath(LoginPageElementsLocators.submitLogin));
             var ValidateField = Manager.FindWebElement(By.XPath(LoginPageElementsLocators.ValidateField));
 
-            LoginPageWCModel model = new LoginPageWCModel(CompanyName, Login, Password, SubmitButton, ValidateField);
+            LoginPageWCModel model = new LoginPageWCModel(Manager.Driver,CompanyName, Login, Password, SubmitButton, ValidateField);
             System.Console.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff"));
 
             return model;

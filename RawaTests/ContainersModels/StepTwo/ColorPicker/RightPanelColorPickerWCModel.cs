@@ -11,27 +11,29 @@ namespace RawaTests.ContainersModels.StepTwo.ColorPicker
 {
     public class RightPanelColorPickerWCModel
     {
+       private IWebDriver Driver;
        public IWebElement ColorSquare { get; set; }
        public IWebElement CancelButton { get; set; }
        public IWebElement SubmitButton { get; set; }
        public ColorSliderWCModel ColorSlider { get; set; }
 
-        public RightPanelColorPickerWCModel(IWebElement colorSquare, IWebElement cancelButton, IWebElement submitButton, ColorSliderWCModel colorSlider)
+        public RightPanelColorPickerWCModel(IWebDriver driver, IWebElement colorSquare, IWebElement cancelButton, IWebElement submitButton, ColorSliderWCModel colorSlider)
         {
+            this.Driver = driver;
             ColorSquare = colorSquare;
             CancelButton = cancelButton;
             SubmitButton = submitButton;
             ColorSlider = colorSlider;
         }
-        //public void ChangeColorWithSquare()
-        //{
-        //    ActionManager.Create().
-           
-        //    ClickAndHold(ColorSquare)
-        //        .MoveByOffset(25, 15)
-        //        .Release()
-        //        .Build()
-        //        .Perform();
-        //}
+        public void ChangeColorWithSquare()
+        {
+            ActionManager.Create(Driver).
+
+            ClickAndHold(ColorSquare)
+                .MoveByOffset(25, 15)
+                .Release()
+                .Build()
+                .Perform();
+        }
     }
 }

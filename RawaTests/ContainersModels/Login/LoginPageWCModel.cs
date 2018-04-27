@@ -6,14 +6,16 @@ namespace RawaTests.Model.Login
 {
     class LoginPageWCModel : BaseWebContainerModel
     {
+        private IWebDriver driver;
         public IWebElement CompanyNameInput { get; set; }
         public IWebElement LoginInput { get; set; }
         public IWebElement PasswordInput { get; set; }
         public IWebElement SubmitButton { get; set; }
         public IWebElement ValidateFieldElement { get; set; }
 
-        public LoginPageWCModel(IWebElement company, IWebElement Login, IWebElement password, IWebElement loginButton, IWebElement validateField = null)
+        public LoginPageWCModel(IWebDriver driver, IWebElement company, IWebElement Login, IWebElement password, IWebElement loginButton, IWebElement validateField = null)
         {
+            this.driver = driver;
             CompanyNameInput = company;
             LoginInput = Login;
             PasswordInput = password;

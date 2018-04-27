@@ -12,9 +12,10 @@ namespace RawaTests.Lists
     {
         public IWebElement Header { get; set; }
         public List<ShapeRoomWCModel> Shapes { get; set; }
-        private DriverManager Manager;
-        public ShapesRoomWCModel()
+        private IWebDriver Driver;
+        public ShapesRoomWCModel(IWebDriver driver)
         {
+            this.Driver = driver;
             Shapes = new List<ShapeRoomWCModel>();
         }
         /// <summary>
@@ -23,7 +24,7 @@ namespace RawaTests.Lists
         /// <param name="id">id pomieszczenia</param>
         public void ClickShapeById(string id)
         {
-             Shapes.Where(e => e.ShapeOfRoom.GetAttribute(HtmlAttributesConsts.SHAPE_ID) == id).FirstOrDefault().ShapeOfRoom.ClickIfElementIsClickable(Manager.Driver);            
+             Shapes.Where(e => e.ShapeOfRoom.GetAttribute(HtmlAttributesConsts.SHAPE_ID) == id).FirstOrDefault().ShapeOfRoom.ClickIfElementIsClickable(Driver);            
         }
         /// <summary>
         /// Metoda zwracająca atrybut "class"

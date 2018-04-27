@@ -13,9 +13,10 @@ namespace RawaTests.Models.StepTwo.Groups
     public class GroupOptionsWCModel
     {
         public IList<GroupOptionWCModel> GroupOption;
-        private DriverManager Manager;
-        public GroupOptionsWCModel()
+        private IWebDriver Driver;
+        public GroupOptionsWCModel(IWebDriver driver)
         {
+            this.Driver = driver;
             GroupOption = new List<GroupOptionWCModel>();
         }
         public void GetOptionColor()
@@ -40,7 +41,7 @@ namespace RawaTests.Models.StepTwo.Groups
         }
         private void MainClick(GroupType type)
         {
-            GroupOption.Where(e => String.Equals(e.NameOfGroup.GetAttribute("value"), groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.ClickIfElementIsClickable(Manager.Driver);
+            GroupOption.Where(e => String.Equals(e.NameOfGroup.GetAttribute("value"), groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.ClickIfElementIsClickable(Driver);
         }
 
         public enum GroupType

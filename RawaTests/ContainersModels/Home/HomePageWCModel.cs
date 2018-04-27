@@ -6,6 +6,7 @@ namespace RawaTests.Model
 {
     public class HomePageWCModel : BaseWebContainerModel
     {
+        private IWebDriver Driver;
         public IWebElement StartButton { get; set; }
         public IWebElement HomePageImage { get; set; }
         public IWebElement LogoImage { get; set; }
@@ -16,8 +17,9 @@ namespace RawaTests.Model
         public IWebElement LogoutButton { get; set; }
     
 
-    public HomePageWCModel(IWebElement startBtn, IWebElement homeImg, IWebElement logoImg, IWebElement footer, IWebElement loginBtn, IWebElement header, IWebElement logoutDiv, IWebElement logoutBtn)
+    public HomePageWCModel(IWebDriver driver, IWebElement startBtn, IWebElement homeImg, IWebElement logoImg, IWebElement footer, IWebElement loginBtn, IWebElement header, IWebElement logoutDiv, IWebElement logoutBtn)
     {
+        this.Driver = driver;
         StartButton = startBtn;
         HomePageImage = homeImg;
         LogoImage = logoImg;

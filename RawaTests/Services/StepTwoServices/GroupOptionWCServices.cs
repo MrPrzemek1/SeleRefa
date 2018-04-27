@@ -18,7 +18,7 @@ namespace RawaTests.Services.StepTwoServices
         {
             var radio = Manager.FindWebElementsAndWait(By.Name(StepTwoLocators.groupOption));
 
-            GroupOptionsWCModel model = new GroupOptionsWCModel();
+            GroupOptionsWCModel model = new GroupOptionsWCModel(Manager.Driver);
 
             for (int i = 0; i < radio.Count; i++)
             {

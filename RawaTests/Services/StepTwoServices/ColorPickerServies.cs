@@ -52,7 +52,7 @@ namespace RawaTests.Services.StepTwoServices
         }
         private AllColorsInSingleRowWCModel GetColorsFromSingleRow()
         {
-            AllColorsInSingleRowWCModel allColorsInSingleRow = new AllColorsInSingleRowWCModel();
+            AllColorsInSingleRowWCModel allColorsInSingleRow = new AllColorsInSingleRowWCModel(Manager.Driver);
             var singleRow = GetSingleRowsWithColors();
             var colors = Manager.FindWebElements(By.ClassName(ColorPickerLocators.singleColor));
             foreach (var singleColor in colors)
@@ -69,14 +69,14 @@ namespace RawaTests.Services.StepTwoServices
             IWebElement submintButton = Manager.FindWebElement(By.ClassName(ColorPickerLocators.submitButton));
             IWebElement cancelButton = Manager.FindWebElement(By.ClassName(ColorPickerLocators.cancelButton));
             ColorSliderWCModel slider = GetPickerSliderModel();
-            RightPanelColorPickerWCModel rightPanelModel = new RightPanelColorPickerWCModel(colorSquare,cancelButton,submintButton,slider);
+            RightPanelColorPickerWCModel rightPanelModel = new RightPanelColorPickerWCModel(Manager.Driver,colorSquare,cancelButton,submintButton,slider);
             return rightPanelModel;
         }
         private ColorSliderWCModel GetPickerSliderModel()
         {
             IWebElement colorColumn = Manager.FindWebElement(By.ClassName(ColorPickerLocators.colorColumn));
             IWebElement colorSlider = colorColumn.FindWebElement(By.ClassName(ColorPickerLocators.colorSlider));
-            ColorSliderWCModel sliderModel = new ColorSliderWCModel(colorColumn, colorSlider);
+            ColorSliderWCModel sliderModel = new ColorSliderWCModel(Manager.Driver, colorColumn, colorSlider);
             return sliderModel;
         }
         #endregion

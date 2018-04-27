@@ -1,11 +1,10 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.Model.Base;
-using System;
+
 namespace RawaTests.StepOne
 {
     public class DimensionWCModel : BaseWebContainerModel
-    {
-        
+    {      
         public IWebElement Description { get; set; }
         public IWebElement MinusSign { get; set; }
         public IWebElement PlusSign { get; set; }

@@ -24,7 +24,7 @@ namespace RawaTests.Services
             var shape_id = Manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.Shapeid));
             var header = Manager.FindWebElementAndWait(By.XPath(ShapeElementsLocators.ShapeHeader));
 
-            ShapesRoomWCModel listOfShapes = new ShapesRoomWCModel();
+            ShapesRoomWCModel listOfShapes = new ShapesRoomWCModel(Manager.Driver);
             listOfShapes.Header = header ?? (header = null);
 
             for (int i = 0; i < shape_id.Count; i++)

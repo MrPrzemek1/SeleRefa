@@ -13,20 +13,16 @@ namespace RawaTests.Tests
     class HomePageTests : BaseTest
     {
         HomePageWCServices homePageSrv;
-        GroupOptionWCServices groupOptionServices;
-        LeftTableStepTwoWCServices doorServices;
 
         public HomePageTests() : base()
         {
            
         }
 
-        private void Init(DriverType type)
+        public override void Init(DriverType type)
         {
-            InizializeManager(type);
+            base.Init(type);
             homePageSrv = ServiceBuilder.BuildService<HomePageWCServices>(Manager);
-            groupOptionServices = ServiceBuilder.BuildService<GroupOptionWCServices>(Manager);
-            doorServices = ServiceBuilder.BuildService<LeftTableStepTwoWCServices>(Manager);
         }
 
         [Test]

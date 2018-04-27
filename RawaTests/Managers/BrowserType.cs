@@ -11,6 +11,5 @@ namespace RawaTests.Managers
         Chrome,
         Firefox,
         IE,
-        Opera
     }
 }

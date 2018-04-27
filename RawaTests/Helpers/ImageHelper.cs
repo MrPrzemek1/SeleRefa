@@ -18,16 +18,20 @@ namespace RawaTests
 {
     public class ImageHelper
     {
-        private static DriverManager Manager;
+        private IWebDriver Driver;
+        public ImageHelper(IWebDriver driver)
+        {
+            this.Driver = driver;       
+        }
         /// <summary>
         /// Metoda robiąca screenshota i zwracająca scieżkę do niego
         /// </summary>
         /// <returns></returns>
-        public static string MakeScreenshot()
+        public static string MakeScreenshot(IWebDriver driver)
         {
-            WaitBeforScreen();
+            WaitBeforScreen(driver);
             string path = CreateRandomPath();
-            Screenshot screan1 = ((ITakesScreenshot)Manager.Driver).GetScreenshot();
+            Screenshot screan1 = ((ITakesScreenshot)driver).GetScreenshot();
             screan1.SaveAsFile(path, ScreenshotImageFormat.Jpeg);
             return path;
         }
@@ -35,11 +39,11 @@ namespace RawaTests
         /// Metoda robiąca screenshota.
         /// </summary>
         /// <param name="path"> nazwa pliku</param>
-        public static void MakeScreenshot(string path)
+        public static void MakeScreenshot(IWebDriver driver,string path)
         { 
-           WaitBeforScreen();
-           DriverHelper.WaitUntil(Manager.Driver, ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
-           ((ITakesScreenshot)Manager.Driver).GetScreenshot().SaveAsFile(PathConsts.SCREEN + path+".jpeg");
+           WaitBeforScreen(driver);
+           DriverHelper.WaitUntil(driver, ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
+           ((ITakesScreenshot)driver).GetScreenshot().SaveAsFile(PathConsts.SCREEN + path+".jpeg");
         }
         /// <summary>
         /// Metoda sprawdzająca czy dwa obrazku sa takie same. W parametrach przyjmuje ścieżki do plików
@@ -69,10 +73,10 @@ namespace RawaTests
             string path = string.Format(@"E:\ScreanshotSelenium\{0}.jpeg", Guid.NewGuid());
             return path;
         }
-        private static void WaitBeforScreen()
+        private static void WaitBeforScreen(IWebDriver driver)
         {
-            ActionManager.Create(Manager.Driver).SendKeys(Keys.Home).Perform();
-            DriverHelper.WaitUntil(Manager.Driver, ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
+            ActionManager.Create(driver).SendKeys(Keys.Home).Perform();
+            DriverHelper.WaitUntil(driver, ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
         }
     }
 }
