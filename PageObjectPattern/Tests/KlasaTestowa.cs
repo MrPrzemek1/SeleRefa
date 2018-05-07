@@ -13,46 +13,43 @@ using static PageObjectPattern.DriverHelper;
 using PageFactory = SeleniumExtras.PageObjects.PageFactory;
 
 namespace PageObjectPattern.Tests
-{ 
+{
     [TestFixture]
-   // [Parallelizable]
-    public class KlasaTestowa : BaseTest
+    public class KlasaTestowa
     {
-        public KlasaTestowa() : base()
-        {
-
-        }
         private IWebDriver driver;
-        public KlasaTestowa(IWebDriver driver):base(driver)
+        public KlasaTestowa()
         {
-            this.driver = driver;
+            driver = new ChromeDriver();
         }
-        [Test]
-        [TestCaseSource("BrowserType")]
-        public void lalaasla(String browser)
-        {
-            TestInizialize(browser);
 
-            driver.FindElement(By.XPath("//html//div[2]/label[4]")).Click();
-            Thread.Sleep(2000);
-            Actions actions = new Actions(driver);
-            var source = driver.FindElement(By.XPath("//div[@id='yes-drop']"));
-            var target = driver.FindElement(By.XPath("//div[@id='inner-dropzone']"));
-            actions.DragAndDropToOffset(source, 804, 769).Perform();
-            actions.DragAndDrop(source, target).Perform() ;
+        [SetUp]
+        public void TestInizialize()
+        {
+
+            //driver = new ChromeDriver();
+
+            driver.Manage().Window.Maximize();
+            driver.Navigate().GoToUrl("https://www.ultimateqa.com/simple-html-elements-for-automation/");
+
         }
         [TearDown]
-        public void EndTest()
+        public virtual void EndTest()
         {
             driver.Quit();
         }
-        public static IEnumerable<String> BrowserType()
+        [Test]
+        public void lalaasla()
         {
-           String[] browsers = {"chrome", "firefox", "ie"};
-            foreach (var item in browsers)
-            {
-                yield return item;
-            }
-        }
+            driver.FindElement(By.XPath("//input[@value='other']")).Click();
+            driver.FindElement(By.XPath("//input[@type='checkbox'][@value='Car']")).Click();
+            var select = driver.FindElement(By.XPath("//select"));
+            select.Click();
+            select.FindElement(By.XPath("//option[@value='opel']")).Click();
+            driver.FindElement(By.ClassName("et_pb_tab_1")).Click();
+            var content = driver.FindElements(By.ClassName("et_pb_tab_content"));
+            Assert.AreEqual("Tab 2 content", content[1].Text);
+
+        }        
     }
 }

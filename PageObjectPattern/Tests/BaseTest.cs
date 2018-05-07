@@ -10,37 +10,28 @@ using System.Text;
 using System.Threading.Tasks;
 namespace PageObjectPattern.Tests
 {
-    [SetUpFixture, Category("Rawa"),]
     public abstract class BaseTest
     {
         private IWebDriver driver;
         public BaseTest()
         {
-
+            driver = new ChromeDriver();
         }
         public BaseTest(IWebDriver driver) 
         {
             this.driver = driver;
         }
-        public virtual void TestInizialize(string browser)
+        [SetUp]
+        public void TestInizialize()
         {
-            if (browser.Equals("chrome"))
-            {
-                driver = new ChromeDriver();
-            }
-            else if (browser.Equals("firefox"))
-            {
-                driver = new FirefoxDriver();
-            }
-            else if (browser.Equals("ie"))
-            {
-                driver = new InternetExplorerDriver();
-            }
+            
+            //driver = new ChromeDriver();
+            
             driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl("http://interactjs.io/");
+            driver.Navigate().GoToUrl("https://www.ultimateqa.com/simple-html-elements-for-automation/");
 
         }
-        [OneTimeTearDown]
+        [TearDown]
         public virtual void EndTest()
         {
             driver.Quit();
