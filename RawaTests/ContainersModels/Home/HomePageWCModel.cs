@@ -11,27 +11,25 @@ namespace RawaTests.Model
         public IWebElement HomePageImage { get; set; }
         public IWebElement LogoImage { get; set; }
         public IWebElement Footer { get; set;}
-        public IWebElement LoginBtn { get; set; }
+        public IWebElement LoginButton { get; set; }
         public IWebElement Header { get; set; }
         public IWebElement LogoutDiv { get; set; }
         public IWebElement LogoutButton { get; set; }
     
 
-    public HomePageWCModel(IWebDriver driver, IWebElement startBtn, IWebElement homeImg, IWebElement logoImg, IWebElement footer, IWebElement loginBtn, IWebElement header, IWebElement logoutDiv, IWebElement logoutBtn)
-    {
-        this.Driver = driver;
-        StartButton = startBtn;
-        HomePageImage = homeImg;
-        LogoImage = logoImg;
-        Footer = footer;
-        LoginBtn = loginBtn;
-        Header = header;
-        LogoutDiv = logoutDiv;
-        LogoutButton = logoutBtn;
-    }
-    public override bool IsValid()
-    {
-        return StartButton.Displayed && HomePageImage.GetAttributeSrc() != null && Footer.Text.Equals(Configurator3DConsts.FOOTER) && Header.Text.Equals(Configurator3DConsts.HEADER);
-    }
+        public HomePageWCModel(IWebDriver driver, IWebElement startBtn, IWebElement homeImg, IWebElement logoImg, IWebElement footer, IWebElement loginBtn, IWebElement header, IWebElement logoutDiv, IWebElement logoutBtn)
+        {
+            this.Driver = driver;
+            StartButton = startBtn;
+            HomePageImage = homeImg;
+            LogoImage = logoImg;
+            Footer = footer;
+            LoginButton = loginBtn;
+            Header = header;
+            LogoutDiv = logoutDiv;
+            LogoutButton = logoutBtn;
+        }
+        public override bool IsValid() => StartButton.Displayed && HomePageImage.GetAttributeSrc() != null && Footer.Text.Equals(Configurator3DConsts.FOOTER) && Header.Text.Equals(Configurator3DConsts.HEADER);
+        public void GotoLoginPage() => LoginButton.ClickIfElementIsClickable(Driver);     
     }
 }

@@ -58,27 +58,16 @@ namespace RawaTests.Managers
         }
         #region Wyszukiwanie i czekanie na elementy.
 
-        public IWebElement FindWebElementAndWait(By by)
-        {
-            return DriverHelper.FindWebElementAndWait(Driver, by);
-        }
-        public IList<IWebElement> FindWebElementsAndWait(By by)
-        {
-            return DriverHelper.FindWebElementsAndWait(Driver, by);
-        }
+        public IWebElement FindWebElementAndWait(By by) => DriverHelper.FindWebElementAndWait(Driver, by);
+
+        public IList<IWebElement> FindWebElementsAndWait(By by) => DriverHelper.FindWebElementsAndWait(Driver, by);
 
         #endregion
 
         #region Wyszukiwanie elementów bez czekania na nie
-        public IWebElement FindWebElement(By by)
-        {
-            return DriverHelper.FindWebElementWithoutWait(Driver, by);
-        }
+        public IWebElement FindWebElement(By by) => DriverHelper.FindWebElementWithoutWait(Driver, by);
        
-        public IList<IWebElement> FindWebElements(By by)
-        {
-            return DriverHelper.FindWebElementsWithoutWait(Driver, by);
-        }
+        public IList<IWebElement> FindWebElements(By by) => DriverHelper.FindWebElementsWithoutWait(Driver, by);
 
         #endregion
 
@@ -94,19 +83,11 @@ namespace RawaTests.Managers
             else
                 Driver.Navigate().GoToUrl(url);
         }
-        public void MaximizeWindow()
-        {
-            Driver.Manage().Window.Maximize();
-        }
+        public void MaximizeWindow() => Driver.Manage().Window.Maximize();
 
-        public void Quit()
-        {
-            Driver.Quit();
-        }
+        public void Quit() => Driver.Quit();
 
-        public void AcceptAlert()
-        {
-            Driver.SwitchTo().Alert().Accept();
-        }
+        public void AcceptAlert() => Driver.SwitchTo().Alert().Accept();
+
     }
 }

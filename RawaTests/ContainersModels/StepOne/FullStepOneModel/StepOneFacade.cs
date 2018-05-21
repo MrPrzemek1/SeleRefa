@@ -17,17 +17,10 @@ namespace RawaTests.Model.StepTwo
             RoomView = roomModel;
         }
 
-        public ShapesRoomWCModel GetShapes()
-        {
-            return this.Shapes.GetShapes();
-        }
-        public DimensionsWCModel GetDimensions()
-        {
-            return this.Dimensions.GetDimensions();
-        }
-        public Room3DWCModel GetRoom3DModel()
-        {
-            return this.RoomView.Get3DModel();
-        }
+        public ShapesRoomWCModel GetShapes() => this.Shapes.GetShapes();
+
+        public DimensionsWCModel GetDimensions() => this.Dimensions.GetDimensions();
+
+        public Room3DWCModel GetRoom3DModel() => this.RoomView.Get3DModel();
     }
 }

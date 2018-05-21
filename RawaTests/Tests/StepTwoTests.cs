@@ -4,10 +4,8 @@ using RawaTests.ContainersModels.StepTwo;
 using RawaTests.Helpers;
 using RawaTests.Managers;
 using RawaTests.Services;
-using RawaTests.Services.Builder;
 using RawaTests.Services.StepTwoServices;
 using RawaTests.Services.StepTwoServices.PanelListForCabinets;
-using RawaTests.StepOne;
 using System;
 
 namespace RawaTests.Tests
@@ -24,10 +22,8 @@ namespace RawaTests.Tests
         HomePageWCServices homeServices;
         ShapeRoomWCServices shapeRoomServices;
 
-        public StepTwoTests() : base()
-        {
-            
-        }
+        public StepTwoTests() : base() { }
+
         public override void Init(DriverType type)
         {
             base.Init(type);

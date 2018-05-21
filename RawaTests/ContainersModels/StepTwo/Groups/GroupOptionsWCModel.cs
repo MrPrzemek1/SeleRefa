@@ -1,12 +1,7 @@
 ﻿using OpenQA.Selenium;
-using RawaTests.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using static RawaTests.Helpers.DriverHelper.DriverHelper;
 
 namespace RawaTests.Models.StepTwo.Groups
 {
@@ -19,31 +14,20 @@ namespace RawaTests.Models.StepTwo.Groups
             this.Driver = driver;
             GroupOption = new List<GroupOptionWCModel>();
         }
-        public void GetOptionColor()
-        {
-            MainClick(GroupType.KOLOR);
-        }
-        public void GetOptionDoor()
-        {
-            MainClick(GroupType.DRZWI);
-        }
-        public void GetOptionWindow()
-        {
-            MainClick(GroupType.OKNA);
-        }
-        public void GetOptionCabinetsEco()
-        {
-            MainClick(GroupType.SZAFKI_ECO);
-        }
-        public void GetOptionCabinetsSimply()
-        {
-            MainClick(GroupType.SZAFKI_SIPMLY);
-        }
+        public void GetOptionColor() => MainClick(GroupType.KOLOR);
+
+        public void GetOptionDoor() => MainClick(GroupType.DRZWI);
+
+        public void GetOptionWindow() => MainClick(GroupType.OKNA);
+
+        public void GetOptionCabinetsEco() => MainClick(GroupType.SZAFKI_ECO);
+
+        public void GetOptionCabinetsSimply() => MainClick(GroupType.SZAFKI_SIPMLY);
+
         private void MainClick(GroupType type)
         {
             GroupOption.Where(e => String.Equals(e.NameOfGroup.GetAttribute("value"), groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.ClickIfElementIsClickable(Driver);
         }
-
         public enum GroupType
         {
             KOLOR = 1,

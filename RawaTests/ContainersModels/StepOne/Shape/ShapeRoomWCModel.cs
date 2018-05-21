@@ -11,9 +11,6 @@ namespace RawaTests.Model
         // kształt pomieszczenia
         public IWebElement ShapeOfRoom { get; set; }
 
-        public override bool IsValid()
-        {
-            return Header != null && Header.Text.Contains(Configurator3DConsts.CHOOSEROOMHEADER) && ShapeOfRoom != null;
-        }
+        public override bool IsValid() => Header != null && Header.Text.Contains(Configurator3DConsts.CHOOSEROOMHEADER) && ShapeOfRoom != null;
     }
 }

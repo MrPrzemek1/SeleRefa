@@ -16,14 +16,8 @@ namespace RawaTests
             Room3dImage = image;
             Room3dImageDimension = imageDimension;
         }
-        public override bool IsValid()
-        {
-            return Room3dImage != null;
-        }
-        public string[] GetRoomDimension()
-        {
-            return Room3dImageDimension.Select(e => e.GetAttribute(HtmlAttributesConsts.STYLE)).ToArray();
-        }
-    }
+        public override bool IsValid() => Room3dImage != null;
 
+        public string[] GetRoomDimension() => Room3dImageDimension.Select(e => e.GetAttribute(HtmlAttributesConsts.STYLE)).ToArray();
+    }
 }

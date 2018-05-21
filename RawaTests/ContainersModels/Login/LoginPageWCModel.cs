@@ -62,14 +62,10 @@ namespace RawaTests.Model.Login
             LoginInput.SendKeys(login);
             PasswordInput.SendKeys(pass);
         }
-        public override bool IsValid()
-        {
-            return LoginInput != null;
-        }
-        public void ClearLoginInput()
-        {
-            LoginInput.Clear();
-        }
+        public override bool IsValid() => LoginInput != null;
+
+        public void ClearLoginInput() => LoginInput.Clear();
+        public void SubmitLoginForm() => SubmitButton.ClickIfElementIsClickable(driver);
     }
 
 }

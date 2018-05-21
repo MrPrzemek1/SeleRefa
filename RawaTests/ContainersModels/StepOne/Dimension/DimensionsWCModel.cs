@@ -19,9 +19,6 @@ namespace RawaTests.StepOne
         /// </summary>
         /// <param name="desc">Litera opisująca ścianę</param>
         /// <returns></returns>
-        public DimensionWCModel GetFieldByDescription(string desc)
-        {
-            return DimensionElements.Where(e => e.Description.Text.Equals(desc)).FirstOrDefault();
-        }
+        public DimensionWCModel GetFieldByDescription(string desc) => DimensionElements.Where(e => e.Description.Text.Equals(desc)).FirstOrDefault();
     }
 }

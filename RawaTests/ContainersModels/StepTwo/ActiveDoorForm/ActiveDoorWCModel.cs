@@ -1,11 +1,6 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.HtmlStrings.ConstStrings;
 using RawaTests.Model.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RawaTests.ContainersModels.StepTwo.ActiveDoorForm
 {

@@ -1,10 +1,6 @@
 ﻿using NUnit.Framework;
 using RawaTests.Services;
-using RawaTests.Services.StepTwoServices;
-using RawaTests.Services.StepTwoServices.PanelListForCabinets;
 using RawaTests.Managers;
-using System.Collections.Generic;
-using RawaTests.Services.Builder;
 
 namespace RawaTests.Tests
 {
@@ -14,15 +10,12 @@ namespace RawaTests.Tests
     {
         HomePageWCServices homePageSrv;
 
-        public HomePageTests() : base()
-        {
-           
-        }
+        public HomePageTests() : base() { }
 
         public override void Init(DriverType type)
         {
             base.Init(type);
-            homePageSrv = ServiceBuilder.BuildService<HomePageWCServices>(Manager);
+            homePageSrv = new HomePageWCServices(Manager);
         }
 
         [Test]

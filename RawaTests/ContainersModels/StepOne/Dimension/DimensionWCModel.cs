@@ -10,9 +10,6 @@ namespace RawaTests.StepOne
         public IWebElement PlusSign { get; set; }
         public IWebElement Input { get; set; }
 
-        public override bool IsValid()
-        {
-            return Description != null && MinusSign != null && PlusSign != null && Input != null;
-        }
+        public override bool IsValid() => Description != null && MinusSign != null && PlusSign != null && Input != null;
     }
 }

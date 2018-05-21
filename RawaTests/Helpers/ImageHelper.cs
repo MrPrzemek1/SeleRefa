@@ -2,14 +2,6 @@
 using RawaTests.HtmlStrings.ConstStrings;
 using RawaTests.Managers;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using XnaFan.ImageComparison;
 using RawaTests.Helpers.DriverHelper;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
@@ -68,8 +60,7 @@ namespace RawaTests
         /// </summary>
         /// <returns></returns>
         private static string CreateRandomPath()
-        {
-            
+        {       
             string path = string.Format(@"E:\ScreanshotSelenium\{0}.jpeg", Guid.NewGuid());
             return path;
         }

@@ -3,7 +3,6 @@ using RawaTests.Services;
 using RawaTests.ValidateMessages;
 using RawaTests.Model;
 using RawaTests.Model.Login;
-using RawaTests.Services.Builder;
 using RawaTests.Managers;
 
 namespace RawaTests.Tests
@@ -15,9 +14,7 @@ namespace RawaTests.Tests
         LoginPageWCServices loginServices;
         HomePageWCServices homeServices;
 
-        public LoginPageTests() : base()
-        {           
-        }
+        public LoginPageTests() : base() { }
 
         public override void Init(DriverType type)
         {
@@ -28,9 +25,7 @@ namespace RawaTests.Tests
         [Test, Order(1)]
         public void CorrectLogin([Values]DriverType type)
         {
-            Init(type);
-            homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable(Manager.Driver);
-
+            InitializeAndGotoLoginPage(type);
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.SetCorrectLoginData();
             loginPage.SubmitButton.Click();
@@ -42,13 +37,11 @@ namespace RawaTests.Tests
         [Test, Order(2)]
         public void VerifyingValidateTextWhenCompanyNameIsEmpty([Values]DriverType type)
         {
-            Init(type);
-            homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable(Manager.Driver);
-
+            InitializeAndGotoLoginPage(type);
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.LoginInput.SendKeys("Test");
             loginPage.PasswordInput.SendKeys("test");
-            loginPage.SubmitButton.ClickIfElementIsClickable(Manager.Driver);
+            loginPage.SubmitLoginForm();
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateFieldIsDisplayed);
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.CompanyValidateText));
@@ -56,41 +49,40 @@ namespace RawaTests.Tests
         [Test, Order(3)]
         public void VerifingValidateTextWhenUserNameIsEmpty([Values]DriverType type)
         {
-            Init(type);
-
-            homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable(Manager.Driver);
+            InitializeAndGotoLoginPage(type);
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.CompanyNameInput.SendKeys("lalala");
             loginPage.PasswordInput.SendKeys("lalala");
-            loginPage.SubmitButton.ClickIfElementIsClickable(Manager.Driver);
+            loginPage.SubmitLoginForm();
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.LoginValidateText));
         }
         [Test, Order(4)]
         public void VerifingValidateTextPasswordFieldIsEmpty([Values]DriverType type)
         {
-            Init(type);
-
-            homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable(Manager.Driver);
+            InitializeAndGotoLoginPage(type);
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.CompanyNameInput.SendKeys("lalala");
             loginPage.LoginInput.SendKeys("lalala");
-            loginPage.SubmitButton.ClickIfElementIsClickable(Manager.Driver);
+            loginPage.SubmitLoginForm();
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.PasswordValidateText));
         }
         [Test, Order(5)]
         public void VerifingValidateTextWhenLoginDataWasIncorrect([Values]DriverType type)
         {
-            Init(type);
-
-            homeServices.GetHomePageModel().LoginBtn.ClickIfElementIsClickable(Manager.Driver);
+            InitializeAndGotoLoginPage(type);
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
-            loginPage.SetLoginData("Test","Test","Test");
-            loginPage.SubmitButton.ClickIfElementIsClickable(Manager.Driver);
+            loginPage.SetLoginData("Test", "Test", "Test");
+            loginPage.SubmitLoginForm();
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.ErrorValidateText));
         }
 
+        private void InitializeAndGotoLoginPage(DriverType type)
+        {
+            Init(type);
+            homeServices.GetHomePageModel().GotoLoginPage();
+        }
     }
 }

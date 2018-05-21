@@ -1,8 +1,6 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.Helpers;
 using RawaTests.Services.Base;
-using RawaTests;
-using System;
 using RawaTests.Managers;
 
 namespace RawaTests.StepOne

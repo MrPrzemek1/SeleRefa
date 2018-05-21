@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.HtmlStrings.ConstStrings;
-using RawaTests.Managers;
 using RawaTests.Model;
 using System;
 using System.Collections.Generic;

@@ -1,9 +1,4 @@
 ﻿using RawaTests.ContainersModels.StepTwo.ColorPicker;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RawaTests.ContainersModels.StepTwo
 {
@@ -19,5 +14,4 @@ namespace RawaTests.ContainersModels.StepTwo
             this.rightPanel = rightPanel;
         }
     }
-
 }

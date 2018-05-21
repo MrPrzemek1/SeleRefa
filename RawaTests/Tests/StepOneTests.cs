@@ -2,9 +2,7 @@
 using NUnit.Framework;
 using RawaTests.Services;
 using RawaTests.Lists;
-using RawaTests.Tests;
 using RawaTests.Managers;
-using RawaTests.Services.Builder;
 
 namespace RawaTests.Tests
 {
@@ -17,10 +15,8 @@ namespace RawaTests.Tests
         private ShapeRoomWCServices shapeServices;
         private Room3DWCServices roomViewServices;
 
-        public StepOneTests() : base()
-        {
+        public StepOneTests() : base() { }
 
-        }
         public override void Init(DriverType type)
         {
             base.Init(type);

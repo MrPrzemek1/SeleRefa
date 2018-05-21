@@ -1,12 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Threading;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
-using RawaTests.Helpers;
-using RawaTests.Managers;
+﻿using OpenQA.Selenium;
 
 namespace RawaTests.ContainersModels.StepTwo.PanelElement
 {
