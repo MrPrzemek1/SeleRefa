@@ -10,11 +10,8 @@ namespace RawaTests.Services.StepTwoServices.PanelListForCabinets
 {
     class LeftTableStepTwoWCServices : BaseService
     {
-        private DriverManager Manager;
-        public LeftTableStepTwoWCServices(DriverManager manager) : base(manager)
-        {
-            Manager = manager;
-        }
+        public LeftTableStepTwoWCServices(DriverManager manager) : base(manager) { }
+
         //serwis który zwraca szafki dolne Eco
         public PanelCabinetsCollectionWCModel GetEcoLowerCabintesModel()
         {

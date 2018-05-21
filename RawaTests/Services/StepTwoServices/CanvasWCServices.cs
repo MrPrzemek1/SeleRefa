@@ -8,11 +8,8 @@ namespace RawaTests.Services.StepTwoServices
 {
     public class CanvasWCServices : BaseService
     {
-        private DriverManager Manager;
-        public CanvasWCServices(DriverManager manager) : base(manager)
-        {
-            Manager = manager;
-        }
+        public CanvasWCServices(DriverManager manager) : base(manager) { }
+
         public CanvasWCModel GetCanvasModel()
         {
             IWebElement canvas = Manager.FindWebElementAndWait(By.XPath(CabinetsPanelLocators.canvas));

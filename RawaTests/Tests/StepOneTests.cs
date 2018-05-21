@@ -10,7 +10,6 @@ namespace RawaTests.Tests
 {
     [TestFixtureSource(typeof(DriverManager), "DriverType")]
     [TestFixture, Category("StepOne")]
-    [Parallelizable(ParallelScope.Self)]
     class StepOneTests : BaseTest
     {
         private HomePageWCServices homePageServices;

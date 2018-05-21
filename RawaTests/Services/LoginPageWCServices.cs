@@ -9,11 +9,8 @@ namespace RawaTests.Services
 {
     class LoginPageWCServices : BaseService
     {
-        private DriverManager Manager;
-        public LoginPageWCServices(DriverManager manager) : base(manager)
-        {
-            Manager = manager;
-        }
+        public LoginPageWCServices(DriverManager manager) : base(manager) { }
+
         public LoginPageWCModel GetLoginPageModel()
         {
             System.Console.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff"));

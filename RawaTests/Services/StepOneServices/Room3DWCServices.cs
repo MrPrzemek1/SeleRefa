@@ -7,11 +7,8 @@ namespace RawaTests.Services
 {
     public class Room3DWCServices : BaseService
     {
-        private DriverManager Manager;
-        public Room3DWCServices(DriverManager manager) : base(manager)
-        {
-            Manager = manager;
-        }
+        //private DriverManager Manager;
+        public Room3DWCServices(DriverManager manager) : base(manager) { }
 
         public Room3DWCModel Get3DModel()
         {

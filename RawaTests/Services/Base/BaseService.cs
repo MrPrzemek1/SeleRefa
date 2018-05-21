@@ -4,7 +4,7 @@ namespace RawaTests.Services.Base
 {
     public abstract class BaseService
     {
-        private DriverManager Manager;
+        public DriverManager Manager;
 
         public BaseService(DriverManager manager)
         {

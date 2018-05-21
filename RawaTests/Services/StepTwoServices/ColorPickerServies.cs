@@ -10,11 +10,8 @@ namespace RawaTests.Services.StepTwoServices
 {
     public class ColorPickerServies: BaseService
     {
-        private DriverManager Manager;
-        public ColorPickerServies(DriverManager manager) : base(manager)
-        {
-            Manager = manager;
-        }
+        public ColorPickerServies(DriverManager manager) : base(manager) { }
+
         #region LeftPanelOfColorPicker      
         public ColorPickerWCModel GetFullColorPickerModel()
         {

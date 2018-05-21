@@ -10,11 +10,8 @@ namespace RawaTests.Services
 {
     public class ShapeRoomWCServices : BaseService
     {
-        private DriverManager Manager;
-        public ShapeRoomWCServices(DriverManager manager) : base(manager)
-        {
-            Manager = manager;
-        }
+        public ShapeRoomWCServices(DriverManager manager) : base(manager) { }
+
         /// <summary>
         /// Metoda budująca model listy kształtów pomieszczeń.
         /// </summary>

@@ -8,11 +8,8 @@ namespace RawaTests.Services
 {
     class HomePageWCServices : BaseService
     {
-        private DriverManager Manager;
-        public HomePageWCServices(DriverManager manager) : base(manager)
-        {
-            Manager = manager;
-        }
+        public HomePageWCServices(DriverManager manager) : base(manager) { }
+
         /// <summary>
         /// Metoda budująca model strony głównej.
         /// </summary>

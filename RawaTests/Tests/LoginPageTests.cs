@@ -10,7 +10,6 @@ namespace RawaTests.Tests
 {
     [TestFixture,Category("Login")]
     [TestFixtureSource(typeof(DriverManager), "DriverType")]
-    [Parallelizable(ParallelScope.Self)]
     public class LoginPageTests : BaseTest
     {
         LoginPageWCServices loginServices;

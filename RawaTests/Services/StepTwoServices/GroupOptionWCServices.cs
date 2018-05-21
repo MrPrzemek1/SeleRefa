@@ -9,11 +9,8 @@ namespace RawaTests.Services.StepTwoServices
 {
     public class GroupOptionWCServices : BaseService
     {
-        private DriverManager Manager;
-        public GroupOptionWCServices(DriverManager manager) : base(manager)
-        {
-            Manager = manager;
-        }
+        public GroupOptionWCServices(DriverManager manager) : base(manager) { }
+
         public GroupOptionsWCModel GetOptionModel()
         {
             var radio = Manager.FindWebElementsAndWait(By.Name(StepTwoLocators.groupOption));
