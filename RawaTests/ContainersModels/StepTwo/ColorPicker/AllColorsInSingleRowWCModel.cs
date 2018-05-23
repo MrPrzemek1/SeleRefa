@@ -5,20 +5,20 @@ using System.Linq;
 
 namespace RawaTests.ContainersModels.StepTwo.ColorPicker
 {
-    public class AllColorsInSingleRowWCModel
+    public class allColorsInSingleRowWCModel
     {
+        private IWebDriver _driver;
         public List<SingleColorWCModel> allColorsInSingleRow { get; set; }
-        private IWebDriver Driver;
-        public AllColorsInSingleRowWCModel(IWebDriver driver)
+        public allColorsInSingleRowWCModel(IWebDriver driver)
         {
-            this.Driver = driver;
+            this._driver = driver;
             allColorsInSingleRow = new List<SingleColorWCModel>();
         }
         public void GetRandomColor()
         {          
             Random random = new Random((int)DateTime.Now.Ticks);
             int r = random.Next(allColorsInSingleRow.Count);
-            allColorsInSingleRow.ElementAt(r).SingleColor.ClickIfElementIsClickable(Driver);
+            allColorsInSingleRow.ElementAt(r).SingleColor.ClickIfElementIsClickable(_driver);
         }
     }
 }

@@ -18,14 +18,14 @@ namespace RawaTests
             return DriverHelper.FindWebElementAndWait(driver, element, by);
         }
 
-        public static IList<IWebElement> FindWebElements(this IWebElement element, IWebDriver driver, By by)
-        {
-            return DriverHelper.FindWebElementsWithoutWait(element, by);
-        }
-
         public static IWebElement FindWebElement(this IWebElement element, By by)
         {
             return DriverHelper.FindWebElementWithoutWait(element, by);
+        }
+
+        public static IList<IWebElement> FindWebElements(this IWebElement element, IWebDriver driver, By by)
+        {
+            return DriverHelper.FindWebElementsWithoutWait(element, by);
         }
 
         public static string GetAttributeSrc(this IWebElement element)

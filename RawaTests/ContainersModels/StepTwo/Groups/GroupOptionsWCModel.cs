@@ -7,12 +7,13 @@ namespace RawaTests.Models.StepTwo.Groups
 {
     public class GroupOptionsWCModel
     {
-        public IList<GroupOptionWCModel> GroupOption;
-        private IWebDriver Driver;
+        private IWebDriver _driver;
+        public IList<GroupOptionWCModel> groupOption;
+
         public GroupOptionsWCModel(IWebDriver driver)
         {
-            this.Driver = driver;
-            GroupOption = new List<GroupOptionWCModel>();
+            this._driver = driver;
+            groupOption = new List<GroupOptionWCModel>();
         }
         public void GetOptionColor() => MainClick(GroupType.KOLOR);
 
@@ -26,7 +27,7 @@ namespace RawaTests.Models.StepTwo.Groups
 
         private void MainClick(GroupType type)
         {
-            GroupOption.Where(e => String.Equals(e.NameOfGroup.GetAttribute("value"), groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.ClickIfElementIsClickable(Driver);
+            groupOption.Where(e => String.Equals(e.nameOfGroup.GetAttribute("value"), groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().nameOfGroup.ClickIfElementIsClickable(_driver);
         }
         public enum GroupType
         {
@@ -46,7 +47,7 @@ namespace RawaTests.Models.StepTwo.Groups
         };
         public bool IsChecked(GroupType type)
         {
-            string a = GroupOption.Where(e => String.Equals(e.NameOfGroup.Text, groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.GetAttribute("checked");
+            string a = groupOption.Where(e => String.Equals(e.nameOfGroup.Text, groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().nameOfGroup.GetAttribute("checked");
             bool result = false;
             if (a.Equals("checked"))
             {

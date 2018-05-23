@@ -32,7 +32,6 @@ namespace RawaTests.Helpers.DriverHelper
             }
             return find.FirstOrDefault();
         }
-
         /// <summary>
         /// Metoda wyszukująca listy IWebElementów w kontekście całej strony bez oczekiwania.
         /// </summary>
@@ -119,7 +118,6 @@ namespace RawaTests.Helpers.DriverHelper
             }
             return find.FirstOrDefault();
         }
-
         /// <summary>
         /// Metoda czekająca aż dana lista elementów na stronie pojawi się i zwracająca listę tych elementów.
         /// </summary>

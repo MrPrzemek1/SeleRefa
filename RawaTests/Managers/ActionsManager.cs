@@ -9,16 +9,14 @@ namespace RawaTests.Managers
 {
     public class ActionManager : Actions
     {
-
+        private IWebDriver _driver;
         public static ActionManager Create(IWebDriver driver)
         {
           return new ActionManager(driver);      
         }
-
-        private IWebDriver Driver;
         private ActionManager(IWebDriver driver) : base(driver)
         {
-            this.Driver = driver;
+            this._driver = driver;
         }
         /// <summary>
         /// Metoda ktora przenosi i upuszcza element na drugi element. Po znalezieniu się nad elementem docelowym wykonywane jest przesunięcie obiektu nad nim w celu umieszczenia przenoszonego elemetu na elemencie docelowym
@@ -36,7 +34,7 @@ namespace RawaTests.Managers
 
                 ClickAndHold(source).MoveToElement(target).MoveByOffset(10,10).Perform();
                 Thread.Sleep(500);
-                Create(Driver).Release(target).Perform();
+                Create(_driver).Release(target).Perform();
                 //Action.ClickAndHold(source).MoveToElement(taget).MoveByOffset(xPosiotion, yPostion).Release(taget).Build().Perform();
                 //i++;
         }
@@ -48,7 +46,7 @@ namespace RawaTests.Managers
         /// <param name="yPostion">obrót po osi Y w pixelach</param>
         public void RotateElement(IWebElement element, int xPosiotion = 100, int yPostion = -50)
         {
-            DriverHelper.WaitUntil(Driver, ExpectedConditions.InvisibilityOfElementLocated(By.ClassName(Configurator3DConsts.LOADER)));
+            DriverHelper.WaitUntil(_driver, ExpectedConditions.InvisibilityOfElementLocated(By.ClassName(Configurator3DConsts.LOADER)));
             ClickAndHold(element)
                 .MoveByOffset(xPosiotion, yPostion)
                 .Release()

@@ -4,15 +4,15 @@ namespace RawaTests.ContainersModels.StepTwo.PanelElement
 {
     public class PanelCabinetFilterWCModel
     {
-        public IWebElement FilterButton { get; set; }
-        public IWebElement FilterCabinetBodyColor { get; set; }
-        public IWebElement FilterFrontType { get; set; }
+        public IWebElement filterButton { get; set; }
+        public IWebElement filterCabinetBodyColor { get; set; }
+        public IWebElement filterFrontType { get; set; }
 
-        public PanelCabinetFilterWCModel(IWebElement filterButton, IWebElement bodyColor, IWebElement frontType)
+        public PanelCabinetFilterWCModel(IWebElement filterButton, IWebElement filterCabinetBodyColor, IWebElement filterFrontType)
         {
-            FilterButton = filterButton;
-            FilterCabinetBodyColor = bodyColor;
-            FilterFrontType = frontType;
+            this.filterButton = filterButton;
+            this.filterCabinetBodyColor = filterCabinetBodyColor;
+            this.filterFrontType = filterFrontType;
         }
     }
 }

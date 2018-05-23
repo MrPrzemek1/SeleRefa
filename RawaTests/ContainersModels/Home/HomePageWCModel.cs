@@ -6,30 +6,32 @@ namespace RawaTests.Model
 {
     public class HomePageWCModel : BaseWebContainerModel
     {
-        private IWebDriver Driver;
-        public IWebElement StartButton { get; set; }
-        public IWebElement HomePageImage { get; set; }
-        public IWebElement LogoImage { get; set; }
-        public IWebElement Footer { get; set;}
-        public IWebElement LoginButton { get; set; }
-        public IWebElement Header { get; set; }
-        public IWebElement LogoutDiv { get; set; }
-        public IWebElement LogoutButton { get; set; }
+        private IWebDriver _driver;
+        public IWebElement startButton { get; set; }
+        public IWebElement homePageImage { get; set; }
+        public IWebElement logoImage { get; set; }
+        public IWebElement footer { get; set;}
+        public IWebElement loginButton { get; set; }
+        public IWebElement header { get; set; }
+        public IWebElement logoutDiv { get; set; }
+        public IWebElement logoutButton { get; set; }
     
 
         public HomePageWCModel(IWebDriver driver, IWebElement startBtn, IWebElement homeImg, IWebElement logoImg, IWebElement footer, IWebElement loginBtn, IWebElement header, IWebElement logoutDiv, IWebElement logoutBtn)
         {
-            this.Driver = driver;
-            StartButton = startBtn;
-            HomePageImage = homeImg;
-            LogoImage = logoImg;
-            Footer = footer;
-            LoginButton = loginBtn;
-            Header = header;
-            LogoutDiv = logoutDiv;
-            LogoutButton = logoutBtn;
+            this._driver = driver;
+            startButton = startBtn;
+            homePageImage = homeImg;
+            logoImage = logoImg;
+            this.footer = footer;
+            loginButton = loginBtn;
+            this.header = header;
+            this.logoutDiv = logoutDiv;
+            logoutButton = logoutBtn;
         }
-        public override bool IsValid() => StartButton.Displayed && HomePageImage.GetAttributeSrc() != null && Footer.Text.Equals(Configurator3DConsts.FOOTER) && Header.Text.Equals(Configurator3DConsts.HEADER);
-        public void GotoLoginPage() => LoginButton.ClickIfElementIsClickable(Driver);     
+        //Metoda sprawdzająca czy strona glowna sie poprawnie zaladowala
+        public override bool IsValid() => startButton.Displayed && homePageImage.GetAttributeSrc() != null && footer.Text.Equals(Configurator3DConsts.FOOTER) && header.Text.Equals(Configurator3DConsts.HEADER);
+        // Metoda przechodząca do formularza logowania.
+        public void GotoLoginPage() => loginButton.ClickIfElementIsClickable(_driver);     
     }
 }

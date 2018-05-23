@@ -5,18 +5,18 @@ namespace RawaTests.Models.StepTwo
 {
     public class PanelColorWCModel : BaseWebContainerModel
     {
-        public IWebElement PanelList { get; set; }
+        public IWebElement panelList { get; set; }
 
-        public string Header { get { return PanelList.Text; } }
+        public string Header { get { return panelList.Text; } }
 
         public PanelColorWCModel(IWebElement panel)
         {
-            PanelList = panel;
+            panelList = panel;
         }
 
         public override bool IsValid()
         {
-            return PanelList != null;
+            return panelList != null;
         }
     }
 }

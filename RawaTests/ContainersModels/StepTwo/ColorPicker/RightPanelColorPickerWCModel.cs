@@ -5,25 +5,25 @@ namespace RawaTests.ContainersModels.StepTwo.ColorPicker
 {
     public class RightPanelColorPickerWCModel
     {
-       private IWebDriver Driver;
-       public IWebElement ColorSquare { get; set; }
-       public IWebElement CancelButton { get; set; }
-       public IWebElement SubmitButton { get; set; }
-       public ColorSliderWCModel ColorSlider { get; set; }
+       private IWebDriver _driver;
+       public IWebElement colorSquare { get; set; }
+       public IWebElement cancelButton { get; set; }
+       public IWebElement submitButton { get; set; }
+       public ColorSliderWCModel colorSlider { get; set; }
 
         public RightPanelColorPickerWCModel(IWebDriver driver, IWebElement colorSquare, IWebElement cancelButton, IWebElement submitButton, ColorSliderWCModel colorSlider)
         {
-            this.Driver = driver;
-            ColorSquare = colorSquare;
-            CancelButton = cancelButton;
-            SubmitButton = submitButton;
-            ColorSlider = colorSlider;
+            this._driver = driver;
+            this.colorSquare = colorSquare;
+            this.cancelButton = cancelButton;
+            this.submitButton = submitButton;
+            this.colorSlider = colorSlider;
         }
         public void ChangeColorWithSquare()
         {
-            ActionManager.Create(Driver).
+            ActionManager.Create(_driver).
 
-            ClickAndHold(ColorSquare)
+            ClickAndHold(colorSquare)
                 .MoveByOffset(25, 15)
                 .Release()
                 .Build()

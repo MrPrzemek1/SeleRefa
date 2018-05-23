@@ -5,19 +5,20 @@ namespace RawaTests.ContainersModels.StepTwo.ColorPicker
 {
     public class ColorSliderWCModel
     {
-        public IWebElement ColorColumn { get; set; }
-        public IWebElement ColorSlider { get; set; }
-        private IWebDriver Driver;
+        private IWebDriver _driver;
+        public IWebElement colorColumn { get; set; }
+        public IWebElement colorSlider { get; set; }
+
         public ColorSliderWCModel(IWebDriver driver, IWebElement colorColumn, IWebElement colorSlider)
         {
-            this.Driver = driver;
-            ColorColumn = colorColumn;
-            ColorSlider = colorSlider;
+            this._driver = driver;
+            this.colorColumn = colorColumn;
+            this.colorSlider = colorSlider;
         }
         public void ChangeColorWithSlider(int yPosition)
         {
-            Actions actions = new Actions(Driver);
-            actions.ClickAndHold(ColorSlider)
+            Actions actions = new Actions(_driver);
+            actions.ClickAndHold(colorSlider)
                 .MoveByOffset(0, yPosition)
                 .Release()
                 .Build()

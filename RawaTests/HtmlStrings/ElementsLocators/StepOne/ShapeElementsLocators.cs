@@ -8,6 +8,6 @@ namespace RawaTests.HtmlStrings.ElementsLocators.StepOne
 {
     public class ShapeElementsLocators
     {
-        public static string ShapeHeader = "//h1[@class='choose-room-header']";
+        public static string ShapeHeaderLocator = "//h1[@class='choose-room-header']";
     }
 }

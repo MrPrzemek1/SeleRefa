@@ -13,15 +13,15 @@ namespace RawaTests.Services.StepTwoServices
 
         public GroupOptionsWCModel GetOptionModel()
         {
-            var radio = Manager.FindWebElementsAndWait(By.Name(StepTwoLocators.groupOption));
+            var radio = Manager.FindWebElementsAndWait(By.Name(StepTwoLocators.groupOptionLocator));
 
             GroupOptionsWCModel model = new GroupOptionsWCModel(Manager.Driver);
 
             for (int i = 0; i < radio.Count; i++)
             {
-                model.GroupOption.Add(new GroupOptionWCModel
+                model.groupOption.Add(new GroupOptionWCModel
                 {
-                    NameOfGroup = radio[i],
+                    nameOfGroup = radio[i],
                 });
             }
             return model;           

@@ -4,6 +4,6 @@ namespace RawaTests.Models.StepTwo
 {
     public class GroupOptionWCModel
     {
-        public IWebElement NameOfGroup { get; set; }
+        public IWebElement nameOfGroup { get; set; }
     }
 }

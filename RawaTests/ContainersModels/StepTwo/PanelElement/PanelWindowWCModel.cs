@@ -8,28 +8,28 @@ namespace RawaTests.Models.StepTwo.PanelElement
 {
     public class PanelWindowWCModel
     {
-        IWebElement ListOfElements { get; set; }
-        IList<IWebElement> WindowList { get; set; }
+        IWebElement divWithElements { get; set; }
+        IList<IWebElement> windowImageList { get; set; }
 
-        public PanelWindowWCModel(IWebElement div, IList<IWebElement> images)
+        public PanelWindowWCModel(IWebElement divWithElements, IList<IWebElement> windowImageList)
         {
-            ListOfElements = div;
-            WindowList = images;
+            this.divWithElements = divWithElements;
+            this.windowImageList = windowImageList;
         }
         public IWebElement GetWindowById(string id)
         {
-            return WindowList.Where(e => e.GetAttribute(HtmlAttributesConsts.OBJECT_ID).Equals(id)).FirstOrDefault();
+            return windowImageList.Where(e => e.GetAttribute(HtmlAttributesConsts.OBJECT_ID).Equals(id)).FirstOrDefault();
         }
         private List<string> GetWindowId()
         {
-            return WindowList.Select(e => e.GetAttribute(HtmlAttributesConsts.OBJECT_ID)).ToList();
+            return windowImageList.Select(e => e.GetAttribute(HtmlAttributesConsts.OBJECT_ID)).ToList();
         }
         public IWebElement GetRandomWindow()
         {
             List<string> windowsId = GetWindowId();
             Random r = new Random();
             string randomWindow = windowsId[r.Next(0, windowsId.Count)];
-            return WindowList.Where(e => e.GetAttribute(HtmlAttributesConsts.OBJECT_ID).Equals(randomWindow)).FirstOrDefault();
+            return windowImageList.Where(e => e.GetAttribute(HtmlAttributesConsts.OBJECT_ID).Equals(randomWindow)).FirstOrDefault();
         }
     }
 }

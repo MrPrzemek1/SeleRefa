@@ -18,8 +18,8 @@ namespace RawaTests.Services
         /// <returns></returns>
         public ShapesRoomWCModel GetShapes()
         {
-            var shape_id = Manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.Shapeid));
-            var header = Manager.FindWebElementAndWait(By.XPath(ShapeElementsLocators.ShapeHeader));
+            var shape_id = Manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.ShapeidLocator));
+            var header = Manager.FindWebElementAndWait(By.XPath(ShapeElementsLocators.ShapeHeaderLocator));
 
             ShapesRoomWCModel listOfShapes = new ShapesRoomWCModel(Manager.Driver);
             listOfShapes.Header = header ?? (header = null);
@@ -29,7 +29,7 @@ namespace RawaTests.Services
                 {
                     listOfShapes.Shapes.Add(new ShapeRoomWCModel
                     {
-                        ShapeOfRoom =shape_id[i],
+                        shapeOfRoom =shape_id[i],
                     });
                 }
             }

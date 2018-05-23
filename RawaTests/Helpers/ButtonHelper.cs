@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.HtmlStrings.ConstStrings;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
+using RawaTests.Helpers.DriverHelper;
 
 namespace RawaTests.Helpers
 {
@@ -13,8 +14,8 @@ namespace RawaTests.Helpers
         }
         public static void ClickButtonPrev(IWebDriver driver)
         {
-            var ButtonPrev = DriverHelper.DriverHelper.WaitUntil(driver, ExpectedConditions.ElementIsVisible(By.XPath(StaticButtonsConsts.ButtonPrev)));
-            ButtonPrev.ClickIfElementIsClickable(driver);
+            var buttonPrev = DriverHelper.DriverHelper.WaitUntil(driver, ExpectedConditions.ElementIsVisible(By.XPath(StaticButtonsConsts.ButtonPrev)));
+            buttonPrev.ClickIfElementIsClickable(driver);
         }
     }
 }

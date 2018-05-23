@@ -13,9 +13,9 @@ namespace RawaTests.Services
         public Room3DWCModel Get3DModel()
         {
             // obrazek przedstawiający wygląd pomieszczenia
-            var imageModel = Manager.FindWebElementAndWait(By.ClassName(ImageRoomElementsLocatorsLocators.Room3DViewClass));
+            var imageModel = Manager.FindWebElementAndWait(By.ClassName(ImageRoomElementsLocators.Room3DViewLocator));
             // atrybuty "letter" w których zawieraja sie wymiary obrazka pomieszczenia
-            var imageDimension = imageModel.FindWebElementsAndWait(Manager.Driver,By.ClassName(ImageRoomElementsLocatorsLocators.Room3DDimenision));
+            var imageDimension = imageModel.FindWebElementsAndWait(Manager.Driver,By.ClassName(ImageRoomElementsLocators.Room3DDimenisionLocator));
 
             Room3DWCModel result = new Room3DWCModel(imageModel, imageDimension);
       

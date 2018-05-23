@@ -139,7 +139,7 @@
     <Compile Include="HtmlStrings\ConstStrings\LoginDataConsts.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\LoginPageElementsLocators.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\DimensionElementsLocators.cs" />
-    <Compile Include="HtmlStrings\ElementsLocators\StepOne\ImageRoomElementsLocatorsLocators.cs" />
+    <Compile Include="HtmlStrings\ElementsLocators\StepOne\ImageRoomElementsLocators.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepOne\ShapeElementsLocators.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepTwo\ActiveCabinetLocators.cs" />
     <Compile Include="HtmlStrings\ElementsLocators\StepTwo\ActiveDoorFormLocators.cs" />

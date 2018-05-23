@@ -6,21 +6,21 @@ namespace RawaTests.Model.StepTwo
 {
     public class StepOneFacade
     {
-        private DimensionWCServices Dimensions { get; set; }
-        private ShapeRoomWCServices Shapes { get; set; }
-        private Room3DWCServices RoomView { get; set; }
+        private DimensionWCServices _dimensions { get; set; }
+        private ShapeRoomWCServices _shapes { get; set; }
+        private Room3DWCServices _roomView { get; set; }
 
         public StepOneFacade(DimensionWCServices pageModel, ShapeRoomWCServices shapeModel, Room3DWCServices roomModel)
         {
-            Dimensions = pageModel;
-            Shapes = shapeModel;
-            RoomView = roomModel;
+            _dimensions = pageModel;
+            _shapes = shapeModel;
+            _roomView = roomModel;
         }
 
-        public ShapesRoomWCModel GetShapes() => this.Shapes.GetShapes();
+        public ShapesRoomWCModel GetShapes() => this._shapes.GetShapes();
 
-        public DimensionsWCModel GetDimensions() => this.Dimensions.GetDimensions();
+        public DimensionsWCModel GetDimensions() => this._dimensions.GetDimensions();
 
-        public Room3DWCModel GetRoom3DModel() => this.RoomView.Get3DModel();
+        public Room3DWCModel GetRoom3DModel() => this._roomView.Get3DModel();
     }
 }

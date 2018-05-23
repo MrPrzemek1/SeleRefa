@@ -13,21 +13,21 @@ namespace RawaTests.StepOne
         public DimensionsWCModel GetDimensions()
         {
             DimensionsWCModel result = new DimensionsWCModel();
-            result.Header = Manager.FindWebElement(By.XPath(DimensionElementsLocators.Header));
-            var elementsList = Manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.ListOfDimension));
+            result.header = Manager.FindWebElement(By.XPath(DimensionElementsLocators.HeaderLocator));
+            var elementsList = Manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.ListOfDimensionLocator));
             foreach (var element in elementsList)
             {
-                var labelWE = element.FindWebElement(By.ClassName(DimensionElementsLocators.DescriptionFieldClass));
-                var btnPlusWE = element.FindWebElement(By.ClassName(DimensionElementsLocators.PlusSignClass)); 
-                var btnMinusWE = element.FindWebElement(By.ClassName(DimensionElementsLocators.MinusSignClass)); 
-                var inputWE = element.FindWebElement(By.ClassName(DimensionElementsLocators.InputFieldClass));
+                var labelWE = element.FindWebElement(By.ClassName(DimensionElementsLocators.DescriptionFieldLocator));
+                var btnPlusWE = element.FindWebElement(By.ClassName(DimensionElementsLocators.PlusSignLocator)); 
+                var btnMinusWE = element.FindWebElement(By.ClassName(DimensionElementsLocators.MinusSignLocator)); 
+                var inputWE = element.FindWebElement(By.ClassName(DimensionElementsLocators.InputFieldLocator));
 
-                result.DimensionElements.Add(new DimensionWCModel
+                result.dimensionElements.Add(new DimensionWCModel
                     {
-                        Description = labelWE,
-                        PlusSign = btnPlusWE,
-                        MinusSign = btnMinusWE,
-                        Input = inputWE,
+                        description = labelWE,
+                        plusSign = btnPlusWE,
+                        minusSign = btnMinusWE,
+                        input = inputWE,
                     });                        
             }
             return result;

@@ -8,27 +8,27 @@ namespace RawaTests.Services.StepTwoServices
 {
     public class PanelDoorWCModel
     {
-        IWebElement ListOfElements { get; set; }
-        IList<IWebElement> DoorList { get; set; }
-        IWebElement DoorProducent { get; set; }
+        IWebElement divWithElements { get; set; }
+        IList<IWebElement> doorList { get; set; }
+        IWebElement doorProducent { get; set; }
 
-        public  PanelDoorWCModel(IWebElement div, IList<IWebElement> alalal, IWebElement doorProducent )
+        public  PanelDoorWCModel(IWebElement divWithElements, IList<IWebElement> doorList, IWebElement doorProducent )
         {
-            ListOfElements = div;
-            DoorList = alalal;
-            DoorProducent = doorProducent; 
+            this.divWithElements = divWithElements;
+            this.doorList = doorList;
+            this.doorProducent = doorProducent; 
         }
 
         private List<string> GetDoorId()
         {
-            return DoorList.Select(e => e.GetAttribute(HtmlAttributesConsts.OBJECT_ID)).ToList();
+            return doorList.Select(e => e.GetAttribute(HtmlAttributesConsts.OBJECT_ID)).ToList();
         }
         public IWebElement GetRandomDoor()
         {
             List<string> doorsId = GetDoorId();
             Random r = new Random();
             string randomDoor = doorsId[r.Next(0, doorsId.Count)];
-            return DoorList.Where(e => e.GetAttribute(HtmlAttributesConsts.OBJECT_ID).Equals(randomDoor)).FirstOrDefault();
+            return doorList.Where(e => e.GetAttribute(HtmlAttributesConsts.OBJECT_ID).Equals(randomDoor)).FirstOrDefault();
         }
     }
 }

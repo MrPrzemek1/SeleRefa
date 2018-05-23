@@ -15,11 +15,11 @@ namespace RawaTests.Services
         {
             System.Console.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff"));
 
-            var CompanyName =Manager.FindWebElementAndWait(By.Name(LoginPageElementsLocators.CompanyInput));
-            var Login = Manager.FindWebElement(By.Name(LoginPageElementsLocators.LoginInput));
-            var Password = Manager.FindWebElement(By.Name(LoginPageElementsLocators.PasswordInput));
-            var SubmitButton = Manager.FindWebElement(By.XPath(LoginPageElementsLocators.submitLogin));
-            var ValidateField = Manager.FindWebElement(By.XPath(LoginPageElementsLocators.ValidateField));
+            var CompanyName =Manager.FindWebElementAndWait(By.Name(LoginPageElementsLocators.CompanyInputLocator));
+            var Login = Manager.FindWebElement(By.Name(LoginPageElementsLocators.LoginInputLocator));
+            var Password = Manager.FindWebElement(By.Name(LoginPageElementsLocators.PasswordInputLocator));
+            var SubmitButton = Manager.FindWebElement(By.XPath(LoginPageElementsLocators.SubmitLoginLocator));
+            var ValidateField = Manager.FindWebElement(By.XPath(LoginPageElementsLocators.ValidateFieldLocator));
 
             LoginPageWCModel model = new LoginPageWCModel(Manager.Driver,CompanyName, Login, Password, SubmitButton, ValidateField);
             System.Console.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff"));

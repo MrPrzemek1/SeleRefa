@@ -16,15 +16,14 @@ namespace RawaTests.Services
         /// <returns></returns>
         public HomePageWCModel GetHomePageModel()
         {
-            var startButton = Manager.FindWebElementAndWait(By.XPath(HomePageElementsLocators.ButtonStart));
-            var homePageImage = Manager.FindWebElement(By.ClassName(HomePageElementsLocators.HomePageImage));
-            var logoImage = Manager.FindWebElement(By.XPath(HomePageElementsLocators.HomePageLogo));
-            var footer = Manager.FindWebElement(By.XPath(HomePageElementsLocators.Footer));
-            var loginButton = Manager.FindWebElement(By.XPath(HomePageElementsLocators.LoginButton));
-            var header = Manager.FindWebElement(By.XPath(HomePageElementsLocators.Header));
-            var logoutDiv = Manager.FindWebElement(By.Id(HomePageElementsLocators.LogoutDiv));
-
-            var logoutButton = logoutDiv.FindWebElement(By.TagName(HomePageElementsLocators.LogoutButton));
+            var startButton = Manager.FindWebElementAndWait(By.XPath(HomePageElementsLocators.StartButtonLocator));
+            var homePageImage = Manager.FindWebElement(By.ClassName(HomePageElementsLocators.HomePageImageLocator));
+            var logoImage = Manager.FindWebElement(By.XPath(HomePageElementsLocators.HomePageLogoLocator));
+            var footer = Manager.FindWebElement(By.XPath(HomePageElementsLocators.FooterLocator));
+            var loginButton = Manager.FindWebElement(By.XPath(HomePageElementsLocators.LoginButtonLocator));
+            var header = Manager.FindWebElement(By.XPath(HomePageElementsLocators.HeaderLocator));
+            var logoutDiv = Manager.FindWebElement(By.Id(HomePageElementsLocators.LogoutDivLocator));
+            var logoutButton = logoutDiv.FindWebElement(By.TagName(HomePageElementsLocators.LogoutButtonLocator));
 
             HomePageWCModel homeModel = new HomePageWCModel(Manager.Driver,startButton, homePageImage, logoImage, footer, loginButton, header, logoutDiv, logoutButton);
 

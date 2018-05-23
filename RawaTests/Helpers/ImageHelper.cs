@@ -35,7 +35,7 @@ namespace RawaTests
         { 
            WaitBeforScreen(driver);
            DriverHelper.WaitUntil(driver, ExpectedConditions.InvisibilityOfElementLocated(By.XPath(Configurator3DConsts.LOADER)));
-           ((ITakesScreenshot)driver).GetScreenshot().SaveAsFile(PathConsts.SCREEN + path+".jpeg");
+           ((ITakesScreenshot)driver).GetScreenshot().SaveAsFile(PathConsts.SCREEN + path + ".jpeg");
         }
         /// <summary>
         /// Metoda sprawdzająca czy dwa obrazku sa takie same. W parametrach przyjmuje ścieżki do plików

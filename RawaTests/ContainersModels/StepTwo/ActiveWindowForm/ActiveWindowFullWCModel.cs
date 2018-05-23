@@ -6,20 +6,20 @@ namespace RawaTests.ContainersModels.StepTwo.ActiveWindowForm
 {
     public class ActiveWindowFullWCModel : BaseWebContainerModel
     {
-        public IWebElement Header { get; set; }
+        public IWebElement header { get; set; }
         public ActiveWindowRightTableWCModel rightTableWCModel;
         public ActiveWindowLeftTableWCModel leftTableWCModel;
 
         public ActiveWindowFullWCModel(IWebElement header, ActiveWindowRightTableWCModel rightTableWCModel, ActiveWindowLeftTableWCModel leftTableWCModel)
         {
-            Header = header;
+            this.header = header;
             this.rightTableWCModel = rightTableWCModel;
             this.leftTableWCModel = leftTableWCModel;
         }
 
         public override bool IsValid()
         {
-            return Header.Text.Contains(Configurator3DConsts.ACTIVEELEMENTHEADER) && rightTableWCModel != null && leftTableWCModel != null;
+            return header.Text.Contains(Configurator3DConsts.ACTIVEELEMENTHEADER) && rightTableWCModel != null && leftTableWCModel != null;
         }
     }
 }
