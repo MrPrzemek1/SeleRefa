@@ -45,8 +45,7 @@ namespace RawaTests.Helpers.DriverHelper
                 if (true)
                 {
                     return driver.FindElements(by);
-                }            
-                
+                }                           
             }
             catch
             {

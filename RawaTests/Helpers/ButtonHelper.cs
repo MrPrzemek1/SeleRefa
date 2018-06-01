@@ -9,12 +9,12 @@ namespace RawaTests.Helpers
     {  
         public static void ClickButtonNext(IWebDriver driver)
         {
-            var buttonNext = DriverHelper.DriverHelper.WaitUntil(driver,ExpectedConditions.ElementIsVisible(By.XPath(StaticButtonsConsts.ButtonNext)));
+            var buttonNext = DriverHelper.DriverHelper.WaitUntil(driver,ExpectedConditions.ElementIsVisible(By.XPath(StaticButtonsConsts.ButtonNextLocator)));
             buttonNext.ClickIfElementIsClickable(driver);
         }
         public static void ClickButtonPrev(IWebDriver driver)
         {
-            var buttonPrev = DriverHelper.DriverHelper.WaitUntil(driver, ExpectedConditions.ElementIsVisible(By.XPath(StaticButtonsConsts.ButtonPrev)));
+            var buttonPrev = DriverHelper.DriverHelper.WaitUntil(driver, ExpectedConditions.ElementIsVisible(By.XPath(StaticButtonsConsts.ButtonPrevLocator)));
             buttonPrev.ClickIfElementIsClickable(driver);
         }
     }

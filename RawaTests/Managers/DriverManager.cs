@@ -2,10 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
-using OpenQA.Selenium.Opera;
-using OpenQA.Selenium.Remote;
 using RawaTests.Helpers.DriverHelper;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -21,7 +18,6 @@ namespace RawaTests.Managers
         public DriverManager(DriverType type)
         {
             Type = type;
-
             Driver = GetDriver(type);
         }
        
@@ -42,7 +38,6 @@ namespace RawaTests.Managers
                     return new FirefoxDriver();
                 case DriverType.IE:
                     InternetExplorerOptions optionsIE = new InternetExplorerOptions();
-                    //optionsIE.EnableNativeEvents = false;
                     optionsIE.IgnoreZoomLevel = true;
                     optionsIE.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
                     optionsIE.RequireWindowFocus = true;
@@ -57,18 +52,15 @@ namespace RawaTests.Managers
             }
         }
         #region Wyszukiwanie i czekanie na elementy.
-
         public IWebElement FindWebElementAndWait(By by) => DriverHelper.FindWebElementAndWait(Driver, by);
 
         public IList<IWebElement> FindWebElementsAndWait(By by) => DriverHelper.FindWebElementsAndWait(Driver, by);
-
         #endregion
 
         #region Wyszukiwanie elementów bez czekania na nie
         public IWebElement FindWebElement(By by) => DriverHelper.FindWebElementWithoutWait(Driver, by);
        
         public IList<IWebElement> FindWebElements(By by) => DriverHelper.FindWebElementsWithoutWait(Driver, by);
-
         #endregion
 
         public void Initialize()

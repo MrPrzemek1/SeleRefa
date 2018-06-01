@@ -55,9 +55,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AmazonSearchPage.cs" />
+    <Compile Include="BaseSampleApplicationPage.cs" />
     <Compile Include="ComplicatedPage.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleApplicationPage.cs" />
+    <Compile Include="SampleAppTests.cs" />
+    <Compile Include="TestUser.cs" />
+    <Compile Include="UltimageQAPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

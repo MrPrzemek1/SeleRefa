@@ -18,11 +18,13 @@ namespace TestDrivenLearn
             Driver.Manage().Window.Maximize();
         }
 
-        internal void SearchUsingAmazon(string textToSearch)
+        internal AmazonSearchPage SearchUsingAmazon(string textToSearch)
         {
             IWebElement searchBar = Driver.FindElement(By.ClassName("amzn-native-search"));
             searchBar.SendKeys(textToSearch);
             Driver.FindElement(By.ClassName("amzn-native-search-go")).Click();
+            Driver.SwitchTo().Window(Driver.WindowHandles[1]);
+            return new AmazonSearchPage(Driver);
         }
     }
 }
