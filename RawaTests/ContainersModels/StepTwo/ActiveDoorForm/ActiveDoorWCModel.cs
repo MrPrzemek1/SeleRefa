@@ -6,22 +6,22 @@ namespace RawaTests.ContainersModels.StepTwo.ActiveDoorForm
 {
     public class ActiveDoorWCModel : BaseWebContainerModel
     {
-        public IWebElement header { get; set; }
-        public IWebElement doorImageThumb { get; set; }
-        public IWebElement doorDimension { get; set; }
-        public IWebElement deleteButton { get; set; }
+        public IWebElement Header { get; set; }
+        public IWebElement DoorImageThumb { get; set; }
+        public IWebElement DoorDimension { get; set; }
+        public IWebElement DeleteButton { get; set; }
 
         public ActiveDoorWCModel(IWebElement header, IWebElement doorImageThumb, IWebElement doorDimension, IWebElement deleteButton)
         {
-            this.header = header;
-            this.doorImageThumb = doorImageThumb;
-            this.doorDimension = doorDimension;
-            this.deleteButton = deleteButton;
+            Header = header;
+            DoorImageThumb = doorImageThumb;
+            DoorDimension = doorDimension;
+            DeleteButton = deleteButton;
         }
 
         public override bool IsValid()
         {
-            return header.Text.Contains(Configurator3DConsts.ACTIVEELEMENTHEADER) && doorImageThumb.GetAttributeSrc() != null && doorDimension.Text != null && deleteButton.Displayed;
+            return Header.Text.Contains(Configurator3DConsts.ACTIVEELEMENTHEADER) && DoorImageThumb.GetAttributeSrc() != null && DoorDimension.Text != null && DeleteButton.Displayed;
         }
     }
 }

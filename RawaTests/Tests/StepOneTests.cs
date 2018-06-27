@@ -41,11 +41,11 @@ namespace RawaTests.Tests
             ShapesRoomWCModel shapes = shapeServices.GetShapes();
             shapes.ClickShapeById("27");
             Room3DWCModel roomView = roomViewServices.Get3DModel();
-            var dimensionRoomView = roomView.room3dImageDimension;
+            var dimensionRoomView = roomView.Room3dImageDimension;
             shapes.ClickShapeById("28");
             Room3DWCModel roomAfterChangeShape = roomViewServices.Get3DModel();
-            var dimensionAfterChangeShape = roomAfterChangeShape.room3dImageDimension;
-            Assert.AreNotSame(roomView.room3dImageDimension, roomAfterChangeShape.room3dImageDimension);
+            var dimensionAfterChangeShape = roomAfterChangeShape.Room3dImageDimension;
+            Assert.AreNotSame(roomView.Room3dImageDimension, roomAfterChangeShape.Room3dImageDimension);
             Assert.AreNotEqual(dimensionRoomView, dimensionAfterChangeShape);
         }
         [Test, Order(3)]
@@ -54,11 +54,11 @@ namespace RawaTests.Tests
             InizializeAndGoToStepOne(type);
 
             Room3DWCModel roomModel = roomViewServices.Get3DModel();
-            var roomDimension = roomModel.room3dImageDimension;
+            var roomDimension = roomModel.Room3dImageDimension;
             DimensionsWCModel dimensionOfRoom = dimensionServices.GetDimensions();
-            dimensionOfRoom.GetFieldByDescription("B").plusSign.ClickIfElementIsClickable(Manager.Driver);
+            dimensionOfRoom.GetFieldByDescription("B").PlusSign.ClickIfElementIsClickable(Manager.Driver);
             Room3DWCModel roomModelAfterChange = roomViewServices.Get3DModel();
-            var roomDimensionAfterChange = roomModelAfterChange.room3dImageDimension;
+            var roomDimensionAfterChange = roomModelAfterChange.Room3dImageDimension;
             Assert.AreNotEqual(roomDimension, roomDimensionAfterChange);
         }
         [Test, Order(4)]
@@ -69,14 +69,14 @@ namespace RawaTests.Tests
             ShapesRoomWCModel shapes = shapeServices.GetShapes();
             shapes.ClickShapeById("27");
             DimensionsWCModel roomDimension = dimensionServices.GetDimensions();
-            roomDimension.GetFieldByDescription("A").plusSign.ClickIfElementIsClickable(Manager.Driver);
-            Assert.IsTrue(roomDimension.GetFieldByDescription("C").input.GetAttribute("class").Equals("wallSizeInput changed"));
+            roomDimension.GetFieldByDescription("A").PlusSign.ClickIfElementIsClickable(Manager.Driver);
+            Assert.IsTrue(roomDimension.GetFieldByDescription("C").Input.GetAttribute("class").Equals("wallSizeInput changed"));
         }
 
         private void InizializeAndGoToStepOne(DriverType type)
         {
             Init(type);
-            homePageServices.GetHomePageModel().startButton.ClickIfElementIsClickable(Manager.Driver);
+            homePageServices.GetHomePageModel().StartButton.ClickIfElementIsClickable(Manager.Driver);
         }
     }
 }

@@ -91,7 +91,7 @@ namespace RawaTests.Tests
             Init(type);
             GoToSecondStep();          
             DragAndDropDoor();
-            activeElementServices.GetActiveDoorForm().deleteButton.ClickIfElementIsClickable(Manager.Driver);
+            activeElementServices.GetActiveDoorForm().DeleteButton.ClickIfElementIsClickable(Manager.Driver);
             Manager.AcceptAlert();
             try
             {
@@ -119,7 +119,7 @@ namespace RawaTests.Tests
             Init(type);
             GoToSecondStep();
             DragAndDropWindow();
-            activeElementServices.GetFullActiveWindowWCModel().leftTableWCModel.deleteWindowButton.ClickIfElementIsClickable(Manager.Driver);
+            activeElementServices.GetFullActiveWindowWCModel().LeftTableWCModel.DeleteWindowButton.ClickIfElementIsClickable(Manager.Driver);
             Manager.AcceptAlert();
             try
             {
@@ -138,13 +138,13 @@ namespace RawaTests.Tests
             Init(type);
             GoToSecondStep();
             groupOptionServices.GetOptionModel().GetOptionCabinetsSimply();
-            IWebElement cabinets = leftPanelServices.GetSimplyLowerCabintesModel().imagesOfCabinets;
-            IWebElement canvas = canvasServices.GetCanvasModel().canvasImage;
+            IWebElement cabinets = leftPanelServices.GetSimplyLowerCabintesModel().ImagesOfCabinets;
+            IWebElement canvas = canvasServices.GetCanvasModel().CanvasImage;
             ActionManager.Create(Manager.Driver).CustomDragAndDropForCabinets(cabinets, canvas, 20, 20);
             string screenOne = ImageHelper.MakeScreenshot(Manager.Driver);
             var model = activeElementServices.GetActiveCabinetModel();
-            model.rightPanel.rotationInput.SendKeys("20");
-            ActionManager.Create(Manager.Driver).Click(model.leftPanel.cabinetImageThumb).Build().Perform();
+            model.RightPanel.RotationInput.SendKeys("20");
+            ActionManager.Create(Manager.Driver).Click(model.LeftPanel.CabinetImageThumb).Build().Perform();
             string screenSecond = ImageHelper.MakeScreenshot(Manager.Driver);
 
             Assert.IsTrue(ImageHelper.CheckingImagesAreDifferent(screenOne, screenSecond));
@@ -163,7 +163,7 @@ namespace RawaTests.Tests
     
         private void GoToSecondStep()
         {
-            homeServices.GetHomePageModel().startButton.ClickIfElementIsClickable(Manager.Driver);
+            homeServices.GetHomePageModel().StartButton.ClickIfElementIsClickable(Manager.Driver);
             ButtonHelper.ClickButtonNext(Manager.Driver);
         }
 
@@ -171,7 +171,7 @@ namespace RawaTests.Tests
         {
             groupOptionServices.GetOptionModel().GetOptionDoor();
             IWebElement door = leftPanelServices.GetPanelForDoors().GetRandomDoor();
-            IWebElement canvas = canvasServices.GetCanvasModel().canvasImage;
+            IWebElement canvas = canvasServices.GetCanvasModel().CanvasImage;
             ActionManager.Create(Manager.Driver).RotateElement(canvas);
             ActionManager.Create(Manager.Driver).CustomDragAndDropForWindowAndDoor(door, canvas);
         }
@@ -188,7 +188,7 @@ namespace RawaTests.Tests
         {
             groupOptionServices.GetOptionModel().GetOptionWindow();
             IWebElement window = leftPanelServices.GetPanelForWindow().GetRandomWindow();
-            IWebElement canvas = canvasServices.GetCanvasModel().canvasImage;
+            IWebElement canvas = canvasServices.GetCanvasModel().CanvasImage;
             ActionManager.Create(Manager.Driver).RotateElement(canvas);
             ActionManager.Create(Manager.Driver).CustomDragAndDropForWindowAndDoor(window, canvas);
         }

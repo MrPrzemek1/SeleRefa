@@ -7,10 +7,10 @@ namespace RawaTests.Model
     public class ShapeRoomWCModel : BaseWebContainerModel
     {
         // Nagłówek listy kształtów pomieszczeń
-        public IWebElement header { get; set; }
+        public IWebElement Header { get; set; }
         // kształt pomieszczenia
-        public IWebElement shapeOfRoom { get; set; }
+        public IWebElement ShapeOfRoom { get; set; }
 
-        public override bool IsValid() => header != null && header.Text.Contains(Configurator3DConsts.CHOOSEROOMHEADER) && shapeOfRoom != null;
+        public override bool IsValid() => Header != null && Header.Text.Contains(Configurator3DConsts.CHOOSEROOMHEADER) && ShapeOfRoom != null;
     }
 }

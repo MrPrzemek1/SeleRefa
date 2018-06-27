@@ -6,36 +6,36 @@ namespace RawaTests.Model.Login
 {
     class LoginPageWCModel : BaseWebContainerModel
     {
-        private IWebDriver driver;
-        public IWebElement companyNameInput { get; set; }
-        public IWebElement loginInput { get; set; }
-        public IWebElement passwordInput { get; set; }
-        public IWebElement submitButton { get; set; }
-        public IWebElement validateFieldElement { get; set; }
+        private IWebDriver _driver;
+        public IWebElement CompanyNameInput { get; set; }
+        public IWebElement LoginInput { get; set; }
+        public IWebElement PasswordInput { get; set; }
+        public IWebElement SubmitButton { get; set; }
+        public IWebElement ValidateFieldElement { get; set; }
 
         public LoginPageWCModel(IWebDriver driver, IWebElement company, IWebElement Login, IWebElement password, IWebElement loginButton, IWebElement validateField = null)
         {
-            this.driver = driver;
-            companyNameInput = company;
-            loginInput = Login;
-            passwordInput = password;
-            submitButton = loginButton;
-            validateFieldElement = validateField;
+            _driver = driver;
+            CompanyNameInput = company;
+            LoginInput = Login;
+            PasswordInput = password;
+            SubmitButton = loginButton;
+            ValidateFieldElement = validateField;
         }
 
         public void SetCorrectLoginData()
         {
-            companyNameInput.SendKeys(LoginData.CompanyName);
-            loginInput.SendKeys(LoginData.Login);
-            passwordInput.SendKeys(LoginData.Password);
+            CompanyNameInput.SendKeys(LoginData.CompanyName);
+            LoginInput.SendKeys(LoginData.Login);
+            PasswordInput.SendKeys(LoginData.Password);
         }
 
         public bool ValidateFieldIsDisplayed
         {
             get
             {
-                if (validateFieldElement != null)
-                    return validateFieldElement.Displayed;
+                if (ValidateFieldElement != null)
+                    return ValidateFieldElement.Displayed;
                 else
                     return false;
             }
@@ -45,27 +45,27 @@ namespace RawaTests.Model.Login
             get
             {
                 if (ValidateFieldIsDisplayed)
-                    return validateFieldElement.Text;
+                    return ValidateFieldElement.Text;
                 else
                     return null;
             }
         }
         public void ClearAllLoginForField()
         {
-            companyNameInput.Clear();
-            loginInput.Clear();
-            passwordInput.Clear();
+            CompanyNameInput.Clear();
+            LoginInput.Clear();
+            PasswordInput.Clear();
         }
         public void SetLoginData(string company, string login, string pass)
         {
-            companyNameInput.SendKeys(company);
-            loginInput.SendKeys(login);
-            passwordInput.SendKeys(pass);
+            CompanyNameInput.SendKeys(company);
+            LoginInput.SendKeys(login);
+            PasswordInput.SendKeys(pass);
         }
-        public override bool IsValid() => loginInput != null;
+        public override bool IsValid() => LoginInput != null;
 
-        public void ClearLoginInput() => loginInput.Clear();
-        public void SubmitLoginForm() => submitButton.ClickIfElementIsClickable(driver);
+        public void ClearLoginInput() => LoginInput.Clear();
+        public void SubmitLoginForm() => SubmitButton.ClickIfElementIsClickable(_driver);
     }
 
 }

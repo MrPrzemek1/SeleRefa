@@ -29,7 +29,7 @@ namespace RawaTests.Services
                 {
                     listOfShapes.Shapes.Add(new ShapeRoomWCModel
                     {
-                        shapeOfRoom =shape_id[i],
+                        ShapeOfRoom =shape_id[i],
                     });
                 }
             }

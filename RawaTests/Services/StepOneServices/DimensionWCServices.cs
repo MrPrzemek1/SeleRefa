@@ -13,7 +13,7 @@ namespace RawaTests.StepOne
         public DimensionsWCModel GetDimensions()
         {
             DimensionsWCModel result = new DimensionsWCModel();
-            result.header = Manager.FindWebElement(By.XPath(DimensionElementsLocators.HeaderLocator));
+            result.Header = Manager.FindWebElement(By.XPath(DimensionElementsLocators.HeaderLocator));
             var elementsList = Manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.ListOfDimensionLocator));
             foreach (var element in elementsList)
             {
@@ -22,12 +22,12 @@ namespace RawaTests.StepOne
                 var btnMinusWE = element.FindWebElement(By.ClassName(DimensionElementsLocators.MinusSignLocator)); 
                 var inputWE = element.FindWebElement(By.ClassName(DimensionElementsLocators.InputFieldLocator));
 
-                result.dimensionElements.Add(new DimensionWCModel
+                result.DimensionElements.Add(new DimensionWCModel
                     {
-                        description = labelWE,
-                        plusSign = btnPlusWE,
-                        minusSign = btnMinusWE,
-                        input = inputWE,
+                        Description = labelWE,
+                        PlusSign = btnPlusWE,
+                        MinusSign = btnMinusWE,
+                        Input = inputWE,
                     });                        
             }
             return result;

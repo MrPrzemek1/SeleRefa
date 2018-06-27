@@ -4,13 +4,13 @@ namespace RawaTests.ContainersModels.StepTwo.ActiveWindowForm
 {
     public class ActiveWindowRightTableWCModel
     {
-        public IWebElement bottomLocationHeader { get; set; }
-        public IWebElement bottomLocationInput { get; set; }
+        public IWebElement BottomLocationHeader { get; set; }
+        public IWebElement BottomLocationInput { get; set; }
 
         public ActiveWindowRightTableWCModel(IWebElement bottomLocationHeader, IWebElement bottomLocationInput)
         {
-            this.bottomLocationHeader = bottomLocationHeader;
-            this.bottomLocationInput = bottomLocationInput;
+            BottomLocationHeader = bottomLocationHeader;
+            BottomLocationInput = bottomLocationInput;
         }
     }
 

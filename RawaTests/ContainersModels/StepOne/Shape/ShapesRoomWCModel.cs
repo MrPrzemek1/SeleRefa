@@ -23,7 +23,7 @@ namespace RawaTests.Lists
         /// <param name="id">id pomieszczenia</param>
         public void ClickShapeById(string id)
         {
-             Shapes.Where(e => e.shapeOfRoom.GetAttribute(HtmlAttributesConsts.SHAPE_ID) == id).FirstOrDefault().shapeOfRoom.ClickIfElementIsClickable(Driver);            
+             Shapes.Where(e => e.ShapeOfRoom.GetAttribute(HtmlAttributesConsts.SHAPE_ID) == id).FirstOrDefault().ShapeOfRoom.ClickIfElementIsClickable(Driver);            
         }
         /// <summary>
         /// Metoda zwracająca atrybut "class"
@@ -32,7 +32,7 @@ namespace RawaTests.Lists
         /// <returns></returns>
         public string GetAttribute(int i)
         {
-            return Shapes[i].shapeOfRoom.GetAttribute(HtmlAttributesConsts.CLASS);
+            return Shapes[i].ShapeOfRoom.GetAttribute(HtmlAttributesConsts.CLASS);
         }
         /// <summary>
         /// Metoda sprawdzająca czy po kilknięciu w miniaturke pomieszczenia jej klasa zmienia się na active

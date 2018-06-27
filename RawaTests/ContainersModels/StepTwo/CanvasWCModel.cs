@@ -6,18 +6,18 @@ namespace RawaTests.ContainersModels.StepTwo
     public class CanvasWCModel
     {
         private IWebDriver _driver;
-        public IWebElement canvasImage { get; set; }
+        public IWebElement CanvasImage { get; set; }
 
         public CanvasWCModel(IWebDriver driver, IWebElement canvasImage)
         {
             this._driver = driver;
-            this.canvasImage = canvasImage;
+            this.CanvasImage = canvasImage;
         }
 
         public void OpenColorPickerOnCanvas()
         {
             Actions actions = new Actions(_driver);
-            actions.Click(canvasImage).Perform();
+            actions.Click(CanvasImage).Perform();
             //CanvasImage.Click();
             actions.SendKeys(Keys.Home).Perform();
         }

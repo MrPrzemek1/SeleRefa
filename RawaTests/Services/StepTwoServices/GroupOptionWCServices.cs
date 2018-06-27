@@ -21,7 +21,7 @@ namespace RawaTests.Services.StepTwoServices
             {
                 model.groupOption.Add(new GroupOptionWCModel
                 {
-                    nameOfGroup = radio[i],
+                    NameOfGroup = radio[i],
                 });
             }
             return model;           

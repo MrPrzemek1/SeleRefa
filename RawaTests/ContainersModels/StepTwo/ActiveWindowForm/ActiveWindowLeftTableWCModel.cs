@@ -4,15 +4,15 @@ namespace RawaTests.ContainersModels.StepTwo.ActiveWindowForm
 {
     public class ActiveWindowLeftTableWCModel
     {
-        public IWebElement windowImage { get; set; }
-        public IWebElement windowDimension { get; set; }
-        public IWebElement deleteWindowButton { get; set; }
+        public IWebElement WindowImage { get; set; }
+        public IWebElement WindowDimension { get; set; }
+        public IWebElement DeleteWindowButton { get; set; }
 
         public ActiveWindowLeftTableWCModel(IWebElement windowImage, IWebElement windowDimension, IWebElement deleteWindowButton)
         {
-            this.windowImage = windowImage;
-            this.windowDimension = windowDimension;
-            this.deleteWindowButton = deleteWindowButton;
+            WindowImage = windowImage;
+            WindowDimension = windowDimension;
+            DeleteWindowButton = deleteWindowButton;
         }
     }
 }

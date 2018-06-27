@@ -13,7 +13,7 @@ namespace TestDrivenLearn
         public TestUser TestUser { get; set; }
 
         [TestInitialize]
-        private void SetUpForEverySingleTest()
+        public void SetUpForEverySingleTest()
         {
             Driver = GetChromeDriver();
             TestUser = new TestUser();
