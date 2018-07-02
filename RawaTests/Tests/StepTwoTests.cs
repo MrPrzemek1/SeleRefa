@@ -173,7 +173,6 @@ namespace RawaTests.Tests
             IWebElement door = leftPanelServices.GetPanelForDoors().GetRandomDoor();
             IWebElement canvas = canvasServices.GetCanvasModel().CanvasImage;
             ActionManager.Create(Manager.Driver).RotateElement(canvas);
-            ActionManager.Create(Manager.Driver).CustomDragAndDropForWindowAndDoor(door, canvas);
         }
 
         private ColorPickerWCModel GetColorPicker()

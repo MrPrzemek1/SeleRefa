@@ -23,7 +23,7 @@ namespace RawaTests.Tests
         [TearDown]
         public virtual void EndTest()
         {
-            DirectoryInfo di = new DirectoryInfo(@"E:\ScreanshotSelenium");
+            DirectoryInfo di = new DirectoryInfo(@"D:\ScreanshotSelenium");
             foreach (FileInfo file in di.GetFiles())
             {
                 file.Delete();

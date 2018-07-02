@@ -28,15 +28,14 @@ namespace RawaTests.Managers
         public void CustomDragAndDropForWindowAndDoor(IWebElement source, IWebElement target, int xPosiotion = 5, int yPostion = 5)
         {
             ClickAndHold(source).MoveToElement(target).MoveByOffset(xPosiotion, yPostion).Release(target).Build().Perform();       
-         }
+        }
         public void CustomDragAndDropForCabinets(IWebElement source, IWebElement target, int xPosiotion = 5, int yPostion = 5)
         {
-
-                ClickAndHold(source).MoveToElement(target).MoveByOffset(10,10).Perform();
-                Thread.Sleep(500);
-                Create(_driver).Release(target).Perform();
-                //Action.ClickAndHold(source).MoveToElement(taget).MoveByOffset(xPosiotion, yPostion).Release(taget).Build().Perform();
-                //i++;
+            ClickAndHold(source).MoveToElement(target).MoveByOffset(10,10).Perform();
+            Thread.Sleep(500);
+            Create(_driver).Release(target).Perform();
+            //Action.ClickAndHold(source).MoveToElement(taget).MoveByOffset(xPosiotion, yPostion).Release(taget).Build().Perform();
+            //i++;
         }
         /// <summary>
         /// Metoda która obraca element o podane współrzędne

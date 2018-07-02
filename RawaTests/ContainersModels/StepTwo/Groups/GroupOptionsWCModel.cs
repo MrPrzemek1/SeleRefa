@@ -47,9 +47,9 @@ namespace RawaTests.Models.StepTwo.Groups
         };
         public bool IsChecked(GroupType type)
         {
-            string a = groupOption.Where(e => String.Equals(e.NameOfGroup.Text, groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.GetAttribute("checked");
+            string radioButton = groupOption.Where(e => String.Equals(e.NameOfGroup.Text, groupName[type], StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault().NameOfGroup.GetAttribute("checked");
             bool result = false;
-            if (a.Equals("checked"))
+            if (radioButton.Equals("checked"))
             {
                 result = true;
             }

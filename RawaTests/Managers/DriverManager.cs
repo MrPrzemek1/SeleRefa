@@ -3,6 +3,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using RawaTests.Helpers.DriverHelper;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -80,6 +81,9 @@ namespace RawaTests.Managers
         public void Quit() => Driver.Quit();
 
         public void AcceptAlert() => Driver.SwitchTo().Alert().Accept();
-
+        public void lala()
+        {
+            Action action = new Action();
+        }
     }
 }

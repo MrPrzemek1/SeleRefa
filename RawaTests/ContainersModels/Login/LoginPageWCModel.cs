@@ -56,11 +56,12 @@ namespace RawaTests.Model.Login
             LoginInput.Clear();
             PasswordInput.Clear();
         }
-        public void SetLoginData(string company, string login, string pass)
+        public void SetLoginData(string company, string login = null, string pass = null)
         {
             CompanyNameInput.SendKeys(company);
             LoginInput.SendKeys(login);
             PasswordInput.SendKeys(pass);
+            SubmitButton.Click();
         }
         public override bool IsValid() => LoginInput != null;
 

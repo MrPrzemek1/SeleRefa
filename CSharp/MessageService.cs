@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace CSharp
 {
-    public class MessageService : IComparable<MessageService>
+    public class MessageService
     {
         public string name;
         public int age;
@@ -27,11 +27,6 @@ namespace CSharp
         public override int GetHashCode()
         {
             return name.GetHashCode() ^ age.GetHashCode();
-        }
-
-        public int CompareTo(MessageService other)
-        {
-           return this.name == other.name
         }
     }
 }

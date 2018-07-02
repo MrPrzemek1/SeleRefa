@@ -39,9 +39,7 @@ namespace RawaTests.Tests
         {
             InitializeAndGotoLoginPage(type);
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
-            loginPage.LoginInput.SendKeys("Test");
-            loginPage.PasswordInput.SendKeys("test");
-            loginPage.SubmitLoginForm();
+            loginPage.SetLoginData(string.Empty,"test", "test");
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateFieldIsDisplayed);
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.CompanyValidateText));
@@ -51,9 +49,7 @@ namespace RawaTests.Tests
         {
             InitializeAndGotoLoginPage(type);
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
-            loginPage.CompanyNameInput.SendKeys("lalala");
-            loginPage.PasswordInput.SendKeys("lalala");
-            loginPage.SubmitLoginForm();
+            loginPage.SetLoginData("test", string.Empty, "test");
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.LoginValidateText));
         }
@@ -62,9 +58,7 @@ namespace RawaTests.Tests
         {
             InitializeAndGotoLoginPage(type);
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
-            loginPage.CompanyNameInput.SendKeys("lalala");
-            loginPage.LoginInput.SendKeys("lalala");
-            loginPage.SubmitLoginForm();
+            loginPage.SetLoginData("test","test");
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.PasswordValidateText));
         }
