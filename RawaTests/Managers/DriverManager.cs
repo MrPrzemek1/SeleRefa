@@ -83,7 +83,7 @@ namespace RawaTests.Managers
         public void AcceptAlert() => Driver.SwitchTo().Alert().Accept();
         public void lala()
         {
-            Action action = new Action();
+            
         }
     }
 }

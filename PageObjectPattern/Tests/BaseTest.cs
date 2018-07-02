@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace PageObjectPattern.Tests
 {
+    [SetUpFixture]
     public abstract class BaseTest
     {
         private IWebDriver driver;
@@ -21,17 +22,13 @@ namespace PageObjectPattern.Tests
         {
             this.driver = driver;
         }
-        [SetUp]
+        [OneTimeSetUp]
         public void TestInizialize()
-        {
-            
-            //driver = new ChromeDriver();
-            
+        {                     
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("https://www.ultimateqa.com/simple-html-elements-for-automation/");
-
         }
-        [TearDown]
+        [OneTimeTearDown]
         public virtual void EndTest()
         {
             driver.Quit();

@@ -8,37 +8,32 @@ using System;
 namespace PageObjectPattern.Tests
 {
     [TestFixture]
-    [Ignore("klasa do sprawdzania rozwiązań")]
     public class KlasaTestowa
     {
         private IWebDriver driver;
         public KlasaTestowa()
         {
-            driver = new ChromeDriver();
-        }
-
-        [SetUp]
-        public void TestInizialize()
-        {
-
             //driver = new ChromeDriver();
+        }
 
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl("https://www.ultimateqa.com/simple-html-elements-for-automation/");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+        //[SetUp]
+        //public void TestInizialize()
+        //{
+        //    driver.Manage().Window.Maximize();
+        //    driver.Navigate().GoToUrl("https://www.ultimateqa.com/simple-html-elements-for-automation/");
+        //    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             
-        }
-        [TearDown]
-        public virtual void EndTest()
-        {
-            driver.Quit();
-        }
-        [Test]
-        
+        //}
+        //[TearDown]
+        //public virtual void EndTest()
+        //{
+        //    driver.Quit();
+        //}
+        [Test]     
         public void lalaasla()
         {
             WebDriverWait wait = new WebDriverWait(driver,TimeSpan.FromSeconds(5));
-            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("")));
+            //wait.Until(ExpectedConditions.ElementIsVisible(By.Id("")));
             driver.FindElement(By.XPath("//input[@value='other']")).Click();
             driver.FindElement(By.XPath("//input[@type='checkbox'][@value='Car']")).Click();
             var select = driver.FindElement(By.XPath("//select"));

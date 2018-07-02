@@ -1,9 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using PageFactory = SeleniumExtras.PageObjects.PageFactory;
-using static PageObjectPattern.DriverHelper;
-using OpenQA.Selenium.Chrome;
-using NUnit.Framework;
 
 namespace PageObjectPattern.Pages
 {
@@ -11,7 +8,7 @@ namespace PageObjectPattern.Pages
     {
         private IWebDriver driver;
 
-        //[FindsBy(How = How.XPath, Using = "//*[@class='btn btn-primary btn-lg btn-start']")]
+        [FindsBy(How = How.XPath, Using = "//*[@class='btn btn-primary btn-lg btn-start']")]
         private IWebElement StartButton { get { return driver.FindElement(By.XPath("//*[@class='btn btn-primary btn-lg btn-start']")); } }
 
         [FindsBy(How = How.XPath, Using = "//*[@class='btn btn-primary btn-lg btn-start']")]
