@@ -1,28 +1,27 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
+﻿,using OpenQA.Selenium;
+using SeleniumExtras.PageObjects;
 using PageFactory = SeleniumExtras.PageObjects.PageFactory;
 
 namespace PageObjectPattern.Pages
 {
     public class HomePage
     {
-        private IWebDriver driver;
-
-        [FindsBy(How = How.XPath, Using = "//*[@class='btn btn-primary btn-lg btn-start']")]
-        private IWebElement StartButton { get { return driver.FindElement(By.XPath("//*[@class='btn btn-primary btn-lg btn-start']")); } }
-
-        [FindsBy(How = How.XPath, Using = "//*[@class='btn btn-primary btn-lg btn-start']")]
-        private IWebElement LoginButton { get; set; }
+        private IWebDriver _driver;
 
         public HomePage(IWebDriver driver)
         {
-            this.driver = driver;
-            PageFactory.InitElements(driver, this);
+           _driver = driver;
+           PageFactory.InitElements(driver, this);
         }
 
+        [FindsBy(How = How.Id, Using = "button1")]
+        private IWebElement ClickMe;
+
+        [FindsBy(How = How.Id, Using = "button2")]
+        private IWebElement Raise;
         public void ClickStartButton()
         {
-            LoginButton.Click();
+            ClickMe.Click();
         }
     }
 }

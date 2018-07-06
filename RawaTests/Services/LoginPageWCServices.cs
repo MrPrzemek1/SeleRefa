@@ -15,13 +15,13 @@ namespace RawaTests.Services
         {
             System.Console.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff"));
 
-            var CompanyName =Manager.FindWebElementAndWait(By.Name(LoginPageElementsLocators.companyInputLocator));
-            var Login = Manager.FindWebElement(By.Name(LoginPageElementsLocators.loginInputLocator));
-            var Password = Manager.FindWebElement(By.Name(LoginPageElementsLocators.passwordInputLocator));
-            var SubmitButton = Manager.FindWebElement(By.XPath(LoginPageElementsLocators.submitLoginLocator));
-            var ValidateField = Manager.FindWebElement(By.XPath(LoginPageElementsLocators.validateFieldLocator));
+            var CompanyName =_manager.FindWebElementAndWait(By.Name(LoginPageElementsLocators.companyInputLocator));
+            var Login = _manager.FindWebElement(By.Name(LoginPageElementsLocators.loginInputLocator));
+            var Password = _manager.FindWebElement(By.Name(LoginPageElementsLocators.passwordInputLocator));
+            var SubmitButton = _manager.FindWebElement(By.XPath(LoginPageElementsLocators.submitLoginLocator));
+            var ValidateField = _manager.FindWebElement(By.XPath(LoginPageElementsLocators.validateFieldLocator));
 
-            LoginPageWCModel model = new LoginPageWCModel(Manager.Driver,CompanyName, Login, Password, SubmitButton, ValidateField);
+            LoginPageWCModel model = new LoginPageWCModel(_manager.Driver,CompanyName, Login, Password, SubmitButton, ValidateField);
             System.Console.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff"));
 
             return model;

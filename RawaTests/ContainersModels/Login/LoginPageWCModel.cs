@@ -56,7 +56,7 @@ namespace RawaTests.Model.Login
             LoginInput.Clear();
             PasswordInput.Clear();
         }
-        public void SetLoginData(string company, string login = null, string pass = null)
+        public void SetLoginData(string company, string login, string pass)
         {
             CompanyNameInput.SendKeys(company);
             LoginInput.SendKeys(login);

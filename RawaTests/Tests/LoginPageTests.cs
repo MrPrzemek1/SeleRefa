@@ -30,8 +30,8 @@ namespace RawaTests.Tests
             loginPage.SetCorrectLoginData();
             loginPage.SubmitButton.Click();
             HomePageWCModel homePageAfterLogin = homeServices.GetHomePageModel();
-            Assert.IsTrue(homePageAfterLogin.LogoutDiv.Displayed);
-            Assert.IsTrue(homePageAfterLogin.LogoutDiv.Text.Equals(ValidateTextsHelper.CorrectLoginText));
+            Assert.IsTrue(homePageAfterLogin.LogoutDiv!=null, "Logowanie niepowiodło się, informacja o zalogowanym użytkowniku się nie pojawiła");
+            Assert.IsTrue(homePageAfterLogin.LogoutDiv.Text.Equals(ValidateTextsConsts.CorrectLoginText));
         }
 
         [Test, Order(2)]
@@ -42,7 +42,7 @@ namespace RawaTests.Tests
             loginPage.SetLoginData(string.Empty,"test", "test");
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
             Assert.IsTrue(loginAfterSubmit.ValidateFieldIsDisplayed);
-            Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.CompanyValidateText));
+            Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsConsts.CompanyValidateText));
         }
         [Test, Order(3)]
         public void VerifingValidateTextWhenUserNameIsEmpty([Values]DriverType type)
@@ -51,16 +51,16 @@ namespace RawaTests.Tests
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
             loginPage.SetLoginData("test", string.Empty, "test");
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
-            Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.LoginValidateText));
+            Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsConsts.LoginValidateText));
         }
         [Test, Order(4)]
         public void VerifingValidateTextPasswordFieldIsEmpty([Values]DriverType type)
         {
             InitializeAndGotoLoginPage(type);
             LoginPageWCModel loginPage = loginServices.GetLoginPageModel();
-            loginPage.SetLoginData("test","test");
+            loginPage.SetLoginData("test","test", string.Empty);
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
-            Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.PasswordValidateText));
+            Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsConsts.PasswordValidateText));
         }
         [Test, Order(5)]
         public void VerifingValidateTextWhenLoginDataWasIncorrect([Values]DriverType type)
@@ -70,7 +70,7 @@ namespace RawaTests.Tests
             loginPage.SetLoginData("Test", "Test", "Test");
             loginPage.SubmitLoginForm();
             LoginPageWCModel loginAfterSubmit = loginServices.GetLoginPageModel();
-            Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsHelper.ErrorValidateText));
+            Assert.IsTrue(loginAfterSubmit.ValidateText.Equals(ValidateTextsConsts.ErrorValidateText));
         }
 
         private void InitializeAndGotoLoginPage(DriverType type)

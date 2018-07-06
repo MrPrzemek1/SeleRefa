@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NLog;
+using OpenQA.Selenium;
 using RawaTests.HtmlStrings.ConstStrings;
 using RawaTests.Model.Base;
 
@@ -7,6 +8,7 @@ namespace RawaTests.Model
     public class HomePageWCModel : BaseWebContainerModel
     {
         private IWebDriver _driver;
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
         public IWebElement StartButton { get; set; }
         public IWebElement HomePageImage { get; set; }
         public IWebElement LogoImage { get; set; }
@@ -31,6 +33,10 @@ namespace RawaTests.Model
         //Metoda sprawdzająca czy strona glowna sie poprawnie zaladowala
         public override bool IsValid() => StartButton.Displayed && HomePageImage.GetAttributeSrc() != null && Footer.Text.Equals(Configurator3DConsts.FOOTER) && Header.Text.Equals(Configurator3DConsts.HEADER);
         // Metoda przechodząca do formularza logowania.
-        public void GotoLoginPage() => LoginButton.ClickIfElementIsClickable(_driver);     
+        public void GotoLoginPage()
+        {
+            LoginButton.ClickIfElementIsClickable(_driver);
+            _logger.Info("LoginPage");
+        }
     }
 }

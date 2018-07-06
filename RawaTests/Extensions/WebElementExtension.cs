@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using RawaTests.Helpers.DriverHelper;
-using RawaTests.HtmlStrings.ConstStrings;
 using System.Collections.Generic;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
@@ -26,11 +25,6 @@ namespace RawaTests
         public static IList<IWebElement> FindWebElements(this IWebElement element, IWebDriver driver, By by)
         {
             return DriverHelper.FindWebElementsWithoutWait(element, by);
-        }
-
-        public static string GetAttributeSrc(this IWebElement element)
-        {
-            return element.GetAttribute(HtmlAttributesConsts.SRC);
         }
 
         public static void ClickIfElementIsClickable(this IWebElement e, IWebDriver driver)

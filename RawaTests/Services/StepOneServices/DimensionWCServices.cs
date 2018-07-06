@@ -13,8 +13,8 @@ namespace RawaTests.StepOne
         public DimensionsWCModel GetDimensions()
         {
             DimensionsWCModel result = new DimensionsWCModel();
-            result.Header = Manager.FindWebElement(By.XPath(DimensionElementsLocators.HeaderLocator));
-            var elementsList = Manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.ListOfDimensionLocator));
+            result.Header = _manager.FindWebElement(By.XPath(DimensionElementsLocators.HeaderLocator));
+            var elementsList = _manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.ListOfDimensionLocator));
             foreach (var element in elementsList)
             {
                 var labelWE = element.FindWebElement(By.ClassName(DimensionElementsLocators.DescriptionFieldLocator));

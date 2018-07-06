@@ -4,6 +4,6 @@
     {
         Chrome,
         Firefox,
-        IE,
+       // IE,
     }
 }

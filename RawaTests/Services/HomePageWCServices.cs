@@ -16,16 +16,17 @@ namespace RawaTests.Services
         /// <returns></returns>
         public HomePageWCModel GetHomePageModel()
         {
-            var startButton = Manager.FindWebElementAndWait(By.XPath(HomePageElementsLocators.startButtonLocator));
-            var homePageImage = Manager.FindWebElement(By.ClassName(HomePageElementsLocators.homePageImageLocator));
-            var logoImage = Manager.FindWebElement(By.XPath(HomePageElementsLocators.homePageLogoLocator));
-            var footer = Manager.FindWebElement(By.XPath(HomePageElementsLocators.footerLocator));
-            var loginButton = Manager.FindWebElement(By.XPath(HomePageElementsLocators.loginButtonLocator));
-            var header = Manager.FindWebElement(By.XPath(HomePageElementsLocators.headerLocator));
-            var logoutDiv = Manager.FindWebElement(By.Id(HomePageElementsLocators.logoutDivLocator));
+            logger.Trace("HomePageModel will start build.");
+            var startButton = _manager.FindWebElementAndWait(By.XPath(HomePageElementsLocators.startButtonLocator));
+            var homePageImage = _manager.FindWebElement(By.ClassName(HomePageElementsLocators.homePageImageLocator));
+            var logoImage = _manager.FindWebElement(By.XPath(HomePageElementsLocators.homePageLogoLocator));
+            var footer = _manager.FindWebElement(By.XPath(HomePageElementsLocators.footerLocator));
+            var loginButton = _manager.FindWebElement(By.XPath(HomePageElementsLocators.loginButtonLocator));
+            var header = _manager.FindWebElement(By.XPath(HomePageElementsLocators.headerLocator));
+            var logoutDiv = _manager.FindWebElement(By.Id(HomePageElementsLocators.logoutDivLocator));
             var logoutButton = logoutDiv.FindWebElement(By.TagName(HomePageElementsLocators.logoutButtonLocator));
 
-            HomePageWCModel homeModel = new HomePageWCModel(Manager.Driver,startButton, homePageImage, logoImage, footer, loginButton, header, logoutDiv, logoutButton);
+            HomePageWCModel homeModel = new HomePageWCModel(_manager.Driver,startButton, homePageImage, logoImage, footer, loginButton, header, logoutDiv, logoutButton);
 
             return homeModel;
         }

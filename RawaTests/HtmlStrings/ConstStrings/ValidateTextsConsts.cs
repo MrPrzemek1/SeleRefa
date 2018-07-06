@@ -1,6 +1,6 @@
 ﻿namespace RawaTests.ValidateMessages
 {
-    public static class ValidateTextsHelper
+    public static class ValidateTextsConsts
     {
         public static string CompanyValidateText = "Pole nazwa firmy jest obowiązkowe";
         public static string LoginValidateText = "Pole nazwa użytkownika jest obowiązkowe";

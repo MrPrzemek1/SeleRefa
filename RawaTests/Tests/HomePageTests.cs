@@ -6,7 +6,7 @@ namespace RawaTests.Tests
 {
     [TestFixtureSource(typeof(DriverManager), "DriverType")]
     [TestFixture,Category("Home")]
-    class HomePageTests : BaseTest
+    public class HomePageTests : BaseTest
     {
         HomePageWCServices homePageSrv;
 

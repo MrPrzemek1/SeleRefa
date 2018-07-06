@@ -11,7 +11,7 @@ namespace RawaTests.Tests
 
         public BaseTest() { }
 
-        public virtual void InizializeManager([Values]DriverType type)
+        private void InizializeManager([Values]DriverType type)
         {
             Manager = new DriverManager(type);
             Manager.Initialize();

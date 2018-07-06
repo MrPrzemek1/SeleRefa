@@ -14,17 +14,15 @@ namespace PageObjectPattern.Tests
     public abstract class BaseTest
     {
         private IWebDriver driver;
+
         public BaseTest()
         {
-            driver = new ChromeDriver();
-        }
-        public BaseTest(IWebDriver driver) 
-        {
-            this.driver = driver;
+            
         }
         [OneTimeSetUp]
         public void TestInizialize()
-        {                     
+        {
+            driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl("https://www.ultimateqa.com/simple-html-elements-for-automation/");
         }

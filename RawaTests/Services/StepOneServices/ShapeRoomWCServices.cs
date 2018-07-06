@@ -18,10 +18,10 @@ namespace RawaTests.Services
         /// <returns></returns>
         public ShapesRoomWCModel GetShapes()
         {
-            var shape_id = Manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.ShapeidLocator));
-            var header = Manager.FindWebElementAndWait(By.XPath(ShapeElementsLocators.ShapeHeaderLocator));
+            var shape_id = _manager.FindWebElementsAndWait(By.XPath(DimensionElementsLocators.ShapeidLocator));
+            var header = _manager.FindWebElementAndWait(By.XPath(ShapeElementsLocators.ShapeHeaderLocator));
 
-            ShapesRoomWCModel listOfShapes = new ShapesRoomWCModel(Manager.Driver);
+            ShapesRoomWCModel listOfShapes = new ShapesRoomWCModel(_manager.Driver);
             listOfShapes.Header = header ?? (header = null);
 
             for (int i = 0; i < shape_id.Count; i++)

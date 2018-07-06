@@ -75,7 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Nowy Dokument programu Microsoft Word.docx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

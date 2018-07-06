@@ -37,19 +37,19 @@ namespace RawaTests.Managers
                     return new ChromeDriver(chromeDriverPath);
                 case DriverType.Firefox:
                     return new FirefoxDriver();
-                case DriverType.IE:
-                    InternetExplorerOptions optionsIE = new InternetExplorerOptions();
-                    optionsIE.IgnoreZoomLevel = true;
-                    optionsIE.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
-                    optionsIE.RequireWindowFocus = true;
-                    return new InternetExplorerDriver(optionsIE);
+                //case DriverType.IE:
+                //    InternetExplorerOptions optionsIE = new InternetExplorerOptions();
+                //    optionsIE.IgnoreZoomLevel = true;
+                //    optionsIE.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
+                //    optionsIE.RequireWindowFocus = true;
+                //    return new InternetExplorerDriver(optionsIE);
                 //case DriverType.Opera:
                 //    OperaOptions operaOptions = new OperaOptions();
                 //    operaOptions.BinaryLocation = @"E:\GitHub\SeleRefa\RawaTests\bin\Debug";
                 //    //operaOptions.ToCapabilities();
                 //    return new OperaDriver(@"E:\GitHub\SeleRefa\RawaTests\bin\Debug", operaOptions);
                 default:
-                    return new ChromeDriver();
+                    throw new ArgumentOutOfRangeException("Przeglądarka nie jest obslugiwana");
             }
         }
         #region Wyszukiwanie i czekanie na elementy.
@@ -81,9 +81,6 @@ namespace RawaTests.Managers
         public void Quit() => Driver.Quit();
 
         public void AcceptAlert() => Driver.SwitchTo().Alert().Accept();
-        public void lala()
-        {
-            
-        }
+
     }
 }

@@ -1,14 +1,15 @@
-﻿using RawaTests.Managers;
+﻿using NLog;
+using RawaTests.Managers;
 
 namespace RawaTests.Services.Base
 {
     public abstract class BaseService
     {
-        public DriverManager Manager;
-
+        public DriverManager _manager;
+        public Logger logger = LogManager.GetCurrentClassLogger();
         public BaseService(DriverManager manager)
         {
-            this.Manager = manager;
+            this._manager = manager;
         }
     }
 }
